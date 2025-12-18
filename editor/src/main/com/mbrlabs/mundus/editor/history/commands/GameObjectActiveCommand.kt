@@ -8,8 +8,7 @@ import com.mbrlabs.mundus.editorcommons.events.GameObjectModifiedEvent
 
 /**
  * Command to change the active state of a game object.
- * @author JamesTKhan
- * @version August 27, 2023
+ *  * @version August 27, 2023
  */
 class GameObjectActiveCommand(val gameObject: GameObject, val active: Boolean) : Command {
     override fun execute() {

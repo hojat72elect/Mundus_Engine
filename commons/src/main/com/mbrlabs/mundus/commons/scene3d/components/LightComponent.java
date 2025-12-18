@@ -19,8 +19,7 @@ import net.mgsx.gltf.scene3d.lights.SpotLightEx;
  * have associated assets, instead their data is saved within the GameObjects json inside
  * the scene file.
  *
- * @author JamesTKhan
- * @version May 30, 2022
+ *  * @version May 30, 2022
  */
 public class LightComponent extends AbstractComponent implements DirtyListener {
     private static final String TAG = LightComponent.class.getSimpleName();

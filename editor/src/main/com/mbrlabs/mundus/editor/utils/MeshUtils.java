@@ -11,8 +11,7 @@ import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 
 /**
- * @author JamesTKhan
- * @version September 28, 2023
+ *  * @version September 28, 2023
  */
 public class MeshUtils {
 

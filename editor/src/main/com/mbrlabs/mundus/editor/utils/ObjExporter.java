@@ -14,8 +14,7 @@ import java.io.IOException;
 import java.io.Writer;
 
 /**
- * @author JamesTKhan
- * @version July 21, 2022
+ *  * @version July 21, 2022
  */
 public class ObjExporter {
     private static final Vector3 tmpVec = new Vector3();

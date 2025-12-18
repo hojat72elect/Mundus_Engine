@@ -45,8 +45,7 @@ import kotlin.math.abs
 
 
 /**
- * @author JamesTKhan
- * @version October 24, 2022
+ *  * @version October 24, 2022
  */
 class AddTerrainChunksDialog : BaseDialog("Add Terrain"), TabbedPaneListener {
     private var loadingDialog: VisDialog? = null

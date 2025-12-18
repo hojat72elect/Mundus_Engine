@@ -6,8 +6,7 @@ import com.mbrlabs.mundus.commons.event.Event;
 /**
  * Indicates the object that can be eventable.
  *
- * @author Dgzt
- */
+ *  */
 public interface ModelEventable {
 
     /**

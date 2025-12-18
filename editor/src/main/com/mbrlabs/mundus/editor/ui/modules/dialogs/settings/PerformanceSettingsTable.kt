@@ -18,8 +18,7 @@ import com.mbrlabs.mundus.editorcommons.events.SceneChangedEvent
 import org.pf4j.PluginManager
 
 /**
- * @author JamesTKhan
- * @version July 23, 2022
+ *  * @version July 23, 2022
  */
 class PerformanceSettingsTable : BaseSettingsTable(), ProjectChangedEvent.ProjectChangedListener, SceneChangedEvent.SceneChangedListener {
 

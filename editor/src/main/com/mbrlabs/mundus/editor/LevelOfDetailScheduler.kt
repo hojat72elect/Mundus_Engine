@@ -14,9 +14,7 @@ import java.util.concurrent.Executors
 /**
  * Scheduled LoD rebuilding when needed.
  * Listens to events that indicate an LoD needs to be rebuilt.
- * @author JamesTKhan
- * @version October 04, 2023
- */
+ *  *  */
 class LevelOfDetailScheduler : TerrainVerticesChangedEvent.TerrainVerticesChangedEventListener,
     TerrainLoDRebuildEvent.TerrainLoDRebuildEventListener, Disposable {
     var executorService: ExecutorService = Executors.newSingleThreadExecutor()

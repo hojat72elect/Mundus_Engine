@@ -6,9 +6,7 @@ import com.badlogic.gdx.utils.FlushablePool;
 /**
  * From ModelBatch class.
  *
- * @author JamesTKhan
- * @version July 13, 2022
- */
+ *  *  */
 public class RenderablePool extends FlushablePool<Renderable> {
     @Override
     protected Renderable newObject() {

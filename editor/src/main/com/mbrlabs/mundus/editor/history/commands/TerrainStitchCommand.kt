@@ -10,8 +10,7 @@ import com.mbrlabs.mundus.editor.history.Command
  * On construction, setHeightDataBefore is called immediately.
  * Implementations must call setHeightDataAfter after modifying terrains but before executing.
  *
- * @author JamesTKhan
- * @version June 26, 2023
+ *  * @version June 26, 2023
  */
 class TerrainStitchCommand(private var terrains: Array<TerrainComponent>) : Command {
     private var terrainHeightCommands = HashMap<TerrainComponent, TerrainHeightCommand>()

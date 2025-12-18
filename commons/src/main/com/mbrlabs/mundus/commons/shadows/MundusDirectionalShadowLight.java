@@ -11,8 +11,7 @@ import net.mgsx.gltf.scene3d.lights.DirectionalShadowLight;
  * Extension of gdx-gltf DirectionalShadowLight with additional logic
  * for convenience in editor.
  *
- * @author JamesTKhan
- * @version June 01, 2023
+ *  * @version June 01, 2023
  */
 public class MundusDirectionalShadowLight extends DirectionalShadowLight {
     public static final int DEFAULT_VIEWPORT_SIZE = 250;

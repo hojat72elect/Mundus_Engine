@@ -5,8 +5,7 @@ import com.badlogic.gdx.graphics.TextureData
 import com.mbrlabs.mundus.commons.utils.MathUtils
 
 /**
- * @author JamesTKhan
- * @version August 02, 2022
+ *  * @version August 02, 2022
  */
 object ImageUtils {
 

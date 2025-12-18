@@ -7,8 +7,7 @@ import com.badlogic.gdx.utils.Disposable
  * Gizmos are 3D icons using libGDX Decals to provide information on game objects like a Light Bulb icon
  * for a GameObject that has a light component.
  *
- * @author JamesTKhan
- * @version June 01, 2022
+ *  * @version June 01, 2022
  */
 abstract class Gizmo : Disposable {
     abstract var decal: Decal

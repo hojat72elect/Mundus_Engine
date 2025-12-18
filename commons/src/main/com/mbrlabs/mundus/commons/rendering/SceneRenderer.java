@@ -9,8 +9,7 @@ import com.mbrlabs.mundus.commons.water.WaterResolution;
 /**
  * Responsible for rendering a scene.
  *
- * @author JamesTKhan
- * @version October 03, 2023
+ *  * @version October 03, 2023
  */
 public interface SceneRenderer {
 

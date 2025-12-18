@@ -23,8 +23,7 @@ import com.mbrlabs.mundus.commons.utils.ShaderUtils;
 import net.mgsx.gltf.scene3d.attributes.FogAttribute;
 
 /**
- * @author JamesTKhan
- * @version August 12, 2022
+ *  * @version August 12, 2022
  * @deprecated Use {@link PBRTerrainShader} instead.
  */
 public class TerrainUberShader extends LightShader {

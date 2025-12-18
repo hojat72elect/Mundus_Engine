@@ -5,8 +5,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.mbrlabs.mundus.commons.env.lights.LightType;
 
 /**
- * @author JamesTKhan
- * @version June 07, 2022
+ *  * @version June 07, 2022
  */
 public class LightComponentDTO {
     private LightType lightType;

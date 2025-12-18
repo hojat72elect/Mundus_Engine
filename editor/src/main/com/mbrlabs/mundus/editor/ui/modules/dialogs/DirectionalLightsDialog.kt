@@ -25,8 +25,7 @@ import com.mbrlabs.mundus.editorcommons.events.ProjectChangedEvent
 import com.mbrlabs.mundus.editorcommons.events.SceneChangedEvent
 
 /**
- * @author JamesTKhan
- * *
+ *  * *
  * @version 25-05-2022
  */
 class DirectionalLightsDialog : BaseDialog("Directional Light"), ProjectChangedEvent.ProjectChangedListener,

@@ -4,8 +4,7 @@ import com.mbrlabs.mundus.editor.terrain.noise.TerrainNoiseData;
 import com.mbrlabs.mundus.editor.utils.FastNoiseLite;
 
 /**
- * @author JamesTKhan
- * @version November 01, 2022
+ *  * @version November 01, 2022
  */
 public class ElevationModifier extends NoiseModifier {
 

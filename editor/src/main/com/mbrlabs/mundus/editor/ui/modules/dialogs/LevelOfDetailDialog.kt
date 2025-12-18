@@ -16,8 +16,7 @@ import com.mbrlabs.mundus.editor.ui.UI
 import com.mbrlabs.mundus.editor.utils.Scene2DUtils
 
 /**
- * @author JamesTKhan
- * @version October 06, 2023
+ *  * @version October 06, 2023
  */
 class LevelOfDetailDialog : BaseDialog("Level of Detail") {
     private val generateLoDBtn = VisTextButton("Generate")

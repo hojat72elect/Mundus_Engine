@@ -7,8 +7,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * @author JamesTKhan
- * @version June 27, 2023
+ *  * @version June 27, 2023
  */
 public class EventBusTest {
 

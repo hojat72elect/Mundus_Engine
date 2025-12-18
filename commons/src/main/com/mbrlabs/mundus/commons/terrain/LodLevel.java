@@ -7,8 +7,7 @@ import com.badlogic.gdx.utils.Disposable;
  * Level of Detail (LoD) Holds the meshes for each level of detail of a model which can
  * be swapped out as needed.
  *
- * @author JamesTKhan
- * @version September 28, 2023
+ *  * @version September 28, 2023
  */
 public class LodLevel implements Disposable {
     private final Mesh[] lodMeshes;

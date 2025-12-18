@@ -29,8 +29,7 @@ import com.mbrlabs.mundus.editor.utils.isImage
 
 
 /**
- * @author JamesTKhan
- * @version July 03, 2023
+ *  * @version July 03, 2023
  */
 class HeightMapTerrainTab(var dialog: AddTerrainChunksDialog) : Tab(false, false) {
     private val root = VisTable()

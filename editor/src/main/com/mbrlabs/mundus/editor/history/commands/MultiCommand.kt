@@ -8,8 +8,7 @@ import com.mbrlabs.mundus.editor.history.Command
  * Useful if you perform an action using multiple commands (Ex. Scale+Rotate object)
  * and you want to execute both in a single undo/redo step.
  *
- * @author JamesTKhan
- * @version August 27, 2023
+ *  * @version August 27, 2023
  */
 class MultiCommand : Command {
     private var commands = Array<Command>()

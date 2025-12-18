@@ -7,8 +7,7 @@ import com.kotcrab.vis.ui.widget.VisTable
 import com.mbrlabs.mundus.editor.tools.brushes.TerrainBrush
 
 /**
- * @author JamesTKhan
- * @version May 10, 2023
+ *  * @version May 10, 2023
  */
 class TerrainRampTab(parent: TerrainComponentWidget) : BaseBrushTab(parent, TerrainBrush.BrushMode.RAMP) {
 

@@ -13,8 +13,7 @@ import com.mbrlabs.mundus.commons.shadows.ShadowResolution;
 import com.mbrlabs.mundus.commons.water.WaterResolution;
 
 /**
- * @author JamesTKhan
- * @version October 03, 2023
+ *  * @version October 03, 2023
  */
 public class DefaultSceneRenderer implements SceneRenderer {
     public static final Vector3 clippingPlaneDisable = new Vector3(0.0f, 0f, 0.0f);

@@ -4,8 +4,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Pool;
 
 /**
- * @author JamesTKhan
- * @version October 05, 2023
+ *  * @version October 05, 2023
  */
 public class ThreadLocalPools {
     /**

@@ -8,8 +8,7 @@ import com.mbrlabs.mundus.commons.scene3d.GameObject;
 /**
  * Allows you to manage certain aspects of all child terrains that fall under this component.
  *
- * @author JamesTKhan
- * @version July 17, 2023
+ *  * @version July 17, 2023
  */
 public class TerrainManagerComponent extends AbstractComponent {
 

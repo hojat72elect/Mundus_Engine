@@ -10,8 +10,7 @@ import com.badlogic.gdx.utils.Pool;
 /**
  * Pooling of commonly used objects.
  *
- * @author JamesTKhan
- * @version May 14, 2023
+ *  * @version May 14, 2023
  */
 public class Pools {
 

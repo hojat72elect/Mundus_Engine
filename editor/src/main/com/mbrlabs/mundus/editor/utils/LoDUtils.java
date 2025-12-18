@@ -13,8 +13,7 @@ import java.util.HashMap;
 import java.util.concurrent.Callable;
 
 /**
- * @author JamesTKhan
- * @version September 30, 2023
+ *  * @version September 30, 2023
  */
 public class LoDUtils {
 

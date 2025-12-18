@@ -7,8 +7,7 @@ import java.util.Map;
 /**
  * Returns True if the DTO object uses the assetToCheck.
  *
- * @author JamesTKhan
- * @version September 25, 2023
+ *  * @version September 25, 2023
  */
 public interface AssetUsageDTO {
     boolean usesAsset(Asset assetToCheck, Map<String, Asset> assetMap);

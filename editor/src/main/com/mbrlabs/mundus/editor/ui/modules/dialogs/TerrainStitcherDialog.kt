@@ -18,8 +18,7 @@ import com.mbrlabs.mundus.editor.ui.widgets.IntegerFieldWithLabel
 import com.mbrlabs.mundus.editor.ui.widgets.ToolTipLabel
 
 /**
- * @author JamesTKhan
- * @version June 26, 2023
+ *  * @version June 26, 2023
  */
 class TerrainStitcherDialog : BaseDialog(TITLE) {
 

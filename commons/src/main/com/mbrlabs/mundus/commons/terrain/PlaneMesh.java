@@ -18,8 +18,7 @@ import java.util.Map;
 /**
  * Used for building a subdivideable plane mesh for things like terrain.
  *
- * @author JamesTKhan
- * @version June 06, 2023
+ *  * @version June 06, 2023
  */
 public class PlaneMesh implements Disposable {
     private static final MeshPartBuilder.VertexInfo tempVertexInfo = new MeshPartBuilder.VertexInfo();

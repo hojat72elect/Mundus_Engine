@@ -10,8 +10,7 @@ import java.io.OutputStream;
 /**
  * Saves a terrain to a .terra file.
  *
- * @author JamesTKhan
- * @version September 29, 2023
+ *  * @version September 29, 2023
  */
 public class TerrainSaver {
     public static final String HEADER_VERSION = "1.1";

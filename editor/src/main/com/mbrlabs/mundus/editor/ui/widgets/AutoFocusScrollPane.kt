@@ -6,8 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener
 import com.kotcrab.vis.ui.widget.VisScrollPane
 
 /**
- * @author JamesTKhan
- * @version July 28, 2022
+ *  * @version July 28, 2022
  */
 class AutoFocusScrollPane(actor: Actor) : VisScrollPane(actor) {
     init {

@@ -17,8 +17,7 @@ import com.mbrlabs.mundus.commons.utils.NestableFrameBuffer;
 import com.mbrlabs.mundus.commons.water.WaterResolution;
 
 /**
- * @author JamesTKhan
- * @version October 03, 2023
+ *  * @version October 03, 2023
  */
 public class WaterRenderer {
 

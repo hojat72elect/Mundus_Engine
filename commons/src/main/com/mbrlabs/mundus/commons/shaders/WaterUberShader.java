@@ -24,8 +24,7 @@ import net.mgsx.gltf.scene3d.attributes.FogAttribute;
 import net.mgsx.gltf.scene3d.shaders.PBRShaderConfig;
 
 /**
- * @author JamesTKhan
- * @version October 16, 2022
+ *  * @version October 16, 2022
  */
 public class WaterUberShader extends LightShader {
     protected static final String VERTEX_SHADER = "com/mbrlabs/mundus/commons/shaders/water.uber.vert.glsl";

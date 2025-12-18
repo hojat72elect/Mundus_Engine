@@ -13,8 +13,7 @@ import net.mgsx.gltf.scene3d.shaders.PBRShaderConfig;
 import net.mgsx.gltf.scene3d.shaders.PBRShaderProvider;
 
 /**
- * @author JamesTKhan
- * @version July 01, 2022
+ *  * @version July 01, 2022
  */
 public class MundusPBRShaderProvider extends PBRShaderProvider {
 

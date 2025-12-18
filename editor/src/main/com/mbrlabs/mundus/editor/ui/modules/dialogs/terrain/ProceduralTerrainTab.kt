@@ -9,8 +9,7 @@ import com.mbrlabs.mundus.editor.ui.modules.dialogs.AddTerrainChunksDialog
 import com.mbrlabs.mundus.editor.ui.widgets.ProceduralGenerationWidget
 
 /**
- * @author JamesTKhan
- * @version July 03, 2023
+ *  * @version July 03, 2023
  */
 class ProceduralTerrainTab(var dialog: AddTerrainChunksDialog) : Tab(false, false) {
 

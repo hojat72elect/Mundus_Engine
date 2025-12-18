@@ -25,8 +25,7 @@ import java.io.FileNotFoundException
  * Displays a materials name and allows the user to change/edit/duplicate it.
  * Use the [matChangedListener] to get notified when the material has changed.
  *
- * @author JamesTKhan
- * @version June 02, 2023
+ *  * @version June 02, 2023
  */
 class MaterialSelectWidget(var material: MaterialAsset?) : VisTable() {
     private val matFilter: AssetMaterialFilter = AssetMaterialFilter()

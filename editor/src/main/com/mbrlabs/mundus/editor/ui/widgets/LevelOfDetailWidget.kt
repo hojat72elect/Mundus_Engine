@@ -4,10 +4,6 @@ import com.kotcrab.vis.ui.widget.VisLabel
 import com.kotcrab.vis.ui.widget.VisTable
 import com.mbrlabs.mundus.commons.terrain.LodLevel
 
-/**
- * @author JamesTKhan
- * @version October 04, 2023
- */
 class LevelOfDetailWidget : BaseWidget() {
     private val lodLevelCount = VisLabel()
     private val lodTable = VisTable()

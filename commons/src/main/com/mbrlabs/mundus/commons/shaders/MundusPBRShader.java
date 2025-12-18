@@ -14,8 +14,7 @@ import com.mbrlabs.mundus.commons.env.MundusEnvironment;
 import net.mgsx.gltf.scene3d.shaders.PBRShader;
 
 /**
- * @author JamesTKhan
- * @version July 01, 2022
+ *  * @version July 01, 2022
  */
 public class MundusPBRShader extends PBRShader {
 

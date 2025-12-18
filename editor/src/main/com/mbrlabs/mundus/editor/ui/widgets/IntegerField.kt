@@ -4,8 +4,7 @@ import com.kotcrab.vis.ui.util.IntDigitsOnlyFilter
 import com.kotcrab.vis.ui.widget.VisTextField
 
 /**
- * @author JamesTKhan
- * @version July 07, 2023
+ *  * @version July 07, 2023
  */
 class IntegerField : VisTextField {
 

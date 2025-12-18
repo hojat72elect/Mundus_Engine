@@ -8,8 +8,7 @@ import net.mgsx.gltf.scene3d.lights.PointLightEx;
 import net.mgsx.gltf.scene3d.lights.SpotLightEx;
 
 /**
- * @author JamesTKhan
- * @version June 07, 2022
+ *  * @version June 07, 2022
  */
 public class LightComponentConverter {
 

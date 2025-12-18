@@ -11,8 +11,7 @@ import net.mgsx.gltf.scene3d.shaders.PBRShaderConfig;
 /**
  * Overrides the regular provider to create an Editor version of the Terrain shader.
  *
- * @author JamesTKhan
- * @version August 16, 2022
+ *  * @version August 16, 2022
  */
 public class EditorShaderProvider extends MundusPBRShaderProvider {
     public EditorShaderProvider(PBRShaderConfig config) {

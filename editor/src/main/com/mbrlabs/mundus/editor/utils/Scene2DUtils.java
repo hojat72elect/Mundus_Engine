@@ -4,8 +4,7 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 
 /**
- * @author JamesTKhan
- * @version October 05, 2023
+ *  * @version October 05, 2023
  */
 public class Scene2DUtils {
 

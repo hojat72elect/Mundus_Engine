@@ -9,8 +9,7 @@ import java.util.ArrayList;
 /**
  * Iterates through the modifiers and applies them based on given X and Z
  *
- * @author JamesTKhan
- * @version October 31, 2022
+ *  * @version October 31, 2022
  */
 public class TerrainGenerator {
     private final ArrayList<TerrainModifier> modifiers;

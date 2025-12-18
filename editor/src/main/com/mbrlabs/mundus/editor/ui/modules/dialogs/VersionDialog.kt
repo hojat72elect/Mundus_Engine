@@ -7,8 +7,7 @@ import com.kotcrab.vis.ui.widget.VisTable
 import com.mbrlabs.mundus.editor.VERSION
 
 /**
- * @author JamesTKhan
- * @version July 15, 2022
+ *  * @version July 15, 2022
  */
 class VersionDialog : BaseDialog("Version Info") {
 

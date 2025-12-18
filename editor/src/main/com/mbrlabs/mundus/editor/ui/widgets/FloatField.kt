@@ -4,8 +4,7 @@ import com.kotcrab.vis.ui.util.FloatDigitsOnlyFilter
 import com.kotcrab.vis.ui.widget.VisTextField
 
 /**
- * @author JamesTKhan
- * @version July 09, 2023
+ *  * @version July 09, 2023
  */
 class FloatField : VisTextField {
 

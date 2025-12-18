@@ -23,8 +23,7 @@ import com.mbrlabs.mundus.editorcommons.events.SceneChangedEvent
  * The user can pick one or no GameObject. The list of GameObjects can be filtered before
  * showing it to the user via GameObjectFilter.
  *
- * @author JamesTKhan
- * @version July 02, 2023
+ *  * @version July 02, 2023
  */
 class GameObjectPickerDialog : BaseDialog(TITLE),
     SceneGraphChangedEvent.SceneGraphChangedListener,

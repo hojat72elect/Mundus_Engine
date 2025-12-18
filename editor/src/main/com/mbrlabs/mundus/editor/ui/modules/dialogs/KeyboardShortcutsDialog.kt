@@ -8,8 +8,7 @@ import com.mbrlabs.mundus.editor.core.keymap.KeyboardShortcutManager
 import com.mbrlabs.mundus.editor.core.keymap.KeymapKey
 
 /**
- * @author JamesTKhan
- * @version July 26, 2022
+ *  * @version July 26, 2022
  */
 class KeyboardShortcutsDialog : BaseDialog("Keyboard Shortcuts") {
 

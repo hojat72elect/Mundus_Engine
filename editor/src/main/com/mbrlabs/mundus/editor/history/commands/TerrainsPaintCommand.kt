@@ -6,8 +6,7 @@ import com.mbrlabs.mundus.editor.history.DisposableCommand
 
 /**
  * A wrapper for modifying the splat map paint of multiple terrains.
- * @author JamesTKhan
- * @version June 30, 2023
+ *  * @version June 30, 2023
  */
 class TerrainsPaintCommand : DisposableCommand {
     private var terrainPaintCommands = HashMap<Terrain, TerrainPaintCommand>()

@@ -12,8 +12,7 @@ import com.mbrlabs.mundus.commons.scene3d.GameObject;
  * renderer.render(gameObject);
  * renderer.end;
  *
- * @author JamesTKhan
- * @version July 25, 2022
+ *  * @version July 25, 2022
  */
 public interface Renderer {
 

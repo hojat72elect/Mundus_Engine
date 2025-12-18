@@ -10,8 +10,7 @@ import com.mbrlabs.mundus.editor.profiling.MundusGLProfiler
 import com.mbrlabs.mundus.editor.ui.widgets.AutoFocusScrollPane
 
 /**
- * @author JamesTKhan
- * @version June 30, 2022
+ *  * @version June 30, 2022
  */
 class ProfilingBar : Tab(false, false) {
 

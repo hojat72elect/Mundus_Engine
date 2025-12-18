@@ -6,8 +6,7 @@ import com.mbrlabs.mundus.editor.utils.FastNoiseLite;
 /**
  * Base Noise Modifier for modifying terrain noise
  *
- * @author JamesTKhan
- * @version November 02, 2022
+ *  * @version November 02, 2022
  */
 public abstract class NoiseModifier implements TerrainModifier {
     protected static final FastNoiseLite.Vector2 fVector2 = new FastNoiseLite.Vector2(0, 0);

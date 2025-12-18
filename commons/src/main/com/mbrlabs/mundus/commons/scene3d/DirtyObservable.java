@@ -5,8 +5,7 @@ import com.badlogic.gdx.utils.Array;
 /**
  * Observable that notifies listeners when it is marked dirty.
  *
- * @author JamesTKhan
- * @version September 17, 2023
+ *  * @version September 17, 2023
  */
 public class DirtyObservable {
     private Array<DirtyListener> listeners;

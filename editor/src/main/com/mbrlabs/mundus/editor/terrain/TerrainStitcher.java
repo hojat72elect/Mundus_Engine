@@ -17,8 +17,7 @@ import com.mbrlabs.mundus.editorcommons.events.TerrainVerticesChangedEvent;
  * Utility class to stitch all terrains within a scene together based on their neighbors.
  * Adapted from <a href="https://gist.github.com/andrew-raphael-lukasik/d2903247b3f9c94e6faa9c042d9f0460">...</a>
  *
- * @author JamesTKhan
- * @version June 26, 2023
+ *  * @version June 26, 2023
  */
 public class TerrainStitcher {
 

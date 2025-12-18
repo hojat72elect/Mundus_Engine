@@ -6,8 +6,7 @@ import com.badlogic.gdx.math.Vector2;
  * Represents options for Shadow Mapping texture resolution. Higher resolutions will look
  * sharper but use more resources.
  *
- * @author JamesTKhan
- * @version June 12, 2022
+ *  * @version June 12, 2022
  */
 public enum ShadowResolution {
     _512("512x512"),

@@ -22,8 +22,7 @@ import com.mbrlabs.mundus.editor.ui.modules.dialogs.assets.AssetPickerDialog
 import com.mbrlabs.mundus.editor.ui.modules.inspector.components.ComponentWidget
 
 /**
- * @author JamesTKhan
- * @version July 17, 2023
+ *  * @version July 17, 2023
  */
 class TerrainManagerComponentWidget(terrainManagerComponent: TerrainManagerComponent) :
     ComponentWidget<TerrainManagerComponent>("Terrain Manager Component", terrainManagerComponent) {

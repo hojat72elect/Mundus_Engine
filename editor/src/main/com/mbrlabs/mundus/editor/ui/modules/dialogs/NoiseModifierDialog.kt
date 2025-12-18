@@ -17,8 +17,7 @@ import com.mbrlabs.mundus.editor.ui.widgets.ToolTipLabel
 import com.mbrlabs.mundus.editor.utils.FastNoiseLite
 
 /**
- * @author JamesTKhan
- * @version November 02, 2022
+ *  * @version November 02, 2022
  */
 class NoiseModifierDialog(var modifier: NoiseModifier) : BaseDialog(modifier.name) {
 

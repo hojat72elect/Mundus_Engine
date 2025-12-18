@@ -8,8 +8,7 @@ import com.badlogic.gdx.graphics.profiling.GLProfiler;
  * allow accurate profiling of only the actual scene profiling without any of the editors UI rendering
  * stats polluting the profiling results.
  *
- * @author JamesTKhan
- * @version June 30, 2022
+ *  * @version June 30, 2022
  */
 public abstract class MundusGLInterceptor extends GLInterceptor {
     protected boolean isPaused = false;
