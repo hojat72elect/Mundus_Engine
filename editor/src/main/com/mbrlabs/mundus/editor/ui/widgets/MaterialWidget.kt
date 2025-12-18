@@ -26,10 +26,7 @@ import com.mbrlabs.mundus.editor.utils.Colors
 
 /**
  * Displays all properties of a material.
- *
  * You can also edit materials and replace them with another materials by.
- *
- *  * @version 13-10-2016
  */
 class MaterialWidget : VisTable() {
 

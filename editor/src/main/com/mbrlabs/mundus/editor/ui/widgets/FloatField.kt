@@ -3,9 +3,6 @@ package com.mbrlabs.mundus.editor.ui.widgets
 import com.kotcrab.vis.ui.util.FloatDigitsOnlyFilter
 import com.kotcrab.vis.ui.widget.VisTextField
 
-/**
- *  * @version July 09, 2023
- */
 class FloatField : VisTextField {
 
     constructor(allowNegative: Boolean) {

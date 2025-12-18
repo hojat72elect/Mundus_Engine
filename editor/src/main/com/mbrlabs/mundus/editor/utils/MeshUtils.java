@@ -10,9 +10,6 @@ import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 
-/**
- *  * @version September 28, 2023
- */
 public class MeshUtils {
 
     /**

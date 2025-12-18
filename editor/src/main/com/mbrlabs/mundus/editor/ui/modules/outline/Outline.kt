@@ -43,9 +43,7 @@ import com.mbrlabs.mundus.editorcommons.events.SceneChangedEvent
 
 /**
  * Outline shows overview about all game objects in the scene
- *
- * @author Marcus Brummer, codenigma
- *  */
+ */
 // TODO refactor...kind of messy spaghetti code!
 class Outline : VisTable(),
     ProjectChangedEvent.ProjectChangedListener,

@@ -8,9 +8,6 @@ import com.mbrlabs.mundus.editor.shader.Shaders;
 import com.mbrlabs.mundus.editor.tools.picker.PickerColorEncoder;
 import com.mbrlabs.mundus.editor.tools.picker.PickerIDAttribute;
 
-/**
- *  * @version 27-10-2016
- */
 public class PickableTerrainComponent extends TerrainComponent implements PickableComponent {
 
     public PickableTerrainComponent(GameObject go) {

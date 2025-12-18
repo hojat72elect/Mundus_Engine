@@ -4,9 +4,6 @@ import com.badlogic.gdx.files.FileHandle
 import com.badlogic.gdx.graphics.TextureData
 import com.mbrlabs.mundus.commons.utils.MathUtils
 
-/**
- *  * @version August 02, 2022
- */
 object ImageUtils {
 
     fun validateImageFile(fileHandle: FileHandle): String? {

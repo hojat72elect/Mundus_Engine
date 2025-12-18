@@ -12,9 +12,6 @@ import com.mbrlabs.mundus.commons.terrain.Terrain;
 import java.util.HashMap;
 import java.util.concurrent.Callable;
 
-/**
- *  * @version September 30, 2023
- */
 public class LoDUtils {
 
     /**

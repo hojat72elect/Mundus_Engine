@@ -6,8 +6,6 @@ import com.mbrlabs.mundus.commons.terrain.Terrain;
 
 /**
  * Factory class for terraform generators.
- *
- *  * @version 20-06-2016
  */
 public class Terraformer {
 

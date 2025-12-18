@@ -10,9 +10,6 @@ import com.mbrlabs.mundus.editor.terrain.noise.modifiers.TerrainModifier;
 
 import java.util.ArrayList;
 
-/**
- *  * @version October 24, 2022
- */
 public class FastNoiseGenerator extends Generator<FastNoiseGenerator> {
 
     // The list of modifiers to apply to the noise

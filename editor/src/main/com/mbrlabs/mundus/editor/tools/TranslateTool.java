@@ -32,9 +32,6 @@ import com.mbrlabs.mundus.editorcommons.events.GameObjectModifiedEvent;
 
 import net.mgsx.gltf.scene3d.attributes.PBRColorAttribute;
 
-/**
- *  * @version 26-12-2015
- */
 public class TranslateTool extends TransformTool {
 
     public static final String NAME = "Translate Tool";

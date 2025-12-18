@@ -34,9 +34,6 @@ import net.mgsx.gltf.scene3d.attributes.PBRColorAttribute;
 
 /**
  * Rotate tool for game objects
- *
- * @author Marcus Brummer, codengima
- * @version 30-09-2016
  */
 public class RotateTool extends TransformTool {
 

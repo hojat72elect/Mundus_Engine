@@ -16,8 +16,6 @@ import com.mbrlabs.mundus.editor.tools.picker.PickerIDAttribute
  *
  * Handles, can be (much like game objects) picked, using the same (color coding
  * technique).
- *
- *  * @version 07-03-2016
  */
 abstract class ToolHandle(val id: Int) : Disposable {
 

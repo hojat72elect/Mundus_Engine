@@ -8,10 +8,6 @@ import com.mbrlabs.mundus.editorcommons.events.TerrainVerticesChangedEvent;
 
 import java.util.Random;
 
-/**
- *
- *  * @version 20-06-2016
- */
 public class PerlinNoiseGenerator extends Generator<PerlinNoiseGenerator> {
 
     private final Random rand = new Random();

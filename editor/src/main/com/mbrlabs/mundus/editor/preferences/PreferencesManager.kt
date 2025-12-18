@@ -1,8 +1,5 @@
 package com.mbrlabs.mundus.editor.preferences
 
-/**
- *  * @version July 15, 2022
- */
 interface PreferencesManager {
     fun set(key: String, value: Any)
     fun get(key: String, type: Class<*>): Any?

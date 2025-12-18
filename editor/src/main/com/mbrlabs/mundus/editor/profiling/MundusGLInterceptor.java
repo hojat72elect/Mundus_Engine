@@ -7,8 +7,6 @@ import com.badlogic.gdx.graphics.profiling.GLProfiler;
  * Extends libGDX GLInterceptor to include the ability to pause profiling without clearing the data. This is to
  * allow accurate profiling of only the actual scene profiling without any of the editors UI rendering
  * stats polluting the profiling results.
- *
- *  * @version June 30, 2022
  */
 public abstract class MundusGLInterceptor extends GLInterceptor {
     protected boolean isPaused = false;

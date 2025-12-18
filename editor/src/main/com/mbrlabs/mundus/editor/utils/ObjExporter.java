@@ -13,9 +13,6 @@ import com.mbrlabs.mundus.commons.terrain.Terrain;
 import java.io.IOException;
 import java.io.Writer;
 
-/**
- *  * @version July 21, 2022
- */
 public class ObjExporter {
     private static final Vector3 tmpVec = new Vector3();
 

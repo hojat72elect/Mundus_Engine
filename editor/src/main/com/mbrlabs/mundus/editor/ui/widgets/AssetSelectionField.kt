@@ -11,9 +11,6 @@ import com.mbrlabs.mundus.editor.assets.AssetFilter
 import com.mbrlabs.mundus.editor.ui.UI
 import com.mbrlabs.mundus.editor.ui.modules.dialogs.assets.AssetPickerDialog
 
-/**
- *  * @version 13-10-2016
- */
 class AssetSelectionField : VisTable() {
 
     private val textField: VisTextField

@@ -9,9 +9,6 @@ import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.nio.LongBuffer;
 
-/**
- *  * @version June 30, 2022
- */
 public class MundusGL30Interceptor extends MundusGLInterceptor implements GL30 {
 
     protected final GL30 gl30;

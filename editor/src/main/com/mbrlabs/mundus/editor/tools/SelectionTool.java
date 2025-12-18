@@ -18,9 +18,6 @@ import com.mbrlabs.mundus.editor.preferences.MundusPreferencesManager;
 import com.mbrlabs.mundus.editor.tools.picker.GameObjectPicker;
 import com.mbrlabs.mundus.editor.utils.Fa;
 
-/**
- *  * @version 26-12-2015
- */
 public class SelectionTool extends Tool {
 
     public static final String NAME = "Selection Tool";

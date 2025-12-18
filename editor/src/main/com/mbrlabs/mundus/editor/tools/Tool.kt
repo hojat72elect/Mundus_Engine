@@ -10,9 +10,6 @@ import com.mbrlabs.mundus.editor.core.project.ProjectManager
 import com.mbrlabs.mundus.editor.history.CommandHistory
 import com.mbrlabs.mundus.editor.shader.Shaders
 
-/**
- *  * @version 25-12-2015
- */
 abstract class Tool(
     var projectManager: ProjectManager,
     protected var history: CommandHistory

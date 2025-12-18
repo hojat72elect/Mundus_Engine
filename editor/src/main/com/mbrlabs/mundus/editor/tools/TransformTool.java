@@ -9,9 +9,6 @@ import com.mbrlabs.mundus.editor.tools.picker.GameObjectPicker;
 import com.mbrlabs.mundus.editor.tools.picker.ToolHandlePicker;
 import com.mbrlabs.mundus.editorcommons.events.GameObjectModifiedEvent;
 
-/**
- *  * @version 08-03-2016
- */
 public abstract class TransformTool extends SelectionTool {
 
     protected static final int X_HANDLE_ID = 0;

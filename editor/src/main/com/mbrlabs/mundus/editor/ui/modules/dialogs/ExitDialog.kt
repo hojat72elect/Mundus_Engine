@@ -10,9 +10,6 @@ import com.kotcrab.vis.ui.widget.VisTextButton
 import com.mbrlabs.mundus.editor.Mundus
 import com.mbrlabs.mundus.editor.core.project.ProjectManager
 
-/**
- *  * @author attilabo
- */
 class ExitDialog : BaseDialog(TITLE) {
 
     companion object {

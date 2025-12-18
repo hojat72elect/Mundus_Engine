@@ -20,9 +20,6 @@ import java.util.Date;
  * string concatination is only run if log level is present. Use for example:
  * Log.log(Log.INFO, TAG, "Msg with param {} and param {}", "param1", "param2");
  * {} will be replaced with parameter in left to right order.
- *
- * @author Marcus Brummer, codenigma
- * @version 23-09-2015
  */
 public class Log {
 

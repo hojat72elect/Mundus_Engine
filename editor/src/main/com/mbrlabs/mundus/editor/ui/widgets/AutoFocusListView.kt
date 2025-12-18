@@ -7,9 +7,6 @@ import com.kotcrab.vis.ui.util.adapter.ListAdapter
 import com.kotcrab.vis.ui.widget.ListView
 import com.mbrlabs.mundus.editor.ui.UI
 
-/**
- *  * @version July 28, 2022
- */
 class AutoFocusListView<ItemT>(adapter: ListAdapter<ItemT>) : ListView<ItemT>(adapter) {
     init {
         scrollPane.addListener(object : InputListener() {

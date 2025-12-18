@@ -17,9 +17,6 @@ import com.badlogic.gdx.math.Vector3;
 
 import net.mgsx.gltf.loaders.shared.geometry.MeshTangentSpaceGenerator;
 
-/**
- *  * @version 24-11-2015
- */
 public class UsefulMeshs {
 
     private static final MeshPartBuilder.VertexInfo v0 = new MeshPartBuilder.VertexInfo();

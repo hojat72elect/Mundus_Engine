@@ -7,9 +7,6 @@ import com.badlogic.gdx.graphics.GL20;
 
 import org.lwjgl.opengl.GL11;
 
-/**
- *  * @version 22-11-2015
- */
 public class GlUtils {
 
     public static void clearScreen(Color color) {

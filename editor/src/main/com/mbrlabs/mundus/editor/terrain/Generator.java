@@ -3,10 +3,6 @@ package com.mbrlabs.mundus.editor.terrain;
 
 import com.mbrlabs.mundus.commons.terrain.Terrain;
 
-/**
- *
- *  * @version 20-06-2016
- */
 public abstract class Generator<T extends Generator<T>> {
 
     protected Terrain terrain;

@@ -5,9 +5,6 @@ import com.badlogic.gdx.scenes.scene2d.Actor
 import com.badlogic.gdx.utils.Align
 import com.kotcrab.vis.ui.widget.VisTable
 
-/**
- *  * @version 03-01-2016
- */
 open class Toolbar {
 
     val root = VisTable()

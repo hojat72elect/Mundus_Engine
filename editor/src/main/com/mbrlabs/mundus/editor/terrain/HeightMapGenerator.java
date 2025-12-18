@@ -9,10 +9,6 @@ import com.mbrlabs.mundus.editorcommons.events.TerrainVerticesChangedEvent;
 
 import java.nio.ByteBuffer;
 
-/**
- *
- *  * @version 20-06-2016
- */
 public class HeightMapGenerator extends Generator<HeightMapGenerator> {
 
     private final TerrainComponent terrainComponent;

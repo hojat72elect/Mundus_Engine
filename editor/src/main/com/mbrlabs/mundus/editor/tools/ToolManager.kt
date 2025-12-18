@@ -24,9 +24,6 @@ import com.mbrlabs.mundus.editor.tools.picker.GameObjectPicker
 import com.mbrlabs.mundus.editor.tools.picker.ToolHandlePicker
 import com.mbrlabs.mundus.editor.ui.UI
 
-/**
- *  * @version 25-12-2015
- */
 class ToolManager(
     private val inputManager: InputManager,
     projectManager: ProjectManager,
