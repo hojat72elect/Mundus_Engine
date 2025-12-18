@@ -5,9 +5,6 @@ import com.mbrlabs.mundus.commons.dto.TerrainManagerComponentDTO;
 import com.mbrlabs.mundus.commons.scene3d.GameObject;
 import com.mbrlabs.mundus.commons.scene3d.components.TerrainManagerComponent;
 
-/**
- *  * @version July 17, 2023
- */
 public class TerrainManagerComponentConverter {
     public static TerrainManagerComponentDTO convert(TerrainManagerComponent c) {
         return new TerrainManagerComponentDTO(c.getProceduralGeneration());

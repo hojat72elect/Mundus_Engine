@@ -49,8 +49,6 @@ import java.util.Set;
  * <p>
  * This includes the height of every vertex in the terrainAsset grid & according
  * splatmap.
- *
- *  * @version 30-01-2016
  */
 public abstract class TerrainBrush extends Tool {
 

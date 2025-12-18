@@ -18,8 +18,6 @@ import net.mgsx.gltf.scene3d.lights.SpotLightEx;
  * LightComponent holds reference to the actual Light object. LightComponents do not
  * have associated assets, instead their data is saved within the GameObjects json inside
  * the scene file.
- *
- *  * @version May 30, 2022
  */
 public class LightComponent extends AbstractComponent implements DirtyListener {
     private static final String TAG = LightComponent.class.getSimpleName();

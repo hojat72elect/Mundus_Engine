@@ -3,10 +3,6 @@ package com.mbrlabs.mundus.commons.assets.meta;
 
 import com.badlogic.gdx.utils.ObjectMap;
 
-/**
- *
- *  * @version 26-10-2016
- */
 public class MetaModel {
 
     public static final String JSON_DEFAULT_MATERIALS = "mats";

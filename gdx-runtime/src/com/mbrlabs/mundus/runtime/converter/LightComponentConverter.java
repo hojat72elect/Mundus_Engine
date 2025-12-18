@@ -7,9 +7,6 @@ import com.mbrlabs.mundus.commons.scene3d.components.LightComponent;
 import net.mgsx.gltf.scene3d.lights.PointLightEx;
 import net.mgsx.gltf.scene3d.lights.SpotLightEx;
 
-/**
- *  * @version June 07, 2022
- */
 public class LightComponentConverter {
 
     /**

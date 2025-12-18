@@ -6,9 +6,6 @@ import com.mbrlabs.mundus.commons.assets.Asset;
 
 import java.util.Map;
 
-/**
- *  * @version 21-08-2021
- */
 public class GameObjectDTO implements AssetUsageDTO {
 
     private int id;

@@ -25,9 +25,6 @@ import com.mbrlabs.mundus.editorcommons.exceptions.AssetAlreadyExistsException
 import java.io.File
 import java.io.IOException
 
-/**
- *  * @version 07-06-2016
- */
 class ImportTextureDialog : BaseDialog("Import Texture"), FilesDroppedEvent.FilesDroppedListener, ImageChooserField.ImageChosenListener, Disposable {
 
     companion object {

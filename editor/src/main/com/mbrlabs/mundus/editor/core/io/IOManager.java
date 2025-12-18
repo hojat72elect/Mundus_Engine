@@ -8,8 +8,6 @@ import java.io.FileNotFoundException;
 
 /**
  * Manages loading and saving of registry and project data.
- *
- *  * @version August 03, 2023
  */
 public interface IOManager {
     Registry loadRegistry();

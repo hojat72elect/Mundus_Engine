@@ -32,8 +32,6 @@ import java.util.Map;
 
 /**
  * Read-only asset manager.
- *
- *  * @version 06-10-2016
  */
 @SuppressWarnings("NonJREEmulationClassesInClientCode")
 public class AssetManager implements Disposable {

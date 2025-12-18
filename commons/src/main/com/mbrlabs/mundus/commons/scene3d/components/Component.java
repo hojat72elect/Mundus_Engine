@@ -3,9 +3,6 @@ package com.mbrlabs.mundus.commons.scene3d.components;
 
 import com.mbrlabs.mundus.commons.scene3d.GameObject;
 
-/**
- *  * @version 16-01-2016
- */
 public interface Component {
 
     GameObject getGameObject();

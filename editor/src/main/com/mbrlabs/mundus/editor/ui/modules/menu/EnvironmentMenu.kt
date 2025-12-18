@@ -7,10 +7,6 @@ import com.kotcrab.vis.ui.widget.Menu
 import com.kotcrab.vis.ui.widget.MenuItem
 import com.mbrlabs.mundus.editor.ui.UI
 
-/**
- *  * *
- * @version 20-12-2015
- */
 class EnvironmentMenu : Menu("Environment") {
 
     val ambientLight = MenuItem("Ambient Light")

@@ -12,10 +12,6 @@ import com.mbrlabs.mundus.editor.ui.widgets.ColorPickerField
 import com.mbrlabs.mundus.editorcommons.events.ProjectChangedEvent
 import com.mbrlabs.mundus.editorcommons.events.SceneChangedEvent
 
-/**
- *  * *
- * @version 04-03-2016
- */
 class AmbientLightDialog : BaseDialog("Ambient Light"), ProjectChangedEvent.ProjectChangedListener,
     SceneChangedEvent.SceneChangedListener {
 

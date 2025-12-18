@@ -57,9 +57,6 @@ import org.lwjgl.opengl.GL11
 import org.pf4j.PluginManager
 import java.io.File
 
-/**
- *  * @version 07-06-2016
- */
 class Editor : Lwjgl3WindowAdapter(), ApplicationListener,
     ProjectChangedEvent.ProjectChangedListener,
     SceneChangedEvent.SceneChangedListener,

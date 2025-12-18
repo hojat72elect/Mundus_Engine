@@ -13,7 +13,7 @@ import java.nio.IntBuffer;
  * <p>
  * OpenGL utilities.
  *
- *  */
+ */
 public final class GLUtils {
 
     /**

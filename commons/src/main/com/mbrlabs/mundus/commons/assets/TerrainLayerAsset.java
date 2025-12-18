@@ -12,7 +12,7 @@ import java.io.Reader;
 import java.util.Map;
 
 /**
- * Holds a reference to Textures for use by TerrainAssets
+ * Holds a reference to Textures for use by TerrainAssets.
  */
 public class TerrainLayerAsset extends Asset {
     public static final String PROP_SPLAT_BASE = "base";

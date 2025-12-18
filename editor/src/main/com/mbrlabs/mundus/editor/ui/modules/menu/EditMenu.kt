@@ -9,10 +9,6 @@ import com.kotcrab.vis.ui.widget.MenuItem
 import com.mbrlabs.mundus.editor.Mundus
 import com.mbrlabs.mundus.editor.history.CommandHistory
 
-/**
- *  * *
- * @version 22-11-2015
- */
 class EditMenu : Menu("Edit") {
 
     private val copy = MenuItem("Copy")

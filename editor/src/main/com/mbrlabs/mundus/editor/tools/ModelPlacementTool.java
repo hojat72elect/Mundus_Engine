@@ -20,9 +20,6 @@ import com.mbrlabs.mundus.editor.scene3d.components.PickableModelComponent;
 import com.mbrlabs.mundus.editor.ui.UI;
 import com.mbrlabs.mundus.editor.utils.TerrainUtils;
 
-/**
- *  * @version 25-12-2015
- */
 public class ModelPlacementTool extends Tool {
 
     public static final String NAME = "Placement Tool";

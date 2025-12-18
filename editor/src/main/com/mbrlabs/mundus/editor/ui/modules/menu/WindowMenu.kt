@@ -8,9 +8,6 @@ import com.kotcrab.vis.ui.widget.Menu
 import com.kotcrab.vis.ui.widget.MenuItem
 import com.mbrlabs.mundus.editor.ui.UI
 
-/**
- *  * @version 22-11-2015
- */
 class WindowMenu : Menu("Window") {
 
     val settings = MenuItem("Settings")

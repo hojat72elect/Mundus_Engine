@@ -2,8 +2,6 @@ package com.mbrlabs.mundus.commons.dto;
 
 /**
  * For reading and writing LoD data to and from disk.
- *
- *  * @version September 29, 2023
  */
 public class LevelOfDetailDTO {
 

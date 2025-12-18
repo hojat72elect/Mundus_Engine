@@ -44,10 +44,7 @@ import java.nio.file.Paths
 
 /**
  * Core class.
- *
  * Used for dependency injection of core components and as event bus.
- *
- *  * @version 08-12-2015
  */
 object Mundus {
 

@@ -17,9 +17,6 @@ import com.mbrlabs.mundus.editor.ui.UI
 import com.mbrlabs.mundus.editor.ui.widgets.IntegerFieldWithLabel
 import com.mbrlabs.mundus.editor.ui.widgets.ToolTipLabel
 
-/**
- *  * @version June 26, 2023
- */
 class TerrainStitcherDialog : BaseDialog(TITLE) {
 
     private val projectManager: ProjectManager = Mundus.inject()

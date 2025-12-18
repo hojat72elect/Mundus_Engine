@@ -23,9 +23,6 @@ import com.mbrlabs.mundus.editor.utils.ImageUtils;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- *  * @version 10-01-2016
- */
 public class ImageChooserField extends VisTable {
 
     private static final Drawable PLACEHOLDER_IMG = new TextureRegionDrawable(

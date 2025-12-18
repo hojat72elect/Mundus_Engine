@@ -20,8 +20,6 @@ import java.util.List;
  * <p>
  * Converts FBX & Collada (dae) 3D files into the g3db/g3dj format. Supports
  * Linux, Windows & Mac.
- *
- *  * @version 24-11-2015
  */
 public class FbxConv {
 

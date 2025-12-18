@@ -22,9 +22,6 @@ import com.mbrlabs.mundus.editorcommons.events.ProjectChangedEvent
 import com.mbrlabs.mundus.editorcommons.events.SceneChangedEvent
 import org.pf4j.PluginManager
 
-/**
- *  * @version July 10, 2022
- */
 class CameraSettingsTable : BaseSettingsTable(), ProjectChangedEvent.ProjectChangedListener, SceneChangedEvent.SceneChangedListener {
 
     private val projectManager: ProjectManager = Mundus.inject()

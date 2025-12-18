@@ -6,9 +6,6 @@ import com.mbrlabs.mundus.commons.scene3d.GameObject;
 import java.util.Iterator;
 import java.util.Stack;
 
-/**
- *  * @version 20-01-2016
- */
 public class DepthFirstIterator implements Iterator<GameObject> {
 
     private final Stack<GameObject> stack;

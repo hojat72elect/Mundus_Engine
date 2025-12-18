@@ -9,9 +9,6 @@ import com.kotcrab.vis.ui.widget.MenuBar
 import com.kotcrab.vis.ui.widget.VisImage
 import com.kotcrab.vis.ui.widget.VisTable
 
-/**
- *  * @version 22-11-2015
- */
 class MundusMenuBar : MenuBar() {
 
     val fileMenu = FileMenu()

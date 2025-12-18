@@ -9,7 +9,6 @@ import com.mbrlabs.mundus.editor.history.Command
 
 /**
  * This command is used to undo and redo changes to the neighbors of a terrain component.
- *  * @version July 03, 2023
  */
 class TerrainNeighborCommand(var terrainComponent: TerrainComponent, var neighborString: String) : Command {
     private var previousNeighbor: TerrainComponent? = null

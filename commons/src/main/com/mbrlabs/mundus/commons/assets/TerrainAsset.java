@@ -19,9 +19,6 @@ import com.mbrlabs.mundus.commons.terrain.TerrainMaterial;
 
 import java.util.Map;
 
-/**
- *  * @version 01-10-2016
- */
 public class TerrainAsset extends Asset {
 
     private float[] data;

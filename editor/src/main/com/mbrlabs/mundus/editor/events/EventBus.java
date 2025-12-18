@@ -18,8 +18,6 @@ import java.util.Map;
  * parameter as event type.
  * <p>
  * Inspired by the Otto Event Bus for Android.
- *
- *  * @version 12-12-2015
  */
 public class EventBus {
 

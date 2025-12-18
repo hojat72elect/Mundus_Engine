@@ -5,9 +5,6 @@ import com.badlogic.gdx.graphics.Pixmap
 import com.mbrlabs.mundus.commons.terrain.Terrain
 import com.mbrlabs.mundus.editor.history.DisposableCommand
 
-/**
- *  * @version 07-02-2016
- */
 class TerrainPaintCommand(private var terrain: Terrain?) : DisposableCommand {
 
     private var after: Pixmap? = null

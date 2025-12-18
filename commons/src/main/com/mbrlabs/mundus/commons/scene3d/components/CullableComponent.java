@@ -23,8 +23,6 @@ import com.mbrlabs.mundus.commons.utils.ModelUtils;
  * for render() and update()
  * The isCulled value will be set accordingly and components can check if is isCulled == true
  * before rendering.
- *
- *  * @version July 18, 2022
  */
 public abstract class CullableComponent extends AbstractComponent implements ModelEventable, DirtyListener {
     private final static BoundingBox tmpBounds = new BoundingBox();

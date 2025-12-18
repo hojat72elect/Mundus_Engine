@@ -16,9 +16,6 @@ import com.mbrlabs.mundus.editor.ui.widgets.ImprovedSlider
 import com.mbrlabs.mundus.editor.ui.widgets.ToolTipLabel
 import com.mbrlabs.mundus.editor.utils.FastNoiseLite
 
-/**
- *  * @version November 02, 2022
- */
 class NoiseModifierDialog(var modifier: NoiseModifier) : BaseDialog(modifier.name) {
 
     var noiseTypeSelect = VisSelectBox<FastNoiseLite.NoiseType>()

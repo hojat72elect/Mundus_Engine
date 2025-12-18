@@ -11,8 +11,6 @@ import com.badlogic.gdx.utils.Array;
  * <p>
  * Nodes can have child nodes. Each child node defines position, rotation &
  * scale relative to it's parent.
- *
- *  * @version 09-06-2016
  */
 public interface Node<T extends Node> {
 

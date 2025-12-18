@@ -23,9 +23,6 @@ import org.pf4j.PluginManager
 import java.io.File
 import java.io.Writer
 
-/**
- *  * @version 26-10-2016
- */
 class Exporter(val ioManager: IOManager, val project: ProjectContext, val pluginManager: PluginManager) {
 
     /**

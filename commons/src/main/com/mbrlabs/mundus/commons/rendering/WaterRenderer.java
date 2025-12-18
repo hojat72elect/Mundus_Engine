@@ -16,9 +16,6 @@ import com.mbrlabs.mundus.commons.scene3d.components.WaterComponent;
 import com.mbrlabs.mundus.commons.utils.NestableFrameBuffer;
 import com.mbrlabs.mundus.commons.water.WaterResolution;
 
-/**
- *  * @version October 03, 2023
- */
 public class WaterRenderer {
 
     protected static final Vector3 clippingPlaneReflection = new Vector3(0.0f, 1f, 0.0f);

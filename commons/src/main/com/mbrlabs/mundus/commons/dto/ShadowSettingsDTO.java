@@ -2,9 +2,6 @@ package com.mbrlabs.mundus.commons.dto;
 
 import com.mbrlabs.mundus.commons.shadows.ShadowResolution;
 
-/**
- *  * @version July 18, 2022
- */
 public class ShadowSettingsDTO {
     private int viewportSize;
     private float camNearPlane;

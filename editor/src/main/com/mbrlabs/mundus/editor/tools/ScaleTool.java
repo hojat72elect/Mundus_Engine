@@ -39,9 +39,6 @@ import org.lwjgl.opengl.GL20;
  * Scales valid game objects.
  * <p>
  * Game objects with terrain components can't be scaled.
- *
- * @author codenigma, mbrlabs
- * @version 07-10-2016
  */
 public class ScaleTool extends TransformTool {
 

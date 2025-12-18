@@ -7,10 +7,6 @@ import com.mbrlabs.mundus.commons.shaders.DepthShader
 import com.mbrlabs.mundus.commons.shaders.SkyboxShader
 import com.mbrlabs.mundus.editor.tools.picker.PickerShader
 
-/**
- *  * *
- * @version 08-12-2015
- */
 object Shaders : Disposable {
 
     val wireframeShader: WireframeShader

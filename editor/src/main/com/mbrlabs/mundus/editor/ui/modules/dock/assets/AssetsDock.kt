@@ -47,10 +47,6 @@ import com.mbrlabs.mundus.editor.utils.ObjExporter
 import com.mbrlabs.mundus.editorcommons.events.ProjectChangedEvent
 import java.awt.Desktop
 
-
-/**
- *  * @version 08-12-2015
- */
 class AssetsDock : Tab(false, false),
     ProjectChangedEvent.ProjectChangedListener,
     AssetImportEvent.AssetImportListener,

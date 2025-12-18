@@ -22,9 +22,6 @@ import com.mbrlabs.mundus.editor.utils.formatFloat
 import com.mbrlabs.mundus.pluginapi.StatusBarExtension
 import org.pf4j.PluginManager
 
-/**
- *  * @version 24-11-2015
- */
 class StatusBar : VisTable(), PluginsLoadedEvent.PluginsLoadedEventListener {
 
     companion object {

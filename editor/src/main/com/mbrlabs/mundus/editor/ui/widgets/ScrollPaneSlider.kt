@@ -7,8 +7,6 @@ import com.kotcrab.vis.ui.widget.VisSlider
 
 /**
  * Makes it possible to use a slider inside a scroll pane.
- *
- *  * @version 04-02-2016
  */
 class ScrollPaneSlider(min: Float, max: Float, stepSize: Float, vertical: Boolean) : VisSlider(min, max, stepSize, vertical) {
 

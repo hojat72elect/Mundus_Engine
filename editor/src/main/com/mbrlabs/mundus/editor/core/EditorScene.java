@@ -10,9 +10,6 @@ import com.mbrlabs.mundus.commons.scene3d.components.TerrainComponent;
 import com.mbrlabs.mundus.editor.Mundus;
 import com.mbrlabs.mundus.editor.events.ComponentAddedEvent;
 
-/**
- *  * @version 07-02-2016
- */
 public class EditorScene extends Scene {
 
     public Viewport viewport;

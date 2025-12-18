@@ -21,9 +21,6 @@ import com.mbrlabs.mundus.commons.terrain.attributes.TerrainMaterialAttribute;
 import com.mbrlabs.mundus.commons.utils.MathUtils;
 import com.mbrlabs.mundus.commons.utils.Pools;
 
-/**
- *  * @version 30-11-2015
- */
 public class Terrain implements Disposable {
 
     public static final int DEFAULT_SIZE = 1200;

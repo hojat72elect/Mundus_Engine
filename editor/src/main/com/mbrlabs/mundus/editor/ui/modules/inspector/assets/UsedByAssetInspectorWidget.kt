@@ -9,11 +9,8 @@ import com.mbrlabs.mundus.editor.core.project.ProjectManager
 import com.mbrlabs.mundus.editor.ui.modules.inspector.BaseInspectorWidget
 import com.mbrlabs.mundus.editor.ui.widgets.AutoFocusScrollPane
 
-
 /**
  * Shows which assets and scenes an Asset is used by.
- *
- *  * @version July 29, 2022
  */
 class UsedByAssetInspectorWidget : BaseInspectorWidget(TITLE) {
 

@@ -8,9 +8,6 @@ import com.kotcrab.vis.ui.widget.VisTextButton;
 import com.mbrlabs.mundus.editor.Mundus;
 import com.mbrlabs.mundus.editor.utils.Colors;
 
-/**
- *  * @version 03-01-2016
- */
 public class FaTextButton extends VisTextButton {
 
     public final static TextButton.TextButtonStyle styleNoBg = new TextButton.TextButtonStyle();

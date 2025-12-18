@@ -12,8 +12,6 @@ import java.util.Map;
  * gdx-gltf moved over to something a bit similar (ShaderParser) but it is not
  * in a released version yet. May be worth using the gdx-gltf ShaderParser instead
  * once it is available in a release
- *
- *  * @version May 08, 2023
  */
 public class ShaderPreprocessor {
     private static final String includeDirective = "#include";

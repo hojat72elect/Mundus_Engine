@@ -20,9 +20,6 @@ import com.mbrlabs.mundus.editor.ui.modules.inspector.BaseInspectorWidget
 import com.mbrlabs.mundus.editor.ui.widgets.FloatFieldWithLabel
 import com.mbrlabs.mundus.editor.utils.formatFloat
 
-/**
- *  * @version 16-01-2016
- */
 class TransformWidget : BaseInspectorWidget("Transformation") {
 
     companion object {

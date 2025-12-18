@@ -11,9 +11,6 @@ import com.mbrlabs.mundus.editor.core.project.ProjectManager
 import com.mbrlabs.mundus.editor.ui.UI
 import com.mbrlabs.mundus.editor.ui.modules.dialogs.tools.AssetCleanUpDialog
 
-/**
- *  * @version July 28, 2022
- */
 class ToolsMenu : Menu("Tools") {
 
     private val findUnusedAssets = MenuItem("Asset Clean Up")

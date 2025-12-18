@@ -5,9 +5,6 @@ import com.mbrlabs.mundus.commons.dto.ShadowSettingsDTO;
 import com.mbrlabs.mundus.commons.shadows.MundusDirectionalShadowLight;
 import com.mbrlabs.mundus.commons.utils.LightUtils;
 
-/**
- *  * @version July 18, 2022
- */
 public class ShadowSettingsConverter {
 
     /**

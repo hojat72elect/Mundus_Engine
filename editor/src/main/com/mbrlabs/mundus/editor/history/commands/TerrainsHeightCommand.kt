@@ -6,7 +6,6 @@ import com.mbrlabs.mundus.editor.history.Command
 
 /**
  * A wrapper for modifying the height of multiple terrains.
- *  * @version June 30, 2023
  */
 class TerrainsHeightCommand : Command {
     private var terrainHeightCommands = HashMap<TerrainComponent, TerrainHeightCommand>()

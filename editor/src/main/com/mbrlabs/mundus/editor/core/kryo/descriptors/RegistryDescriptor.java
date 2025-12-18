@@ -6,9 +6,6 @@ import com.esotericsoftware.kryo.serializers.TaggedFieldSerializer.Tag;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *  * @version 11-12-2015
- */
 public class RegistryDescriptor {
 
     @Tag(0)

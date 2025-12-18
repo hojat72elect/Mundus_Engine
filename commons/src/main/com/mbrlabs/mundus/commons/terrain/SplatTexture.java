@@ -5,9 +5,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.mbrlabs.mundus.commons.assets.TextureAsset;
 import com.mbrlabs.mundus.commons.utils.TextureProvider;
 
-/**
- *  * @version 01-02-2016
- */
 public class SplatTexture implements TextureProvider {
 
     public Channel channel;

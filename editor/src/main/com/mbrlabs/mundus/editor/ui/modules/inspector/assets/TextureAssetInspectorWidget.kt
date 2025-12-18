@@ -8,9 +8,6 @@ import com.mbrlabs.mundus.editor.ui.modules.inspector.BaseInspectorWidget
 
 import org.apache.commons.io.FileUtils
 
-/**
- *  * @version 15-10-2016
- */
 class TextureAssetInspectorWidget : BaseInspectorWidget(TITLE) {
 
     companion object {

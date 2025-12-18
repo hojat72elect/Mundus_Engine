@@ -4,9 +4,7 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Preferences
 
 /**
- * Manages preferences using the given key value
- *
- *  * @version July 14, 2022
+ * Manages preferences using the given key value.
  */
 class MundusPreferencesManager(preferencesKey: String) : PreferencesManager {
     companion object {

@@ -29,10 +29,6 @@ import com.mbrlabs.mundus.editor.ui.widgets.Toolbar
 import com.mbrlabs.mundus.editor.utils.Fa
 import com.mbrlabs.mundus.editor.utils.Log
 
-/**
- *  * *
- * @version 24-11-2015
- */
 class MundusToolbar(private val outline: Outline) : Toolbar(),
     FullScreenEvent.FullScreenEventListener,
     ToolActivatedEvent.ToolActivatedEventListener,

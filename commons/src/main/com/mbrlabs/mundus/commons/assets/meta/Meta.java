@@ -5,10 +5,6 @@ package com.mbrlabs.mundus.commons.assets.meta;
 import com.badlogic.gdx.files.FileHandle;
 import com.mbrlabs.mundus.commons.assets.AssetType;
 
-/**
- *
- *  * @version 26-10-2016
- */
 public class Meta {
 
     public static final String META_EXTENSION = "meta";

@@ -3,9 +3,6 @@ package com.mbrlabs.mundus.editor.tools.terrain;
 import com.mbrlabs.mundus.commons.terrain.Terrain;
 import com.mbrlabs.mundus.editor.tools.brushes.TerrainBrush;
 
-/**
- *  * @version June 28, 2023
- */
 public class FlattenTool extends RadiusTerrainTool {
 
     private static final TerrainBrush.TerrainModifyAction modifier = (brush, terrainComponent, x, z, tVec2, vertexPos) -> {

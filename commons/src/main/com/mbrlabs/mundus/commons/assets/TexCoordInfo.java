@@ -2,8 +2,6 @@ package com.mbrlabs.mundus.commons.assets;
 
 /**
  * Storage for UV related Texture info.
- *
- *  * @version July 20, 2022
  */
 public class TexCoordInfo {
     public final String PROP_UV;

@@ -5,9 +5,6 @@ import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 
-/**
- *  * @version 03-12-2015
- */
 public class MathUtils {
     private static final Vector3 tmp = new Vector3();
 

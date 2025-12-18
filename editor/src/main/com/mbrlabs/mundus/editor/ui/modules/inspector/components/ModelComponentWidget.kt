@@ -14,9 +14,6 @@ import com.mbrlabs.mundus.editor.ui.widgets.MaterialSelectWidget
 import com.mbrlabs.mundus.editor.ui.widgets.MaterialWidget
 import com.mbrlabs.mundus.editor.ui.widgets.ToolTipLabel
 
-/**
- *  * @version 21-01-2016
- */
 class ModelComponentWidget(modelComponent: ModelComponent) : ComponentWidget<ModelComponent>("Model Component", modelComponent) {
 
     private val materialContainer = VisTable()

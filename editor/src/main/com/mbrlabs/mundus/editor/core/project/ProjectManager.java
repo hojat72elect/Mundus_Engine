@@ -51,8 +51,6 @@ import java.io.IOException;
 
 /**
  * Manages Mundus projects and scenes.
- *
- *  * @version 25-11-2015
  */
 public class ProjectManager implements Disposable {
 

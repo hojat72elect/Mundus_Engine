@@ -18,9 +18,7 @@ import com.mbrlabs.mundus.editor.ui.modules.dialogs.BaseDialog
 import com.mbrlabs.mundus.editor.ui.widgets.AutoFocusScrollPane
 
 /**
- * Dialog to display the Asset Clean Up utility
- *
- *  * @version July 29, 2022
+ * Dialog to display the Asset Clean Up utility.
  */
 class AssetCleanUpDialog : BaseDialog(TITLE) {
 

@@ -31,9 +31,6 @@ import com.mbrlabs.mundus.editorcommons.events.ProjectChangedEvent
 import com.mbrlabs.mundus.editorcommons.events.SceneChangedEvent
 import com.mbrlabs.mundus.editorcommons.exceptions.AssetAlreadyExistsException
 
-/**
- *  * @version 10-01-2016
- */
 class SkyboxDialog : BaseDialog("Skybox"), ProjectChangedEvent.ProjectChangedListener,
     SceneChangedEvent.SceneChangedListener, ImageChooserField.ImageChosenListener {
 

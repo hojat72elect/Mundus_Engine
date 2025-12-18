@@ -8,8 +8,6 @@ import java.util.Iterator;
 
 /**
  * Copied from libGDX Attributes, due to 64 attribute limit in libGDX.
- *
- *  * @version August 13, 2022
  */
 public class TerrainAttributes implements Iterable<MundusAttribute>, Comparator<MundusAttribute>, Comparable<TerrainAttributes> {
     protected final Array<MundusAttribute> MundusAttributes = new Array<MundusAttribute>();

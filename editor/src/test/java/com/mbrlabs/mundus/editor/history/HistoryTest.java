@@ -5,9 +5,6 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-/**
- *  * @version 08-02-2016
- */
 public class HistoryTest {
 
     @Test

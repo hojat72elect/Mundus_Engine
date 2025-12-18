@@ -6,9 +6,6 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.graphics.g3d.decals.Decal
 import com.mbrlabs.mundus.commons.scene3d.components.LightComponent
 
-/**
- *  * @version June 01, 2022
- */
 class LightGizmo(private var lightComponent: LightComponent) : Gizmo() {
     override var decal: Decal
 

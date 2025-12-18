@@ -1,10 +1,6 @@
 
 package com.mbrlabs.mundus.commons.assets.meta;
 
-/**
- *
- *  * @version 26-10-2016
- */
 public class MetaTerrain {
 
     public static final String JSON_SIZE = "size";

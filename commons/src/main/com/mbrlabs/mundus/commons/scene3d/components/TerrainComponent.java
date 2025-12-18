@@ -19,9 +19,6 @@ import net.mgsx.gltf.scene3d.attributes.PBRTextureAttribute;
 
 import java.util.Objects;
 
-/**
- *  * @version 18-01-2016
- */
 public class TerrainComponent extends CullableComponent implements AssetUsage, RenderableComponent {
 
     private static final String TAG = TerrainComponent.class.getSimpleName();

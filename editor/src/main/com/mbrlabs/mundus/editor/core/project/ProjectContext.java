@@ -16,8 +16,6 @@ import org.apache.commons.lang3.StringUtils;
  * <p>
  * A project context can have many scenes, nut only one scene at a time can be
  * active.
- *
- *  * @version 28-11-2015
  */
 public class ProjectContext implements Disposable {
 

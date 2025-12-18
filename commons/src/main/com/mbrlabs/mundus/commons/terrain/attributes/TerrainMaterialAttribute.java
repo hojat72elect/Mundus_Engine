@@ -4,9 +4,6 @@ package com.mbrlabs.mundus.commons.terrain.attributes;
 import com.badlogic.gdx.graphics.g3d.Attribute;
 import com.mbrlabs.mundus.commons.terrain.TerrainMaterial;
 
-/**
- *  * @version October 24, 2022
- */
 public class TerrainMaterialAttribute extends Attribute {
     public final static String TerrainMaterialAlias = "terrainData";
     public final static long TerrainMaterial = register(TerrainMaterialAlias);

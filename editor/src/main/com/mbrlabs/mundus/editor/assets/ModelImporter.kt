@@ -25,9 +25,6 @@ import net.mgsx.gltf.scene3d.attributes.PBRFloatAttribute
 import net.mgsx.gltf.scene3d.attributes.PBRTextureAttribute
 import org.apache.commons.io.FilenameUtils
 
-/**
- *  * @version 12-12-2015
- */
 class ModelImporter(private val registry: Registry) : SettingsChangedEvent.SettingsChangedListener {
 
     private val fbxConv: FbxConv

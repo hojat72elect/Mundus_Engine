@@ -27,10 +27,6 @@ import com.mbrlabs.mundus.editor.ui.widgets.IntegerField
 import com.mbrlabs.mundus.editor.ui.widgets.ToolTipLabel
 import com.mbrlabs.mundus.editor.utils.isImage
 
-
-/**
- *  * @version July 03, 2023
- */
 class HeightMapTerrainTab(var dialog: AddTerrainChunksDialog) : Tab(false, false) {
     private val root = VisTable()
 

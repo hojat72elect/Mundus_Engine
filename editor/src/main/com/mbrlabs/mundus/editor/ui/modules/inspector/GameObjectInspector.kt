@@ -34,9 +34,6 @@ import com.mbrlabs.mundus.editor.ui.modules.inspector.components.terrain.Terrain
 import com.mbrlabs.mundus.editor.ui.modules.inspector.components.terrain.TerrainManagerComponentWidget
 import com.mbrlabs.mundus.pluginapi.ComponentExtension
 
-/**
- *  * @version 13-10-2016
- */
 class GameObjectInspector : VisTable() {
 
     private val pluginManager = Mundus.inject<PluginManagerProvider>().pluginManager

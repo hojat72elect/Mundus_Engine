@@ -7,9 +7,6 @@ import com.kotcrab.vis.ui.widget.Menu
 import com.kotcrab.vis.ui.widget.MenuItem
 import com.mbrlabs.mundus.editor.ui.UI
 
-/**
- *  * @version 08-12-2015
- */
 class AssetsMenu : Menu("Assets") {
 
     private val importMesh = MenuItem("Import Mesh")

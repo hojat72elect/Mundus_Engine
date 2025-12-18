@@ -4,9 +4,6 @@ package com.mbrlabs.mundus.editor.events
 import com.mbrlabs.mundus.commons.scene3d.components.Component
 import com.mbrlabs.mundus.editorcommons.Subscribe
 
-/**
- *  * @version May 30, 2022
- */
 class ComponentAddedEvent(val component: Component) {
 
     interface ComponentAddedListener {

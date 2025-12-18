@@ -8,8 +8,6 @@ import com.mbrlabs.mundus.commons.utils.Pools;
 
 /**
  * Very simple implementation of a scene graph node.
- *
- *  * @version 09-06-2016
  */
 public class SimpleNode<T extends SimpleNode> extends BaseNode<T> {
 

@@ -43,10 +43,6 @@ import java.util.concurrent.Executors
 import java.util.concurrent.atomic.AtomicInteger
 import kotlin.math.abs
 
-
-/**
- *  * @version October 24, 2022
- */
 class AddTerrainChunksDialog : BaseDialog("Add Terrain"), TabbedPaneListener {
     private var loadingDialog: VisDialog? = null
     private var parentGO: GameObject? = null

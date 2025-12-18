@@ -13,9 +13,6 @@ import com.mbrlabs.mundus.editor.ui.widgets.CollapseWidget
 import com.mbrlabs.mundus.editor.ui.widgets.FaTextButton
 import com.mbrlabs.mundus.editor.utils.Fa
 
-/**
- *  * @version 19-01-2016
- */
 abstract class BaseInspectorWidget(title: String) : VisTable() {
 
     companion object {

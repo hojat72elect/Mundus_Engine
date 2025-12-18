@@ -45,8 +45,6 @@ import net.mgsx.gltf.scene3d.attributes.PBRFloatAttribute
 /**
  * Holds code for Outlines right click menu. Separated from Outline class
  * due to its complexity
- *
- *  * @version August 03, 2022
  */
 class OutlineRightClickMenu(outline: Outline) : PopupMenu() {
     companion object {

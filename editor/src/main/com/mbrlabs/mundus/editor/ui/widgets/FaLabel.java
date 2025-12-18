@@ -6,9 +6,6 @@ import com.kotcrab.vis.ui.widget.VisLabel;
 import com.mbrlabs.mundus.editor.Mundus;
 import com.mbrlabs.mundus.editor.utils.Colors;
 
-/**
- *  * @version 19-01-2016
- */
 public class FaLabel extends VisLabel {
 
     public final static LabelStyle style = new LabelStyle();

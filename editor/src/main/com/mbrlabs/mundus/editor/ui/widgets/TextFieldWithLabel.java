@@ -5,9 +5,6 @@ import com.kotcrab.vis.ui.widget.VisLabel;
 import com.kotcrab.vis.ui.widget.VisTable;
 import com.kotcrab.vis.ui.widget.VisTextField;
 
-/**
- *  * @version 19-01-2016
- */
 public class TextFieldWithLabel extends VisTable {
 
     protected VisTextField textField;

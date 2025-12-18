@@ -1,9 +1,6 @@
 
 package com.mbrlabs.mundus.commons.importer;
 
-/**
- *  * @version 26-10-2016
- */
 public class JsonScene {
 
     // basics

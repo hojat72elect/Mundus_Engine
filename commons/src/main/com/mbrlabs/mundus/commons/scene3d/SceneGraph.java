@@ -11,9 +11,6 @@ import com.mbrlabs.mundus.commons.scene3d.components.Component;
 import com.mbrlabs.mundus.commons.scene3d.components.ModelComponent;
 import com.mbrlabs.mundus.commons.scene3d.components.WaterComponent;
 
-/**
- *  * @version 16-01-2016
- */
 public class SceneGraph {
 
     public Scene scene;

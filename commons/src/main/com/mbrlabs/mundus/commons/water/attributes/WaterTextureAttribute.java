@@ -9,9 +9,6 @@ import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.badlogic.gdx.utils.NumberUtils;
 import com.mbrlabs.mundus.commons.MundusAttribute;
 
-/**
- *  * @version October 16, 2022
- */
 public class WaterTextureAttribute extends MundusAttribute {
     public final static String DudvAlias = "dudvTexture";
     public final static long Dudv = register(DudvAlias);

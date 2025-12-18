@@ -5,8 +5,7 @@ import com.badlogic.gdx.utils.FlushablePool;
 
 /**
  * From ModelBatch class.
- *
- *  *  */
+ */
 public class RenderablePool extends FlushablePool<Renderable> {
     @Override
     protected Renderable newObject() {

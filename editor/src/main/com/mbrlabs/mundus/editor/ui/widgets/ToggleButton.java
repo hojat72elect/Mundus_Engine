@@ -5,9 +5,6 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.kotcrab.vis.ui.widget.VisTextButton;
 
-/**
- *  * @version 18-02-2016
- */
 public class ToggleButton extends VisTextButton {
 
     private String textOn;

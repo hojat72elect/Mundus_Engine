@@ -16,9 +16,6 @@ import com.badlogic.gdx.graphics.g3d.utils.shapebuilders.ArrowShapeBuilder
 import com.badlogic.gdx.math.Vector3
 import com.badlogic.gdx.utils.Disposable
 
-/**
- *  * @version 05-12-2015
- */
 class Compass(private var worldCam: Camera?) : Disposable {
 
     private val ARROW_LENGTH = 0.05f

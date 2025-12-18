@@ -10,9 +10,6 @@ import com.mbrlabs.mundus.editor.utils.Fa;
 
 import org.jetbrains.annotations.NotNull;
 
-/**
- *  * @version 05-02-2016
- */
 public class StarBrush extends TerrainBrush {
 
     public StarBrush(ProjectManager projectManager, CommandHistory history, GameObjectPicker goPicker) {

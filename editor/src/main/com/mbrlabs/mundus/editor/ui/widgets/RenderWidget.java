@@ -9,9 +9,6 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mbrlabs.mundus.editor.ui.UI;
 
-/**
- *  * @version 27-01-2016
- */
 public class RenderWidget extends Widget {
 
     private static Vector2 vec = new Vector2();

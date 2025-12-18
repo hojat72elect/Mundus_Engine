@@ -24,10 +24,6 @@ import com.mbrlabs.mundus.editor.ui.widgets.ToolTipLabel
 import com.mbrlabs.mundus.editorcommons.events.ProjectChangedEvent
 import com.mbrlabs.mundus.editorcommons.events.SceneChangedEvent
 
-/**
- *  * *
- * @version 25-05-2022
- */
 class DirectionalLightsDialog : BaseDialog("Directional Light"), ProjectChangedEvent.ProjectChangedListener,
     SceneChangedEvent.SceneChangedListener {
 

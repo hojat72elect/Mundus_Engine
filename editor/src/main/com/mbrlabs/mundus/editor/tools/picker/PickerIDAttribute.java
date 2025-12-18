@@ -3,9 +3,6 @@ package com.mbrlabs.mundus.editor.tools.picker;
 
 import com.badlogic.gdx.graphics.g3d.Attribute;
 
-/**
- *  * @version 20-02-2016
- */
 public class PickerIDAttribute extends Attribute {
 
     public final static String Alias = "goID";

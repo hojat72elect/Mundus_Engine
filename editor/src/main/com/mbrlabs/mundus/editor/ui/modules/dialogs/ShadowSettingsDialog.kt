@@ -19,9 +19,6 @@ import com.mbrlabs.mundus.editor.ui.widgets.ToolTipLabel
 import com.mbrlabs.mundus.editorcommons.events.ProjectChangedEvent
 import com.mbrlabs.mundus.editorcommons.events.SceneChangedEvent
 
-/**
- *  * @version July 18, 2022
- */
 class ShadowSettingsDialog : BaseDialog("Shadow Settings"), ProjectChangedEvent.ProjectChangedListener,
     SceneChangedEvent.SceneChangedListener {
 

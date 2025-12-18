@@ -9,8 +9,6 @@ import com.mbrlabs.mundus.editorcommons.events.ProjectChangedEvent
 /**
  * Extends FileChooser to add behavior that sets the current chooser directory to the
  * current projects last opened directory on project change
- *
- *  * @version July 19, 2022
  */
 class PersistingFileChooser(mode: Mode) : FileChooser(mode), ProjectChangedEvent.ProjectChangedListener {
 

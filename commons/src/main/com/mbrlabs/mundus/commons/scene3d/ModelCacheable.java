@@ -4,8 +4,6 @@ import com.badlogic.gdx.graphics.g3d.ModelInstance;
 
 /**
  * Indicates the object has a ModelInstance that can be cached.
- *
- *  * @version August 02, 2022
  */
 public interface ModelCacheable {
 

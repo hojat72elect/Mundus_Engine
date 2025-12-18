@@ -8,9 +8,6 @@ import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.mbrlabs.mundus.commons.assets.PixmapTextureAsset;
 
-/**
- *  * @version 31-01-2016
- */
 public class SplatMap {
 
     private final Color c0 = new Color();

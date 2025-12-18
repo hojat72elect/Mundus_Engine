@@ -3,9 +3,6 @@ package com.mbrlabs.mundus.editor.utils;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Pool;
 
-/**
- *  * @version October 05, 2023
- */
 public class ThreadLocalPools {
     /**
      * ThreadLocal pool for Vector3 objects when accessing from other threads

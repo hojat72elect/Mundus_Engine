@@ -14,9 +14,6 @@ import com.mbrlabs.mundus.editor.utils.Log
 import com.mbrlabs.mundus.editorcommons.events.GameObjectModifiedEvent
 import com.mbrlabs.mundus.editorcommons.events.ProjectChangedEvent
 
-/**
- *  * @version 19-01-2016
- */
 class Inspector : VisTable(),
     GameObjectSelectedEvent.GameObjectSelectedListener,
     GameObjectModifiedEvent.GameObjectModifiedListener,

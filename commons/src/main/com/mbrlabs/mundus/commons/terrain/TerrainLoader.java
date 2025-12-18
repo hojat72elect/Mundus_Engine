@@ -21,8 +21,6 @@ import java.io.IOException;
 
 /**
  * Loads Mundus Terrain objects via meta and .terra file data.
- *
- *  * @version July 24, 2022
  */
 public class TerrainLoader extends AsynchronousAssetLoader<Terrain, TerrainLoader.TerrainParameter> {
 

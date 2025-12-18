@@ -14,9 +14,6 @@ import com.mbrlabs.mundus.editor.events.SettingsChangedEvent
 import com.mbrlabs.mundus.editor.ui.UI
 import com.mbrlabs.mundus.editor.ui.widgets.FileChooserField
 
-/**
- *  * @version 29-02-2016
- */
 class GeneralSettingsTable : BaseSettingsTable() {
 
     private val fbxBinary = FileChooserField(500)

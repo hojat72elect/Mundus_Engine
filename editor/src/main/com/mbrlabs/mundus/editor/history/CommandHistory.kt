@@ -5,8 +5,6 @@ import com.badlogic.gdx.utils.Array
 
 /**
  * Add commands to undo/redo a previously called process.
- *
- *  * @version 07-02-2016
  */
 class CommandHistory(private val limit: Int) {
 

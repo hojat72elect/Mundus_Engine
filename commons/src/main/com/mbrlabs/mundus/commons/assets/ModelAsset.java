@@ -36,9 +36,6 @@ import net.mgsx.gltf.scene3d.scene.SceneAsset;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- *  * @version 01-10-2016
- */
 public class ModelAsset extends Asset {
     protected static long TextureAttributeMask = Diffuse | Specular | Bump | Normal | Ambient | Emissive | Reflection | MetallicRoughnessTexture
             | OcclusionTexture | BaseColorTexture | NormalTexture | EmissiveTexture | BRDFLUTTexture;

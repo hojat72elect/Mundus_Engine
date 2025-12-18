@@ -3,9 +3,6 @@ package com.mbrlabs.mundus.editor.utils
 
 import com.badlogic.gdx.graphics.Color
 
-/**
- *  * @version 22-11-2015
- */
 object Colors {
 
     val GRAY_888 = Color(0x888888ff.toInt())

@@ -18,9 +18,6 @@ import com.mbrlabs.mundus.commons.scene3d.components.ModelComponent;
 import com.mbrlabs.mundus.commons.scene3d.components.WaterComponent;
 import com.mbrlabs.mundus.runtime.converter.SceneConverter;
 
-/**
- *  * @version 27-10-2016
- */
 public class SceneLoader {
     private static final String TAG = SceneLoader.class.getSimpleName();
 

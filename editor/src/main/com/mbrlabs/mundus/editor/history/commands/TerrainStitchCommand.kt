@@ -6,11 +6,8 @@ import com.mbrlabs.mundus.editor.history.Command
 
 /**
  * Wrapper for multiple TerrainHeightCommands since Terrain Stitching modifies multiple terrains.
- *
  * On construction, setHeightDataBefore is called immediately.
  * Implementations must call setHeightDataAfter after modifying terrains but before executing.
- *
- *  * @version June 26, 2023
  */
 class TerrainStitchCommand(private var terrains: Array<TerrainComponent>) : Command {
     private var terrainHeightCommands = HashMap<TerrainComponent, TerrainHeightCommand>()

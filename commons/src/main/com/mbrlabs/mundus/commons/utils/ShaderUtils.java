@@ -15,9 +15,6 @@ import com.mbrlabs.mundus.commons.shaders.LightShader;
 import net.mgsx.gltf.scene3d.shaders.PBRShaderConfig;
 import net.mgsx.gltf.scene3d.shaders.PBRShaderProvider;
 
-/**
- *  * @version 23-11-2015
- */
 public class ShaderUtils {
 
     /**

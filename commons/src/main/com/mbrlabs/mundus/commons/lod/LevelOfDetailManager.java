@@ -2,8 +2,6 @@ package com.mbrlabs.mundus.commons.lod;
 
 /**
  * An interface for managing Level of Detail (LoD) for an object.
- *
- *  * @version September 30, 2023
  */
 public interface LevelOfDetailManager {
 

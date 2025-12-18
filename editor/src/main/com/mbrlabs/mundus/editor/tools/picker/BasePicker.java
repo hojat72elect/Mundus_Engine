@@ -15,9 +15,6 @@ import com.mbrlabs.mundus.editor.utils.Log;
 
 import java.nio.ByteBuffer;
 
-/**
- *  * @version 07-03-2016
- */
 public abstract class BasePicker implements Disposable {
 
     protected FrameBuffer fbo;

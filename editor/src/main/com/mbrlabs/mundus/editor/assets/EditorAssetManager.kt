@@ -57,9 +57,6 @@ import java.util.Base64
 import java.util.Properties
 import java.util.UUID
 
-/**
- *  * @version 24-01-2016
- */
 class EditorAssetManager(assetsRoot: FileHandle) : AssetManager(assetsRoot) {
 
     companion object {

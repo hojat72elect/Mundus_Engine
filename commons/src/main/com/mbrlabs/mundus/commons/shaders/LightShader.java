@@ -18,8 +18,6 @@ import net.mgsx.gltf.scene3d.lights.DirectionalLightEx;
 
 /**
  * Extend this shader and call setLights method to apply lighting uniforms.
- *
- *  * @version June 02, 2022
  */
 public abstract class LightShader extends BaseShader {
     // ============================ LIGHTS ============================

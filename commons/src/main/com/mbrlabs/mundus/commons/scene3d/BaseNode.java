@@ -3,10 +3,6 @@ package com.mbrlabs.mundus.commons.scene3d;
 
 import com.badlogic.gdx.utils.Array;
 
-/**
- *
- *  * @version 22-06-2016
- */
 public abstract class BaseNode<T extends BaseNode> implements Node<T> {
 
     public final int id;

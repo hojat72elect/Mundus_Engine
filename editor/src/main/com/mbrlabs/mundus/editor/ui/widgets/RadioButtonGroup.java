@@ -5,9 +5,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
 import com.kotcrab.vis.ui.widget.VisRadioButton;
 import com.kotcrab.vis.ui.widget.VisTable;
 
-/**
- *  * @version 08-12-2015
- */
 public class RadioButtonGroup<T> extends VisTable {
 
     private final ButtonGroup<RadioButton> buttonGroup;

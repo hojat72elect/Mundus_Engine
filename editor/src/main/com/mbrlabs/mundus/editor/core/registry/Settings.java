@@ -5,8 +5,6 @@ import com.badlogic.gdx.utils.ObjectMap;
 
 /**
  * Global Mundus settings.
- *
- *  * @version 07-06-2016
  */
 public class Settings {
 

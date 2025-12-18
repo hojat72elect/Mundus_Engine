@@ -6,9 +6,6 @@ import com.mbrlabs.mundus.commons.scene3d.GameObject
 import com.mbrlabs.mundus.editor.ui.modules.inspector.BaseInspectorWidget
 import com.mbrlabs.mundus.editor.ui.widgets.MaterialWidget
 
-/**
- *  * @version 13-10-2016
- */
 class MaterialAssetInspectorWidget : BaseInspectorWidget(TITLE) {
 
     companion object {

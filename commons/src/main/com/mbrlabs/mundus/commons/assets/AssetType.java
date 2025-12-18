@@ -1,9 +1,6 @@
 
 package com.mbrlabs.mundus.commons.assets;
 
-/**
- *  * @version 01-10-2016
- */
 public enum AssetType {
     /**
      * Texture type. Can be pretty much any type of image.

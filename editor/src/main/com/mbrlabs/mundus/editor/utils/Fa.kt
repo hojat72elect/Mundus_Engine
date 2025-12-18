@@ -7,10 +7,7 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator
 
 /**
  * Font Awesome font generator & unicode list.
- *
  * See: https://fortawesome.github.io/Font-Awesome/
- *
- *  * @version 03-01-2016
  */
 class Fa {
 

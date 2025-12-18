@@ -6,8 +6,6 @@ import com.kotcrab.vis.ui.widget.VisDialog
 
 /**
  * Base dialog to extend from. Tracks if it is currently open or not.
- *
- *  * @version 25-11-2015
  */
 open class BaseDialog(title: String) : VisDialog(title) {
     protected var dialogOpen = false

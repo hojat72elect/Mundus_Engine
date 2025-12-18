@@ -17,9 +17,6 @@ import com.mbrlabs.mundus.editorcommons.events.ProjectChangedEvent
 import com.mbrlabs.mundus.editorcommons.events.SceneChangedEvent
 import net.mgsx.gltf.scene3d.attributes.FogAttribute
 
-/**
- *  * @version 06-01-2016
- */
 class FogDialog : BaseDialog("Fog"), ProjectChangedEvent.ProjectChangedListener, SceneChangedEvent.SceneChangedListener {
 
     private val useFog = VisCheckBox("Use fog")

@@ -15,9 +15,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-/**
- *  * @version 21-06-2016
- */
 public class SceneGraphTest {
 
     @Test

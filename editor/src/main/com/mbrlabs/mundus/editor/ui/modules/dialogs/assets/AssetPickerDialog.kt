@@ -23,8 +23,6 @@ import com.mbrlabs.mundus.editorcommons.events.ProjectChangedEvent
  *
  * The user can pick one or no asset. The list of assets can be filtered by type before
  * showing it to the user.
- *
- *  * @version 02-10-2016
  */
 class AssetPickerDialog : BaseDialog(TITLE),
     AssetImportEvent.AssetImportListener,

@@ -5,9 +5,6 @@ package com.mbrlabs.mundus.editor.tools.terrain;
 import com.mbrlabs.mundus.commons.terrain.Terrain;
 import com.mbrlabs.mundus.editor.tools.brushes.TerrainBrush;
 
-/**
- *  * @version June 28, 2023
- */
 public class RaiseLowerTool extends RadiusTerrainTool {
 
     // Raise or lower the terrain

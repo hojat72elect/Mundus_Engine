@@ -3,9 +3,7 @@ package com.mbrlabs.mundus.editor.ui.widgets
 
 import com.kotcrab.vis.ui.util.FloatDigitsOnlyFilter
 
-/**
- *  * @version 18-02-2016
- */
+
 class FloatFieldWithLabel : TextFieldWithLabel {
 
     constructor(labelText: String, width: Int, allowNegative: Boolean) : super(labelText, width) {

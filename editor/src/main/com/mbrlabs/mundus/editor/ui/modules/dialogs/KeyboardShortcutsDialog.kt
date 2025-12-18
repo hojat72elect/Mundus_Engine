@@ -7,9 +7,6 @@ import com.mbrlabs.mundus.editor.Mundus
 import com.mbrlabs.mundus.editor.core.keymap.KeyboardShortcutManager
 import com.mbrlabs.mundus.editor.core.keymap.KeymapKey
 
-/**
- *  * @version July 26, 2022
- */
 class KeyboardShortcutsDialog : BaseDialog("Keyboard Shortcuts") {
 
     private val keyboardShortcutManager = Mundus.inject<KeyboardShortcutManager>()

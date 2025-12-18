@@ -12,9 +12,6 @@ import com.mbrlabs.mundus.commons.scene3d.components.RenderableComponent;
 import com.mbrlabs.mundus.commons.shadows.ShadowResolution;
 import com.mbrlabs.mundus.commons.water.WaterResolution;
 
-/**
- *  * @version October 03, 2023
- */
 public class DefaultSceneRenderer implements SceneRenderer {
     public static final Vector3 clippingPlaneDisable = new Vector3(0.0f, 0f, 0.0f);
     private final WaterRenderer waterRenderer;

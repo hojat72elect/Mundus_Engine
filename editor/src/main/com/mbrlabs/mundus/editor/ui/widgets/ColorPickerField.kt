@@ -15,10 +15,7 @@ import com.mbrlabs.mundus.editor.ui.UI
 
 /**
  * An un-editable text field with a color picker.
- *
  * The text field shows the color hex value, the button launches a color picker dialog.
- *
- *  * @version 08-01-2016
  */
 class ColorPickerField() : VisTable() {
 

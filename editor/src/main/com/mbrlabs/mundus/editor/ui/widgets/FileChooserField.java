@@ -11,9 +11,7 @@ import com.kotcrab.vis.ui.widget.file.FileChooser;
 import com.kotcrab.vis.ui.widget.file.SingleFileChooserListener;
 import com.mbrlabs.mundus.editor.ui.UI;
 
-/**
- *  * @version 30-12-2015
- */
+
 public class FileChooserField extends VisTable {
 
     private final VisTextField textField;

@@ -10,9 +10,6 @@ import com.mbrlabs.mundus.editor.events.LogType
 import com.mbrlabs.mundus.editor.preferences.MundusPreferencesManager
 import com.mbrlabs.mundus.editor.ui.UI
 
-/**
- *  * @version 26-10-2016
- */
 class AppearanceSettingsTable : BaseSettingsTable() {
 
     private val globalPreferencesManager: MundusPreferencesManager = Mundus.inject()

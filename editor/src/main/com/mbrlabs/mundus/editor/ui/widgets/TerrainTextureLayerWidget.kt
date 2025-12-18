@@ -34,7 +34,6 @@ import java.io.IOException
 
 /**
  * Widget for displaying and updating a TerrainLayer via a TextureGrid
- *  * @version July 12, 2023
  */
 class TerrainTextureLayerWidget(var asset: TerrainLayerAsset, var allowEditAndChange: Boolean = true) : VisTable() {
 

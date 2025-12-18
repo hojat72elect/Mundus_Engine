@@ -9,8 +9,6 @@ import com.mbrlabs.mundus.commons.utils.Pools;
 
 /**
  * Manages LoD levels for a terrain component by checking distance from camera.
- *
- *  * @version September 30, 2023
  */
 public class TerrainLevelOfDetailManager implements LevelOfDetailManager {
     private static final float UPDATE_INTERVAL = 0.5f;

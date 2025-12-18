@@ -4,9 +4,6 @@ package com.mbrlabs.mundus.editor.core.project;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.JsonWriter;
 
-/**
- *  * @version 26-10-2016
- */
 public class ProjectSettings {
 
     private final ExportSettings export = new ExportSettings();

@@ -19,8 +19,6 @@ import com.badlogic.gdx.math.Vector3;
  * <p>
  * See also:
  * http://www.opengl-tutorial.org/miscellaneous/clicking-on-objects/picking-with-an-opengl-hack/
- *
- *  * @version 20-02-2016
  */
 public class PickerShader extends BaseShader {
 

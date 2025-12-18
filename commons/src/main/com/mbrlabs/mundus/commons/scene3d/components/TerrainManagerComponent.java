@@ -4,11 +4,8 @@ import com.badlogic.gdx.utils.Array;
 import com.mbrlabs.mundus.commons.assets.TerrainLayerAsset;
 import com.mbrlabs.mundus.commons.scene3d.GameObject;
 
-
 /**
  * Allows you to manage certain aspects of all child terrains that fall under this component.
- *
- *  * @version July 17, 2023
  */
 public class TerrainManagerComponent extends AbstractComponent {
 

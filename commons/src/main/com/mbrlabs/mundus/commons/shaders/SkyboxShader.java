@@ -19,9 +19,6 @@ import com.mbrlabs.mundus.commons.utils.ShaderUtils;
 
 import net.mgsx.gltf.scene3d.attributes.FogAttribute;
 
-/**
- *  * @version 08-01-2016
- */
 public class SkyboxShader extends BaseShader {
 
     private final static String VERTEX_SHADER = "com/mbrlabs/mundus/commons/shaders/skybox.vert.glsl";

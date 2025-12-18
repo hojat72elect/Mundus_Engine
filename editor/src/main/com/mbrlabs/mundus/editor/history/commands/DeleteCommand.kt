@@ -17,9 +17,6 @@ import com.mbrlabs.mundus.editorcommons.events.TerrainAddedEvent
 
 /**
  * Delete command for game objects Deletion will update sceneGraph and outline
- *
- * @author codenigma
- * @version 28-09-2016
  */
 class DeleteCommand(private var go: GameObject?, private var node: Outline.OutlineNode) : Command {
 

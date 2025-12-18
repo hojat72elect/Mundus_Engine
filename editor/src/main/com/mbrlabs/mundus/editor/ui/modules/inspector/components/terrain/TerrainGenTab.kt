@@ -11,7 +11,6 @@ import com.mbrlabs.mundus.editor.ui.modules.inspector.components.terrain.generat
 
 /**
  * @Deprecated
- *  * @version 04-03-2016
  */
 class TerrainGenTab(parent: TerrainComponentWidget) : Tab(false, false), TabbedPaneListener {
     private val root = VisTable()

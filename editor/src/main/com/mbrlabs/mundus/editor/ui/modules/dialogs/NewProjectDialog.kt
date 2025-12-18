@@ -12,9 +12,6 @@ import com.mbrlabs.mundus.editor.core.project.ProjectManager
 import com.mbrlabs.mundus.editor.ui.UI
 import com.mbrlabs.mundus.editor.ui.widgets.FileChooserField
 
-/**
- *  * @version 28-11-2015
- */
 class NewProjectDialog : BaseDialog("Create New Project") {
 
     private val projectName = VisTextField()

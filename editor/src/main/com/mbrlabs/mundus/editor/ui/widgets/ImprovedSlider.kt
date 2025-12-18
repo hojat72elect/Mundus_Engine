@@ -10,8 +10,6 @@ import com.mbrlabs.mundus.editor.utils.formatFloat
 /**
  * Can be used inside a scroll pane & has the current value displayed on the
  * right.
-
- *  * @version 04-02-2016
  */
 class ImprovedSlider(min: Float, max: Float, step: Float, digits: Int = 2) : VisTable() {
 

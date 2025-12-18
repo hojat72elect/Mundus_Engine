@@ -6,9 +6,6 @@ import com.kotcrab.vis.ui.widget.VisLabel
 import com.kotcrab.vis.ui.widget.VisTable
 import com.mbrlabs.mundus.editor.VERSION
 
-/**
- *  * @version July 15, 2022
- */
 class VersionDialog : BaseDialog("Version Info") {
 
     private lateinit var root: VisTable

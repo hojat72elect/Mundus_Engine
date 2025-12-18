@@ -22,9 +22,6 @@ import com.mbrlabs.mundus.editor.ui.UI
 import com.mbrlabs.mundus.editor.ui.widgets.FaTextButton
 import com.mbrlabs.mundus.editor.ui.widgets.ImprovedSlider
 
-/**
- *  * @version 30-01-2016
- */
 class TerrainBrushGrid(
     private val parent: TerrainComponentWidget,
     private val brushMode: TerrainBrush.BrushMode

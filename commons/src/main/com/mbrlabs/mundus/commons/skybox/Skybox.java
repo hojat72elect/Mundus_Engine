@@ -13,9 +13,6 @@ import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import com.badlogic.gdx.utils.Disposable;
 import com.mbrlabs.mundus.commons.shaders.SkyboxShader;
 
-/**
- *  * @version 08-01-2016
- */
 public class Skybox implements Disposable {
     public static final boolean DEFAULT_ROTATE_ENABLED = true;
     public static final float DEFAULT_ROTATE_SPEED = 0.1f;

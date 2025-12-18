@@ -6,9 +6,6 @@ import com.mbrlabs.mundus.editorcommons.events.SceneChangedEvent;
 import org.junit.Assert;
 import org.junit.Test;
 
-/**
- *  * @version June 27, 2023
- */
 public class EventBusTest {
 
     @Test

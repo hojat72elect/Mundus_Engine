@@ -9,9 +9,6 @@ import com.mbrlabs.mundus.editor.scene3d.components.PickableLightComponent;
 import net.mgsx.gltf.scene3d.lights.PointLightEx;
 import net.mgsx.gltf.scene3d.lights.SpotLightEx;
 
-/**
- *  * @version June 07, 2022
- */
 public class PickableLightComponentConverter {
 
     /**

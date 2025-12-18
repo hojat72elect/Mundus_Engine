@@ -10,9 +10,6 @@ import com.mbrlabs.mundus.commons.terrain.SplatTexture;
 import com.mbrlabs.mundus.commons.terrain.TerrainMaterial;
 import com.mbrlabs.mundus.commons.terrain.attributes.TerrainMaterialAttribute;
 
-/**
- *  * @version May 15, 2023
- */
 public class PBRTerrainShader extends MundusPBRShader {
     public static final TextureDescriptor<Texture> textureDescription = new TextureDescriptor<>();
     private final static Vector2 v2 = new Vector2();

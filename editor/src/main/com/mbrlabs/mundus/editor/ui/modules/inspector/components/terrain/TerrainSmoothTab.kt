@@ -5,9 +5,6 @@ import com.badlogic.gdx.utils.Align
 import com.kotcrab.vis.ui.widget.VisTable
 import com.mbrlabs.mundus.editor.tools.brushes.TerrainBrush
 
-/**
- *  * @version July 17, 2022
- */
 class TerrainSmoothTab(parent: TerrainComponentWidget) : BaseBrushTab(parent, TerrainBrush.BrushMode.SMOOTH) {
 
     private val table = VisTable()

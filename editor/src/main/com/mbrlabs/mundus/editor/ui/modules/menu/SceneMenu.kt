@@ -21,9 +21,6 @@ import com.mbrlabs.mundus.editor.ui.UI
 import com.mbrlabs.mundus.editor.utils.Log
 import com.mbrlabs.mundus.editorcommons.events.ProjectChangedEvent
 
-/**
- *  * @version 23-12-2015
- */
 class SceneMenu : Menu("Scenes"),
     ProjectChangedEvent.ProjectChangedListener,
     SceneAddedEvent.SceneAddedListener {

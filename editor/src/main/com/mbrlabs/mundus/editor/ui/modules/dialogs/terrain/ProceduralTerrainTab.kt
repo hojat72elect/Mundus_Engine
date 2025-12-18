@@ -8,9 +8,6 @@ import com.mbrlabs.mundus.commons.scene3d.components.TerrainManagerComponent
 import com.mbrlabs.mundus.editor.ui.modules.dialogs.AddTerrainChunksDialog
 import com.mbrlabs.mundus.editor.ui.widgets.ProceduralGenerationWidget
 
-/**
- *  * @version July 03, 2023
- */
 class ProceduralTerrainTab(var dialog: AddTerrainChunksDialog) : Tab(false, false) {
 
     private val root = ProceduralGenerationWidget(true, true, true, true, true)

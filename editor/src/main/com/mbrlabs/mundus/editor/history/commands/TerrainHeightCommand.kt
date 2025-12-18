@@ -6,9 +6,6 @@ import com.mbrlabs.mundus.editor.Mundus
 import com.mbrlabs.mundus.editor.history.Command
 import com.mbrlabs.mundus.editorcommons.events.TerrainVerticesChangedEvent
 
-/**
- *  * @version 07-02-2016
- */
 class TerrainHeightCommand(private var terrain: TerrainComponent?) : Command {
 
     private var heightDataBefore: FloatArray? = null

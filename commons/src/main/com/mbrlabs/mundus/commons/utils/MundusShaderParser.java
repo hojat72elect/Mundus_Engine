@@ -14,9 +14,6 @@ import com.badlogic.gdx.utils.GdxRuntimeException;
  * It brings support for file inclusion like: <pre>#include&lt;part.glsl&gt;</pre>
  * <p>
  * Given paths are relative to the file declaring the include statement.
- *
- * @author mgsx
- *
  */
 public class MundusShaderParser {
     private final static String includeBefore = "#include <";

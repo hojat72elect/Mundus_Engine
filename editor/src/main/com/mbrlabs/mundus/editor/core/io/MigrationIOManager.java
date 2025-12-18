@@ -17,8 +17,6 @@ import java.io.FileNotFoundException;
  * Eventually this class will be removed in favor of JsonIOManager.
  * <p>
  * Backs up kryo .registry and .pro files before replacing them with JSON versions.
- *
- *  * @version August 03, 2023
  */
 public class MigrationIOManager extends JsonIOManager {
     private KryoManager kryoManager;

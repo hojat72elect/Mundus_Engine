@@ -18,10 +18,6 @@ import com.mbrlabs.mundus.editor.core.project.ProjectOpenException
 import com.mbrlabs.mundus.editor.core.registry.Registry
 import com.mbrlabs.mundus.editor.ui.UI
 
-/**
- *  * *
- * @version 22-11-2015
- */
 class FileMenu : Menu("File") {
 
     private val newProject = MenuItem("New Project")

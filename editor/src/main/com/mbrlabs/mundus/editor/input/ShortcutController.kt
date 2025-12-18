@@ -13,9 +13,6 @@ import com.mbrlabs.mundus.editor.tools.ToolManager
 import com.mbrlabs.mundus.editor.ui.UI
 import com.mbrlabs.mundus.editor.utils.KeyboardLayoutUtils
 
-/**
- *  * @version 07-02-2016
- */
 class ShortcutController(
     private val projectManager: ProjectManager,
     private val history: CommandHistory,

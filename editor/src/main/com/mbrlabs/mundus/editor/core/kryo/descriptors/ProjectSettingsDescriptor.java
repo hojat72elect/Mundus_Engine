@@ -3,10 +3,6 @@ package com.mbrlabs.mundus.editor.core.kryo.descriptors;
 
 import com.esotericsoftware.kryo.serializers.TaggedFieldSerializer.Tag;
 
-
-/**
- *  * @version 26-10-2016
- */
 public class ProjectSettingsDescriptor {
 
     // Export

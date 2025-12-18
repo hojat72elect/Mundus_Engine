@@ -15,8 +15,6 @@ import com.mbrlabs.mundus.editorcommons.events.SceneChangedEvent
 
 /**
  * Responsible for rendering Gizmos in the scene and listens for when new components are added.
- *
- *  * @version June 01, 2022
  */
 class GizmoManager : ComponentAddedEvent.ComponentAddedListener,
     ComponentRemovedEvent.ComponentRemovedListener,

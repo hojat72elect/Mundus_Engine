@@ -7,9 +7,6 @@ import com.mbrlabs.mundus.editor.Mundus
 import com.mbrlabs.mundus.editor.history.Command
 import com.mbrlabs.mundus.editorcommons.events.GameObjectModifiedEvent
 
-/**
- *  * @version 20-02-2016
- */
 class ScaleCommand(private var go: GameObject?) : Command {
 
     companion object {

@@ -6,9 +6,6 @@ import com.mbrlabs.mundus.commons.scene3d.GameObject
 import com.mbrlabs.mundus.editor.ui.modules.inspector.BaseInspectorWidget
 import com.mbrlabs.mundus.editor.ui.widgets.TerrainTextureLayerWidget
 
-/**
- *  * @version July 12, 2023
- */
 class TerrainLayerAssetInspectorWidget() : BaseInspectorWidget(TITLE) {
     companion object {
         private val TITLE = "Terrain Layer Asset"

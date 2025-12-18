@@ -20,8 +20,6 @@ import java.io.Writer;
 
 /**
  * Manages loading and saving of registry and project data in JSON Format.
- *
- *  * @version August 03, 2023
  */
 public class JsonIOManager implements IOManager {
     private final Json json;

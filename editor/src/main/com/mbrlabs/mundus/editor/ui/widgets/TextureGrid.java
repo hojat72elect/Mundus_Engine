@@ -17,9 +17,6 @@ import com.kotcrab.vis.ui.widget.VisTable;
 import com.mbrlabs.mundus.commons.utils.TextureProvider;
 import com.mbrlabs.mundus.editor.utils.Colors;
 
-/**
- *  * @version 30-01-2016
- */
 public class TextureGrid<T extends TextureProvider> extends VisTable {
 
     private static final int HIGHLIGHT_LINE_WIDTH = 3;

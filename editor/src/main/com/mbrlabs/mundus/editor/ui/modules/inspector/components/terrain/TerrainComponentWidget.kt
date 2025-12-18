@@ -19,9 +19,6 @@ import com.mbrlabs.mundus.editor.ui.modules.inspector.components.ComponentWidget
 import com.mbrlabs.mundus.editor.ui.widgets.MaterialSelectWidget
 import com.mbrlabs.mundus.editor.ui.widgets.MaterialWidget
 
-/**
- *  * @version 29-01-2016
- */
 class TerrainComponentWidget(terrainComponent: TerrainComponent) :
     ComponentWidget<TerrainComponent>("Terrain Component", terrainComponent), TabbedPaneListener {
 

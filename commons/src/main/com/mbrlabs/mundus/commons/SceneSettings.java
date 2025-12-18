@@ -4,8 +4,6 @@ import com.mbrlabs.mundus.commons.water.WaterResolution;
 
 /**
  * Settings specific to a Scene.
- *
- *  * @version July 23, 2022
  */
 public class SceneSettings {
 

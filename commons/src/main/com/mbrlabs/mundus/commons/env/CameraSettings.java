@@ -2,8 +2,6 @@ package com.mbrlabs.mundus.commons.env;
 
 /**
  * Class for holding default values for camera settings.
- *
- *  * @version July 11, 2022
  */
 public class CameraSettings {
     public static float DEFAULT_NEAR_PLANE = 0.2f;

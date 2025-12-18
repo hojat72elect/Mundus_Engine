@@ -8,10 +8,6 @@ import com.badlogic.gdx.utils.Array
 import com.mbrlabs.mundus.commons.scene3d.components.TerrainComponent
 import java.util.Random
 
-/**
- *  * *
- * @version 07-12-2015
- */
 object TestUtils {
 
     fun createABunchOfModelsOnTheTerrain(count: Int, model: Model, terrainComponent: TerrainComponent): Array<ModelInstance> {

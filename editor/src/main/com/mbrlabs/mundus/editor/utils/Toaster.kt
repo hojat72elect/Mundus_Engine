@@ -11,8 +11,6 @@ import java.util.Locale
 
 /**
  * Displays Android-like toasts at top right corner of the screen.
- *
- *  * @version 07-06-2016
  */
 class Toaster(stage: Stage) {
 
@@ -20,8 +18,6 @@ class Toaster(stage: Stage) {
 
     /**
      * Amber background.
-     *
-     * @param msg
      */
     fun info(msg: String) {
         val table = newTable(msg)

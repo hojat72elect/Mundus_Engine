@@ -14,9 +14,6 @@ import com.mbrlabs.mundus.commons.scene3d.ModelCacheable;
 
 import java.util.Objects;
 
-/**
- *  * @version 17-01-2016
- */
 public class ModelComponent extends CullableComponent implements AssetUsage, ModelCacheable, RenderableComponent {
 
     protected ModelAsset modelAsset;

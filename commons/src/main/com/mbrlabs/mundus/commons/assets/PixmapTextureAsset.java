@@ -11,9 +11,6 @@ import com.mbrlabs.mundus.commons.assets.meta.Meta;
 
 import java.util.Map;
 
-/**
- *  * @version 02-10-2016
- */
 public class PixmapTextureAsset extends Asset {
 
     private Pixmap pixmap;

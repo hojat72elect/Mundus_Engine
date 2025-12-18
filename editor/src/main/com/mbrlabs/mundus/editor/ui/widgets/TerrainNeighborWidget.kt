@@ -11,7 +11,6 @@ import com.mbrlabs.mundus.editor.ui.modules.dialogs.gameobjects.GameObjectPicker
 /**
  * A widget to display and update terrain neighbors.
  * Neighbors must be children of the same parent GameObject.
- *  * @version July 03, 2023
  */
 class TerrainNeighborWidget(val terrainComponent: TerrainComponent) : BaseWidget() {
 

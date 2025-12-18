@@ -14,9 +14,6 @@ import com.mbrlabs.mundus.editor.core.project.ProjectManager
 import com.mbrlabs.mundus.editor.ui.widgets.TerrainNeighborWidget
 import com.mbrlabs.mundus.editor.ui.widgets.ToolTipLabel
 
-/**
- *  * @version 30-01-2016
- */
 class TerrainSettingsTab(private val parentWidget: TerrainComponentWidget) : Tab(false, false) {
 
     private val table = VisTable()

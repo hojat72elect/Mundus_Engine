@@ -20,9 +20,6 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.Map;
 
-/**
- *  * @version 09-10-2016
- */
 public class MaterialAsset extends Asset {
 
     public static final String EXTENSION = ".mat";

@@ -16,7 +16,6 @@ import com.mbrlabs.mundus.commons.utils.ShaderUtils;
 import net.mgsx.gltf.scene3d.attributes.PBRTextureAttribute;
 
 /**
- *  * @version June 10, 2022
  * @deprecated We use PBR Depth shader now
  */
 public class ShadowMapShader extends BaseShader {

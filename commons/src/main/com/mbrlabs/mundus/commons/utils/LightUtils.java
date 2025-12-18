@@ -20,8 +20,6 @@ import net.mgsx.gltf.scene3d.lights.SpotLightEx;
 
 /**
  * Utilities class for lighting.
- *
- *  * @version June 06, 2022
  */
 public class LightUtils {
 

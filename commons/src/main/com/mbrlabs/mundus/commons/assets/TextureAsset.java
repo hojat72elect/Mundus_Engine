@@ -10,9 +10,6 @@ import com.mbrlabs.mundus.commons.utils.TextureUtils;
 
 import java.util.Map;
 
-/**
- *  * @version 01-10-2016
- */
 public class TextureAsset extends Asset implements TextureProvider {
 
     private Texture texture;

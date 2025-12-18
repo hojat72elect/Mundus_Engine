@@ -21,9 +21,6 @@ import com.mbrlabs.mundus.editor.utils.KeyboardLayoutUtils
 import com.mbrlabs.mundus.pluginapi.TerrainHoverExtension
 import org.pf4j.PluginManager
 
-/**
- *  * @version 24-11-2015
- */
 class FreeCamController(
     private val projectManager: ProjectManager,
     private val goPicker: GameObjectPicker,

@@ -5,7 +5,6 @@ import com.mbrlabs.mundus.commons.scene3d.GameObject
 /**
  * Interface for filtering GameObjects.
  * Implementations of this interface can be used to filter GameObjects in the GameObjectPickerDialog.
- *  * @version July 02, 2023
  */
 interface GameObjectFilter {
     fun ignore(go: GameObject): Boolean

@@ -18,9 +18,6 @@ import com.mbrlabs.mundus.editor.ui.modules.inspector.assets.TerrainLayerAssetIn
 import com.mbrlabs.mundus.editor.ui.modules.inspector.assets.TextureAssetInspectorWidget
 import com.mbrlabs.mundus.editor.ui.modules.inspector.assets.UsedByAssetInspectorWidget
 
-/**
- *  * @version 13-10-2016
- */
 class AssetInspector : VisTable() {
 
     private val materialWidget = MaterialAssetInspectorWidget()

@@ -10,8 +10,6 @@ import java.util.Map;
 
 /**
  * This essentially behaves like a terrain material
- *
- *  * @version 28-01-2016
  */
 public class TerrainMaterial extends TerrainAttributes {
     private final Map<SplatTexture.Channel, SplatTexture> textures;

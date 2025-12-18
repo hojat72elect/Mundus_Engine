@@ -9,9 +9,6 @@ import com.mbrlabs.mundus.editor.core.EditorScene;
 import com.mbrlabs.mundus.editor.tools.ToolHandle;
 import com.mbrlabs.mundus.editor.utils.Log;
 
-/**
- *  * @version 07-03-2016
- */
 public class ToolHandlePicker extends BasePicker {
 
     public ToolHandlePicker() {

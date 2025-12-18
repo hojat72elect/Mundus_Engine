@@ -16,9 +16,6 @@ import com.mbrlabs.mundus.editor.scene3d.components.PickableTerrainComponent
 import com.mbrlabs.mundus.editor.ui.modules.inspector.BaseInspectorWidget
 import com.mbrlabs.mundus.editor.ui.widgets.LevelOfDetailWidget
 
-/**
- *  * @version 15-10-2016
- */
 class TerrainAssetInspectorWidget : BaseInspectorWidget(TITLE) {
 
     companion object {

@@ -8,10 +8,6 @@ import com.mbrlabs.mundus.commons.assets.AssetType;
 import com.mbrlabs.mundus.commons.terrain.SplatMapResolution;
 import com.mbrlabs.mundus.commons.terrain.Terrain;
 
-/**
- *
- *  * @version 26-10-2016
- */
 public class MetaLoader {
 
     private final JsonReader reader = new JsonReader();

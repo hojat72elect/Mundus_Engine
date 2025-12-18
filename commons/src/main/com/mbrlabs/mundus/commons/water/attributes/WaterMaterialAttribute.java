@@ -5,8 +5,6 @@ import com.mbrlabs.mundus.commons.water.WaterMaterial;
 
 /**
  * A standard libGDX attribute to hold our WaterMaterial
- *
- *  * @version August 15, 2022
  */
 public class WaterMaterialAttribute extends Attribute {
     public final static String WaterMaterialAlias = "waterData";

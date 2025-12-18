@@ -16,8 +16,6 @@ import com.mbrlabs.mundus.editor.scene3d.components.PickableComponent;
  * <p>
  * See also:
  * http://www.opengl-tutorial.org/miscellaneous/clicking-on-objects/picking-with-an-opengl-hack/
- *
- *  * @version 20-02-2016
  */
 public class GameObjectPicker extends BasePicker {
 

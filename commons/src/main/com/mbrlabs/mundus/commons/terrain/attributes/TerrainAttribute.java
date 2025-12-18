@@ -2,9 +2,6 @@ package com.mbrlabs.mundus.commons.terrain.attributes;
 
 import com.mbrlabs.mundus.commons.MundusAttribute;
 
-/**
- *  * @version August 13, 2022
- */
 public class TerrainAttribute extends MundusAttribute {
     // Diffuse Textures
     public final static String DiffuseBaseAlias = "DiffuseBase";

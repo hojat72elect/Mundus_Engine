@@ -7,9 +7,6 @@ import com.kotcrab.vis.ui.widget.VisLabel
 import com.kotcrab.vis.ui.widget.VisTable
 import com.mbrlabs.mundus.editor.tools.brushes.TerrainBrush
 
-/**
- *  * @version 30-01-2016
- */
 class TerrainUpDownTab(private val parent: TerrainComponentWidget) : BaseBrushTab(parent, TerrainBrush.BrushMode.RAISE_LOWER) {
     private val table = VisTable()
 

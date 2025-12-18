@@ -10,9 +10,6 @@ import com.kotcrab.vis.ui.widget.tabbedpane.TabbedPaneListener
 import com.mbrlabs.mundus.editor.ui.modules.dock.assets.AssetsDock
 import com.mbrlabs.mundus.editor.ui.widgets.MundusSplitPane
 
-/**
- *  * @version 08-12-2015
- */
 class DockBar(private val splitPane: MundusSplitPane) : VisTable(), TabbedPaneListener {
 
     val assetsDock = AssetsDock()

@@ -11,9 +11,6 @@ import com.mbrlabs.mundus.commons.utils.LightUtils;
 
 import java.util.Iterator;
 
-/**
- *  * @version 16-01-2016
- */
 public class GameObject extends SimpleNode<GameObject> implements Iterable<GameObject> {
 
     public static final String DEFAULT_NAME = "GameObject";

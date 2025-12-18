@@ -15,8 +15,6 @@ import java.util.UUID;
  * Manages global settings.
  * <p>
  * Files are stored in ~/.mundus/
- *
- *  * @version 12-12-2015
  */
 public class Registry {
 

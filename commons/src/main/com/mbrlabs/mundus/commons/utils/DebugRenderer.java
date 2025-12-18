@@ -35,8 +35,6 @@ import java.util.Map;
 /**
  * Simple debug renderer that only renders bounding boxes of {@link CullableComponent}
  * which are used for frustum culling.
- *
- *  * @version July 25, 2022
  */
 public class DebugRenderer implements Renderer, Disposable {
     private static final OrientedBoundingBox tmpObb = new OrientedBoundingBox();

@@ -51,9 +51,6 @@ import com.mbrlabs.mundus.editor.ui.widgets.PersistingFileChooser
 import com.mbrlabs.mundus.editor.ui.widgets.RenderWidget
 import com.mbrlabs.mundus.editor.utils.Toaster
 
-/**
- *  * @version 27-11-2015
- */
 object UI : Stage(ScreenViewport()) {
 
     const val PAD_BOTTOM: Float = 2f

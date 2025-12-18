@@ -6,9 +6,6 @@ import com.mbrlabs.mundus.editor.Mundus
 import com.mbrlabs.mundus.editor.events.ComponentRemovedEvent
 import com.mbrlabs.mundus.editor.ui.modules.inspector.BaseInspectorWidget
 
-/**
- *  * @version 22-01-2016
- */
 abstract class ComponentWidget<T : Component>(title: String, var component: T) : BaseInspectorWidget(title) {
 
     init {

@@ -11,8 +11,7 @@ import com.mbrlabs.mundus.editor.Mundus
 import com.mbrlabs.mundus.editor.core.project.ProjectManager
 
 /**
- * @version 09-10-2016
- * @author attilabo
+ *  * @author attilabo
  */
 class ExitDialog : BaseDialog(TITLE) {
 

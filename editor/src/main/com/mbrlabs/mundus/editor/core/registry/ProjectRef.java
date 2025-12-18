@@ -3,8 +3,6 @@ package com.mbrlabs.mundus.editor.core.registry;
 
 /**
  * A reference to a Mundus project, stored in the registry.
- *
- *  * @version 07-06-2016
  */
 public class ProjectRef {
 

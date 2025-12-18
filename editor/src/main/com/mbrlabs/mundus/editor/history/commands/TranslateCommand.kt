@@ -7,9 +7,6 @@ import com.mbrlabs.mundus.editor.Mundus
 import com.mbrlabs.mundus.editor.history.Command
 import com.mbrlabs.mundus.editorcommons.events.GameObjectModifiedEvent
 
-/**
- *  * @version 07-02-2016
- */
 class TranslateCommand(private var go: GameObject?) : Command {
 
     companion object {

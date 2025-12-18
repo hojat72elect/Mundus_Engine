@@ -23,8 +23,6 @@ import java.util.Locale;
 /**
  * Converts runtime formats into Kryo compatible formats for internal project
  * persistence.
- *
- *  * @version 17-12-2015
  */
 public class DescriptorConverter {
 

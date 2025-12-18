@@ -6,9 +6,6 @@ import com.mbrlabs.mundus.commons.scene3d.GameObject;
 
 import java.util.Iterator;
 
-/**
- *  * @version 21-01-2016
- */
 public class BreadthFirstIterator implements Iterator<GameObject> {
 
     private final Queue<GameObject> queue;

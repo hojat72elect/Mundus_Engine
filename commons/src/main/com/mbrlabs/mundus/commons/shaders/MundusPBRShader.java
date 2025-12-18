@@ -13,9 +13,6 @@ import com.mbrlabs.mundus.commons.env.MundusEnvironment;
 
 import net.mgsx.gltf.scene3d.shaders.PBRShader;
 
-/**
- *  * @version July 01, 2022
- */
 public class MundusPBRShader extends PBRShader {
 
     protected final int UNIFORM_POINT_LIGHT_NUM_ACTIVE = register(new Uniform("u_activeNumPointLights"));

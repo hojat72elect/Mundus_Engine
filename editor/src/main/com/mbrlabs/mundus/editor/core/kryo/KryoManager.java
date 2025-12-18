@@ -33,8 +33,6 @@ import java.util.Date;
  * This provides only method for loading the serialized data into POJOs. It does
  * not load or initialize any data (like for example it does not load meshes or
  * textures). This has to be done separately (ProjectManager).
- *
- *  * @version 12-12-2015
  */
 public class KryoManager implements IOManager {
 

@@ -3,9 +3,6 @@ package com.mbrlabs.mundus.editor.ui.widgets
 
 import com.kotcrab.vis.ui.util.IntDigitsOnlyFilter
 
-/**
- *  * @version 21-06-2016
- */
 class IntegerFieldWithLabel : TextFieldWithLabel {
 
     constructor(labelText: String, width: Int, allowNegative: Boolean) : super(labelText, width) {

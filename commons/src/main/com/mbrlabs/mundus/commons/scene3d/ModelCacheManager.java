@@ -10,9 +10,7 @@ import com.mbrlabs.mundus.commons.Scene;
 import com.mbrlabs.mundus.commons.scene3d.components.Component;
 
 /**
- * Manages a ModelCache and keeps it up to date based on requests for rebuilds and set intervals
- *
- *  * @version August 02, 2022
+ * Manages a ModelCache and keeps it up to date based on requests for rebuilds and set intervals.
  */
 public class ModelCacheManager implements Disposable {
     private final Scene scene;

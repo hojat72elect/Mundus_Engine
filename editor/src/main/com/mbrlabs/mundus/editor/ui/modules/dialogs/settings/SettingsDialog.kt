@@ -11,9 +11,6 @@ import com.kotcrab.vis.ui.widget.VisTree
 import com.mbrlabs.mundus.editor.ui.UI
 import com.mbrlabs.mundus.editor.ui.modules.dialogs.BaseDialog
 
-/**
- *  * @version 24-11-2015
- */
 class SettingsDialog : BaseDialog("Settings") {
     companion object {
         const val WIDTH = 700f

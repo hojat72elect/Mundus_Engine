@@ -16,9 +16,6 @@ import com.mbrlabs.mundus.editor.utils.Log
 import com.mbrlabs.mundus.editorcommons.types.ToastType
 import org.pf4j.PluginManager
 
-/**
- *  * @version 26-12-2015
- */
 class ExportDialog : VisDialog("Exporting") {
 
     private var lastExport: Long = 0

@@ -31,9 +31,6 @@ import net.mgsx.gltf.scene3d.attributes.PBRCubemapAttribute;
 import net.mgsx.gltf.scene3d.attributes.PBRTextureAttribute;
 import net.mgsx.gltf.scene3d.utils.IBLBuilder;
 
-/**
- *  * @version 22-12-2015
- */
 public class Scene implements Disposable {
     public static boolean isRuntime = true;
 

@@ -15,9 +15,6 @@ import com.mbrlabs.mundus.editor.events.SceneGraphChangedEvent
 import com.mbrlabs.mundus.editor.history.CommandHistory
 import com.mbrlabs.mundus.editor.history.commands.GameObjectActiveCommand
 
-/**
- *  * @version 19-01-2016
- */
 class IdentifierWidget : VisTable() {
 
     private val active = VisCheckBox("", true)

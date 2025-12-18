@@ -6,8 +6,6 @@ import com.mbrlabs.mundus.commons.shaders.PBRTerrainShader;
 
 /**
  * Overrides PBRTerrainShader to include picking data
- *
- *  * @version August 16, 2022
  */
 public class EditorPBRTerrainShader extends PBRTerrainShader {
     private static final Vector3 pickerPosition = new Vector3();

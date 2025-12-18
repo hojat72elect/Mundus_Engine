@@ -10,9 +10,6 @@ import com.mbrlabs.mundus.editor.events.UpdateNoiseTextureEvent
 import com.mbrlabs.mundus.editor.terrain.FastNoiseGenerator
 import com.mbrlabs.mundus.editor.terrain.Terraformer
 
-/**
- *  * @version October 24, 2022
- */
 class NoiseGeneratorWidget() : BaseWidget(), UpdateNoiseTextureEvent.UpdateNoiseTextureListener {
     var generator: FastNoiseGenerator
     var renderWidget: RenderWidget

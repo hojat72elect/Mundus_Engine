@@ -14,9 +14,6 @@ import com.mbrlabs.mundus.editor.utils.GlUtils
 private const val VERTEX_SHADER = "com/mbrlabs/mundus/editor/shader/wire.vert.glsl"
 private const val FRAGMENT_SHADER = "com/mbrlabs/mundus/editor/shader/wire.frag.glsl"
 
-/**
- *  * @version 03-12-2015
- */
 class WireframeShader : BaseShader() {
 
     private val UNIFORM_PROJ_VIEW_MATRIX = register(Uniform("u_projViewMatrix"))

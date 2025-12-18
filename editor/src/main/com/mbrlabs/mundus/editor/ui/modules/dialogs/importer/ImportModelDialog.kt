@@ -65,9 +65,6 @@ import net.mgsx.gltf.scene3d.utils.IBLBuilder
 import java.io.IOException
 import java.nio.file.Paths
 
-/**
- *  * @version 07-06-2016
- */
 class ImportModelDialog : BaseDialog("Import Mesh"), Disposable {
 
     companion object {

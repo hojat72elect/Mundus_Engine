@@ -2,9 +2,6 @@ package com.mbrlabs.mundus.editor.events
 
 import com.mbrlabs.mundus.editorcommons.Subscribe
 
-/**
- *  * @version July 28, 2022
- */
 class AssetDeletedEvent {
 
     interface AssetDeletedListener {

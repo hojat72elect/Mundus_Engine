@@ -5,8 +5,6 @@ import com.mbrlabs.mundus.commons.scene3d.GameObject;
 
 /**
  * Encodes/Decides game object ids to rgb color values.
- *
- *  * @version 21-02-2016
  */
 public class PickerColorEncoder {
 

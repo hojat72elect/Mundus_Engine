@@ -15,9 +15,6 @@ import com.mbrlabs.mundus.editor.ui.UI
 import com.mbrlabs.mundus.editor.ui.widgets.FileChooserField
 import com.mbrlabs.mundus.editorcommons.events.ProjectChangedEvent
 
-/**
- *  * @version 26-10-2016
- */
 class ExportSettingsTable : BaseSettingsTable(), ProjectChangedEvent.ProjectChangedListener {
 
     private val fileChooserField = FileChooserField(500)

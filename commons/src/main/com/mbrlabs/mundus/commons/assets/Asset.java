@@ -16,19 +16,12 @@ import java.util.Map;
  * which contains meta information about the asset. Assets can have dependencies
  * to other assets by specifying the asset id in the meta file or in the asset
  * file.
- *
- *  * @version 01-10-2016
  */
 public abstract class Asset implements Disposable, AssetUsage {
 
     protected FileHandle file;
     protected Meta meta;
 
-    /**
-     *
-     * @param meta
-     * @param assetFile
-     */
     public Asset(Meta meta, FileHandle assetFile) {
         this.meta = meta;
         this.file = assetFile;

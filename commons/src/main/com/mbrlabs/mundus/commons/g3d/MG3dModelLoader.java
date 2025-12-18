@@ -32,8 +32,6 @@ import com.badlogic.gdx.utils.JsonValue;
  * <p>
  * It ignores all textures, set in the model. This is because, one should be
  * able to assign materials (textures, colors) from the editor.
- *
- *  * @version 04-10-2016
  */
 public class MG3dModelLoader extends ModelLoader<ModelLoader.ModelParameters> {
     public static final short VERSION_HI = 0;

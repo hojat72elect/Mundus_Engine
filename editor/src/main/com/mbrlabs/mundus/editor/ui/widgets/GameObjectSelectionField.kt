@@ -12,7 +12,6 @@ import com.mbrlabs.mundus.editor.ui.modules.dialogs.gameobjects.GameObjectPicker
 
 /**
  * A UI field for selecting a GameObject. Filters can be applied to the list of GameObjects.
- *  * @version July 02, 2023
  */
 class GameObjectSelectionField : VisTable() {
 

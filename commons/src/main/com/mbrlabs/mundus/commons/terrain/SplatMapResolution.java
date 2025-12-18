@@ -1,8 +1,5 @@
 package com.mbrlabs.mundus.commons.terrain;
 
-/**
- *  * @version July 23, 2022
- */
 public enum SplatMapResolution {
     _512("512x512"),
     _1024("1024x1024"),

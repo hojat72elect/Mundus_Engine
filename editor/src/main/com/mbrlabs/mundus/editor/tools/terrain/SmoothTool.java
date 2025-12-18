@@ -9,8 +9,6 @@ import com.mbrlabs.mundus.editor.tools.brushes.TerrainBrush;
 /**
  * Get average height of all vertices in radius, interpolate heights to average height
  * will a falloff effect based on distance from radius.
- *
- *  * @version June 28, 2023
  */
 public class SmoothTool extends RadiusTerrainTool {
     private float averageHeight = 0;

@@ -9,9 +9,6 @@ import com.mbrlabs.mundus.editor.Mundus
 import com.mbrlabs.mundus.editor.profiling.MundusGLProfiler
 import com.mbrlabs.mundus.editor.ui.widgets.AutoFocusScrollPane
 
-/**
- *  * @version June 30, 2022
- */
 class ProfilingBar : Tab(false, false) {
 
     private val glProfile: MundusGLProfiler = Mundus.inject()
