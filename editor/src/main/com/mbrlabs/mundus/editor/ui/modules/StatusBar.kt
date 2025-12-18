@@ -129,7 +129,7 @@ class StatusBar : VisTable(), PluginsLoadedEvent.PluginsLoadedEventListener {
     fun setupListeners() {
         speed01.addListener(object : ClickListener() {
             override fun clicked(event: InputEvent?, x: Float, y: Float) {
-               setCameraMovementSpeed(freeCamController.SPEED_01)
+                setCameraMovementSpeed(freeCamController.SPEED_01)
             }
         })
 

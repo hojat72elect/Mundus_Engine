@@ -29,8 +29,8 @@ import com.mbrlabs.mundus.editorcommons.events.SceneChangedEvent
  * *
  * @version 25-05-2022
  */
-class  DirectionalLightsDialog : BaseDialog("Directional Light"), ProjectChangedEvent.ProjectChangedListener,
-        SceneChangedEvent.SceneChangedListener {
+class DirectionalLightsDialog : BaseDialog("Directional Light"), ProjectChangedEvent.ProjectChangedListener,
+    SceneChangedEvent.SceneChangedListener {
 
     private val root = VisTable()
 
@@ -100,8 +100,10 @@ class  DirectionalLightsDialog : BaseDialog("Directional Light"), ProjectChanged
     }
 
     private fun addShadowSection() {
-        val shadowLabel = ToolTipLabel("Shadows", "Experimental for now." +
-                " Only a single pass shadow map with limited range.")
+        val shadowLabel = ToolTipLabel(
+            "Shadows", "Experimental for now." +
+                    " Only a single pass shadow map with limited range."
+        )
         root.add(shadowLabel).colspan(2).left().row()
         root.addSeparator().colspan(2).row()
 
@@ -130,15 +132,15 @@ class  DirectionalLightsDialog : BaseDialog("Directional Light"), ProjectChanged
                         light?.intensity = d
                         light?.updateColor()
                         projectManager.current().currScene.initPBR()
-                    } catch (ex : NumberFormatException) {
-                        Mundus.postEvent(LogEvent(LogType.ERROR,"Error parsing field " + intensity.name))
+                    } catch (ex: NumberFormatException) {
+                        Mundus.postEvent(LogEvent(LogType.ERROR, "Error parsing field " + intensity.name))
                     }
                 }
             }
         })
 
         // color
-        colorPickerField.colorAdapter = object: ColorPickerAdapter() {
+        colorPickerField.colorAdapter = object : ColorPickerAdapter() {
             override fun finished(newColor: Color) {
                 val light = LightUtils.getDirectionalLight(projectManager.current().currScene.environment)
                 light?.baseColor?.set(newColor)

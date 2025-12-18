@@ -61,8 +61,10 @@ class ModelComponentWidget(modelComponent: ModelComponent) : ComponentWidget<Mod
 
         val label = VisLabel()
         label.setWrap(true)
-        label.setText("Here you change the materials of model components individually.\n"
-                + "Modifying the material will update all components, that use that material.")
+        label.setText(
+            "Here you change the materials of model components individually.\n"
+                    + "Modifying the material will update all components, that use that material."
+        )
         collapsibleContent.add(label).grow().padBottom(10f).row()
 
         collapsibleContent.add(materialContainer).grow().row()
@@ -86,7 +88,7 @@ class ModelComponentWidget(modelComponent: ModelComponent) : ComponentWidget<Mod
             val material = component.materials[g3dbMatID]
             val selectWidget = MaterialSelectWidget(material)
             materialContainer.add(selectWidget).grow().padBottom(20f).row()
-            selectWidget.matChangedListener = object: MaterialWidget.MaterialChangedListener {
+            selectWidget.matChangedListener = object : MaterialWidget.MaterialChangedListener {
                 override fun materialChanged(materialAsset: MaterialAsset) {
                     component.materials.put(g3dbMatID, materialAsset)
                     component.applyMaterials()

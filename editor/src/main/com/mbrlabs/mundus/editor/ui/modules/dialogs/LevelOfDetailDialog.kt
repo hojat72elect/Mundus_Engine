@@ -24,8 +24,8 @@ class LevelOfDetailDialog : BaseDialog("Level of Detail") {
     private val disableLoDBtn = VisTextButton("Disable")
     private var manager: TerrainManagerComponent? = null
 
-    private var projectManager : ProjectManager = Mundus.inject()
-    private var lodScheduler : LevelOfDetailScheduler = Mundus.inject()
+    private var projectManager: ProjectManager = Mundus.inject()
+    private var lodScheduler: LevelOfDetailScheduler = Mundus.inject()
     private val lodSchedulerListener = object : LevelOfDetailScheduler.LodSchedulerListener {
         override fun onTerrainLoDRebuild(state: LevelOfDetailScheduler.State) {
             Scene2DUtils.setButtonState(generateLoDBtn, state == LevelOfDetailScheduler.State.COMPLETE)
@@ -41,16 +41,20 @@ class LevelOfDetailDialog : BaseDialog("Level of Detail") {
         val width = UI.width * 0.3f
 
         val descriptionOne = VisLabel()
-        descriptionOne.setText("Level of Detail (LoD) is a technique that reduces the number of triangles in a mesh to improve" +
-                " performance. This is done by generating a series of meshes with decreasing triangle counts. The " +
-                "meshes are then swapped out depending on the distance from the camera.")
+        descriptionOne.setText(
+            "Level of Detail (LoD) is a technique that reduces the number of triangles in a mesh to improve" +
+                    " performance. This is done by generating a series of meshes with decreasing triangle counts. The " +
+                    "meshes are then swapped out depending on the distance from the camera."
+        )
         descriptionOne.wrap = true
 
         val descriptionTwo = VisLabel()
-        descriptionTwo.setText("The Generate button will build LoD meshes for all terrain components under the manager. If they already " +
-                "have LoD meshes, they will be rebuilt. LoD's are rebuilt automatically as needed so manual regeneration should not be needed." +
-                " The Disable button will remove all LoD meshes from the terrain components. After updating LoD" +
-                " meshes, you will need to save the project to keep the changes.")
+        descriptionTwo.setText(
+            "The Generate button will build LoD meshes for all terrain components under the manager. If they already " +
+                    "have LoD meshes, they will be rebuilt. LoD's are rebuilt automatically as needed so manual regeneration should not be needed." +
+                    " The Disable button will remove all LoD meshes from the terrain components. After updating LoD" +
+                    " meshes, you will need to save the project to keep the changes."
+        )
         descriptionTwo.wrap = true
 
         contentTable.add(descriptionOne).expandX().prefWidth(width).padBottom(10f).row()

@@ -29,6 +29,7 @@ import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import com.badlogic.gdx.graphics.g3d.utils.shapebuilders.BoxShapeBuilder;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.math.Vector3;
+
 import net.mgsx.gltf.loaders.shared.geometry.MeshTangentSpaceGenerator;
 
 /**
@@ -166,8 +167,8 @@ public class UsefulMeshs {
         );
 
         VertexAttribute normalMapUVs = null;
-        for(VertexAttribute a : attribs){
-            if(a.usage == VertexAttributes.Usage.TextureCoordinates){
+        for (VertexAttribute a : attribs) {
+            if (a.usage == VertexAttributes.Usage.TextureCoordinates) {
                 normalMapUVs = a;
             }
         }
@@ -318,8 +319,8 @@ public class UsefulMeshs {
         );
 
         VertexAttribute normalMapUVs = null;
-        for(VertexAttribute a : attribs){
-            if(a.usage == VertexAttributes.Usage.TextureCoordinates){
+        for (VertexAttribute a : attribs) {
+            if (a.usage == VertexAttributes.Usage.TextureCoordinates) {
                 normalMapUVs = a;
             }
         }
@@ -336,5 +337,4 @@ public class UsefulMeshs {
         modelBuilder.part("cube", mesh, GL20.GL_TRIANGLES, mat);
         return modelBuilder.end();
     }
-
 }

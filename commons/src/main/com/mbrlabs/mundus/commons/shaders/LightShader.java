@@ -13,6 +13,7 @@ import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.mbrlabs.mundus.commons.env.MundusEnvironment;
 import com.mbrlabs.mundus.commons.shadows.MundusDirectionalShadowLight;
 import com.mbrlabs.mundus.commons.utils.LightUtils;
+
 import net.mgsx.gltf.scene3d.lights.DirectionalLightEx;
 
 /**
@@ -41,16 +42,12 @@ public abstract class LightShader extends BaseShader {
 
     // Point Lights
     protected final int UNIFORM_POINT_LIGHT_NUM_ACTIVE = register(new Uniform("u_activeNumPointLights"));
-
+    // SpotLights
+    protected final int UNIFORM_SPOT_LIGHT_NUM_ACTIVE = register(new Uniform("u_activeNumSpotLights"));
     protected int[] UNIFORM_POINT_LIGHT_COLOR = new int[LightUtils.MAX_POINT_LIGHTS];
     protected int[] UNIFORM_POINT_LIGHT_INTENSITY = new int[LightUtils.MAX_POINT_LIGHTS];
     protected int[] UNIFORM_POINT_LIGHT_INTENSITY_AMBIENT = new int[LightUtils.MAX_POINT_LIGHTS];
-
     protected int[] UNIFORM_POINT_LIGHT_POS = new int[LightUtils.MAX_POINT_LIGHTS];
-
-    // SpotLights
-    protected final int UNIFORM_SPOT_LIGHT_NUM_ACTIVE = register(new Uniform("u_activeNumSpotLights"));
-
     protected int[] UNIFORM_SPOT_LIGHT_COLOR = new int[LightUtils.MAX_SPOT_LIGHTS];
     protected int[] UNIFORM_SPOT_LIGHT_INTENSITY = new int[LightUtils.MAX_SPOT_LIGHTS];
     protected int[] UNIFORM_SPOT_LIGHT_INTENSITY_AMBIENT = new int[LightUtils.MAX_SPOT_LIGHTS];
@@ -60,30 +57,30 @@ public abstract class LightShader extends BaseShader {
     protected int[] UNIFORM_SPOT_LIGHT_CUT_OFF = new int[LightUtils.MAX_SPOT_LIGHTS];
     protected int[] UNIFORM_SPOT_LIGHT_ATT_EXP = new int[LightUtils.MAX_SPOT_LIGHTS];
 
-    private float shadowBias = 1f/255f;
+    private final float shadowBias = 1f / 255f;
 
     @Override
     public void init(ShaderProgram program, Renderable renderable) {
 
         // Register point light uniform array
         for (int i = 0; i < LightUtils.MAX_POINT_LIGHTS; i++) {
-            UNIFORM_POINT_LIGHT_COLOR[i] = register(new Uniform("u_pointLights["+ i +"].Base.Color"));
-            UNIFORM_POINT_LIGHT_INTENSITY[i] = register(new Uniform("u_pointLights["+ i +"].Base.DiffuseIntensity"));
-            UNIFORM_POINT_LIGHT_INTENSITY_AMBIENT[i] = register(new Uniform("u_pointLights["+ i +"].Base.AmbientIntensity"));
+            UNIFORM_POINT_LIGHT_COLOR[i] = register(new Uniform("u_pointLights[" + i + "].Base.Color"));
+            UNIFORM_POINT_LIGHT_INTENSITY[i] = register(new Uniform("u_pointLights[" + i + "].Base.DiffuseIntensity"));
+            UNIFORM_POINT_LIGHT_INTENSITY_AMBIENT[i] = register(new Uniform("u_pointLights[" + i + "].Base.AmbientIntensity"));
 
-            UNIFORM_POINT_LIGHT_POS[i] = register(new Uniform("u_pointLights["+ i +"].LocalPos"));
+            UNIFORM_POINT_LIGHT_POS[i] = register(new Uniform("u_pointLights[" + i + "].LocalPos"));
         }
 
         // Register spotlight uniform array
         for (int i = 0; i < LightUtils.MAX_SPOT_LIGHTS; i++) {
-            UNIFORM_SPOT_LIGHT_COLOR[i] = register(new Uniform("u_spotLights["+ i +"].Base.Base.Color"));
-            UNIFORM_SPOT_LIGHT_INTENSITY[i] = register(new Uniform("u_spotLights["+ i +"].Base.Base.DiffuseIntensity"));
-            UNIFORM_SPOT_LIGHT_INTENSITY_AMBIENT[i] = register(new Uniform("u_spotLights["+ i +"].Base.Base.AmbientIntensity"));
+            UNIFORM_SPOT_LIGHT_COLOR[i] = register(new Uniform("u_spotLights[" + i + "].Base.Base.Color"));
+            UNIFORM_SPOT_LIGHT_INTENSITY[i] = register(new Uniform("u_spotLights[" + i + "].Base.Base.DiffuseIntensity"));
+            UNIFORM_SPOT_LIGHT_INTENSITY_AMBIENT[i] = register(new Uniform("u_spotLights[" + i + "].Base.Base.AmbientIntensity"));
 
-            UNIFORM_SPOT_LIGHT_POS[i] = register(new Uniform("u_spotLights["+ i +"].Base.LocalPos"));
-            UNIFORM_SPOT_LIGHT_DIRECTION[i] = register(new Uniform("u_spotLights["+ i +"].Direction"));
-            UNIFORM_SPOT_LIGHT_CUT_OFF[i] = register(new Uniform("u_spotLights["+ i +"].Cutoff"));
-            UNIFORM_SPOT_LIGHT_ATT_EXP[i] = register(new Uniform("u_spotLights["+ i +"].Exponent"));
+            UNIFORM_SPOT_LIGHT_POS[i] = register(new Uniform("u_spotLights[" + i + "].Base.LocalPos"));
+            UNIFORM_SPOT_LIGHT_DIRECTION[i] = register(new Uniform("u_spotLights[" + i + "].Direction"));
+            UNIFORM_SPOT_LIGHT_CUT_OFF[i] = register(new Uniform("u_spotLights[" + i + "].Cutoff"));
+            UNIFORM_SPOT_LIGHT_ATT_EXP[i] = register(new Uniform("u_spotLights[" + i + "].Exponent"));
         }
 
         super.init(program, renderable);
@@ -145,7 +142,6 @@ public abstract class LightShader extends BaseShader {
         } else {
             set(UNIFORM_SPOT_LIGHT_NUM_ACTIVE, 0);
         }
-
     }
 
     protected void setShadows(MundusEnvironment env) {
@@ -160,7 +156,7 @@ public abstract class LightShader extends BaseShader {
             set(UNIFORM_USE_SHADOWS, 1);
             set(UNIFORM_SHADOW_TEXTURE, env.shadowMap.getDepthMap());
             set(UNIFORM_SHADOW_VIEW, env.shadowMap.getProjViewTrans());
-            set(UNIFORM_SHADOW_PCF_OFFSET,  1.f / (2f * env.shadowMap.getDepthMap().texture.getWidth()));
+            set(UNIFORM_SHADOW_PCF_OFFSET, 1.f / (2f * env.shadowMap.getDepthMap().texture.getWidth()));
         }
     }
 }

@@ -16,12 +16,12 @@
 
 package com.mbrlabs.mundus.editor.terrain;
 
-import java.util.Random;
-
 import com.badlogic.gdx.math.Interpolation;
 import com.mbrlabs.mundus.commons.scene3d.components.TerrainComponent;
 import com.mbrlabs.mundus.editor.Mundus;
 import com.mbrlabs.mundus.editorcommons.events.TerrainVerticesChangedEvent;
+
+import java.util.Random;
 
 /**
  *
@@ -86,7 +86,7 @@ public class PerlinNoiseGenerator extends Generator<PerlinNoiseGenerator> {
     }
 
     private float getNoise(int x, int z) {
-        rand.setSeed(x * 49632 + z * 325176 + seed);
+        rand.setSeed(x * 49632L + z * 325176L + seed);
         return rand.nextFloat();
     }
 
@@ -118,5 +118,4 @@ public class PerlinNoiseGenerator extends Generator<PerlinNoiseGenerator> {
 
         return corners + sides + center;
     }
-
 }

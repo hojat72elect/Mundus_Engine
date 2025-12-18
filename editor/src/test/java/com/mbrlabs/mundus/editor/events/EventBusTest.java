@@ -2,6 +2,7 @@ package com.mbrlabs.mundus.editor.events;
 
 import com.mbrlabs.mundus.editorcommons.Subscribe;
 import com.mbrlabs.mundus.editorcommons.events.SceneChangedEvent;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -70,5 +71,4 @@ public class EventBusTest {
         // should still be 1
         Assert.assertEquals(sceneChangedEventsReceived[0], 1);
     }
-
 }

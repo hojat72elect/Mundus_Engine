@@ -57,6 +57,7 @@ import com.mbrlabs.mundus.editor.utils.SkyboxBuilder;
 import com.mbrlabs.mundus.editorcommons.events.ProjectChangedEvent;
 import com.mbrlabs.mundus.editorcommons.events.SceneChangedEvent;
 import com.mbrlabs.mundus.editorcommons.exceptions.AssetAlreadyExistsException;
+
 import org.pf4j.PluginManager;
 
 import java.io.File;
@@ -71,21 +72,19 @@ import java.io.IOException;
  */
 public class ProjectManager implements Disposable {
 
-    private static final String TAG = ProjectManager.class.getSimpleName();
-
-    private static final String DEFAULT_SCENE_NAME = "Main Scene";
     public static final String PROJECT_ASSETS_DIR = "assets/";
     public static final String PROJECT_SCENES_DIR = "scenes/";
     public static final String PROJECT_SCENE_EXTENSION = "mundus";
     public static final String PROJECT_EXTENSION = "pro";
-
+    private static final String TAG = ProjectManager.class.getSimpleName();
+    private static final String DEFAULT_SCENE_NAME = "Main Scene";
     private ProjectContext currentProject;
     private ProjectContext loadingProject;
-    private Registry registry;
-    private IOManager ioManager;
+    private final Registry registry;
+    private final IOManager ioManager;
     private ModelBatch modelBatch;
     private ModelBatch depthBatch;
-    private PluginManager pluginManager;
+    private final PluginManager pluginManager;
 
     public ProjectManager(IOManager ioManager, Registry registry, ModelBatch modelBatch, PluginManager pluginManager) {
         this.registry = registry;
@@ -137,13 +136,11 @@ public class ProjectManager implements Disposable {
 
     /**
      * Creates & saves a new project.
-     *
+     * <p>
      * Creates a new project. However, it does not switch the current project.
      *
-     * @param name
-     *            project name
-     * @param folder
-     *            absolute path to project folder
+     * @param name   project name
+     * @param folder absolute path to project folder
      * @return new project context
      */
     public ProjectContext createProject(String name, String folder) {
@@ -187,7 +184,7 @@ public class ProjectManager implements Disposable {
     /**
      * Gets the default skybox, if it can be found.
      *
-     * @param projectContext the project context to use
+     * @param projectContext  the project context to use
      * @param createIfMissing if true, creates default skybox if it's missing
      * @return skybox asset
      */
@@ -226,13 +223,10 @@ public class ProjectManager implements Disposable {
     /**
      * Imports (opens) a mundus project, that is not in the registry.
      *
-     * @param absolutePath
-     *            path to project
+     * @param absolutePath path to project
      * @return project context of imported project
-     * @throws ProjectAlreadyImportedException
-     *             if project exists already in registry
-     * @throws ProjectOpenException
-     *             project could not be opened
+     * @throws ProjectAlreadyImportedException if project exists already in registry
+     * @throws ProjectOpenException            project could not be opened
      */
     public ProjectContext importProject(String absolutePath) throws ProjectAlreadyImportedException, ProjectOpenException {
         // check if already imported
@@ -254,7 +248,7 @@ public class ProjectManager implements Disposable {
 
             // Set this import project as last opened to prevent NPE only
             // if no project was opened before
-            if (registry.getLastProject() == null){
+            if (registry.getLastProject() == null) {
                 registry.setLastProject(ref);
             }
 
@@ -276,8 +270,7 @@ public class ProjectManager implements Disposable {
     /**
      * Completely saves a project & all scenes.
      *
-     * @param projectContext
-     *            project context
+     * @param projectContext project context
      */
     public void saveProject(ProjectContext projectContext) {
         // save modified assets
@@ -318,7 +311,7 @@ public class ProjectManager implements Disposable {
 
     /**
      * Loads the project that was open when the user quit the program.
-     *
+     * <p>
      * Does not open open the project.
      *
      * @return project context of last project
@@ -349,15 +342,13 @@ public class ProjectManager implements Disposable {
 
     /**
      * Starts loading the project context for a project.
-     *
+     * <p>
      * This does not open to that project, it only starts the async load process.
      * {@link #continueLoading()} must be called each frame while loading to continue the loading process.
      *
-     * @param ref
-     *            project reference to the project
+     * @param ref project reference to the project
      * @return initialized but unloaded project context
-     * @throws FileNotFoundException
-     *             if project can't be found
+     * @throws FileNotFoundException if project can't be found
      */
     public ProjectContext startAsyncProjectLoad(ProjectRef ref) throws FileNotFoundException, MetaFileParseException {
         ProjectContext context = ioManager.loadProjectContext(ref);
@@ -402,11 +393,10 @@ public class ProjectManager implements Disposable {
 
     /**
      * Opens a project.
-     *
+     * <p>
      * Opens a project. If a project is already open it will be disposed.
      *
-     * @param context
-     *            project context to open
+     * @param context project context to open
      */
     public void changeProject(ProjectContext context) {
         if (currentProject != null) {
@@ -438,10 +428,8 @@ public class ProjectManager implements Disposable {
     /**
      * Creates a new scene for the given project.
      *
-     * @param project
-     *            project
-     * @param name
-     *            scene name
+     * @param project project
+     * @param name    scene name
      * @return newly created scene
      */
     public Scene createScene(ProjectContext project, String name) {
@@ -460,16 +448,13 @@ public class ProjectManager implements Disposable {
 
     /**
      * Loads a scene.
-     *
+     * <p>
      * This does not open the scene.
      *
-     * @param context
-     *            project context of the scene
-     * @param sceneName
-     *            name of the scene
+     * @param context   project context of the scene
+     * @param sceneName name of the scene
      * @return loaded scene
-     * @throws FileNotFoundException
-     *             if scene file not found
+     * @throws FileNotFoundException if scene file not found
      */
     public EditorScene loadScene(ProjectContext context, String sceneName) throws FileNotFoundException {
         SceneDTO sceneDTO = SceneManager.loadScene(context, sceneName);
@@ -508,10 +493,8 @@ public class ProjectManager implements Disposable {
     /**
      * Loads and opens scene
      *
-     * @param projectContext
-     *            project context of scene
-     * @param sceneName
-     *            scene name
+     * @param projectContext project context of scene
+     * @param sceneName      scene name
      */
     public void changeScene(ProjectContext projectContext, String sceneName) {
         try {
@@ -531,13 +514,13 @@ public class ProjectManager implements Disposable {
     /**
      * Renames scene.
      *
-     * @param project The project context
+     * @param project      The project context
      * @param oldSceneName The old name of scene
      * @param newSceneName The new name of scene
      */
     public void renameScene(final ProjectContext project, final String oldSceneName, final String newSceneName) {
         // Rename scene name in scene list
-        for(int i = 0; i < project.scenes.size; ++i) {
+        for (int i = 0; i < project.scenes.size; ++i) {
             if (project.scenes.get(i).equals(oldSceneName)) {
                 project.scenes.removeIndex(i);
                 project.scenes.insert(i, newSceneName);
@@ -556,7 +539,7 @@ public class ProjectManager implements Disposable {
     /**
      * Deletes scene
      *
-     * @param project The project context
+     * @param project   The project context
      * @param sceneName The screen name
      */
     public void deleteScene(final ProjectContext project, final String sceneName) {
@@ -576,13 +559,13 @@ public class ProjectManager implements Disposable {
     private void initComponents(ProjectContext context, GameObject go) {
         Array<ModelAsset> models = context.assetManager.getModelAssets();
         Array.ArrayIterator<Component> iterator = go.getComponents().iterator();
-        while(iterator.hasNext()) {
+        while (iterator.hasNext()) {
             Component c = iterator.next();
             if (c == null) {
                 // To prevent crashing, log a warning statement and remove the corrupted component
                 iterator.remove();
                 Log.warn(TAG, "A component for {} was null on load, this may be caused by deleting an asset that is still in a scene.", go);
-                Mundus.INSTANCE.postEvent(new LogEvent(LogType.ERROR, "A component for "+ go.name +"  was null on load, this may be caused by deleting an asset that is still in a scene."));
+                Mundus.INSTANCE.postEvent(new LogEvent(LogType.ERROR, "A component for " + go.name + "  was null on load, this may be caused by deleting an asset that is still in a scene."));
                 go.name = go.name.concat(" [COMPONENT ERROR]");
                 continue;
             }

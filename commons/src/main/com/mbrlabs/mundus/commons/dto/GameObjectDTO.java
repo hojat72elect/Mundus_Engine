@@ -31,7 +31,7 @@ public class GameObjectDTO implements AssetUsageDTO {
     private String name;
     private boolean active;
 
-    private float[] transform = new float[10];
+    private final float[] transform = new float[10];
 
     private Array<String> tags;
     private Array<GameObjectDTO> childs;

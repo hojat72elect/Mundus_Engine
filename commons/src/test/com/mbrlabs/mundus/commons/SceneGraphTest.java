@@ -23,9 +23,9 @@ import com.mbrlabs.mundus.commons.scene3d.InvalidComponentException;
 import com.mbrlabs.mundus.commons.scene3d.Node;
 import com.mbrlabs.mundus.commons.scene3d.SceneGraph;
 import com.mbrlabs.mundus.commons.scene3d.SimpleNode;
-
 import com.mbrlabs.mundus.commons.scene3d.components.Component;
 import com.mbrlabs.mundus.commons.scene3d.components.ModelComponent;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -183,5 +183,4 @@ public class SceneGraphTest {
         Assert.assertEquals(1, result.size);
         Assert.assertEquals(searchTag, result.first().getTags().first());
     }
-
 }

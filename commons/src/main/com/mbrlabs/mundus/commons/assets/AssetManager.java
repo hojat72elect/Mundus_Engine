@@ -34,6 +34,7 @@ import com.mbrlabs.mundus.commons.g3d.MG3dModelLoader;
 import com.mbrlabs.mundus.commons.terrain.Terrain;
 import com.mbrlabs.mundus.commons.terrain.TerrainLoader;
 import com.mbrlabs.mundus.commons.utils.FileFormatUtils;
+
 import net.mgsx.gltf.loaders.glb.GLBAssetLoader;
 import net.mgsx.gltf.loaders.gltf.GLTFAssetLoader;
 import net.mgsx.gltf.scene3d.scene.SceneAsset;
@@ -54,29 +55,34 @@ import java.util.Map;
 public class AssetManager implements Disposable {
 
     private static final String TAG = AssetManager.class.getSimpleName();
-
+    protected final MetaLoader metaLoader = new MetaLoader();
+    // Tracks the highest bone count out of all loaded model assets
+    public int maxNumBones = 0;
     protected FileHandle rootFolder;
     protected FileHandle[] metaFiles;
-    protected final MetaLoader metaLoader = new MetaLoader();
-
     protected Array<Asset> assets;
     protected Map<String, Asset> assetIndex;
     protected com.badlogic.gdx.assets.AssetManager gdxAssetManager;
 
-    // Tracks the highest bone count out of all loaded model assets
-    public int maxNumBones = 0;
-
     /**
      * Asset manager constructor.
      *
-     * @param assetsFolder
-     *            root directory of assets
+     * @param assetsFolder root directory of assets
      */
     public AssetManager(FileHandle assetsFolder) {
         this.rootFolder = assetsFolder;
         this.assets = new Array<>();
         this.assetIndex = new HashMap<>();
     }
+
+    /**
+     * Native JavaScript string split method for GWT support
+     * <p>
+     * No longer needed: dead code
+     */
+    public static final native String[] split(String string, String separator) /*-{
+        return string.split(separator);
+    }-*/;
 
     /**
      * The Mundus AssetManager class encapsulates the libGDX AssetManager, mostly
@@ -89,8 +95,7 @@ public class AssetManager implements Disposable {
     /**
      * Returns an asset by id.
      *
-     * @param id
-     *            id of asset
+     * @param id id of asset
      * @return matching asset or null
      */
     public Asset findAssetByID(String id) {
@@ -100,6 +105,7 @@ public class AssetManager implements Disposable {
 
     /**
      * Returns an asset by filename, else null if not found.
+     *
      * @param fileName the filename to search
      * @return matching asset or null
      */
@@ -182,13 +188,11 @@ public class AssetManager implements Disposable {
 
     /**
      * Queues all assets in the project's asset folder for loading later.
-     *
+     * <p>
      * Should be called before {@link #continueLoading()} and {@link #finalizeLoad()}
      *
-     * @param isRuntime
-     *            is this called by the runtime or editor (runtime requires different file logic)
-     * @throws MetaFileParseException
-     *             if a meta file can't be parsed
+     * @param isRuntime is this called by the runtime or editor (runtime requires different file logic)
+     * @throws MetaFileParseException if a meta file can't be parsed
      */
     public void queueAssetsForLoading(boolean isRuntime) throws MetaFileParseException {
 
@@ -292,6 +296,7 @@ public class AssetManager implements Disposable {
 
     /**
      * Returns a progress value between 0.0 and 1.0 representing the percentage loaded.
+     *
      * @return progress percentage
      */
     public float getProgress() {
@@ -338,7 +343,7 @@ public class AssetManager implements Disposable {
     private FileHandle[] getMetaFiles(String[] files) {
         // Get meta file extension file names
         Array<String> metalFileNames = new Array<>();
-        for (String filename: files) {
+        for (String filename : files) {
             if (filename.endsWith(Meta.META_EXTENSION)) {
                 metalFileNames.add(filename);
             }
@@ -355,11 +360,9 @@ public class AssetManager implements Disposable {
     /**
      * Loads an asset, given it's meta file.
      *
-     * @param meta
-     *            meta file of asset
+     * @param meta meta file of asset
      * @return asset or null
-     * @throws AssetNotFoundException
-     *             if a meta file points to a non existing asset
+     * @throws AssetNotFoundException if a meta file points to a non existing asset
      */
     public Asset loadAsset(Meta meta) throws AssetNotFoundException {
         FileHandle assetFile = meta.getFile().sibling(meta.getFile().nameWithoutExtension());
@@ -476,37 +479,23 @@ public class AssetManager implements Disposable {
     }
 
     /**
-     * Native JavaScript string split method for GWT support
-     *
-     * No longer needed: dead code
-     */
-    public static final native String[] split(String string, String separator) /*-{
-        return string.split(separator);
-    }-*/;
-
-    /**
      * Used to inform users about the current loading status.
      */
     public interface AssetLoadingListener {
         /**
          * Called if an asset loaded
-         * 
-         * @param asset
-         *            loaded asset
-         * @param progress
-         *            number of already loaded assets
-         * @param assetCount
-         *            total number of assets
+         *
+         * @param asset      loaded asset
+         * @param progress   number of already loaded assets
+         * @param assetCount total number of assets
          */
         void onLoad(Asset asset, int progress, int assetCount);
 
         /**
          * Called if all assets loaded.
-         * 
-         * @param assetCount
-         *            total number of loaded assets
+         *
+         * @param assetCount total number of loaded assets
          */
         void onFinish(int assetCount);
     }
-
 }

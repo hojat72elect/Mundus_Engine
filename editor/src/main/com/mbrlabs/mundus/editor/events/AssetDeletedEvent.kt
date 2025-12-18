@@ -6,7 +6,7 @@ import com.mbrlabs.mundus.editorcommons.Subscribe
  * @author JamesTKhan
  * @version July 28, 2022
  */
-class AssetDeletedEvent  {
+class AssetDeletedEvent {
 
     interface AssetDeletedListener {
         @Subscribe

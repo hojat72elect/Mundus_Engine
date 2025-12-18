@@ -4,68 +4,68 @@
 #define MED
 #endif
 
-struct BaseLight
-{
+struct BaseLight {
     MED vec3 Color;
     MED vec3 AmbientColor;
     MED float AmbientIntensity;
     MED float DiffuseIntensity;
 };
 
-struct DirectionalLight
-{
+struct DirectionalLight {
     BaseLight Base;
     MED vec3 Direction;
 };
 
-struct PointLight
-{
+struct PointLight {
     BaseLight Base;
     MED vec3 LocalPos;
 };
 
-struct SpotLight
-{
+struct SpotLight {
     PointLight Base;
     MED vec3 Direction;
     MED float Cutoff;
     MED float Exponent;
 };
 
-varying vec3 v_worldPos;
+varying vec3
+v_worldPos;
 
 uniform int u_useSpecular;
 uniform int u_activeNumPointLights;
 uniform int u_activeNumSpotLights;
-uniform vec4 u_cameraPosition;
+uniform vec4
+u_cameraPosition;
 uniform MED float u_shininess;
-uniform DirectionalLight u_directionalLight;
-uniform PointLight u_pointLights[numPointLights];
-uniform SpotLight u_spotLights[numSpotLights];
+uniform DirectionalLight
+u_directionalLight;
+uniform PointLight
+u_pointLights[numPointLights];
+uniform SpotLight
+u_spotLights[numSpotLights];
 
-uniform sampler2D u_shadowTexture;
+uniform sampler2D
+u_shadowTexture;
 uniform float u_shadowPCFOffset;
 uniform float u_shadowBias;
 uniform int u_useShadows;
-varying vec3 v_shadowMapUv;
+varying vec3
+v_shadowMapUv;
 
-float getShadowness(vec2 offset)
-{
+float getShadowness(vec2 offset) {
     const vec4 bitShifts = vec4(1.0, 1.0 / 255.0, 1.0 / 65025.0, 1.0 / 16581375.0);
     return step(v_shadowMapUv.z, dot(texture2D(u_shadowTexture, v_shadowMapUv.xy + offset), bitShifts) + u_shadowBias) /*+(.5/255.0)*/;
 }
 
-float getShadow()
-{
+float getShadow() {
     return (//getShadowness(vec2(0,0)) +
-    getShadowness(vec2(u_shadowPCFOffset, u_shadowPCFOffset)) +
-    getShadowness(vec2(-u_shadowPCFOffset, u_shadowPCFOffset)) +
-    getShadowness(vec2(u_shadowPCFOffset, -u_shadowPCFOffset)) +
-    getShadowness(vec2(-u_shadowPCFOffset, -u_shadowPCFOffset))) * 0.25;
+            getShadowness(vec2(u_shadowPCFOffset, u_shadowPCFOffset)) +
+                    getShadowness(vec2(-u_shadowPCFOffset, u_shadowPCFOffset)) +
+                    getShadowness(vec2(u_shadowPCFOffset, -u_shadowPCFOffset)) +
+                    getShadowness(vec2(-u_shadowPCFOffset, -u_shadowPCFOffset))) * 0.25;
 }
 
-vec4 CalcLightInternal(BaseLight Light, vec3 LightDirection, vec3 Normal)
-{
+vec4 CalcLightInternal(BaseLight Light, vec3 LightDirection, vec3 Normal) {
     vec4 AmbientColor = vec4(Light.AmbientColor, 1.0);
 
     float DiffuseFactor = dot(Normal, -LightDirection);
@@ -90,7 +90,7 @@ vec4 CalcLightInternal(BaseLight Light, vec3 LightDirection, vec3 Normal)
                 float SpecularExponent = u_shininess;
                 SpecularFactor = pow(SpecularFactor, SpecularExponent);
                 SpecularColor = vec4(Light.Color, 1.0) *
-                SpecularFactor;
+                        SpecularFactor;
             }
         }
     }
@@ -98,7 +98,10 @@ vec4 CalcLightInternal(BaseLight Light, vec3 LightDirection, vec3 Normal)
     return (AmbientColor + DiffuseColor + SpecularColor);
 }
 
-vec4 CalcDirectionalLight(vec3 Normal)
+vec4 CalcDirectionalLight(vec3
+Normal)
 {
-    return CalcLightInternal(u_directionalLight.Base, u_directionalLight.Direction, Normal);
+return
+CalcLightInternal(u_directionalLight
+.Base, u_directionalLight.Direction, Normal);
 }

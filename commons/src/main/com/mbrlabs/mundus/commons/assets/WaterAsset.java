@@ -18,8 +18,6 @@ import java.util.Map;
 
 public class WaterAsset extends Asset {
 
-    private static final ObjectMap<String, String> MAP = new ObjectMap<>();
-
     // property keys
     public static final String PROP_SIZE = "size";
     public static final String PROP_DUDV = "dudv";
@@ -37,7 +35,7 @@ public class WaterAsset extends Asset {
     public static final String PROP_MAX_VIS_DEPTH = "maxVisibleDepth";
     public static final String PROP_CULL_FACE = "cullFace";
     public static final String PROP_COLOR = "color";
-
+    private static final ObjectMap<String, String> MAP = new ObjectMap<>();
     // ids of dependent assets
     public String dudvID;
     public String normaMapID;
@@ -88,11 +86,9 @@ public class WaterAsset extends Asset {
             } else {
                 water.setColorAttribute(WaterColorAttribute.Diffuse, Water.DEFAULT_COLOR);
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     @Override
@@ -136,15 +132,15 @@ public class WaterAsset extends Asset {
         }
     }
 
-    public void setWaterReflectionTexture(Texture texture){
-       water.setWaterReflection(texture);
+    public void setWaterReflectionTexture(Texture texture) {
+        water.setWaterReflection(texture);
     }
 
-    public void setWaterRefractionTexture(Texture texture){
+    public void setWaterRefractionTexture(Texture texture) {
         water.setWaterRefractionTexture(texture);
     }
 
-    public void setWaterRefractionDepthTexture(Texture texture){
+    public void setWaterRefractionDepthTexture(Texture texture) {
         water.setWaterRefractionDepthTexture(texture);
     }
 
@@ -157,5 +153,4 @@ public class WaterAsset extends Asset {
     public boolean usesAsset(Asset assetToCheck) {
         return assetToCheck == dudvTexture || assetToCheck == normalMapTexture || assetToCheck == waterFoamTexture;
     }
-
 }

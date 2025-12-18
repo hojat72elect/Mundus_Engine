@@ -38,6 +38,6 @@ public class ElevationModifier extends NoiseModifier {
         else if (!additive)
             terrainNoiseData.elevation *= noise.GetNoise(fVector2.x, fVector2.y);
         else
-            terrainNoiseData.elevation+= noise.GetNoise(fVector2.x, fVector2.y);
+            terrainNoiseData.elevation += noise.GetNoise(fVector2.x, fVector2.y);
     }
 }

@@ -98,5 +98,4 @@ public class JsonIOManager implements IOManager {
     private FileHandle getHomeDataFile() {
         return new FileHandle(Registry.HOME_DATA_FILE);
     }
-
 }

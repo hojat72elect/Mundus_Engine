@@ -15,7 +15,7 @@ import java.io.FileNotFoundException;
  * An intermediate class that handles the migration of project data from Kryo to Json formatting
  * if necessary. If the project data is already in Json format, then this class will simply call JsonIOManager.
  * Eventually this class will be removed in favor of JsonIOManager.
- *
+ * <p>
  * Backs up kryo .registry and .pro files before replacing them with JSON versions.
  *
  * @author JamesTKhan
@@ -34,6 +34,7 @@ public class MigrationIOManager extends JsonIOManager {
             kryoManager = new KryoManager();
         }
     }
+
     @Override
     public Registry loadRegistry() {
         if (kryoManager != null && kryoManager.isRegistryKryo()) {

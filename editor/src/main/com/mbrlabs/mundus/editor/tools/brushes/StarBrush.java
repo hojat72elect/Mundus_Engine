@@ -22,6 +22,7 @@ import com.mbrlabs.mundus.editor.core.project.ProjectManager;
 import com.mbrlabs.mundus.editor.history.CommandHistory;
 import com.mbrlabs.mundus.editor.tools.picker.GameObjectPicker;
 import com.mbrlabs.mundus.editor.utils.Fa;
+
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -51,6 +52,4 @@ public class StarBrush extends TerrainBrush {
     public String getIconFont() {
         return Fa.Companion.getSTAR();
     }
-
-
 }

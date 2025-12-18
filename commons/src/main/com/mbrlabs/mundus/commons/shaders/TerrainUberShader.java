@@ -19,6 +19,7 @@ import com.mbrlabs.mundus.commons.terrain.SplatTexture;
 import com.mbrlabs.mundus.commons.terrain.TerrainMaterial;
 import com.mbrlabs.mundus.commons.terrain.attributes.TerrainMaterialAttribute;
 import com.mbrlabs.mundus.commons.utils.ShaderUtils;
+
 import net.mgsx.gltf.scene3d.attributes.FogAttribute;
 
 /**
@@ -27,130 +28,21 @@ import net.mgsx.gltf.scene3d.attributes.FogAttribute;
  * @deprecated Use {@link PBRTerrainShader} instead.
  */
 public class TerrainUberShader extends LightShader {
+    public static final TextureDescriptor<Texture> textureDescription = new TextureDescriptor<>();
     protected static final String VERTEX_SHADER = "com/mbrlabs/mundus/commons/shaders/terrain.uber.vert.glsl";
     protected static final String FRAGMENT_SHADER = "com/mbrlabs/mundus/commons/shaders/terrain.uber.frag.glsl";
-    public static final TextureDescriptor<Texture> textureDescription = new TextureDescriptor<>();
-
-    public static Vector3 terrainClippingPlane = new Vector3(0.0f,0.0f, 0.0f);
-    public static float terrainClippingHeight = 0f;
-
     private static final Vector2 v2 = new Vector2();
-
-    public static class TerrainInputs {
-        public final static Uniform terrainSize = new Uniform("u_terrainSize");
-        public final static Uniform clipPlane = new Uniform("u_clipPlane");
-
-        public final static Uniform uvScale = new Uniform("u_uvScale");
-        public final static Uniform baseTexture = new Uniform("u_baseTexture");
-        public final static Uniform baseNormal = new Uniform("u_texture_base_normal");
-
-        public final static Uniform splatTexture = new Uniform("u_texture_splat");
-        
-        public final static Uniform splatRTexture = new Uniform("u_texture_r");
-        public final static Uniform splatGTexture = new Uniform("u_texture_g");
-        public final static Uniform splatBTexture = new Uniform("u_texture_b");
-        public final static Uniform splatATexture = new Uniform("u_texture_a");
-
-        public final static Uniform splatRNormal = new Uniform("u_texture_r_normal");
-        public final static Uniform splatGNormal = new Uniform("u_texture_g_normal");
-        public final static Uniform splatBNormal = new Uniform("u_texture_b_normal");
-        public final static Uniform splatANormal = new Uniform("u_texture_a_normal");
-
-        public final static Uniform fogColor = new Uniform("u_fogColor");
-        public final static Uniform fogEquation = new Uniform("u_fogEquation");
-    }
-
-    public static class TerrainSetters {
-        public final static Setter terrainSize = new LocalSetter() {
-            @Override
-            public void set (BaseShader shader, int inputID, Renderable renderable, Attributes combinedAttributes) {
-                TerrainMaterialAttribute terrainMaterialAttribute = (TerrainMaterialAttribute) combinedAttributes.get(TerrainMaterialAttribute.TerrainMaterial);
-                shader.set(inputID, v2.set(terrainMaterialAttribute.terrainMaterial.getTerrain().terrainWidth, terrainMaterialAttribute.terrainMaterial.getTerrain().terrainDepth));
-            }
-        };
-
-        public final static Setter clipPlane = new LocalSetter() {
-            @Override
-            public void set (BaseShader shader, int inputID, Renderable renderable, Attributes combinedAttributes) {
-                shader.set(inputID, terrainClippingPlane.x, terrainClippingPlane.y, terrainClippingPlane.z, terrainClippingHeight);
-            }
-        };
-
-        public final static Setter uvScale = new LocalSetter() {
-            @Override
-            public void set (BaseShader shader, int inputID, Renderable renderable, Attributes combinedAttributes) {
-                TerrainMaterialAttribute terrainMaterialAttribute = (TerrainMaterialAttribute) combinedAttributes.get(TerrainMaterialAttribute.TerrainMaterial);
-                shader.set(inputID, terrainMaterialAttribute.terrainMaterial.getTerrain().getUvScale());
-            }
-        };
-
-        public final static Setter baseTexture = getTerrainTextureSetter(SplatTexture.Channel.BASE);
-        public final static Setter splatRTexture = getTerrainTextureSetter(SplatTexture.Channel.R);
-        public final static Setter splatGTexture = getTerrainTextureSetter(SplatTexture.Channel.G);
-        public final static Setter splatBTexture = getTerrainTextureSetter(SplatTexture.Channel.B);
-        public final static Setter splatATexture = getTerrainTextureSetter(SplatTexture.Channel.A);
-
-        public final static Setter baseNormal = getTerrainNormalSetter(SplatTexture.Channel.BASE);
-        public final static Setter splatRNormal = getTerrainNormalSetter(SplatTexture.Channel.R);
-        public final static Setter splatGNormal = getTerrainNormalSetter(SplatTexture.Channel.G);
-        public final static Setter splatBNormal = getTerrainNormalSetter(SplatTexture.Channel.B);
-        public final static Setter splatANormal = getTerrainNormalSetter(SplatTexture.Channel.A);
-
-        private static Setter getTerrainTextureSetter(final SplatTexture.Channel channel) {
-            return new LocalSetter() {
-                @Override
-                public void set(BaseShader shader, int inputID, Renderable renderable, Attributes combinedAttributes) {
-                    TerrainMaterialAttribute terrainMaterialAttribute = (TerrainMaterialAttribute) combinedAttributes.get(TerrainMaterialAttribute.TerrainMaterial);
-                    TerrainMaterial material = terrainMaterialAttribute.terrainMaterial;
-                    textureDescription.texture = material.getTexture(channel).getTexture();
-                    final int unit = shader.context.textureBinder
-                            .bind(textureDescription);
-                    shader.set(inputID, unit);
-                }
-            };
-        }
-
-        private static Setter getTerrainNormalSetter(final SplatTexture.Channel channel) {
-            return new LocalSetter() {
-                @Override
-                public void set(BaseShader shader, int inputID, Renderable renderable, Attributes combinedAttributes) {
-                    TerrainMaterialAttribute terrainMaterialAttribute = (TerrainMaterialAttribute) combinedAttributes.get(TerrainMaterialAttribute.TerrainMaterial);
-                    TerrainMaterial material = terrainMaterialAttribute.terrainMaterial;
-                    textureDescription.texture = material.getNormalTexture(channel).getTexture();
-                    final int unit = shader.context.textureBinder
-                            .bind(textureDescription);
-                    shader.set(inputID, unit);
-                }
-            };
-        }
-
-        public static Setter splatTexture = new LocalSetter() {
-                @Override
-                public void set(BaseShader shader, int inputID, Renderable renderable, Attributes combinedAttributes) {
-                    TerrainMaterialAttribute terrainMaterialAttribute = (TerrainMaterialAttribute) combinedAttributes.get(TerrainMaterialAttribute.TerrainMaterial);
-                    TerrainMaterial material = terrainMaterialAttribute.terrainMaterial;
-
-                    textureDescription.texture = material.getSplatmap().getTexture();
-                    final int unit = shader.context.textureBinder
-                            .bind(textureDescription);
-                    shader.set(inputID, unit);
-                }
-            };
-
-    }
-
+    public static Vector3 terrainClippingPlane = new Vector3(0.0f, 0.0f, 0.0f);
+    public static float terrainClippingHeight = 0f;
     // Global uniforms
     public final int u_projViewTrans;
-
     // Object uniforms
     public final int u_worldTrans;
     public final int u_normalMatrix;
     public final int u_cameraPosition;
-
     // env
     public final int u_fogColor;
     public final int u_fogEquation;
-
     // Terrain uniforms
     public final int u_terrainSize;
     public final int u_clipPlane;
@@ -162,18 +54,19 @@ public class TerrainUberShader extends LightShader {
     public final int u_splatGTexture;
     public final int u_splatBTexture;
     public final int u_splatATexture;
-
     public final int u_splatRNormal;
     public final int u_splatGNormal;
     public final int u_splatBNormal;
     public final int u_splatANormal;
-
-    /** The renderable used to create this shader, invalid after the call to init */
-    private Renderable renderable;
-
-    /** The attributes that this shader supports */
+    /**
+     * The attributes that this shader supports
+     */
     protected final long attributesMask;
     protected final long terrainMaterialMask;
+    /**
+     * The renderable used to create this shader, invalid after the call to init
+     */
+    private Renderable renderable;
 
     public TerrainUberShader(Renderable renderable, DefaultShader.Config config) {
         this.renderable = renderable;
@@ -217,6 +110,10 @@ public class TerrainUberShader extends LightShader {
 
         u_fogColor = register(TerrainInputs.fogColor);
         u_fogEquation = register(TerrainInputs.fogEquation);
+    }
+
+    private static TerrainMaterial getTerrainMaterial(Renderable renderable) {
+        return renderable.material.get(TerrainMaterialAttribute.class, TerrainMaterialAttribute.TerrainMaterial).terrainMaterial;
     }
 
     protected String createPrefixForRenderable(Renderable renderable) {
@@ -310,8 +207,8 @@ public class TerrainUberShader extends LightShader {
     @Override
     public void render(Renderable renderable, Attributes combinedAttributes) {
         if (combinedAttributes.has(ColorAttribute.Fog) && combinedAttributes.has(FogAttribute.FogEquation)) {
-            set(u_fogColor, ((ColorAttribute)combinedAttributes.get(ColorAttribute.Fog)).color);
-            set(u_fogEquation, ((FogAttribute)combinedAttributes.get(FogAttribute.FogEquation)).value);
+            set(u_fogColor, ((ColorAttribute) combinedAttributes.get(ColorAttribute.Fog)).color);
+            set(u_fogEquation, ((FogAttribute) combinedAttributes.get(FogAttribute.FogEquation)).value);
         }
         super.render(renderable, combinedAttributes);
     }
@@ -333,8 +230,104 @@ public class TerrainUberShader extends LightShader {
         return terrainMaterialMask == terrainMaterial.getMask();
     }
 
-    private static TerrainMaterial getTerrainMaterial(Renderable renderable) {
-        return renderable.material.get(TerrainMaterialAttribute.class, TerrainMaterialAttribute.TerrainMaterial).terrainMaterial;
+    public static class TerrainInputs {
+        public final static Uniform terrainSize = new Uniform("u_terrainSize");
+        public final static Uniform clipPlane = new Uniform("u_clipPlane");
+
+        public final static Uniform uvScale = new Uniform("u_uvScale");
+        public final static Uniform baseTexture = new Uniform("u_baseTexture");
+        public final static Uniform baseNormal = new Uniform("u_texture_base_normal");
+
+        public final static Uniform splatTexture = new Uniform("u_texture_splat");
+
+        public final static Uniform splatRTexture = new Uniform("u_texture_r");
+        public final static Uniform splatGTexture = new Uniform("u_texture_g");
+        public final static Uniform splatBTexture = new Uniform("u_texture_b");
+        public final static Uniform splatATexture = new Uniform("u_texture_a");
+
+        public final static Uniform splatRNormal = new Uniform("u_texture_r_normal");
+        public final static Uniform splatGNormal = new Uniform("u_texture_g_normal");
+        public final static Uniform splatBNormal = new Uniform("u_texture_b_normal");
+        public final static Uniform splatANormal = new Uniform("u_texture_a_normal");
+
+        public final static Uniform fogColor = new Uniform("u_fogColor");
+        public final static Uniform fogEquation = new Uniform("u_fogEquation");
     }
 
+    public static class TerrainSetters {
+        public final static Setter terrainSize = new LocalSetter() {
+            @Override
+            public void set(BaseShader shader, int inputID, Renderable renderable, Attributes combinedAttributes) {
+                TerrainMaterialAttribute terrainMaterialAttribute = (TerrainMaterialAttribute) combinedAttributes.get(TerrainMaterialAttribute.TerrainMaterial);
+                shader.set(inputID, v2.set(terrainMaterialAttribute.terrainMaterial.getTerrain().terrainWidth, terrainMaterialAttribute.terrainMaterial.getTerrain().terrainDepth));
+            }
+        };
+
+        public final static Setter clipPlane = new LocalSetter() {
+            @Override
+            public void set(BaseShader shader, int inputID, Renderable renderable, Attributes combinedAttributes) {
+                shader.set(inputID, terrainClippingPlane.x, terrainClippingPlane.y, terrainClippingPlane.z, terrainClippingHeight);
+            }
+        };
+
+        public final static Setter uvScale = new LocalSetter() {
+            @Override
+            public void set(BaseShader shader, int inputID, Renderable renderable, Attributes combinedAttributes) {
+                TerrainMaterialAttribute terrainMaterialAttribute = (TerrainMaterialAttribute) combinedAttributes.get(TerrainMaterialAttribute.TerrainMaterial);
+                shader.set(inputID, terrainMaterialAttribute.terrainMaterial.getTerrain().getUvScale());
+            }
+        };
+
+        public final static Setter baseTexture = getTerrainTextureSetter(SplatTexture.Channel.BASE);
+        public final static Setter splatRTexture = getTerrainTextureSetter(SplatTexture.Channel.R);
+        public final static Setter splatGTexture = getTerrainTextureSetter(SplatTexture.Channel.G);
+        public final static Setter splatBTexture = getTerrainTextureSetter(SplatTexture.Channel.B);
+        public final static Setter splatATexture = getTerrainTextureSetter(SplatTexture.Channel.A);
+
+        public final static Setter baseNormal = getTerrainNormalSetter(SplatTexture.Channel.BASE);
+        public final static Setter splatRNormal = getTerrainNormalSetter(SplatTexture.Channel.R);
+        public final static Setter splatGNormal = getTerrainNormalSetter(SplatTexture.Channel.G);
+        public final static Setter splatBNormal = getTerrainNormalSetter(SplatTexture.Channel.B);
+        public final static Setter splatANormal = getTerrainNormalSetter(SplatTexture.Channel.A);
+        public static Setter splatTexture = new LocalSetter() {
+            @Override
+            public void set(BaseShader shader, int inputID, Renderable renderable, Attributes combinedAttributes) {
+                TerrainMaterialAttribute terrainMaterialAttribute = (TerrainMaterialAttribute) combinedAttributes.get(TerrainMaterialAttribute.TerrainMaterial);
+                TerrainMaterial material = terrainMaterialAttribute.terrainMaterial;
+
+                textureDescription.texture = material.getSplatmap().getTexture();
+                final int unit = shader.context.textureBinder
+                        .bind(textureDescription);
+                shader.set(inputID, unit);
+            }
+        };
+
+        private static Setter getTerrainTextureSetter(final SplatTexture.Channel channel) {
+            return new LocalSetter() {
+                @Override
+                public void set(BaseShader shader, int inputID, Renderable renderable, Attributes combinedAttributes) {
+                    TerrainMaterialAttribute terrainMaterialAttribute = (TerrainMaterialAttribute) combinedAttributes.get(TerrainMaterialAttribute.TerrainMaterial);
+                    TerrainMaterial material = terrainMaterialAttribute.terrainMaterial;
+                    textureDescription.texture = material.getTexture(channel).getTexture();
+                    final int unit = shader.context.textureBinder
+                            .bind(textureDescription);
+                    shader.set(inputID, unit);
+                }
+            };
+        }
+
+        private static Setter getTerrainNormalSetter(final SplatTexture.Channel channel) {
+            return new LocalSetter() {
+                @Override
+                public void set(BaseShader shader, int inputID, Renderable renderable, Attributes combinedAttributes) {
+                    TerrainMaterialAttribute terrainMaterialAttribute = (TerrainMaterialAttribute) combinedAttributes.get(TerrainMaterialAttribute.TerrainMaterial);
+                    TerrainMaterial material = terrainMaterialAttribute.terrainMaterial;
+                    textureDescription.texture = material.getNormalTexture(channel).getTexture();
+                    final int unit = shader.context.textureBinder
+                            .bind(textureDescription);
+                    shader.set(inputID, unit);
+                }
+            };
+        }
+    }
 }

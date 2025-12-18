@@ -24,19 +24,15 @@ public class WaterRenderer {
 
     protected static final Vector3 clippingPlaneReflection = new Vector3(0.0f, 1f, 0.0f);
     protected static final Vector3 clippingPlaneRefraction = new Vector3(0.0f, -1f, 0.0f);
-
-    protected FrameBuffer fboWaterReflection;
-    protected FrameBuffer fboWaterRefraction;
-    protected FrameBuffer fboDepthRefraction;
-
-    private boolean isMRTRefraction = false;
-
     // FBO Depth Attachment index for MRT FBO
     private static final int DEPTH_ATTACHMENT = 1;
-
     private final Vector3 tmpCamUp = new Vector3();
     private final Vector3 tmpCamDir = new Vector3();
     private final Vector3 tmpCamPos = new Vector3();
+    protected FrameBuffer fboWaterReflection;
+    protected FrameBuffer fboWaterRefraction;
+    protected FrameBuffer fboDepthRefraction;
+    private boolean isMRTRefraction = false;
 
     /**
      * Gets updated Reflection and Refraction textures for water, and captures depth for refraction if needed.

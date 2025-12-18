@@ -40,11 +40,13 @@ class PerformanceSettingsTable : BaseSettingsTable(), ProjectChangedEvent.Projec
 
         val settingsTable = VisTable()
         settingsTable.defaults().left().pad(4f)
-        val frustumLabel = ToolTipLabel("Perform Frustum Culling (Per Scene)", "Frustum Culling increase performance by not rendering offscreen " +
-            "objects.\nThis is done by calculating the bounds of GameObjects models and checking for intersections on the camera frustum.\n" +
-                "If objects are being culled while still on screen make sure all transforms are applied to your model in your modeling application.\n" +
-                "\nNote: If you are using shadows, then the shadow frustum is also used to test for visibility to allow for shadows to appear from offscreen objects.\n" +
-            "This means that objects directly behind the player may not be culled until also out of the shadow frustum.")
+        val frustumLabel = ToolTipLabel(
+            "Perform Frustum Culling (Per Scene)", "Frustum Culling increase performance by not rendering offscreen " +
+                    "objects.\nThis is done by calculating the bounds of GameObjects models and checking for intersections on the camera frustum.\n" +
+                    "If objects are being culled while still on screen make sure all transforms are applied to your model in your modeling application.\n" +
+                    "\nNote: If you are using shadows, then the shadow frustum is also used to test for visibility to allow for shadows to appear from offscreen objects.\n" +
+                    "This means that objects directly behind the player may not be culled until also out of the shadow frustum."
+        )
 
         settingsTable.add(frustumLabel)
         settingsTable.add(frustumCullingChkBox).row()
@@ -55,9 +57,11 @@ class PerformanceSettingsTable : BaseSettingsTable(), ProjectChangedEvent.Projec
             }
         })
 
-        val terrainUpdatesLabel = ToolTipLabel("Optimize Terrain Updates", "Depending on the vertex resolution of your terrain, " +
-            "updating the terrain mesh can be very expensive.\nWith this option enabled, normals will only be calculated after releasing the mouse button while modifying terrains." +
-                "\nIf you experience slowdowns when updating terrains, try enabling this option.")
+        val terrainUpdatesLabel = ToolTipLabel(
+            "Optimize Terrain Updates", "Depending on the vertex resolution of your terrain, " +
+                    "updating the terrain mesh can be very expensive.\nWith this option enabled, normals will only be calculated after releasing the mouse button while modifying terrains." +
+                    "\nIf you experience slowdowns when updating terrains, try enabling this option."
+        )
 
         settingsTable.add(terrainUpdatesLabel)
         settingsTable.add(optimizeTerrainUpdates).row()

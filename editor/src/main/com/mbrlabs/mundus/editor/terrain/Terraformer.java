@@ -38,5 +38,4 @@ public class Terraformer {
     public static FastNoiseGenerator fastNoise(Terrain terrain) {
         return new FastNoiseGenerator(terrain);
     }
-
 }

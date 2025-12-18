@@ -16,7 +16,7 @@ import com.mbrlabs.mundus.editor.ui.widgets.AutoFocusScrollPane
  * @author JamesTKhan
  * @version July 29, 2022
  */
-class UsedByAssetInspectorWidget  : BaseInspectorWidget(TITLE) {
+class UsedByAssetInspectorWidget : BaseInspectorWidget(TITLE) {
 
     companion object {
         private val TITLE = "Usages"
@@ -28,7 +28,7 @@ class UsedByAssetInspectorWidget  : BaseInspectorWidget(TITLE) {
     init {
         isDeletable = false
         defaults().padBottom(4f)
-        collapsibleContent.add(scrollPane).top().left().growX( ).row()
+        collapsibleContent.add(scrollPane).top().left().growX().row()
     }
 
     fun setAsset(asset: Asset?, projectManager: ProjectManager) {

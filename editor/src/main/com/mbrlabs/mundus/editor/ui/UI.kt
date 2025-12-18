@@ -33,9 +33,23 @@ import com.mbrlabs.mundus.editor.VERSION
 import com.mbrlabs.mundus.editor.events.FullScreenEvent
 import com.mbrlabs.mundus.editor.preferences.MundusPreferencesManager
 import com.mbrlabs.mundus.editor.ui.modules.MundusToolbar
-import com.mbrlabs.mundus.editor.ui.modules.outline.Outline
 import com.mbrlabs.mundus.editor.ui.modules.StatusBar
-import com.mbrlabs.mundus.editor.ui.modules.dialogs.*
+import com.mbrlabs.mundus.editor.ui.modules.dialogs.AddComponentDialog
+import com.mbrlabs.mundus.editor.ui.modules.dialogs.AddTerrainChunksDialog
+import com.mbrlabs.mundus.editor.ui.modules.dialogs.AddWaterDialog
+import com.mbrlabs.mundus.editor.ui.modules.dialogs.AmbientLightDialog
+import com.mbrlabs.mundus.editor.ui.modules.dialogs.DirectionalLightsDialog
+import com.mbrlabs.mundus.editor.ui.modules.dialogs.ExitDialog
+import com.mbrlabs.mundus.editor.ui.modules.dialogs.ExportDialog
+import com.mbrlabs.mundus.editor.ui.modules.dialogs.FogDialog
+import com.mbrlabs.mundus.editor.ui.modules.dialogs.KeyboardShortcutsDialog
+import com.mbrlabs.mundus.editor.ui.modules.dialogs.LevelOfDetailDialog
+import com.mbrlabs.mundus.editor.ui.modules.dialogs.NewProjectDialog
+import com.mbrlabs.mundus.editor.ui.modules.dialogs.ShadowSettingsDialog
+import com.mbrlabs.mundus.editor.ui.modules.dialogs.SkyboxDialog
+import com.mbrlabs.mundus.editor.ui.modules.dialogs.TerrainStitcherDialog
+import com.mbrlabs.mundus.editor.ui.modules.dialogs.TerrainSystemGenerationDialog
+import com.mbrlabs.mundus.editor.ui.modules.dialogs.VersionDialog
 import com.mbrlabs.mundus.editor.ui.modules.dialogs.assets.AssetPickerDialog
 import com.mbrlabs.mundus.editor.ui.modules.dialogs.gameobjects.GameObjectPickerDialog
 import com.mbrlabs.mundus.editor.ui.modules.dialogs.importer.ImportModelDialog
@@ -45,6 +59,7 @@ import com.mbrlabs.mundus.editor.ui.modules.dialogs.tools.DebugRenderDialog
 import com.mbrlabs.mundus.editor.ui.modules.dock.DockBar
 import com.mbrlabs.mundus.editor.ui.modules.inspector.Inspector
 import com.mbrlabs.mundus.editor.ui.modules.menu.MundusMenuBar
+import com.mbrlabs.mundus.editor.ui.modules.outline.Outline
 import com.mbrlabs.mundus.editor.ui.widgets.MundusMultiSplitPane
 import com.mbrlabs.mundus.editor.ui.widgets.MundusSplitPane
 import com.mbrlabs.mundus.editor.ui.widgets.PersistingFileChooser
@@ -99,7 +114,7 @@ object UI : Stage(ScreenViewport()) {
     val addComponentDialog: AddComponentDialog = AddComponentDialog()
     val addWaterDialog: AddWaterDialog = AddWaterDialog()
     val addTerrainChunksDialog: AddTerrainChunksDialog = AddTerrainChunksDialog()
-    val terrainSystemGenerationDialog : TerrainSystemGenerationDialog = TerrainSystemGenerationDialog()
+    val terrainSystemGenerationDialog: TerrainSystemGenerationDialog = TerrainSystemGenerationDialog()
     val versionDialog: VersionDialog = VersionDialog()
     val keyboardShortcuts: KeyboardShortcutsDialog = KeyboardShortcutsDialog()
     val debugRenderDialog: DebugRenderDialog = DebugRenderDialog()

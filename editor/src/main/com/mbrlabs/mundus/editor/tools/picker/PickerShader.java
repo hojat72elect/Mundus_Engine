@@ -27,11 +27,11 @@ import com.badlogic.gdx.math.Vector3;
 
 /**
  * Used to render game objects in only one color.
- *
+ * <p>
  * This color represents the encoded id of the game object. By rendering with
  * this shader on a framebuffer object one can implement raypicking. The class
  * GameObjectPicker does exactly that.
- *
+ * <p>
  * See also:
  * http://www.opengl-tutorial.org/miscellaneous/clicking-on-objects/picking-with-an-opengl-hack/
  *
@@ -48,15 +48,11 @@ public class PickerShader extends BaseShader {
     private static final String FRAGMENT_SHADER = "#ifdef GL_ES\n" + "precision highp float;\n" + "#endif \n"
             + "uniform vec3 u_color;" + "void main(void) {"
             + "gl_FragColor = vec4(u_color.r/255.0, u_color.g/255.0, u_color.b/255.0, 1.0);" + "}";
-
+    private static final Vector3 vec3 = new Vector3();
     protected final int UNIFORM_PROJ_VIEW_MATRIX = register(new Uniform("u_projViewMatrix"));
     protected final int UNIFORM_TRANS_MATRIX = register(new Uniform("u_transMatrix"));
-
     protected final int UNIFORM_COLOR = register(new Uniform("u_color"));
-
-    private static Vector3 vec3 = new Vector3();
-
-    private ShaderProgram program;
+    private final ShaderProgram program;
 
     public PickerShader() {
         super();
@@ -111,5 +107,4 @@ public class PickerShader extends BaseShader {
     public void dispose() {
         program.dispose();
     }
-
 }

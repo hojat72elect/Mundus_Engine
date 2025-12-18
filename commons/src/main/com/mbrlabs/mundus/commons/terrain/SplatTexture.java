@@ -26,13 +26,8 @@ import com.mbrlabs.mundus.commons.utils.TextureProvider;
  */
 public class SplatTexture implements TextureProvider {
 
-    public enum Channel {
-        BASE, R, G, B, A
-    }
-
     public Channel channel;
     public TextureAsset texture;
-
     public SplatTexture(Channel channel, TextureAsset texture) {
         this.channel = channel;
         this.texture = texture;
@@ -48,5 +43,9 @@ public class SplatTexture implements TextureProvider {
 
     public void setTexture(TextureAsset texture) {
         this.texture = texture;
+    }
+
+    public enum Channel {
+        BASE, R, G, B, A
     }
 }

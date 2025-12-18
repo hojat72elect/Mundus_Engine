@@ -26,6 +26,7 @@ import com.badlogic.gdx.graphics.g3d.attributes.IntAttribute;
 import com.badlogic.gdx.utils.ObjectMap;
 import com.badlogic.gdx.utils.PropertiesUtils;
 import com.mbrlabs.mundus.commons.assets.meta.Meta;
+
 import net.mgsx.gltf.scene3d.attributes.PBRColorAttribute;
 import net.mgsx.gltf.scene3d.attributes.PBRFloatAttribute;
 import net.mgsx.gltf.scene3d.attributes.PBRTextureAttribute;
@@ -40,10 +41,7 @@ import java.util.Map;
  */
 public class MaterialAsset extends Asset {
 
-    private static final ObjectMap<String, String> MAP = new ObjectMap<>();
-
     public static final String EXTENSION = ".mat";
-
     // property keys
     public static final String PROP_DIFFUSE_COLOR = "diffuse.color";
     public static final String PROP_DIFFUSE_TEXTURE = "diffuse.texture";
@@ -59,17 +57,20 @@ public class MaterialAsset extends Asset {
     public static final String PROP_NORMAL_SCALE = "normalScale";
     public static final String PROP_SHADOW_BIAS = "shadowBias";
     public static final String PROP_CULL_FACE = "cullFace";
-
+    private static final ObjectMap<String, String> MAP = new ObjectMap<>();
+    public TexCoordInfo diffuseTexCoord = new TexCoordInfo("diffuse");
+    public TexCoordInfo normalTexCoord = new TexCoordInfo("map");
+    public TexCoordInfo emissiveTexCoord = new TexCoordInfo("emissive");
+    public TexCoordInfo metallicRoughnessTexCoord = new TexCoordInfo("metallicRoughTexture");
+    public TexCoordInfo occlusionTexCoord = new TexCoordInfo("occlusionTexture");
     // ids of dependent assets
     private String diffuseTextureID;
     private String normalMapID;
     private String emissiveTextureID;
     private String metallicRoughnessTextureID;
     private String occlusionTextureID;
-
     // Possible values are GL_FRONT_AND_BACK, GL_BACK, GL_FRONT, or -1 to inherit default
     private int cullFace = -1;
-
     private Color diffuseColor = Color.WHITE.cpy();
     private Color emissiveColor = Color.BLACK.cpy();
     private TextureAsset diffuseTexture;
@@ -77,13 +78,6 @@ public class MaterialAsset extends Asset {
     private TextureAsset emissiveTexture;
     private TextureAsset metallicRoughnessTexture;
     private TextureAsset occlusionTexture;
-
-    public TexCoordInfo diffuseTexCoord = new TexCoordInfo("diffuse");
-    public TexCoordInfo normalTexCoord = new TexCoordInfo("map");
-    public TexCoordInfo emissiveTexCoord = new TexCoordInfo("emissive");
-    public TexCoordInfo metallicRoughnessTexCoord = new TexCoordInfo("metallicRoughTexture");
-    public TexCoordInfo occlusionTexCoord = new TexCoordInfo("occlusionTexture");
-
     private float roughness = 1f;
     private float metallic = 0f;
     private float opacity = 1f;
@@ -138,7 +132,6 @@ public class MaterialAsset extends Asset {
                 populateTexCoordInfo(emissiveTexCoord);
                 populateTexCoordInfo(metallicRoughnessTexCoord);
                 populateTexCoordInfo(occlusionTexCoord);
-
             } catch (NumberFormatException nfe) {
                 nfe.printStackTrace();
             }

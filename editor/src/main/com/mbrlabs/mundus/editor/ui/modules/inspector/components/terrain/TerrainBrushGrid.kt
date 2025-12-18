@@ -41,9 +41,10 @@ import com.mbrlabs.mundus.editor.ui.widgets.ImprovedSlider
  * @author Marcus Brummer
  * @version 30-01-2016
  */
-class TerrainBrushGrid(private val parent: TerrainComponentWidget,
-                       private val brushMode: TerrainBrush.BrushMode)
-    : VisTable(), GlobalBrushSettingsChangedEvent.GlobalBrushSettingsChangedListener, ToolDeactivatedEvent.ToolDeactivatedEventListener, ToolActivatedEvent.ToolActivatedEventListener {
+class TerrainBrushGrid(
+    private val parent: TerrainComponentWidget,
+    private val brushMode: TerrainBrush.BrushMode
+) : VisTable(), GlobalBrushSettingsChangedEvent.GlobalBrushSettingsChangedListener, ToolDeactivatedEvent.ToolDeactivatedEventListener, ToolActivatedEvent.ToolActivatedEventListener {
 
     private val brushItems = Array<BrushItem>()
     private val grid = GridGroup(40f, 0f)

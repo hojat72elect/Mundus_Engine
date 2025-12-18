@@ -5,8 +5,8 @@ import com.mbrlabs.mundus.editor.tools.brushes.TerrainBrush
 
 abstract class BaseBrushTab(
     parent: TerrainComponentWidget,
-    mode: TerrainBrush.BrushMode)
-    : Tab(false, false) {
+    mode: TerrainBrush.BrushMode
+) : Tab(false, false) {
 
     protected val terrainBrushGrid: TerrainBrushGrid = TerrainBrushGrid(parent, mode)
 

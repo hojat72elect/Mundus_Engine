@@ -13,13 +13,13 @@ public class ThreadLocalPools {
      */
     public static ThreadLocal<Pool<Vector3>> vector3ThreadPool = ThreadLocal.withInitial(() -> new Pool<Vector3>() {
         @Override
-        protected Vector3 newObject () {
+        protected Vector3 newObject() {
             return new Vector3();
         }
 
         @Override
         protected void reset(Vector3 object) {
-            object.set(0,0,0);
+            object.set(0, 0, 0);
         }
     });
 }

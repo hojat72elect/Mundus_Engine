@@ -24,7 +24,7 @@ public class LodLevel implements Disposable {
     @Override
     public void dispose() {
         // Dispose all but the base mesh lod0, that is managed by the model
-        for (int i = 1 ; i < lodMeshes.length ; i++) {
+        for (int i = 1; i < lodMeshes.length; i++) {
             lodMeshes[i].dispose();
         }
     }

@@ -24,7 +24,7 @@ import com.badlogic.gdx.utils.GdxRuntimeException;
 
 /**
  * Originally From https://github.com/crykn/guacamole
- *
+ * <p>
  * An implementation of libGDX's {@link FrameBuffer} that supports nested
  * framebuffers. This allows using multiple framebuffers inside each other:
  *
@@ -43,16 +43,15 @@ import com.badlogic.gdx.utils.GdxRuntimeException;
  *
  * @author damios
  * @see <a href=
- *      "https://github.com/crykn/libgdx-screenmanager/wiki/Custom-FrameBuffer-implementation">The
- *      wiki entry detailing the reasoning behind the implementation</a>
+ * "https://github.com/crykn/libgdx-screenmanager/wiki/Custom-FrameBuffer-implementation">The
+ * wiki entry detailing the reasoning behind the implementation</a>
  */
 public class NestableFrameBuffer extends FrameBuffer {
 
+    private final boolean hasDepth;
     private int previousFBOHandle = -1;
     private int[] previousViewport = new int[4];
     private boolean isBound = false;
-
-    private final boolean hasDepth;
 
     public NestableFrameBuffer(Pixmap.Format format, int width, int height,
                                boolean hasDepth, boolean hasStencil) {
@@ -64,16 +63,12 @@ public class NestableFrameBuffer extends FrameBuffer {
      * Creates a new NestableFrameBuffer having the given dimensions and
      * potentially a depth buffer attached.
      *
-     * @param format
-     *            the format of the color buffer; according to the OpenGL ES 2.0
-     *            spec, only {@link Format#RGB565}, {@link Format#RGBA4444} and
-     *            {@code RGB5_A1} are color-renderable
-     * @param width
-     *            the width of the framebuffer in pixels
-     * @param height
-     *            the height of the framebuffer in pixels
-     * @param hasDepth
-     *            whether to attach a depth buffer
+     * @param format   the format of the color buffer; according to the OpenGL ES 2.0
+     *                 spec, only {@link Format#RGB565}, {@link Format#RGBA4444} and
+     *                 {@code RGB5_A1} are color-renderable
+     * @param width    the width of the framebuffer in pixels
+     * @param height   the height of the framebuffer in pixels
+     * @param hasDepth whether to attach a depth buffer
      */
     public NestableFrameBuffer(Pixmap.Format format, int width, int height,
                                boolean hasDepth) {
@@ -109,8 +104,8 @@ public class NestableFrameBuffer extends FrameBuffer {
      * The static {@link #unbind()} method is always rebinding the
      * <i>default</i> framebuffer afterwards.
      *
-     * @deprecated Doesn't support nesting!
      * @see #begin()
+     * @deprecated Doesn't support nesting!
      */
     @Deprecated
     @Override
@@ -134,14 +129,10 @@ public class NestableFrameBuffer extends FrameBuffer {
      * performed to the {@linkplain #previousFBOHandle previous framebuffer}
      * (usually the normal one) from here on.
      *
-     * @param x
-     *            the x-axis position of the viewport in pixels
-     * @param y
-     *            the y-asis position of the viewport in pixels
-     * @param width
-     *            the width of the viewport in pixels
-     * @param height
-     *            the height of the viewport in pixels
+     * @param x      the x-axis position of the viewport in pixels
+     * @param y      the y-asis position of the viewport in pixels
+     * @param width  the width of the viewport in pixels
+     * @param height the height of the viewport in pixels
      */
     @Override
     public void end(int x, int y, int width, int height) {
@@ -198,5 +189,4 @@ public class NestableFrameBuffer extends FrameBuffer {
             return hasDepthRenderBuffer;
         }
     }
-
 }

@@ -44,7 +44,7 @@ import com.badlogic.gdx.utils.JsonValue;
 
 /**
  * This is a modified version of the libGDX MG3dModelLoader.
- *
+ * <p>
  * It ignores all textures, set in the model. This is because, one should be
  * able to assign materials (textures, colors) from the editor.
  *
@@ -55,6 +55,7 @@ public class MG3dModelLoader extends ModelLoader<ModelLoader.ModelParameters> {
     public static final short VERSION_HI = 0;
     public static final short VERSION_LO = 1;
     protected final BaseJsonReader reader;
+    private final Quaternion tempQ = new Quaternion();
 
     public MG3dModelLoader(final BaseJsonReader reader) {
         this(reader, null);
@@ -329,7 +330,6 @@ public class MG3dModelLoader extends ModelLoader<ModelLoader.ModelParameters> {
         return model.nodes;
     }
 
-    private final Quaternion tempQ = new Quaternion();
     private ModelNode parseNodesRecursively(JsonValue json) {
         ModelNode jsonNode = new ModelNode();
 
@@ -346,7 +346,7 @@ public class MG3dModelLoader extends ModelLoader<ModelLoader.ModelParameters> {
         if (rotation != null && rotation.size != 4) throw new GdxRuntimeException("Node rotation incomplete");
         jsonNode.rotation = rotation == null ? null
                 : new Quaternion(rotation.getFloat(0), rotation.getFloat(1), rotation.getFloat(2),
-                        rotation.getFloat(3));
+                rotation.getFloat(3));
 
         JsonValue scale = json.get("scale");
         if (scale != null && scale.size != 3) throw new GdxRuntimeException("Node scale incomplete");

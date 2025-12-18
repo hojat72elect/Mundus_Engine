@@ -44,5 +44,4 @@ public class SettingsDescriptor {
     public void setKeyboardLayout(KeyboardLayout keyboardLayout) {
         this.keyboardLayout = keyboardLayout;
     }
-
 }

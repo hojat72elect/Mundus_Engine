@@ -8,11 +8,11 @@ import com.badlogic.gdx.utils.GdxRuntimeException;
  * This class comes from gdx-gltf's ShaderParser, but slightly modified to first
  * check for the glsl files in Mundus, and if not found, then search for the original
  * file in gdx-gltf.
- *
+ * <p>
  * ShaderParser allows to recursively load shader code split into several files.
- *
+ * <p>
  * It brings support for file inclusion like: <pre>#include&lt;part.glsl&gt;</pre>
- *
+ * <p>
  * Given paths are relative to the file declaring the include statement.
  *
  * @author mgsx
@@ -22,16 +22,16 @@ public class MundusShaderParser {
     private final static String includeBefore = "#include <";
     private final static String includeAfter = ">";
 
-    public static String parse(FileHandle file){
+    public static String parse(FileHandle file) {
         String content = file.readString();
         String[] lines = content.split("\n");
         String result = "";
-        for(String line : lines){
+        for (String line : lines) {
             String cleanLine = line.trim();
 
-            if(cleanLine.startsWith(includeBefore)){
+            if (cleanLine.startsWith(includeBefore)) {
                 int end = cleanLine.indexOf(includeAfter, includeBefore.length());
-                if(end < 0) throw new GdxRuntimeException("malformed include: " + cleanLine);
+                if (end < 0) throw new GdxRuntimeException("malformed include: " + cleanLine);
                 String path = cleanLine.substring(includeBefore.length(), end);
                 FileHandle subFile = file.sibling(path);
 
@@ -43,11 +43,10 @@ public class MundusShaderParser {
 
                 result += "\n//////// " + path + "\n";
                 result += parse(subFile);
-            }else{
+            } else {
                 result += line + "\n";
             }
         }
         return result;
     }
-
 }

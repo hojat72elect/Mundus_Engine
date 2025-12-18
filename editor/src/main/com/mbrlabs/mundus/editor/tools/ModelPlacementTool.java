@@ -44,7 +44,7 @@ public class ModelPlacementTool extends Tool {
     public static final String NAME = "Placement Tool";
     public static Vector3 DEFAULT_ORIENTATION = Vector3.Z.cpy();
 
-    private Vector3 tempV3 = new Vector3();
+    private final Vector3 tempV3 = new Vector3();
 
     private boolean shouldRespectTerrainSlope = false;
 
@@ -170,5 +170,4 @@ public class ModelPlacementTool extends Tool {
     public void onDisabled() {
         dispose();
     }
-
 }

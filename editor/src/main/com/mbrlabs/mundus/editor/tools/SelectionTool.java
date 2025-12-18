@@ -40,10 +40,9 @@ import com.mbrlabs.mundus.editor.utils.Fa;
 public class SelectionTool extends Tool {
 
     public static final String NAME = "Selection Tool";
-
+    protected final KeyboardShortcutManager keyboardShortcutManager;
     private final GameObjectPicker goPicker;
     private final MundusPreferencesManager globalPreferencesManager;
-    protected final KeyboardShortcutManager keyboardShortcutManager;
 
     public SelectionTool(final ProjectManager projectManager,
                          final GameObjectPicker goPicker,
@@ -147,5 +146,4 @@ public class SelectionTool extends Tool {
     public void onDisabled() {
         getProjectManager().current().currScene.currentSelection = null;
     }
-
 }

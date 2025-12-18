@@ -11,5 +11,4 @@ public interface Event {
      * Calls this method if the event has triggered.
      */
     void action();
-
 }

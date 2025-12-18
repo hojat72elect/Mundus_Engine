@@ -27,7 +27,7 @@ import org.apache.commons.io.FileUtils
  * @author Marcus Brummer
  * @version 15-10-2016
  */
-class TextureAssetInspectorWidget : BaseInspectorWidget(TextureAssetInspectorWidget.TITLE) {
+class TextureAssetInspectorWidget : BaseInspectorWidget(TITLE) {
 
     companion object {
         private val TITLE = "Texture Asset"

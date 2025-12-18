@@ -31,9 +31,9 @@ import com.mbrlabs.mundus.editor.Mundus
 import com.mbrlabs.mundus.editor.core.io.IOManager
 import com.mbrlabs.mundus.editor.core.io.IOManagerProvider
 import com.mbrlabs.mundus.editor.core.keymap.KeyboardShortcut
+import com.mbrlabs.mundus.editor.core.keymap.KeyboardShortcutManager
 import com.mbrlabs.mundus.editor.core.keymap.KeymapKey
 import com.mbrlabs.mundus.editor.core.keymap.KeymapKeyType
-import com.mbrlabs.mundus.editor.core.keymap.KeyboardShortcutManager
 import com.mbrlabs.mundus.editor.core.registry.Registry
 import com.mbrlabs.mundus.editor.events.SettingsChangedEvent
 import com.mbrlabs.mundus.editor.ui.UI
@@ -65,7 +65,7 @@ class KeyboardShortcutsSettingsTable : BaseSettingsTable() {
         padRight(UI.PAD_SIDE).padLeft(UI.PAD_SIDE)
 
         add(VisLabel("Keyboard Shortcuts Settings")).left().row()
-        addSeparator().padBottom(UI.PAD_SIDE*2)
+        addSeparator().padBottom(UI.PAD_SIDE * 2)
 
         keyboardShortcutsTable.defaults().pad(4f)
 

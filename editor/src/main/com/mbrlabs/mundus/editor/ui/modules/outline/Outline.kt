@@ -29,7 +29,10 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop
 import com.badlogic.gdx.utils.Align
 import com.badlogic.gdx.utils.Array
-import com.kotcrab.vis.ui.widget.*
+import com.kotcrab.vis.ui.widget.VisLabel
+import com.kotcrab.vis.ui.widget.VisScrollPane
+import com.kotcrab.vis.ui.widget.VisTable
+import com.kotcrab.vis.ui.widget.VisTree
 import com.mbrlabs.mundus.commons.scene3d.GameObject
 import com.mbrlabs.mundus.commons.scene3d.SceneGraph
 import com.mbrlabs.mundus.commons.scene3d.components.Component
@@ -38,7 +41,10 @@ import com.mbrlabs.mundus.commons.utils.LightUtils
 import com.mbrlabs.mundus.editor.Mundus
 import com.mbrlabs.mundus.editor.Mundus.postEvent
 import com.mbrlabs.mundus.editor.core.project.ProjectManager
-import com.mbrlabs.mundus.editor.events.*
+import com.mbrlabs.mundus.editor.events.AssetSelectedEvent
+import com.mbrlabs.mundus.editor.events.ComponentAddedEvent
+import com.mbrlabs.mundus.editor.events.GameObjectSelectedEvent
+import com.mbrlabs.mundus.editor.events.SceneGraphChangedEvent
 import com.mbrlabs.mundus.editor.history.CommandHistory
 import com.mbrlabs.mundus.editor.history.commands.DeleteCommand
 import com.mbrlabs.mundus.editor.scene3d.components.PickableLightComponent
@@ -308,7 +314,7 @@ class Outline : VisTable(),
                 val selection = tree.getSelection()
                 if (selection != null && selection.size() > 0) {
                     val go = selection.first().value
-                    Mundus.postEvent(GameObjectSelectedEvent(go))
+                    postEvent(GameObjectSelectedEvent(go))
                 }
             }
         })
@@ -436,7 +442,7 @@ class Outline : VisTable(),
             LightUtils.copyLightSettings(lightComponent.light, pickableLightComponent.light)
 
             goCopy.addComponent(pickableLightComponent)
-            Mundus.postEvent(ComponentAddedEvent(pickableLightComponent))
+            postEvent(ComponentAddedEvent(pickableLightComponent))
         }
 
         // add copy to tree

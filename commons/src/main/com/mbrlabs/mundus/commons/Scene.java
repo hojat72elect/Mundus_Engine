@@ -41,6 +41,7 @@ import com.mbrlabs.mundus.commons.shadows.ShadowResolution;
 import com.mbrlabs.mundus.commons.skybox.Skybox;
 import com.mbrlabs.mundus.commons.utils.LightUtils;
 import com.mbrlabs.mundus.commons.water.WaterResolution;
+
 import net.mgsx.gltf.scene3d.attributes.PBRCubemapAttribute;
 import net.mgsx.gltf.scene3d.attributes.PBRTextureAttribute;
 import net.mgsx.gltf.scene3d.utils.IBLBuilder;
@@ -53,21 +54,18 @@ public class Scene implements Disposable {
     public static boolean isRuntime = true;
 
     public MundusDirectionalShadowLight dirLight;
-    private String name;
-    private long id;
-
-    private SceneRenderer sceneRenderer;
-
     public SceneGraph sceneGraph;
     public SceneSettings settings;
     public MundusEnvironment environment;
     public Skybox skybox;
     public String skyboxAssetId;
-
     public Camera cam;
     public ModelBatch batch;
     public ModelBatch depthBatch;
     public ModelCacheManager modelCacheManager;
+    private String name;
+    private long id;
+    private SceneRenderer sceneRenderer;
 
     public Scene() {
         environment = new MundusEnvironment();
@@ -135,6 +133,7 @@ public class Scene implements Disposable {
     /**
      * This is the primary render method. It handles rendering everything. This should be used
      * unless you need more control over the rendering process.
+     *
      * @param delta time since last frame
      */
     public void render(float delta) {
@@ -146,19 +145,19 @@ public class Scene implements Disposable {
         return name;
     }
 
-    public void setDirectionalLight(MundusDirectionalShadowLight light) {
-        this.dirLight = light;
-        environment.remove(DirectionalLightsAttribute.Type);
-        environment.add(light);
-        initPBR();
+    public void setName(String name) {
+        this.name = name;
     }
 
     public MundusDirectionalShadowLight getDirectionalLight() {
         return dirLight;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDirectionalLight(MundusDirectionalShadowLight light) {
+        this.dirLight = light;
+        environment.remove(DirectionalLightsAttribute.Type);
+        environment.add(light);
+        initPBR();
     }
 
     public long getId() {
@@ -184,6 +183,7 @@ public class Scene implements Disposable {
     /**
      * Set the water resolution to use for water reflection and refractions.
      * This will reinitialize the frame buffers with the given resolution.
+     *
      * @param resolution the resolution to use
      */
     public void setWaterResolution(WaterResolution resolution) {
@@ -208,14 +208,14 @@ public class Scene implements Disposable {
     /**
      * Sets and switches the scenes skybox to the given SkyboxAsset.
      *
-     * @param skyboxAsset the asset to use
+     * @param skyboxAsset  the asset to use
      * @param skyboxShader the shader to use
      */
     public void setSkybox(SkyboxAsset skyboxAsset, Shader skyboxShader) {
         if (skyboxAsset == null) return;
 
         skyboxAssetId = skyboxAsset.getID();
-        skybox =  new Skybox(skyboxAsset.positiveX.getFile(),
+        skybox = new Skybox(skyboxAsset.positiveX.getFile(),
                 skyboxAsset.negativeX.getFile(),
                 skyboxAsset.positiveY.getFile(),
                 skyboxAsset.negativeY.getFile(),
@@ -225,7 +225,6 @@ public class Scene implements Disposable {
 
         skybox.setRotateSpeed(skyboxAsset.rotateSpeed);
         skybox.setRotateEnabled(skyboxAsset.rotateEnabled);
-
     }
 
     public void setClippingPlane(Vector3 plane, float clipHeight) {

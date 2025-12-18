@@ -20,9 +20,6 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import com.mbrlabs.mundus.editor.history.Command;
-import com.mbrlabs.mundus.editor.history.CommandHistory;
-
 /**
  * @author Marcus Brummer
  * @version 08-02-2016
@@ -93,5 +90,4 @@ public class HistoryTest {
         public void undo() {
         }
     }
-
 }

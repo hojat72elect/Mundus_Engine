@@ -29,12 +29,10 @@ import com.mbrlabs.mundus.commons.assets.PixmapTextureAsset;
  */
 public class SplatMap {
 
-    private int width;
-    private int height;
-
-    private PixmapTextureAsset pixmapAsset;
-
     private final Color c0 = new Color();
+    private final int width;
+    private final int height;
+    private final PixmapTextureAsset pixmapAsset;
 
     public SplatMap(PixmapTextureAsset asset) {
         this.pixmapAsset = asset;
@@ -122,5 +120,4 @@ public class SplatMap {
 
         return Color.rgba8888(c0);
     }
-
 }

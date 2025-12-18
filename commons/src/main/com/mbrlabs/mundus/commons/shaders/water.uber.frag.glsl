@@ -6,11 +6,16 @@
 #define MED
 #endif
 
-varying MED vec2 v_texCoord0;
-varying vec2 v_waterTexCoords;
-varying vec4 v_clipSpace;
-varying vec3 v_toCameraVector;
-varying vec2 v_diffuseUV;
+varying MED vec2
+v_texCoord0;
+varying vec2
+v_waterTexCoords;
+varying vec4
+v_clipSpace;
+varying vec3
+v_toCameraVector;
+varying vec2
+v_diffuseUV;
 
 #ifdef reflectionFlag
 uniform sampler2D u_reflectionTexture;
@@ -21,11 +26,16 @@ uniform sampler2D u_refractionTexture;
 uniform float u_maxVisibleDepth;
 #endif
 
-uniform sampler2D u_refractionDepthTexture;
-uniform sampler2D u_dudvTexture;
-uniform sampler2D u_normalMapTexture;
-uniform sampler2D u_foamTexture;
-uniform vec4 u_color;
+uniform sampler2D
+u_refractionDepthTexture;
+uniform sampler2D
+u_dudvTexture;
+uniform sampler2D
+u_normalMapTexture;
+uniform sampler2D
+u_foamTexture;
+uniform vec4
+u_color;
 uniform MED float u_waveStrength;
 uniform MED float u_moveFactor;
 uniform MED float u_shineDamper;
@@ -35,7 +45,8 @@ uniform MED float u_foamEdgeBias;
 uniform MED float u_foamEdgeDistance;
 uniform MED float u_foamFallOffDistance;
 uniform MED float u_foamScrollSpeed;
-uniform vec2 u_cameraNearFar;
+uniform vec2
+u_cameraNearFar;
 
 #ifdef fogFlag
 uniform vec3 u_fogEquation;
@@ -43,31 +54,36 @@ uniform MED vec4 u_fogColor;
 #endif
 
 // From gdx-gltf library https://github.com/mgsx-dev/gdx-gltf
-vec4 SRGBtoLINEAR(vec4 srgbIn)
+vec4 SRGBtoLINEAR(vec4
+srgbIn)
 {
-    #ifdef MANUAL_SRGB
-    #ifdef SRGB_FAST_APPROXIMATION
-    vec3 linOut = pow(srgbIn.xyz,vec3(2.2));
-    #else //SRGB_FAST_APPROXIMATION
-    vec3 bLess = step(vec3(0.04045),srgbIn.xyz);
-    vec3 linOut = mix( srgbIn.xyz/vec3(12.92), pow((srgbIn.xyz+vec3(0.055))/vec3(1.055),vec3(2.4)), bLess );
-    #endif //SRGB_FAST_APPROXIMATION
-    return vec4(linOut,srgbIn.w);;
-    #else //MANUAL_SRGB
-    return srgbIn;
-    #endif //MANUAL_SRGB
+#ifdef MANUAL_SRGB
+#ifdef SRGB_FAST_APPROXIMATION
+vec3 linOut = pow(srgbIn.xyz,vec3(2.2));
+#else //SRGB_FAST_APPROXIMATION
+vec3 bLess = step(vec3(0.04045),srgbIn.xyz);
+vec3 linOut = mix( srgbIn.xyz/vec3(12.92), pow((srgbIn.xyz+vec3(0.055))/vec3(1.055),vec3(2.4)), bLess );
+#endif //SRGB_FAST_APPROXIMATION
+return vec4(linOut,srgbIn.w);;
+#else //MANUAL_SRGB
+return
+srgbIn;
+#endif //MANUAL_SRGB
 }
 
 //https://aras-p.info/blog/2009/07/30/encoding-floats-to-rgba-the-final/
-float DecodeFloatRGBA( vec4 rgba ) {
-    return dot( rgba, vec4(1.0, 1.0/255.0, 1.0/65025.0, 1.0/16581375.0) );
+float DecodeFloatRGBA(vec4
+rgba ) {
+return
+dot( rgba, vec4(1.0, 1.0 / 255.0, 1.0 / 65025.0, 1.0 / 16581375.0)
+);
 }
 
 vec3 calcSpecularHighlights(BaseLight baseLight, vec3 direction, vec3 normal, vec3 viewVector, float waterDepth) {
     vec3 reflectedLight = reflect(normalize(direction), normal);
     float specular = max(dot(reflectedLight, viewVector), 0.0);
     specular = pow(specular, u_shineDamper);
-    vec3 specularHighlights = vec3(baseLight.Color) * baseLight.DiffuseIntensity * specular * u_reflectivity * clamp(waterDepth/5.0, 0.0, 1.0);
+    vec3 specularHighlights = vec3(baseLight.Color) * baseLight.DiffuseIntensity * specular * u_reflectivity * clamp(waterDepth / 5.0, 0.0, 1.0);
 
     return specularHighlights;
 }
@@ -83,7 +99,7 @@ float normalizeRange(float value, float minValue, float maxValue) {
 void main() {
 
     // Normalized device coordinates
-    vec2 ndc = (v_clipSpace.xy/v_clipSpace.w)/2.0 + 0.5;
+    vec2 ndc = (v_clipSpace.xy / v_clipSpace.w) / 2.0 + 0.5;
     vec2 refractTexCoords = vec2(ndc.x, ndc.y);
 
     float near = u_cameraNearFar.x;
@@ -99,11 +115,11 @@ void main() {
     waterDepth = max(waterDepth, 0.0);
 
     // Dudv distortion
-    vec2 distortedTexCoords = texture2D(u_dudvTexture, vec2(v_waterTexCoords.x + u_moveFactor, v_waterTexCoords.y)).rg*0.1;
-    distortedTexCoords = v_waterTexCoords + vec2(distortedTexCoords.x, distortedTexCoords.y+u_moveFactor);
+    vec2 distortedTexCoords = texture2D(u_dudvTexture, vec2(v_waterTexCoords.x + u_moveFactor, v_waterTexCoords.y)).rg * 0.1;
+    distortedTexCoords = v_waterTexCoords + vec2(distortedTexCoords.x, distortedTexCoords.y + u_moveFactor);
 
     // Soften distortions near edges
-    float soften = clamp(waterDepth/80.0, 0.0, 1.0);
+    float soften = clamp(waterDepth / 80.0, 0.0, 1.0);
     vec2 totalDistortion = (texture2D(u_dudvTexture, distortedTexCoords).rg * 2.0 - 1.0) * u_waveStrength * soften;
 
     float minTexCoord = 0.005;
@@ -115,60 +131,60 @@ void main() {
     normal = normalize(normal);
 
     // Sample textures with distortion
-    #ifdef reflectionFlag
-        vec2 reflectTexCoords = vec2(ndc.x, 1.0-ndc.y);
-        reflectTexCoords = reflectTexCoords + totalDistortion;
-        reflectTexCoords.x = clamp(reflectTexCoords.x, minTexCoord, maxTexCoord);
-        reflectTexCoords.y = clamp(reflectTexCoords.y, minTexCoord, maxTexCoord);
+#ifdef reflectionFlag
+    vec2 reflectTexCoords = vec2(ndc.x, 1.0-ndc.y);
+    reflectTexCoords = reflectTexCoords + totalDistortion;
+    reflectTexCoords.x = clamp(reflectTexCoords.x, minTexCoord, maxTexCoord);
+    reflectTexCoords.y = clamp(reflectTexCoords.y, minTexCoord, maxTexCoord);
 
-        vec4 reflectColor = SRGBtoLINEAR(texture2D(u_reflectionTexture, reflectTexCoords));
-    #endif
+    vec4 reflectColor = SRGBtoLINEAR(texture2D(u_reflectionTexture, reflectTexCoords));
+#endif
 
-    #ifdef refractionFlag
-        refractTexCoords = refractTexCoords + totalDistortion;
-        refractTexCoords = clamp(refractTexCoords, 0.001, 0.999);
+#ifdef refractionFlag
+    refractTexCoords = refractTexCoords + totalDistortion;
+    refractTexCoords = clamp(refractTexCoords, 0.001, 0.999);
 
-        vec4 refractColor;
+    vec4 refractColor;
 
-        // Blend amount for color vs refraction texture
-        if (waterDepth == 0.0) {
-            // Color in the refraction when depth = 0 which happens if nothing is underneath the water
-            // (like corners of water)
-            refractColor = u_color;
-        } else {
-            refractColor = SRGBtoLINEAR(texture2D(u_refractionTexture, refractTexCoords));
-            float refractionBlend = normalizeRange(waterDepth, 0.0, u_maxVisibleDepth);
-            refractColor = mix(refractColor, u_color, refractionBlend);
-        }
-    #endif
+    // Blend amount for color vs refraction texture
+    if (waterDepth == 0.0) {
+        // Color in the refraction when depth = 0 which happens if nothing is underneath the water
+        // (like corners of water)
+        refractColor = u_color;
+    } else {
+        refractColor = SRGBtoLINEAR(texture2D(u_refractionTexture, refractTexCoords));
+        float refractionBlend = normalizeRange(waterDepth, 0.0, u_maxVisibleDepth);
+        refractColor = mix(refractColor, u_color, refractionBlend);
+    }
+#endif
 
     vec3 viewVector = normalize(v_toCameraVector);
 
-    #ifdef reflectionFlag
-        #ifdef refractionFlag
-            // If we have both Reflection and Reflection, blend based on fresnel effect
-            float refractiveFactor = dot(viewVector, normal);
-            vec4 color =  mix(reflectColor, refractColor, refractiveFactor);
-        #else
-            // No Refraction but we have reflection
-            vec4 color = reflectColor;
-        #endif
-    #else
-        #ifdef refractionFlag
-            // No Reflection but we have refraction
-            vec4 color = refractColor;
-        #else
-            // We have neither reflection or refraction
-            vec4 color = u_color;
-        #endif
-    #endif
+#ifdef reflectionFlag
+#ifdef refractionFlag
+    // If we have both Reflection and Reflection, blend based on fresnel effect
+    float refractiveFactor = dot(viewVector, normal);
+    vec4 color =  mix(reflectColor, refractColor, refractiveFactor);
+#else
+    // No Refraction but we have reflection
+    vec4 color = reflectColor;
+#endif
+#else
+#ifdef refractionFlag
+    // No Reflection but we have refraction
+    vec4 color = refractColor;
+#else
+    // We have neither reflection or refraction
+    vec4 color = u_color;
+#endif
+#endif
 
     // Mix some color in
     color.rgb = mix(color.rgb, u_color.rgb, u_color.a);
 
     // Water Foam implemented from http://fire-face.com/personal/water/
     float edgePatternScroll = u_moveFactor * u_foamScrollSpeed;
-    vec4 edgeFalloffColor = vec4(0.8,0.8,0.8,0.6);
+    vec4 edgeFalloffColor = vec4(0.8, 0.8, 0.8, 0.6);
 
     vec2 scaledUV = v_diffuseUV * u_foamScale;
 
@@ -187,8 +203,7 @@ void main() {
     mask = clamp(mask, 0.0, 1.0);
 
     // Is this pixel in the leading edge?
-    if(waterDepth < u_foamFallOffDistance * u_foamEdgeDistance)
-    {
+    if (waterDepth < u_foamFallOffDistance * u_foamEdgeDistance) {
         // Modulate the surface alpha and the mask strength
         float leading = waterDepth / (u_foamFallOffDistance * u_foamEdgeDistance);
         color.a *= leading;
@@ -216,12 +231,12 @@ void main() {
     vec3 specularHighlights = calcSpecularHighlights(u_directionalLight.Base, u_directionalLight.Direction, normal, viewVector, waterDepth);
 
     // Calculate specular and lighting for point lights, logic modified from gdx-gltf to closer match PBR Shaders
-    for (int i = 0 ; i < numPointLights ; i++) {
-        if (i >= u_activeNumPointLights){break;}
+    for (int i = 0; i < numPointLights; i++) {
+        if (i >= u_activeNumPointLights) {break;}
 
         // Light distance
         vec3 d = v_worldPos - u_pointLights[i].LocalPos;
-        float dist2 = dot(d,d);
+        float dist2 = dot(d, d);
         float attenuation = 1.0 + dist2;
 
         // Apply point light colors to overall color
@@ -240,17 +255,17 @@ void main() {
         float specularAttenuationFactor = 0.2;
 
         // Add point light contribution to specular highlights
-       specularHighlights += (calcSpecularHighlights(u_pointLights[i].Base, normalize(d), normal, viewVector, waterDepth) * specularDistanceFactor) / (attenuation * specularAttenuationFactor);
+        specularHighlights += (calcSpecularHighlights(u_pointLights[i].Base, normalize(d), normal, viewVector, waterDepth) * specularDistanceFactor) / (attenuation * specularAttenuationFactor);
     }
 
     for (int i = 0; i < numSpotLights; i++) {
-        if (i >= u_activeNumSpotLights){break;}
+        if (i >= u_activeNumSpotLights) {break;}
 
         // Light distance
         vec3 d = v_worldPos - u_spotLights[i].Base.LocalPos;
-        float dist2 = dot(d,d);
+        float dist2 = dot(d, d);
         float attenuation = 1.0 + dist2;
-        d*= inversesqrt(dist2);
+        d *= inversesqrt(dist2);
 
         // light direction
         vec3 l = normalize(u_spotLights[i].Direction);  // Vector from surface point to light
@@ -273,18 +288,18 @@ void main() {
     // Apply final specular values
     color += vec4(specularHighlights, 0.0);
 
-    #ifdef GAMMA_CORRECTION
+#ifdef GAMMA_CORRECTION
     color.rgb = pow(color.rgb,vec3(1.0/GAMMA_CORRECTION));
-    #endif
+#endif
 
     // Fog
-    #ifdef fogFlag
+#ifdef fogFlag
     float fog = (waterDistance - u_fogEquation.x) / (u_fogEquation.y - u_fogEquation.x);
     fog = clamp(fog, 0.0, 1.0);
     fog = pow(fog, u_fogEquation.z);
 
     color.rgb  = mix(color.rgb, u_fogColor.rgb, fog * u_fogColor.a);
-    #endif
+#endif
 
     gl_FragColor = color;
     //gl_FragColor = vec4(waterDepth/50.0);

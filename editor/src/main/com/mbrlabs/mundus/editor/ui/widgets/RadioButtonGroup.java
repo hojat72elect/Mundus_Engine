@@ -26,25 +26,7 @@ import com.kotcrab.vis.ui.widget.VisTable;
  */
 public class RadioButtonGroup<T> extends VisTable {
 
-    /**
-     * A checkbox with a reference object.
-     */
-    public static class RadioButton extends VisRadioButton {
-
-        private Object refObject;
-
-        public RadioButton(String text, Object refObject) {
-            super(text);
-            this.refObject = refObject;
-        }
-
-        public Object getRefObject() {
-            return refObject;
-        }
-
-    }
-
-    private ButtonGroup<RadioButton> buttonGroup;
+    private final ButtonGroup<RadioButton> buttonGroup;
 
     public RadioButtonGroup() {
         super();
@@ -63,4 +45,20 @@ public class RadioButtonGroup<T> extends VisTable {
         return buttonGroup;
     }
 
+    /**
+     * A checkbox with a reference object.
+     */
+    public static class RadioButton extends VisRadioButton {
+
+        private final Object refObject;
+
+        public RadioButton(String text, Object refObject) {
+            super(text);
+            this.refObject = refObject;
+        }
+
+        public Object getRefObject() {
+            return refObject;
+        }
+    }
 }

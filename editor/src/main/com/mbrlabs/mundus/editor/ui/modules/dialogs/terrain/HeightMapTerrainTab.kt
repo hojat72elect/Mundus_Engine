@@ -109,14 +109,18 @@ class HeightMapTerrainTab(var dialog: AddTerrainChunksDialog) : Tab(false, false
         rightTable.defaults().pad(5f).top()
 
         splatMapSelectBox.setItems(
-                SplatMapResolution._512.value,
-                SplatMapResolution._1024.value,
-                SplatMapResolution._2048.value,
+            SplatMapResolution._512.value,
+            SplatMapResolution._1024.value,
+            SplatMapResolution._2048.value,
         )
 
-        rightTable.add(ToolTipLabel("SplatMap Resolution: ", "The resolution of the splatmap for texture painting on the terrain.\n" +
-                "Higher resolution results in smoother texture painting at the cost of more memory usage and performance slowdowns when painting.\n" +
-                "If you are targeting HTML, 512 is recommended")).left()
+        rightTable.add(
+            ToolTipLabel(
+                "SplatMap Resolution: ", "The resolution of the splatmap for texture painting on the terrain.\n" +
+                        "Higher resolution results in smoother texture painting at the cost of more memory usage and performance slowdowns when painting.\n" +
+                        "If you are targeting HTML, 512 is recommended"
+            )
+        ).left()
         rightTable.add(splatMapSelectBox).left().row()
 
         val container = VisTable()
@@ -163,7 +167,7 @@ class HeightMapTerrainTab(var dialog: AddTerrainChunksDialog) : Tab(false, false
 
         try {
             heightMapData = HeightMapGenerator.heightColorsToMap(
-                originalMap.getPixels(), originalMap.getFormat(), imageWidth,
+                originalMap.getPixels(), originalMap.format, imageWidth,
                 imageHeight
             )
         } catch (e: Exception) {
@@ -237,7 +241,7 @@ class HeightMapTerrainTab(var dialog: AddTerrainChunksDialog) : Tab(false, false
         return flippedHeightMapData
     }
 
-    fun getMinHeightValue() : Float = minHeightField.float
-    fun getMaxHeightValue() : Float = maxHeightField.float
+    fun getMinHeightValue(): Float = minHeightField.float
+    fun getMaxHeightValue(): Float = maxHeightField.float
 
 }

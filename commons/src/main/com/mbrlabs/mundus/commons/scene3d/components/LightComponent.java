@@ -9,6 +9,7 @@ import com.mbrlabs.mundus.commons.env.lights.LightType;
 import com.mbrlabs.mundus.commons.scene3d.DirtyListener;
 import com.mbrlabs.mundus.commons.scene3d.GameObject;
 import com.mbrlabs.mundus.commons.utils.LightUtils;
+
 import net.mgsx.gltf.scene3d.lights.PointLightEx;
 import net.mgsx.gltf.scene3d.lights.SpotLightEx;
 
@@ -23,11 +24,10 @@ import net.mgsx.gltf.scene3d.lights.SpotLightEx;
  */
 public class LightComponent extends AbstractComponent implements DirtyListener {
     private static final String TAG = LightComponent.class.getSimpleName();
-
+    protected final Vector3 tmp = new Vector3();
     private BaseLight light;
     private LightType lightType;
     private Vector3 position = new Vector3();
-    protected final Vector3 tmp = new Vector3();
 
     public LightComponent(GameObject go, LightType lightType) {
         super(go);
@@ -114,7 +114,7 @@ public class LightComponent extends AbstractComponent implements DirtyListener {
             ((SpotLightEx) light).direction.set(gameObject.getForwardDirection(tmp));
             ((SpotLightEx) light).cutoffAngle = 45;
             ((SpotLightEx) light).exponent = 30;
-           // ((SpotLightEx) light).range = 100f;
+            // ((SpotLightEx) light).range = 100f;
             position = ((SpotLightEx) light).position;
 
             gameObject.sceneGraph.scene.environment.add(light);

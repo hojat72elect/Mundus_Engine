@@ -32,11 +32,10 @@ import java.util.Map;
  * @version May 08, 2023
  */
 public class ShaderPreprocessor {
-    public static boolean cacheEnabled = true;
     private static final String includeDirective = "#include";
-
     // Cache for already parsed files
     private static final Map<String, String> cache = new HashMap<>();
+    public static boolean cacheEnabled = true;
 
     /**
      * Parses the shader file and replaces all include directives with the

@@ -23,6 +23,7 @@ import com.badlogic.gdx.graphics.g3d.attributes.PointLightsAttribute;
 import com.badlogic.gdx.graphics.g3d.attributes.SpotLightsAttribute;
 import com.badlogic.gdx.graphics.g3d.environment.BaseLight;
 import com.badlogic.gdx.math.Vector3;
+
 import net.mgsx.gltf.scene3d.lights.PointLightEx;
 import net.mgsx.gltf.scene3d.lights.SpotLightEx;
 
@@ -61,13 +62,13 @@ public class MundusEnvironment extends Environment {
         return this;
     }
 
-    public Environment remove (BaseLight light) {
+    public Environment remove(BaseLight light) {
         if (light instanceof SpotLightEx) {
             return remove((SpotLightEx) light);
         }
 
         if (has(PointLightsAttribute.Type) && light instanceof PointLightEx) {
-            PointLightsAttribute pointLights = ((PointLightsAttribute)get(PointLightsAttribute.Type));
+            PointLightsAttribute pointLights = ((PointLightsAttribute) get(PointLightsAttribute.Type));
             pointLights.lights.removeValue((PointLightEx) light, false);
             if (pointLights.lights.size == 0)
                 remove(PointLightsAttribute.Type);
@@ -75,9 +76,9 @@ public class MundusEnvironment extends Environment {
         return this;
     }
 
-    public Environment remove (SpotLightEx light) {
+    public Environment remove(SpotLightEx light) {
         if (has(SpotLightsAttribute.Type)) {
-            SpotLightsAttribute spotLights = ((SpotLightsAttribute)get(SpotLightsAttribute.Type));
+            SpotLightsAttribute spotLights = ((SpotLightsAttribute) get(SpotLightsAttribute.Type));
             spotLights.lights.removeValue(light, false);
             if (spotLights.lights.size == 0)
                 remove(SpotLightsAttribute.Type);

@@ -30,7 +30,7 @@ import com.mbrlabs.mundus.editor.ui.UI
 import com.mbrlabs.mundus.editor.ui.modules.dialogs.BaseDialog
 import com.mbrlabs.mundus.pluginapi.MenuExtension
 
-class PluginsMenu : Menu("Plugins"), PluginsLoadedEvent.PluginsLoadedEventListener{
+class PluginsMenu : Menu("Plugins"), PluginsLoadedEvent.PluginsLoadedEventListener {
 
     companion object {
         const val NO_PLUGINS_LOADED_TEXT = "No Plugins Loaded"

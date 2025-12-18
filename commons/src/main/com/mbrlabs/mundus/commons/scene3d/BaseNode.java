@@ -77,5 +77,4 @@ public abstract class BaseNode<T extends BaseNode> implements Node<T> {
             this.parent = null;
         }
     }
-
 }

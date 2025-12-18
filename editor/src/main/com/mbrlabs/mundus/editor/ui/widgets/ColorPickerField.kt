@@ -63,12 +63,15 @@ class ColorPickerField() : VisTable() {
             override fun canceled(oldColor: Color?) {
                 colorAdapter?.canceled(oldColor)
             }
+
             override fun reset(previousColor: Color?, newColor: Color?) {
                 colorAdapter?.reset(previousColor, newColor)
             }
+
             override fun changed(newColor: Color?) {
                 colorAdapter?.changed(newColor)
             }
+
             override fun finished(newColor: Color) {
                 selectedColor = newColor
                 colorAdapter?.finished(newColor)

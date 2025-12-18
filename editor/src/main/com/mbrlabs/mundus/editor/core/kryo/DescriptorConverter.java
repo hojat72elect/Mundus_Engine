@@ -16,20 +16,24 @@
 
 package com.mbrlabs.mundus.editor.core.kryo;
 
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Locale;
-
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.JsonWriter;
-import com.mbrlabs.mundus.editor.core.kryo.descriptors.*;
+import com.mbrlabs.mundus.editor.core.kryo.descriptors.ProjectDescriptor;
+import com.mbrlabs.mundus.editor.core.kryo.descriptors.ProjectRefDescriptor;
+import com.mbrlabs.mundus.editor.core.kryo.descriptors.ProjectSettingsDescriptor;
+import com.mbrlabs.mundus.editor.core.kryo.descriptors.RegistryDescriptor;
+import com.mbrlabs.mundus.editor.core.kryo.descriptors.SceneRefDescriptor;
+import com.mbrlabs.mundus.editor.core.kryo.descriptors.SettingsDescriptor;
 import com.mbrlabs.mundus.editor.core.project.ProjectContext;
 import com.mbrlabs.mundus.editor.core.project.ProjectSettings;
 import com.mbrlabs.mundus.editor.core.registry.KeyboardLayout;
 import com.mbrlabs.mundus.editor.core.registry.ProjectRef;
 import com.mbrlabs.mundus.editor.core.registry.Registry;
 import com.mbrlabs.mundus.editor.core.registry.Settings;
+
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Locale;
 
 /**
  * Converts runtime formats into Kryo compatible formats for internal project
@@ -44,7 +48,8 @@ public class DescriptorConverter {
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////
     // Registry
-    /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /// //////////////////////////////////////////////////////////////////////////////////////////////////
 
     public static RegistryDescriptor convert(Registry registry) {
         RegistryDescriptor descriptor = new RegistryDescriptor();
@@ -66,7 +71,7 @@ public class DescriptorConverter {
         for (ProjectRefDescriptor projectRef : descriptor.getProjects()) {
 
             // If the project files were deleted, do not convert
-            boolean directoryExists =  Files.isDirectory(Paths.get(projectRef.getPath()));
+            boolean directoryExists = Files.isDirectory(Paths.get(projectRef.getPath()));
 
             if (directoryExists) {
                 registry.getProjects().add(convert(projectRef));
@@ -74,14 +79,13 @@ public class DescriptorConverter {
                 // Uh oh, the last project opened no longer exists, lets set a different one as last opened
                 lastOpenedProjectDeleted = true;
             }
-
         }
         registry.setSettings(convert(descriptor.getSettingsDescriptor()));
 
         if (lastOpenedProjectDeleted) {
             if (!registry.getProjects().isEmpty()) {
                 // Open the last project in the list
-                registry.setLastProject(registry.getProjects().get(registry.getProjects().size()-1));
+                registry.setLastProject(registry.getProjects().get(registry.getProjects().size() - 1));
             }
         }
 
@@ -130,7 +134,8 @@ public class DescriptorConverter {
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////
     // Project
-    /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /// //////////////////////////////////////////////////////////////////////////////////////////////////
 
     public static ProjectDescriptor convert(ProjectContext project) {
         ProjectDescriptor descriptor = new ProjectDescriptor();
@@ -164,7 +169,8 @@ public class DescriptorConverter {
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////
     // Project Settings
-    /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /// //////////////////////////////////////////////////////////////////////////////////////////////////
 
     public static ProjectSettingsDescriptor convert(ProjectSettings settings) {
         ProjectSettingsDescriptor descriptor = new ProjectSettingsDescriptor();
@@ -172,7 +178,7 @@ public class DescriptorConverter {
         // export settings
         descriptor.setExportAllAssets(settings.getExport().allAssets);
         descriptor.setExportCompressScenes(settings.getExport().compressScenes);
-        if(settings.getExport().outputFolder != null) {
+        if (settings.getExport().outputFolder != null) {
             descriptor.setExportOutputFolder(settings.getExport().outputFolder.path());
         }
         descriptor.setJsonType(settings.getExport().jsonType.toString());
@@ -182,17 +188,16 @@ public class DescriptorConverter {
 
     public static ProjectSettings convert(ProjectSettingsDescriptor descriptor) {
         ProjectSettings settings = new ProjectSettings();
-        if(descriptor == null) return settings;
+        if (descriptor == null) return settings;
 
         // export settings
         settings.getExport().allAssets = descriptor.isExportAllAssets();
         settings.getExport().compressScenes = descriptor.isExportCompressScenes();
-        if(descriptor.getExportOutputFolder() != null && descriptor.getExportOutputFolder().length() > 0) {
+        if (descriptor.getExportOutputFolder() != null && descriptor.getExportOutputFolder().length() > 0) {
             settings.getExport().outputFolder = new FileHandle(descriptor.getExportOutputFolder());
         }
         settings.getExport().jsonType = JsonWriter.OutputType.valueOf(descriptor.getJsonType());
 
         return settings;
     }
-
 }

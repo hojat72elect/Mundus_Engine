@@ -202,9 +202,11 @@ class ImportModelDialog : BaseDialog("Import Mesh"), Disposable {
             inputTable.left().top()
 
             val label = VisLabel()
-            label.setText("The recommended format is '.gltf' separate (bin file, gltf file, textures). Mundus relies on textures being external image files," +
-                    " so using binary files like .glb or embedded .gltf where the files are compressed and packed into the binary is " +
-                    "not recommended. Automatic importing of material attributes only works with separate .gltf files currently.")
+            label.setText(
+                "The recommended format is '.gltf' separate (bin file, gltf file, textures). Mundus relies on textures being external image files," +
+                        " so using binary files like .glb or embedded .gltf where the files are compressed and packed into the binary is " +
+                        "not recommended. Automatic importing of material attributes only works with separate .gltf files currently."
+            )
             label.wrap = true
             label.width = 300f
             inputTable.add(label).expandX().prefWidth(300f).padBottom(10f).row()
@@ -300,9 +302,12 @@ class ImportModelDialog : BaseDialog("Import Mesh"), Disposable {
 
             if (importedModel == null) {
                 if (isCollada(model) || isFBX(model)
-                        || isWavefont(model)) {
-                    Dialogs.showErrorDialog(stage, "Import error\nPlease make sure you specified the right "
-                            + "files & have set the correct fbc-conv binary in the settings menu.")
+                    || isWavefont(model)
+                ) {
+                    Dialogs.showErrorDialog(
+                        stage, "Import error\nPlease make sure you specified the right "
+                                + "files & have set the correct fbc-conv binary in the settings menu."
+                    )
                 } else {
                     Dialogs.showErrorDialog(stage, "Import error\nPlease make sure you specified the right files")
                 }

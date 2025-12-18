@@ -63,8 +63,18 @@ public class TerrainAsset extends Asset {
         return splatmap;
     }
 
+    public void setSplatmap(PixmapTextureAsset splatmap) {
+        this.splatmap = splatmap;
+        if (splatmap == null) {
+            meta.getTerrain().setSplatmap(null);
+        } else {
+            meta.getTerrain().setSplatmap(splatmap.getID());
+        }
+    }
+
     /**
      * Returns true if the terrain has a LoD level for the given int.
+     *
      * @param lodLevel the integer lod level to check
      * @return true if the terrain has a LoD level for the given int
      */
@@ -74,6 +84,7 @@ public class TerrainAsset extends Asset {
 
     /**
      * Returns the LodLevel for the given int.
+     *
      * @param lodLevel the integer lod level to get
      * @return the lod level
      */
@@ -87,19 +98,28 @@ public class TerrainAsset extends Asset {
 
     /**
      * Returns all lod levels for this terrain. May return null if this terrain does not use lod.
+     *
      * @return all lod levels for this terrain or null if this terrain does not use lod
      */
     public LodLevel[] getLodLevels() {
         return lodLevels;
     }
 
-    public void setSplatmap(PixmapTextureAsset splatmap) {
-        this.splatmap = splatmap;
-        if (splatmap == null) {
-            meta.getTerrain().setSplatmap(null);
-        } else {
-            meta.getTerrain().setSplatmap(splatmap.getID());
+    /**
+     * Sets the lod levels for this terrain asset. Sending null will dispose the current lod levels
+     * and disable lod for this terrain.
+     *
+     * @param lodLevels the lod levels or null to disable lod
+     */
+    public void setLodLevels(LodLevel[] lodLevels) {
+        if (this.lodLevels != null) {
+            for (LodLevel level : this.lodLevels) {
+                level.dispose();
+            }
         }
+
+        useLod = lodLevels != null;
+        this.lodLevels = lodLevels;
     }
 
     public void setTriplanar(boolean value) {
@@ -187,7 +207,6 @@ public class TerrainAsset extends Asset {
             if (Gdx.app.getType() == Application.ApplicationType.WebGL) {
                 ((PixmapTextureAsset) assets.get(id)).loadBase64(meta.getTerrain().getSplatBase64());
             }
-
         }
     }
 
@@ -256,6 +275,7 @@ public class TerrainAsset extends Asset {
 
     /**
      * Sets the terrain layer asset. This will update the terrain material.
+     *
      * @param terrainLayerAsset the terrain layer asset
      */
     public void setTerrainLayerAsset(TerrainLayerAsset terrainLayerAsset) {
@@ -299,23 +319,8 @@ public class TerrainAsset extends Asset {
     }
 
     /**
-     * Sets the lod levels for this terrain asset. Sending null will dispose the current lod levels
-     * and disable lod for this terrain.
-     * @param lodLevels the lod levels or null to disable lod
-     */
-    public void setLodLevels(LodLevel[] lodLevels) {
-        if (this.lodLevels != null) {
-            for (LodLevel level : this.lodLevels) {
-                level.dispose();
-            }
-        }
-
-        useLod = lodLevels != null;
-        this.lodLevels = lodLevels;
-    }
-
-    /**
      * Is this terrain currently using lod?
+     *
      * @return true if this terrain is using lod
      */
     public boolean isUsingLod() {

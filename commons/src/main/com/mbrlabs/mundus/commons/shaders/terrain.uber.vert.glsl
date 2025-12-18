@@ -16,20 +16,31 @@
 
 #include "compat.glsl"
 
-attribute vec3 a_position;
-attribute vec3 a_normal;
-attribute vec2 a_texCoord0;
-attribute vec4 a_tangent;
+attribute vec3
+a_position;
+attribute vec3
+a_normal;
+attribute vec2
+a_texCoord0;
+attribute vec4
+a_tangent;
 
 // Default Uniforms
-uniform mat4 u_worldTrans;
-uniform mat4 u_projViewTrans;
-uniform vec4 u_cameraPosition;
-uniform mat3 u_normalMatrix;
+uniform mat4
+u_worldTrans;
+uniform mat4
+u_projViewTrans;
+uniform vec4
+u_cameraPosition;
+uniform mat3
+u_normalMatrix;
 
-varying vec2 v_texCoord0;
-varying vec3 v_worldPos;
-varying mat3 v_TBN;
+varying vec2
+v_texCoord0;
+varying vec3
+v_worldPos;
+varying mat3
+v_TBN;
 
 #ifdef PICKER
 varying vec3 v_pos;
@@ -42,10 +53,13 @@ uniform vec2 u_terrainSize;
 
 // clipping plane
 varying float v_clipDistance;
-uniform vec4 u_clipPlane;
+uniform vec4
+u_clipPlane;
 
-uniform mat4 u_shadowMapProjViewTrans;
-varying vec3 v_shadowMapUv;
+uniform mat4
+u_shadowMapProjViewTrans;
+varying vec3
+v_shadowMapUv;
 
 void main(void) {
     // position
@@ -69,14 +83,14 @@ void main(void) {
     // texture stuff
     v_texCoord0 = a_texCoord0;
 
-    #ifdef splatFlag
+#ifdef splatFlag
     v_splatPosition = vec2(a_position.x / u_terrainSize.x, a_position.z / u_terrainSize);
-    #endif
+#endif
 
     v_worldPos = worldPos.xyz;
 
-    #ifdef PICKER
+#ifdef PICKER
     v_pos = worldPos.xyz;
-    #endif
+#endif
 
 }

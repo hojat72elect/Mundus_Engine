@@ -35,9 +35,9 @@ class MetaSaver {
 
         json.writeObjectStart()
         addBasics(meta, json)
-        if(meta.type == AssetType.TERRAIN) {
+        if (meta.type == AssetType.TERRAIN) {
             addTerrain(meta, json)
-        } else if(meta.type == AssetType.MODEL) {
+        } else if (meta.type == AssetType.MODEL) {
             addModel(meta, json)
         } else if (meta.type == AssetType.CUSTOM) {
             addCustom(meta, json)
@@ -61,7 +61,7 @@ class MetaSaver {
         json.writeValue(MetaModel.JSON_NUM_BONES, meta.model.numBones)
 
         // default materials
-        if(model.defaultMaterials != null) {
+        if (model.defaultMaterials != null) {
             json.writeObjectStart(MetaModel.JSON_DEFAULT_MATERIALS)
             for (mat in model.defaultMaterials) {
                 json.writeValue(mat.key, mat.value)
@@ -73,7 +73,7 @@ class MetaSaver {
     }
 
     private fun addTerrain(meta: Meta, json: Json) {
-        val terrain = meta.terrain ?:return
+        val terrain = meta.terrain ?: return
 
         json.writeObjectStart(Meta.JSON_TERRAIN)
         json.writeValue(MetaTerrain.JSON_SIZE, terrain.size)

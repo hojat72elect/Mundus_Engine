@@ -29,7 +29,7 @@ public class MetaModel {
     public static final String JSON_NUM_BONES = "numBones";
 
     // g3db material id -> material asset uuid
-    private ObjectMap<String, String> defaultMaterials = new ObjectMap<>();
+    private final ObjectMap<String, String> defaultMaterials = new ObjectMap<>();
 
     private int numBones;
 

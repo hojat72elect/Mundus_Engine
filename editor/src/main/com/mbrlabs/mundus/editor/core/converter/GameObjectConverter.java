@@ -112,7 +112,6 @@ public class GameObjectConverter {
                         }
                     }
                 }
-
             }
         }
 
@@ -139,7 +138,7 @@ public class GameObjectConverter {
             final GameObject child = go.findChildById(childDto.getId());
 
             final TerrainComponentDTO terrainComponentDTO = childDto.getTerrainComponent();
-            final TerrainComponent terrainComponent = (TerrainComponent) child.findComponentByType(Component.Type.TERRAIN);
+            final TerrainComponent terrainComponent = child.findComponentByType(Component.Type.TERRAIN);
             if (terrainComponent == null) return; // Happens if terra files deleted in file system
 
             if (terrainComponentDTO != null) {
@@ -147,7 +146,7 @@ public class GameObjectConverter {
                 if (topNeighborId != null) {
                     final GameObject topNeighbor = go.findChildById(topNeighborId);
                     if (topNeighbor != null) {
-                        terrainComponent.setTopNeighbor((TerrainComponent) topNeighbor.findComponentByType(Component.Type.TERRAIN));
+                        terrainComponent.setTopNeighbor(topNeighbor.findComponentByType(Component.Type.TERRAIN));
                     }
                 }
 
@@ -155,7 +154,7 @@ public class GameObjectConverter {
                 if (rightNeighborId != null) {
                     final GameObject rightNeighbor = go.findChildById(rightNeighborId);
                     if (rightNeighbor != null) {
-                        terrainComponent.setRightNeighbor((TerrainComponent) rightNeighbor.findComponentByType(Component.Type.TERRAIN));
+                        terrainComponent.setRightNeighbor(rightNeighbor.findComponentByType(Component.Type.TERRAIN));
                     }
                 }
 
@@ -163,7 +162,7 @@ public class GameObjectConverter {
                 if (bottomNeighborId != null) {
                     final GameObject bottomNeighbor = go.findChildById(bottomNeighborId);
                     if (bottomNeighbor != null) {
-                        terrainComponent.setBottomNeighbor((TerrainComponent) bottomNeighbor.findComponentByType(Component.Type.TERRAIN));
+                        terrainComponent.setBottomNeighbor(bottomNeighbor.findComponentByType(Component.Type.TERRAIN));
                     }
                 }
 
@@ -171,7 +170,7 @@ public class GameObjectConverter {
                 if (leftNeighborId != null) {
                     final GameObject leftNeighbor = go.findChildById(leftNeighborId);
                     if (leftNeighbor != null) {
-                        terrainComponent.setLeftNeighbor((TerrainComponent) leftNeighbor.findComponentByType(Component.Type.TERRAIN));
+                        terrainComponent.setLeftNeighbor(leftNeighbor.findComponentByType(Component.Type.TERRAIN));
                     }
                 }
             }

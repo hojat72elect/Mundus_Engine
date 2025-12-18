@@ -30,8 +30,10 @@ import com.mbrlabs.mundus.editor.scene3d.components.PickableTerrainComponent
 
 private var tempVI = VertexInfo()
 
-fun createTerrainGO(sg: SceneGraph, goID: Int, goName: String,
-                    terrainAsset: TerrainAsset): GameObject {
+fun createTerrainGO(
+    sg: SceneGraph, goID: Int, goName: String,
+    terrainAsset: TerrainAsset
+): GameObject {
     val terrainGO = GameObject(sg, null, goID)
     terrainGO.name = goName
 

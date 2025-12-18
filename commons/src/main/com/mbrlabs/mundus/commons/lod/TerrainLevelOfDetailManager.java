@@ -15,10 +15,10 @@ import com.mbrlabs.mundus.commons.utils.Pools;
  */
 public class TerrainLevelOfDetailManager implements LevelOfDetailManager {
     private static final float UPDATE_INTERVAL = 0.5f;
+    private final TerrainComponent tc;
     private int currentLodIndex = 0;
     private boolean lodDirty = false;
     private boolean enabled = true;
-    private final TerrainComponent tc;
     private float timeSinceLastUpdate = 0f;
 
     public TerrainLevelOfDetailManager(TerrainComponent terrainComponent) {
@@ -127,6 +127,4 @@ public class TerrainLevelOfDetailManager implements LevelOfDetailManager {
         }
         return currentLod;
     }
-
-
 }

@@ -7,6 +7,7 @@ import com.mbrlabs.mundus.commons.terrain.SplatTexture;
 import com.mbrlabs.mundus.commons.terrain.TerrainMaterial;
 import com.mbrlabs.mundus.commons.terrain.attributes.TerrainMaterialAttribute;
 import com.mbrlabs.mundus.commons.water.attributes.WaterMaterialAttribute;
+
 import net.mgsx.gltf.scene3d.shaders.PBRShader;
 import net.mgsx.gltf.scene3d.shaders.PBRShaderConfig;
 import net.mgsx.gltf.scene3d.shaders.PBRShaderProvider;
@@ -23,14 +24,14 @@ public class MundusPBRShaderProvider extends PBRShaderProvider {
 
     @Override
     protected Shader createShader(Renderable renderable) {
-         if (renderable.material.has(WaterMaterialAttribute.WaterMaterial))
+        if (renderable.material.has(WaterMaterialAttribute.WaterMaterial))
             return createWaterShader(renderable);
 
         return super.createShader(renderable);
     }
 
     @Override
-    protected PBRShader createShader(Renderable renderable, PBRShaderConfig config, String prefix){
+    protected PBRShader createShader(Renderable renderable, PBRShaderConfig config, String prefix) {
         if (renderable.material.has(TerrainMaterialAttribute.TerrainMaterial)) {
             return createPBRTerrainShader(renderable, config, prefix);
         }
@@ -42,7 +43,7 @@ public class MundusPBRShaderProvider extends PBRShaderProvider {
         TerrainMaterialAttribute terrainMaterialA = (TerrainMaterialAttribute) renderable.material.get(TerrainMaterialAttribute.TerrainMaterial);
         TerrainMaterial terrainMaterial = terrainMaterialA.terrainMaterial;
 
-         prefix += getTerrainPrefix(terrainMaterial);
+        prefix += getTerrainPrefix(terrainMaterial);
 
         return new PBRTerrainShader(renderable, config, prefix);
     }

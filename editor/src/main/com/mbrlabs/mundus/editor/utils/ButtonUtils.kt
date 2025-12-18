@@ -30,7 +30,7 @@ object ButtonUtils {
     }
 
     fun buttonStringToButtonKey(text: String): Int {
-        return when(text) {
+        return when (text) {
             "LEFT" -> 0
             "RIGHT" -> 1
             "MIDDLE" -> 2

@@ -41,8 +41,8 @@ import com.mbrlabs.mundus.editorcommons.events.ProjectChangedEvent
  * @version 23-12-2015
  */
 class SceneMenu : Menu("Scenes"),
-        ProjectChangedEvent.ProjectChangedListener,
-        SceneAddedEvent.SceneAddedListener {
+    ProjectChangedEvent.ProjectChangedListener,
+    SceneAddedEvent.SceneAddedListener {
 
     companion object {
         private val TAG = SceneMenu::class.java.simpleName
@@ -53,7 +53,7 @@ class SceneMenu : Menu("Scenes"),
     private val addScene = MenuItem("Add scene")
 
     private val projectManager: ProjectManager = Mundus.inject()
-    private val ioManager : IOManager = Mundus.inject<IOManagerProvider>().ioManager
+    private val ioManager: IOManager = Mundus.inject<IOManagerProvider>().ioManager
 
     init {
         Mundus.registerEventListener(this)
@@ -106,7 +106,7 @@ class SceneMenu : Menu("Scenes"),
 
     private fun buildOpenSubMenuItem(parentMenu: MenuItem): MenuItem {
         val menuItem = MenuItem("Open")
-        menuItem.addListener(object: ClickListener() {
+        menuItem.addListener(object : ClickListener() {
             override fun clicked(event: InputEvent?, x: Float, y: Float) {
                 val sceneName = parentMenu.text.toString()
                 projectManager.changeScene(projectManager.current(), sceneName)
@@ -118,9 +118,9 @@ class SceneMenu : Menu("Scenes"),
 
     private fun buildRenameSubMenuItem(parentMenu: MenuItem): MenuItem {
         val menuItem = MenuItem("Rename")
-        menuItem.addListener(object: ClickListener() {
+        menuItem.addListener(object : ClickListener() {
             override fun clicked(event: InputEvent, x: Float, y: Float) {
-                val oldSceneName =  parentMenu.text.toString()
+                val oldSceneName = parentMenu.text.toString()
 
                 val dialog = Dialogs.showInputDialog(UI, "Rename scene", "Name", SceneNameValidator(), object : InputDialogAdapter() {
                     override fun finished(input: String) {
@@ -144,7 +144,7 @@ class SceneMenu : Menu("Scenes"),
     private fun buildDeleteSubMenuItem(sceneMenu: MenuItem): MenuItem {
         val menuItem = MenuItem("Delete")
         menuItem.name = DELETE_BUTTON_NAME
-        menuItem.addListener(object: ClickListener() {
+        menuItem.addListener(object : ClickListener() {
             override fun clicked(event: InputEvent?, x: Float, y: Float) {
                 val sceneName = sceneMenu.text.toString()
 

@@ -25,7 +25,7 @@ import com.mbrlabs.mundus.editor.ui.widgets.MaterialWidget
  * @author Marcus Brummer
  * @version 13-10-2016
  */
-class MaterialAssetInspectorWidget : BaseInspectorWidget(MaterialAssetInspectorWidget.TITLE) {
+class MaterialAssetInspectorWidget : BaseInspectorWidget(TITLE) {
 
     companion object {
         private val TITLE = "Material Asset"

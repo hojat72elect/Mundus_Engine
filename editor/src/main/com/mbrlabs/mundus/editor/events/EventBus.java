@@ -39,25 +39,6 @@ import java.util.Map;
  */
 public class EventBus {
 
-    private static class EventBusException extends RuntimeException {
-        private EventBusException(String s) {
-            super(s);
-        }
-    }
-
-    /**
-     * Tracks the subscriber methods for each event type.
-     */
-    private static class SubscriberMethod {
-        final Object instance;
-        final Method method;
-
-        SubscriberMethod(Object instance, Method method) {
-            this.instance = instance;
-            this.method = method;
-        }
-    }
-
     // Maps the event class to subscriber methods, cached for performance
     private final Map<Class<?>, List<SubscriberMethod>> subscribersMap;
 
@@ -91,6 +72,7 @@ public class EventBus {
 
     /**
      * Unregisters all subscriber methods of the given object.
+     *
      * @param subscriber
      */
     public void unregister(Object subscriber) {
@@ -102,6 +84,7 @@ public class EventBus {
 
     /**
      * Posts an event to all subscribers of this event type.
+     *
      * @param event the event to post
      */
     public void post(Object event) {
@@ -151,4 +134,15 @@ public class EventBus {
         return false;
     }
 
+    private static class EventBusException extends RuntimeException {
+        private EventBusException(String s) {
+            super(s);
+        }
+    }
+
+    /**
+         * Tracks the subscriber methods for each event type.
+         */
+        private record SubscriberMethod(Object instance, Method method) {
+    }
 }

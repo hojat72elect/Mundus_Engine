@@ -44,6 +44,7 @@ import com.mbrlabs.mundus.editor.tools.picker.GameObjectPicker;
 import com.mbrlabs.mundus.editor.tools.picker.ToolHandlePicker;
 import com.mbrlabs.mundus.editor.utils.Fa;
 import com.mbrlabs.mundus.editorcommons.events.GameObjectModifiedEvent;
+
 import net.mgsx.gltf.scene3d.attributes.PBRColorAttribute;
 
 /**
@@ -52,28 +53,22 @@ import net.mgsx.gltf.scene3d.attributes.PBRColorAttribute;
  */
 public class TranslateTool extends TransformTool {
 
+    public static final String NAME = "Translate Tool";
     private static final float ARROW_THIKNESS = 0.4f;
     private static final float ARROW_CAP_SIZE = 0.15f;
     private static final int ARROW_DIVISIONS = 12;
-
-    public static final String NAME = "Translate Tool";
-
-    private TransformState state = TransformState.IDLE;
-    private boolean initTranslate = true;
-
     private final TranslateHandle xHandle;
     private final TranslateHandle yHandle;
     private final TranslateHandle zHandle;
     private final TranslateHandle xzPlaneHandle;
     private final TranslateHandle[] handles;
-
     private final Vector3 lastPos = new Vector3();
-    private boolean globalSpace = true;
-
     private final Vector3 temp0 = new Vector3();
     private final Vector3 temp1 = new Vector3();
     private final Matrix4 tempMat0 = new Matrix4();
-
+    private TransformState state = TransformState.IDLE;
+    private boolean initTranslate = true;
+    private boolean globalSpace = true;
     private TranslateCommand command;
 
     public TranslateTool(final ProjectManager projectManager,
@@ -102,7 +97,7 @@ public class TranslateTool extends TransformTool {
         yHandle = new TranslateHandle(Y_HANDLE_ID, yHandleModel);
         zHandle = new TranslateHandle(Z_HANDLE_ID, zHandleModel);
         xzPlaneHandle = new TranslateHandle(XZ_HANDLE_ID, xzPlaneHandleModel);
-        handles = new TranslateHandle[] { xHandle, yHandle, zHandle, xzPlaneHandle };
+        handles = new TranslateHandle[]{xHandle, yHandle, zHandle, xzPlaneHandle};
 
         gameObjectModifiedEvent = new GameObjectModifiedEvent(null);
     }
@@ -331,7 +326,7 @@ public class TranslateTool extends TransformTool {
     }
 
     /**
-     * 
+     *
      */
     private class TranslateHandle extends ToolHandle {
 
@@ -375,7 +370,5 @@ public class TranslateTool extends TransformTool {
         public void dispose() {
             this.model.dispose();
         }
-
     }
-
 }

@@ -23,6 +23,5 @@ import com.badlogic.gdx.graphics.Texture;
  */
 public interface TextureProvider {
 
-    public Texture getTexture();
-
+    Texture getTexture();
 }

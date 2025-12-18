@@ -17,17 +17,31 @@ import com.mbrlabs.mundus.commons.scene3d.components.Component;
  */
 public class ModelCacheManager implements Disposable {
     private final Scene scene;
-
+    private final Array<ModelEventable> modelEventables;
     public ModelCache modelCache;
     protected float modelCacheUpdateInterval = 0.5f;
     protected float lastModelCacheRebuild = modelCacheUpdateInterval;
     protected boolean modelCacheRebuildRequested = true;
-    private final Array<ModelEventable> modelEventables;
 
     public ModelCacheManager(Scene scene) {
         modelCache = new ModelCache();
         this.scene = scene;
         this.modelEventables = new Array<>();
+    }
+
+    /**
+     * Rebuild model cache if given GameObject has a cacheable component.
+     */
+    public static void rebuildIfCached(GameObject go, boolean immediately) {
+        for (int i = 0; i < go.getComponents().size; i++) {
+            if (go.getComponents().get(i) instanceof ModelCacheable) {
+                if (immediately)
+                    go.sceneGraph.scene.modelCacheManager.rebuildModelCache();
+                else
+                    go.sceneGraph.scene.modelCacheManager.requestModelCacheRebuild();
+                break;
+            }
+        }
     }
 
     public void update(float delta) {
@@ -113,21 +127,6 @@ public class ModelCacheManager implements Disposable {
     public void triggerBeforeRenderEvent() {
         for (final ModelEventable me : modelEventables) {
             me.triggerBeforeRenderEvent();
-        }
-    }
-
-    /**
-     * Rebuild model cache if given GameObject has a cacheable component.
-     */
-    public static void rebuildIfCached(GameObject go, boolean immediately) {
-        for (int i = 0; i < go.getComponents().size; i++) {
-            if (go.getComponents().get(i) instanceof ModelCacheable) {
-                if (immediately)
-                    go.sceneGraph.scene.modelCacheManager.rebuildModelCache();
-                else
-                    go.sceneGraph.scene.modelCacheManager.requestModelCacheRebuild();
-                break;
-            }
         }
     }
 

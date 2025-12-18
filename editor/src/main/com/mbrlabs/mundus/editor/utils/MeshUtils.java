@@ -3,6 +3,7 @@ package com.mbrlabs.mundus.editor.utils;
 import com.badlogic.gdx.graphics.Mesh;
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.utils.BufferUtils;
+
 import org.lwjgl.util.meshoptimizer.MeshOptimizer;
 
 import java.nio.ByteBuffer;
@@ -16,37 +17,12 @@ import java.nio.IntBuffer;
 public class MeshUtils {
 
     /**
-     * Result of simplifying meshes, contains the new vertices and indices only
-     * so we can run this on a background thread.
-     * The first dimension of the vertices and indices arrays is the mesh index.
-     */
-    public static class SimplifyResult {
-        // [Mesh][Vertices]
-        private final float[][] vertices;
-
-        // [Mesh][Indices]
-        private final short[][] indices;
-
-        public SimplifyResult(float[][] vertices, short[][] indices) {
-            this.vertices = vertices;
-            this.indices = indices;
-        }
-
-        public float[][] getVertices() {
-            return vertices;
-        }
-
-        public short[][] getIndices() {
-            return indices;
-        }
-    }
-
-    /**
      * Uses MeshOptimizer Simplfy to simplify the given model. The resulting vertices and indices are returned.
      * in a SimplifyResult object.
-     * @param model The model to simplify
+     *
+     * @param model                The model to simplify
      * @param simplificationFactor The multiplier to apply to the number of indices .5 == 50% target of original indices
-     * @param targetError The target error to use for simplification 0.1f == 10% error
+     * @param targetError          The target error to use for simplification 0.1f == 10% error
      * @return The SimplifyResult object containing the new vertices and indices
      */
     public static SimplifyResult simplify(Model model, float simplificationFactor, float targetError) {
@@ -115,5 +91,16 @@ public class MeshUtils {
         }
 
         return new SimplifyResult(vertices, indices);
+    }
+
+    /**
+     * Result of simplifying meshes, contains the new vertices and indices only
+     * so we can run this on a background thread.
+     * The first dimension of the vertices and indices arrays is the mesh index.
+     *
+     * @param vertices [Mesh][Vertices]
+     * @param indices  [Mesh][Indices]
+     */
+        public record SimplifyResult(float[][] vertices, short[][] indices) {
     }
 }

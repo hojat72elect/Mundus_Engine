@@ -14,7 +14,10 @@ import java.io.FileNotFoundException;
  */
 public interface IOManager {
     Registry loadRegistry();
+
     void saveRegistry(Registry registry);
+
     void saveProjectContext(ProjectContext context);
+
     ProjectContext loadProjectContext(ProjectRef ref) throws FileNotFoundException;
 }

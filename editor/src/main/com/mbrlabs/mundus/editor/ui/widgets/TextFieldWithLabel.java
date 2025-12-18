@@ -26,10 +26,9 @@ import com.kotcrab.vis.ui.widget.VisTextField;
  */
 public class TextFieldWithLabel extends VisTable {
 
-    private int width = -1;
-
     protected VisTextField textField;
-    private VisLabel label;
+    private int width = -1;
+    private final VisLabel label;
 
     public TextFieldWithLabel(String labelText, int width) {
         super();
@@ -57,6 +56,10 @@ public class TextFieldWithLabel extends VisTable {
         return textField.getText();
     }
 
+    public void setText(String text) {
+        textField.setText(text);
+    }
+
     public void setEditable(boolean editable) {
         textField.setDisabled(!editable);
     }
@@ -65,12 +68,7 @@ public class TextFieldWithLabel extends VisTable {
         textField.setText("");
     }
 
-    public void setText(String text) {
-        textField.setText(text);
-    }
-
     public void setLabelText(String text) {
         label.setText(toString());
     }
-
 }

@@ -1,13 +1,14 @@
 package com.mbrlabs.mundus.editor.terrain;
 
 import com.badlogic.gdx.math.MathUtils;
-import com.mbrlabs.mundus.editor.terrain.noise.modifiers.TerrainModifier;
 import com.mbrlabs.mundus.editor.terrain.noise.TerrainNoiseData;
+import com.mbrlabs.mundus.editor.terrain.noise.modifiers.TerrainModifier;
 
 import java.util.ArrayList;
 
 /**
  * Iterates through the modifiers and applies them based on given X and Z
+ *
  * @author JamesTKhan
  * @version October 31, 2022
  */
@@ -27,5 +28,4 @@ public class TerrainGenerator {
 
         return MathUtils.clamp(terrainNoiseData.elevation, -1.0f, 1.0f);
     }
-
 }

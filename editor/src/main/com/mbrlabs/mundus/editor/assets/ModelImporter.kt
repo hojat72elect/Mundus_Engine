@@ -24,17 +24,21 @@ import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute
 import com.badlogic.gdx.graphics.g3d.attributes.FloatAttribute
 import com.badlogic.gdx.graphics.g3d.attributes.IntAttribute
 import com.mbrlabs.mundus.commons.assets.MaterialAsset
-import com.mbrlabs.mundus.commons.assets.TextureAsset
 import com.mbrlabs.mundus.commons.assets.TexCoordInfo
+import com.mbrlabs.mundus.commons.assets.TextureAsset
 import com.mbrlabs.mundus.editor.Mundus
 import com.mbrlabs.mundus.editor.core.registry.Registry
 import com.mbrlabs.mundus.editor.events.SettingsChangedEvent
-import com.mbrlabs.mundus.editor.utils.*
+import com.mbrlabs.mundus.editor.utils.isCollada
+import com.mbrlabs.mundus.editor.utils.isFBX
+import com.mbrlabs.mundus.editor.utils.isG3DB
+import com.mbrlabs.mundus.editor.utils.isGLB
+import com.mbrlabs.mundus.editor.utils.isGLTF
+import com.mbrlabs.mundus.editor.utils.isWavefont
 import net.mgsx.gltf.scene3d.attributes.PBRColorAttribute
 import net.mgsx.gltf.scene3d.attributes.PBRFloatAttribute
 import net.mgsx.gltf.scene3d.attributes.PBRTextureAttribute
 import org.apache.commons.io.FilenameUtils
-import java.util.HashMap
 
 /**
  * @author Marcus Brummer
@@ -130,7 +134,8 @@ class ModelImporter(private val registry: Registry) : SettingsChangedEvent.Setti
                 importedModel!!,
                 assetManager,
                 materialToUse.id,
-                PBRTextureAttribute.BaseColorTexture)
+                PBRTextureAttribute.BaseColorTexture
+            )
             populateTextureCoordInfo(PBRTextureAttribute.BaseColorTexture, materialToUse, materialAssetToPopulate.diffuseTexCoord)
         }
 

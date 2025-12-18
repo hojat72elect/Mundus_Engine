@@ -50,13 +50,11 @@ public class ImageChooserField extends VisTable {
     private final int width;
     private final VisTextButton fcBtn;
     private final boolean multiSelectEnabled;
+    private final ImageChosenListener listener;
+    private final Image img;
     private boolean requireSquareImage = false; // Require image to be perfect square
     private boolean requirePowerOfTwo = false;  // Require image width/height to be power of 2
-    private final ImageChosenListener listener;
-
     private Array<FileHandle> selectedFiles = null;
-
-    private final Image img;
     private Texture texture;
     private FileHandle fileHandle;
 
@@ -157,7 +155,7 @@ public class ImageChooserField extends VisTable {
     /**
      * Multi-Selection calls the listener onImagesChosen with the valid image files
      * and a hashmap containing the files that failed validation paired with the error message.
-     *
+     * <p>
      * If the listener is not set for multi-select then nothing will happen. The listener implementation
      * is expected to handle the success and failedFiles from the calling end as needed (like showing error messages).
      *
@@ -180,7 +178,7 @@ public class ImageChooserField extends VisTable {
         }
 
         // Remove failed files from file array
-        for(Map.Entry<FileHandle, String> entry : failedFiles.entrySet()) {
+        for (Map.Entry<FileHandle, String> entry : failedFiles.entrySet()) {
             selectedFiles.removeValue(entry.getKey(), true);
         }
 
@@ -231,10 +229,10 @@ public class ImageChooserField extends VisTable {
 
         /**
          * Called for multi-select image chooser
-         * @param images array of images that passed image validations
+         *
+         * @param images      array of images that passed image validations
          * @param failedFiles Hashmap of failed file (key) that did not pass image validation with error message (value)
          */
         void onImagesChosen(Array<FileHandle> images, HashMap<FileHandle, String> failedFiles);
     }
-
 }

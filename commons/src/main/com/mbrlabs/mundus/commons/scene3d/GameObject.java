@@ -33,23 +33,18 @@ import java.util.Iterator;
 public class GameObject extends SimpleNode<GameObject> implements Iterable<GameObject> {
 
     public static final String DEFAULT_NAME = "GameObject";
-
+    public final SceneGraph sceneGraph;
     public String name;
     public boolean active;
     public boolean scaleChanged = true; // true by default to force initial calculations
     public boolean hasWaterComponent = false;
     private Array<String> tags;
-    private Array<Component> components;
-
-    public final SceneGraph sceneGraph;
+    private final Array<Component> components;
 
     /**
-     * @param sceneGraph
-     *            scene graph
-     * @param name
-     *            game object name; can be null
-     * @param id
-     *            game object id
+     * @param sceneGraph scene graph
+     * @param name       game object name; can be null
+     * @param id         game object id
      */
     public GameObject(SceneGraph sceneGraph, String name, int id) {
         super(id);
@@ -63,8 +58,7 @@ public class GameObject extends SimpleNode<GameObject> implements Iterable<GameO
     /**
      * Make copy with existing gameObject and new id
      *
-     * @param gameObject
-     *            game object for clone
+     * @param gameObject game object for clone
      */
     public GameObject(GameObject gameObject, int id) {
         super(gameObject, id);
@@ -94,8 +88,7 @@ public class GameObject extends SimpleNode<GameObject> implements Iterable<GameO
     /**
      * Calls the update() method for each component in this and all child nodes.
      *
-     * @param delta
-     *            time since last update
+     * @param delta time since last update
      */
     public void update(float delta) {
         if (active) {
@@ -116,7 +109,7 @@ public class GameObject extends SimpleNode<GameObject> implements Iterable<GameO
 
     /**
      * Returns the tags
-     * 
+     *
      * @return tags or null if none available
      */
     public Array<String> getTags() {
@@ -125,9 +118,8 @@ public class GameObject extends SimpleNode<GameObject> implements Iterable<GameO
 
     /**
      * Adds a tag.
-     * 
-     * @param tag
-     *            tag to add
+     *
+     * @param tag tag to add
      */
     public void addTag(String tag) {
         if (this.tags == null) {
@@ -140,12 +132,9 @@ public class GameObject extends SimpleNode<GameObject> implements Iterable<GameO
     /**
      * Finds all component by a given type.
      *
-     * @param out
-     *            output array
-     * @param type
-     *            component type
-     * @param recursive
-     *            recursive search?
+     * @param out       output array
+     * @param type      component type
+     * @param recursive recursive search?
      * @return components found
      */
     public <T extends Component> Array<T> findComponentsByType(Array<T> out, Component.Type type, boolean recursive) {
@@ -155,8 +144,7 @@ public class GameObject extends SimpleNode<GameObject> implements Iterable<GameO
     /**
      * Finds one component by type.
      *
-     * @param type
-     *            component type
+     * @param type component type
      * @return component if found or null
      */
     public <T extends Component> T findComponentByType(Component.Type type) {
@@ -170,7 +158,7 @@ public class GameObject extends SimpleNode<GameObject> implements Iterable<GameO
 
     /**
      * Returns all components of this go.
-     * 
+     *
      * @return components
      */
     public Array<Component> getComponents() {
@@ -179,15 +167,14 @@ public class GameObject extends SimpleNode<GameObject> implements Iterable<GameO
 
     /**
      * Removes a component.
-     * 
-     * @param component
-     *            component to remove
+     *
+     * @param component component to remove
      */
     public void removeComponent(Component component) {
         components.removeValue(component, true);
 
         if (component instanceof LightComponent) {
-            sceneGraph.scene.environment.remove(((LightComponent)component).getLight());
+            sceneGraph.scene.environment.remove(((LightComponent) component).getLight());
         }
 
         if (component instanceof WaterComponent) {
@@ -198,8 +185,7 @@ public class GameObject extends SimpleNode<GameObject> implements Iterable<GameO
     /**
      * Adds a component.
      *
-     * @param component
-     *            component to add
+     * @param component component to add
      * @throws InvalidComponentException
      */
     public void addComponent(Component component) throws InvalidComponentException {
@@ -249,7 +235,7 @@ public class GameObject extends SimpleNode<GameObject> implements Iterable<GameO
      * @return The child GameObject found or null if no found.
      */
     public GameObject findChildById(final int id) {
-        for (final GameObject go: this) {
+        for (final GameObject go : this) {
             if (go.id == id) {
                 return go;
             }
@@ -289,7 +275,7 @@ public class GameObject extends SimpleNode<GameObject> implements Iterable<GameO
     /**
      * Returns an Array of all child GameObjects that have the given Component.Type
      *
-     * @param type the Component Type to search for
+     * @param type    the Component Type to search for
      * @param objects an Array to collect matching GameObjects (uploading array)
      * @return Array of all matching GameObjects
      */
@@ -319,7 +305,7 @@ public class GameObject extends SimpleNode<GameObject> implements Iterable<GameO
     /**
      * Returns an Array of all child GameObjects that have the given Tag
      *
-     * @param tag the string tag to search for
+     * @param tag     the string tag to search for
      * @param objects an Array to collect matching GameObjects (uploading array)
      * @return Array of all matching GameObjects
      */
@@ -375,7 +361,7 @@ public class GameObject extends SimpleNode<GameObject> implements Iterable<GameO
 
     @Override
     public void scale(float x, float y, float z) {
-        super.scale(x,y,z);
+        super.scale(x, y, z);
         scaleChanged = true;
         updateChildrenScaleChanged(this);
     }
@@ -393,9 +379,7 @@ public class GameObject extends SimpleNode<GameObject> implements Iterable<GameO
         GameObject that = (GameObject) o;
 
         if (id != that.id) return false;
-        if (!name.equals(that.name)) return false;
-
-        return true;
+        return name.equals(that.name);
     }
 
     @Override
@@ -422,7 +406,7 @@ public class GameObject extends SimpleNode<GameObject> implements Iterable<GameO
     private <T extends Component> Array<T> findComponentsByType(Array<T> out, GameObject go, Component.Type type, boolean recursive) {
         for (int i = 0; i < go.components.size; ++i) {
             Component c = go.components.get(i);
-            if (c.getType() == type) out.add((T)c);
+            if (c.getType() == type) out.add((T) c);
         }
 
         if (recursive && go.children != null) {
@@ -434,5 +418,4 @@ public class GameObject extends SimpleNode<GameObject> implements Iterable<GameO
 
         return out;
     }
-
 }

@@ -26,11 +26,13 @@ import com.mbrlabs.mundus.editor.ui.modules.dialogs.NoiseModifierDialog
 import com.mbrlabs.mundus.editor.utils.FastNoiseLite
 
 
-class ProceduralGenerationWidget(private val nameFieldVisible: Boolean,
-                                 private val vertexResolutionFieldVisible: Boolean,
-                                 private val terrainWidthFieldVisible: Boolean,
-                                 private val splatmapResolutionFieldVisible: Boolean,
-                                 private val iterationFieldsVisible: Boolean) : Table() {
+class ProceduralGenerationWidget(
+    private val nameFieldVisible: Boolean,
+    private val vertexResolutionFieldVisible: Boolean,
+    private val terrainWidthFieldVisible: Boolean,
+    private val splatmapResolutionFieldVisible: Boolean,
+    private val iterationFieldsVisible: Boolean
+) : Table() {
 
     private val root = VisTable()
 
@@ -47,7 +49,7 @@ class ProceduralGenerationWidget(private val nameFieldVisible: Boolean,
     private val gridZ = IntegerFieldWithLabel("", -1, false)
     private val generateBtn = VisTextButton("Generate Terrain")
 
-    private val noiseGeneratorWidget : NoiseGeneratorWidget = NoiseGeneratorWidget()
+    private val noiseGeneratorWidget: NoiseGeneratorWidget = NoiseGeneratorWidget()
 
     private val modifierTable = VisTable()
 
@@ -160,8 +162,10 @@ class ProceduralGenerationWidget(private val nameFieldVisible: Boolean,
 
         if (vertexResolutionFieldVisible) {
             leftTable.add(
-                    ToolTipLabel("Vertex resolution: ", "This will determine the vertices count when squared. 180 = 32,400 vertices. \n" +
-                            "The default value (or lower) is recommended for performance. \nSettings this over 180 may cause issues on some devices.")
+                ToolTipLabel(
+                    "Vertex resolution: ", "This will determine the vertices count when squared. 180 = 32,400 vertices. \n" +
+                            "The default value (or lower) is recommended for performance. \nSettings this over 180 may cause issues on some devices."
+                )
             ).left()
             leftTable.add(vertexResolution).fillX().expandX().row()
         }
@@ -178,14 +182,18 @@ class ProceduralGenerationWidget(private val nameFieldVisible: Boolean,
 
         if (splatmapResolutionFieldVisible) {
             splatMapSelectBox.setItems(
-                    SplatMapResolution._512.value,
-                    SplatMapResolution._1024.value,
-                    SplatMapResolution._2048.value,
+                SplatMapResolution._512.value,
+                SplatMapResolution._1024.value,
+                SplatMapResolution._2048.value,
             )
 
-            leftTable.add(ToolTipLabel("SplatMap Resolution: ", "The resolution of the splatmap for texture painting on the terrain.\n" +
-                    "Higher resolution results in smoother texture painting at the cost of more memory usage and performance slowdowns when painting.\n" +
-                    "If you are targeting HTML, 512 is recommended")).left()
+            leftTable.add(
+                ToolTipLabel(
+                    "SplatMap Resolution: ", "The resolution of the splatmap for texture painting on the terrain.\n" +
+                            "Higher resolution results in smoother texture painting at the cost of more memory usage and performance slowdowns when painting.\n" +
+                            "If you are targeting HTML, 512 is recommended"
+                )
+            ).left()
             leftTable.add(splatMapSelectBox).left().row()
         }
 
@@ -227,8 +235,8 @@ class ProceduralGenerationWidget(private val nameFieldVisible: Boolean,
             override fun clicked(event: InputEvent, x: Float, y: Float) {
                 super.clicked(event, x, y)
                 noiseGeneratorWidget.generator
-                        .minHeight(minHeight.float)
-                        .maxHeight(maxHeight.float)
+                    .minHeight(minHeight.float)
+                    .maxHeight(maxHeight.float)
 
                 generateButtonListener?.generate()
             }

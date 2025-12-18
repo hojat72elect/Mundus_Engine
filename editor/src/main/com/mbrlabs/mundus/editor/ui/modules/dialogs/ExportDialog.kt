@@ -28,7 +28,6 @@ import com.mbrlabs.mundus.editor.core.project.ProjectManager
 import com.mbrlabs.mundus.editor.exporter.Exporter
 import com.mbrlabs.mundus.editor.ui.UI
 import com.mbrlabs.mundus.editor.utils.Log
-import com.mbrlabs.mundus.editor.utils.Toaster
 import com.mbrlabs.mundus.editorcommons.types.ToastType
 import org.pf4j.PluginManager
 
@@ -58,22 +57,25 @@ class ExportDialog : VisDialog("Exporting") {
     fun export() {
         // validate
         val export = projectManager.current().settings?.export
-        if(export == null || export.outputFolder == null
-                || export.outputFolder.path().isEmpty() || !export.outputFolder.exists()) {
-            UI.toaster.error("Export Error\nYou have to supply a output folder in the export settings." +
-                    "\nWindow -> Settings -> Export Settings")
+        if (export == null || export.outputFolder == null
+            || export.outputFolder.path().isEmpty() || !export.outputFolder.exists()
+        ) {
+            UI.toaster.error(
+                "Export Error\nYou have to supply a output folder in the export settings." +
+                        "\nWindow -> Settings -> Export Settings"
+            )
             return
         }
 
         // prevent from exporting to fast which sometimes results in the export dialog not closing correctly
-        if(System.currentTimeMillis() - lastExport < 1000f) {
+        if (System.currentTimeMillis() - lastExport < 1000f) {
             UI.toaster.error("Export pending")
             return
         }
 
         show(UI)
 
-        Exporter(ioManager, projectManager.current(), pluginManager).exportAsync(export.outputFolder, object: AsyncTaskListener {
+        Exporter(ioManager, projectManager.current(), pluginManager).exportAsync(export.outputFolder, object : AsyncTaskListener {
             private var error = false
 
             override fun progressChanged(newProgressPercent: Int) {
@@ -81,7 +83,7 @@ class ExportDialog : VisDialog("Exporting") {
             }
 
             override fun finished() {
-                if(!error) {
+                if (!error) {
                     UI.toaster.success("Project exported")
                 }
                 resetValues()

@@ -43,64 +43,54 @@ import com.mbrlabs.mundus.editor.ui.UI;
  * This is a slightly modified version of kotcrab's VisSplitPane and fixes an
  * input issue. touchDown() in line 95 originally returned true, which prevents
  * the event to be passed on
- *
+ * <p>
  * Extends functionality of standard {@link SplitPane}. Style supports handle
  * over {@link Drawable}. Due to scope of changes made this widget is not
  * compatible with {@link SplitPane}.
- * 
+ *
  * @author mzechner
  * @author Nathan Sweet
  * @author Kotcrab
  * @author mbrlabs
- *
  * @see SplitPane
  */
 public class MundusSplitPane extends WidgetGroup {
     VisSplitPane.VisSplitPaneStyle style;
-    private Actor firstWidget, secondWidget;
     boolean vertical;
     float splitAmount = 0.5f, minAmount, maxAmount = 1;
-    // private float oldSplitAmount;
-
-    private Rectangle firstWidgetBounds = new Rectangle();
-    private Rectangle secondWidgetBounds = new Rectangle();
     Rectangle handleBounds = new Rectangle();
-    private Rectangle firstScissors = new Rectangle();
-    private Rectangle secondScissors = new Rectangle();
-
+    // private float oldSplitAmount;
     Vector2 lastPoint = new Vector2();
     Vector2 handlePosition = new Vector2();
-
+    private Actor firstWidget, secondWidget;
+    private final Rectangle firstWidgetBounds = new Rectangle();
+    private final Rectangle secondWidgetBounds = new Rectangle();
+    private final Rectangle firstScissors = new Rectangle();
+    private final Rectangle secondScissors = new Rectangle();
     private boolean mouseOnHandle;
 
     /**
-     * @param firstWidget
-     *            May be null.
-     * @param secondWidget
-     *            May be null.
+     * @param firstWidget  May be null.
+     * @param secondWidget May be null.
      */
     public MundusSplitPane(Actor firstWidget, Actor secondWidget, boolean vertical) {
         this(firstWidget, secondWidget, vertical, "default-" + (vertical ? "vertical" : "horizontal"));
     }
 
     /**
-     * @param firstWidget
-     *            May be null.
-     * @param secondWidget
-     *            May be null.
+     * @param firstWidget  May be null.
+     * @param secondWidget May be null.
      */
     public MundusSplitPane(Actor firstWidget, Actor secondWidget, boolean vertical, String styleName) {
         this(firstWidget, secondWidget, vertical, VisUI.getSkin().get(styleName, VisSplitPane.VisSplitPaneStyle.class));
     }
 
     /**
-     * @param firstWidget
-     *            May be null.
-     * @param secondWidget
-     *            May be null.
+     * @param firstWidget  May be null.
+     * @param secondWidget May be null.
      */
     public MundusSplitPane(Actor firstWidget, Actor secondWidget, boolean vertical,
-            VisSplitPane.VisSplitPaneStyle style) {
+                           VisSplitPane.VisSplitPaneStyle style) {
         this.firstWidget = firstWidget;
         this.secondWidget = secondWidget;
         this.vertical = vertical;
@@ -160,7 +150,7 @@ public class MundusSplitPane extends WidgetGroup {
                 // TODO potential bug with libgdx scene2d?
                 // fixes issue when split bar could be still dragged even when
                 // touchable is set to childrenOnly, probably scene2d issue
-                if (isTouchable() == false) return false;
+                if (!isTouchable()) return false;
 
                 if (draggingPointer != -1) return false;
                 if (pointer == 0 && button != 0) return false;
@@ -290,7 +280,7 @@ public class MundusSplitPane extends WidgetGroup {
 
     /**
      * @return first widgets bounds, changing returned rectangle values does not
-     *         have any effect
+     * have any effect
      */
     public Rectangle getFirstWidgetBounds() {
         return new Rectangle(firstWidgetBounds);
@@ -298,7 +288,7 @@ public class MundusSplitPane extends WidgetGroup {
 
     /**
      * @return seconds widgets bounds, changing returned rectangle values does
-     *         not have any effect
+     * not have any effect
      */
     public Rectangle getSecondWidgetBounds() {
         return new Rectangle(secondWidgetBounds);
@@ -351,8 +341,7 @@ public class MundusSplitPane extends WidgetGroup {
             /* Skip Scissors on RenderWidget as it causes FBO rendering issues in RenderWidget, See PR #37 */
             if (firstWidget.isAscendantOf(UI.INSTANCE.getSceneWidget())) {
                 if (firstWidget.isVisible()) firstWidget.draw(batch, parentAlpha * color.a);
-            }
-            else {
+            } else {
                 getStage().calculateScissors(firstWidgetBounds, firstScissors);
                 if (ScissorStack.pushScissors(firstScissors)) {
                     if (firstWidget.isVisible()) firstWidget.draw(batch, parentAlpha * color.a);
@@ -375,7 +364,6 @@ public class MundusSplitPane extends WidgetGroup {
         batch.setColor(color.r, color.g, color.b, parentAlpha * color.a);
         handle.draw(batch, handleBounds.x, handleBounds.y, handleBounds.width, handleBounds.height);
         resetTransform(batch);
-
     }
 
     @Override
@@ -389,8 +377,7 @@ public class MundusSplitPane extends WidgetGroup {
     }
 
     /**
-     * @param split
-     *            The split amount between the min and max amount.
+     * @param split The split amount between the min and max amount.
      */
     public void setSplitAmount(float split) {
         this.splitAmount = Math.max(Math.min(maxAmount, split), minAmount);
@@ -414,10 +401,8 @@ public class MundusSplitPane extends WidgetGroup {
     }
 
     /**
-     * @param firstWidget
-     *            May be null
-     * @param secondWidget
-     *            May be null
+     * @param firstWidget  May be null
+     * @param secondWidget May be null
      */
     public void setWidgets(Actor firstWidget, Actor secondWidget) {
         setFirstWidget(firstWidget);
@@ -425,8 +410,7 @@ public class MundusSplitPane extends WidgetGroup {
     }
 
     /**
-     * @param widget
-     *            May be null.
+     * @param widget May be null.
      */
     public void setFirstWidget(Actor widget) {
         if (firstWidget != null) super.removeActor(firstWidget);
@@ -436,8 +420,7 @@ public class MundusSplitPane extends WidgetGroup {
     }
 
     /**
-     * @param widget
-     *            May be null.
+     * @param widget May be null.
      */
     public void setSecondWidget(Actor widget) {
         if (secondWidget != null) super.removeActor(secondWidget);
@@ -467,7 +450,9 @@ public class MundusSplitPane extends WidgetGroup {
     }
 
     public static class VisSplitPaneStyle extends SplitPane.SplitPaneStyle {
-        /** Optional **/
+        /**
+         * Optional
+         **/
         public Drawable handleOver;
 
         public VisSplitPaneStyle() {

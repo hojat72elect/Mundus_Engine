@@ -5,8 +5,8 @@ import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.MathUtils;
 import com.mbrlabs.mundus.commons.terrain.Terrain;
-import com.mbrlabs.mundus.editor.terrain.noise.modifiers.TerrainModifier;
 import com.mbrlabs.mundus.editor.terrain.noise.TerrainNoiseData;
+import com.mbrlabs.mundus.editor.terrain.noise.modifiers.TerrainModifier;
 
 import java.util.ArrayList;
 

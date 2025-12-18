@@ -27,24 +27,30 @@ class VersionDialog : BaseDialog("Version Info") {
         root.add("Welcome to Mundus $VERSION!").row()
 
         var label = VisLabel()
-        label.setText("Mundus is in early development and may be lacking important features and contain bugs. You can submit a bug report " +
-                "on Github Issues.")
+        label.setText(
+            "Mundus is in early development and may be lacking important features and contain bugs. You can submit a bug report " +
+                    "on Github Issues."
+        )
         label.wrap = true
 
         root.add(label).expandX().prefWidth(width).padBottom(10f).row()
-        root.add(LinkLabel("Issues","https://github.com/JamesTKhan/Mundus/issues")).row()
+        root.add(LinkLabel("Issues", "https://github.com/JamesTKhan/Mundus/issues")).row()
 
         label = VisLabel()
-        label.setText("v0.5.0 introduces PBR Terrain rendering along with materials that can be assigned to Terrains. Lighting was" +
-                " also overhauled to more closely align with libGDX and gdx-gltf conventions. Many other new features and" +
-                " UI improvements have also been made.")
+        label.setText(
+            "v0.5.0 introduces PBR Terrain rendering along with materials that can be assigned to Terrains. Lighting was" +
+                    " also overhauled to more closely align with libGDX and gdx-gltf conventions. Many other new features and" +
+                    " UI improvements have also been made."
+        )
         label.wrap = true
 
         root.add(label).expandX().prefWidth(width).padBottom(10f).row()
 
         label = VisLabel()
-        label.setText("If you are using a project from a previous version of Mundus, lighting values will be incorrect." +
-                " You will need to adjust lighting intensity values within your project.")
+        label.setText(
+            "If you are using a project from a previous version of Mundus, lighting values will be incorrect." +
+                    " You will need to adjust lighting intensity values within your project."
+        )
         label.wrap = true
 
         root.add(label).expandX().prefWidth(width).padBottom(10f).row()
@@ -55,7 +61,7 @@ class VersionDialog : BaseDialog("Version Info") {
 
         root.add(label).expandX().prefWidth(width).padBottom(10f).row()
 
-        root.add(LinkLabel("See list of changes","https://github.com/JamesTKhan/Mundus/releases/tag/$VERSION")).row()
+        root.add(LinkLabel("See list of changes", "https://github.com/JamesTKhan/Mundus/releases/tag/$VERSION")).row()
 
         add(root)
     }

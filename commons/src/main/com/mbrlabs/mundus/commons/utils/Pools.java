@@ -17,7 +17,7 @@ public class Pools {
 
     public final static Pool<Vector2> vector2Pool = new Pool<Vector2>() {
         @Override
-        protected Vector2 newObject () {
+        protected Vector2 newObject() {
             return new Vector2();
         }
 
@@ -29,19 +29,19 @@ public class Pools {
 
     public final static Pool<Vector3> vector3Pool = new Pool<Vector3>() {
         @Override
-        protected Vector3 newObject () {
+        protected Vector3 newObject() {
             return new Vector3();
         }
 
         @Override
         protected void reset(Vector3 object) {
-            object.set(0,0,0);
+            object.set(0, 0, 0);
         }
     };
 
     public final static Pool<Quaternion> quaternionPool = new Pool<Quaternion>(2) {
         @Override
-        protected Quaternion newObject () {
+        protected Quaternion newObject() {
             return new Quaternion();
         }
 
@@ -53,7 +53,7 @@ public class Pools {
 
     public final static Pool<Matrix4> matrix4Pool = new Pool<Matrix4>(2) {
         @Override
-        protected Matrix4 newObject () {
+        protected Matrix4 newObject() {
             return new Matrix4();
         }
 
@@ -65,7 +65,7 @@ public class Pools {
 
     public final static Pool<BoundingBox> boundingBoxPool = new Pool<BoundingBox>(4) {
         @Override
-        protected BoundingBox newObject () {
+        protected BoundingBox newObject() {
             return new BoundingBox();
         }
 
@@ -78,15 +78,16 @@ public class Pools {
 
     /**
      * Convenience method, free array of objects
+     *
      * @param objects objects to free
      */
-    public static void free(Vector2... objects ) {
+    public static void free(Vector2... objects) {
         for (Vector2 object : objects) {
             vector2Pool.free(object);
         }
     }
 
-    public static void free(Vector3... objects ) {
+    public static void free(Vector3... objects) {
         for (Vector3 object : objects) {
             vector3Pool.free(object);
         }

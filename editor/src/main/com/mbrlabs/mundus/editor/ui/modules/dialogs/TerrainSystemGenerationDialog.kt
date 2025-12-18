@@ -19,9 +19,9 @@ class TerrainSystemGenerationDialog : BaseDialog("Generation") {
 
     private val root = ProceduralGenerationWidget(false, false, false, false, false)
 
-    private var terrainManagerComponent : TerrainManagerComponent? = null
+    private var terrainManagerComponent: TerrainManagerComponent? = null
 
-    private var projectManager : ProjectManager = Mundus.inject()
+    private var projectManager: ProjectManager = Mundus.inject()
 
     init {
         isResizable = true
@@ -70,7 +70,7 @@ class TerrainSystemGenerationDialog : BaseDialog("Generation") {
             return
         }
 
-        var terrainAsset : TerrainAsset
+        var terrainAsset: TerrainAsset
         var j = 0
         var firstInRowTerrain = firstTerrain
         do {

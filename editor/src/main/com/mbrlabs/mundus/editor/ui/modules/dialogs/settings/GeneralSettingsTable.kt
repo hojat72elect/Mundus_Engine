@@ -46,7 +46,7 @@ class GeneralSettingsTable : BaseSettingsTable() {
         padRight(UI.PAD_SIDE).padLeft(UI.PAD_SIDE)
 
         add(VisLabel("General Settings")).left().row()
-        addSeparator().padBottom(UI.PAD_SIDE*2)
+        addSeparator().padBottom(UI.PAD_SIDE * 2)
         add(VisLabel("fbx-conv binary")).left().row()
         add(fbxBinary).growX().padBottom(UI.PAD_BOTTOM).row()
 
@@ -61,14 +61,13 @@ class GeneralSettingsTable : BaseSettingsTable() {
     }
 
 
-
     fun reloadSettings() {
         fbxBinary.setText(registry.settings.fbxConvBinary)
     }
 
     private fun addHandlers() {
         keyboardLayouts.addListener(object : ChangeListener() {
-            override fun changed(event: ChangeListener.ChangeEvent, actor: Actor) {
+            override fun changed(event: ChangeEvent, actor: Actor) {
                 val selection = keyboardLayouts.selected
                 registry.settings.keyboardLayout = selection
             }

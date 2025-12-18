@@ -40,5 +40,4 @@ public class ProjectSettings {
         public boolean allAssets = true;
         public FileHandle outputFolder;
     }
-
 }

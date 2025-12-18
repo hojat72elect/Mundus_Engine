@@ -53,8 +53,10 @@ class Compass(private var worldCam: Camera?) : Disposable {
         val modelBuilder = ModelBuilder()
         modelBuilder.begin()
 
-        val builder = modelBuilder.part("compass", GL20.GL_TRIANGLES,
-                (VertexAttributes.Usage.Position or VertexAttributes.Usage.ColorUnpacked).toLong(), Material())
+        val builder = modelBuilder.part(
+            "compass", GL20.GL_TRIANGLES,
+            (VertexAttributes.Usage.Position or VertexAttributes.Usage.ColorUnpacked).toLong(), Material()
+        )
         builder.setColor(Color.RED)
         ArrowShapeBuilder.build(builder, 0f, 0f, 0f, ARROW_LENGTH, 0f, 0f, ARROW_CAP_SIZE, ARROW_THIKNESS, ARROW_DIVISIONS)
         builder.setColor(Color.GREEN)
@@ -72,7 +74,7 @@ class Compass(private var worldCam: Camera?) : Disposable {
         this.worldCam = cam
     }
 
-    fun render(batch: ModelBatch, env:Environment) {
+    fun render(batch: ModelBatch, env: Environment) {
         update()
         batch.begin(ownCam)
         batch.render(compassInstance, env)

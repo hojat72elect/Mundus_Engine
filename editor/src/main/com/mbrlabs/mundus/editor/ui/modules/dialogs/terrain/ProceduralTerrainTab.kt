@@ -14,7 +14,7 @@ import com.mbrlabs.mundus.editor.ui.widgets.ProceduralGenerationWidget
  */
 class ProceduralTerrainTab(var dialog: AddTerrainChunksDialog) : Tab(false, false) {
 
-    private val root = ProceduralGenerationWidget(true, true, true,  true, true)
+    private val root = ProceduralGenerationWidget(true, true, true, true, true)
 
     init {
         root.generateButtonListener = object : ProceduralGenerationWidget.GenerateButtonListener {
@@ -33,8 +33,8 @@ class ProceduralTerrainTab(var dialog: AddTerrainChunksDialog) : Tab(false, fals
         root.terraform(xOffset, yOffset, terrain)
     }
 
-    fun getMinHeightValue() : Float = root.getMinHeightValue()
-    fun getMaxHeightValue() : Float = root.getMaxHeightValue()
+    fun getMinHeightValue(): Float = root.getMinHeightValue()
+    fun getMaxHeightValue(): Float = root.getMaxHeightValue()
 
     fun uploadNoiseModifiers(noiseModifierList: Array<TerrainManagerComponent.ProceduralGeneration.ProceduralNoiseModifier>) = root.uploadNoiseModifiers(noiseModifierList)
 
@@ -47,6 +47,15 @@ class ProceduralTerrainTab(var dialog: AddTerrainChunksDialog) : Tab(false, fals
     }
 
     private fun generateTerrain() {
-        dialog.createTerrainChunk(root.getVertexResolution(), root.getTerrainWidth(), root.isMultipleTerrain(), root.getGridX(), root.getGridZ(), root.getTerrainName(), root.getSplatMapResolution(), root.isGenerateLoD())
+        dialog.createTerrainChunk(
+            root.getVertexResolution(),
+            root.getTerrainWidth(),
+            root.isMultipleTerrain(),
+            root.getGridX(),
+            root.getGridZ(),
+            root.getTerrainName(),
+            root.getSplatMapResolution(),
+            root.isGenerateLoD()
+        )
     }
 }

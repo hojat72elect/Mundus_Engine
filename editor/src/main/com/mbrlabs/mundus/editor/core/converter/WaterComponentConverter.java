@@ -21,7 +21,6 @@ import com.mbrlabs.mundus.commons.assets.WaterAsset;
 import com.mbrlabs.mundus.commons.dto.WaterComponentDTO;
 import com.mbrlabs.mundus.commons.scene3d.GameObject;
 import com.mbrlabs.mundus.editor.scene3d.components.PickableWaterComponent;
-import com.mbrlabs.mundus.editor.shader.Shaders;
 import com.mbrlabs.mundus.editor.utils.Log;
 
 import java.util.Map;
@@ -63,5 +62,4 @@ public class WaterComponentConverter {
 
         return descriptor;
     }
-
 }

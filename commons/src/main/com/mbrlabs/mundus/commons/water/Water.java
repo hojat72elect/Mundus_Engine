@@ -4,7 +4,11 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.VertexAttributes;
-import com.badlogic.gdx.graphics.g3d.*;
+import com.badlogic.gdx.graphics.g3d.Material;
+import com.badlogic.gdx.graphics.g3d.Model;
+import com.badlogic.gdx.graphics.g3d.ModelInstance;
+import com.badlogic.gdx.graphics.g3d.Renderable;
+import com.badlogic.gdx.graphics.g3d.RenderableProvider;
 import com.badlogic.gdx.graphics.g3d.utils.MeshPartBuilder;
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import com.badlogic.gdx.math.Matrix4;
@@ -32,20 +36,17 @@ public class Water implements RenderableProvider, Disposable {
     public static final float DEFAULT_FOAM_SCROLL_SPEED = 4.0f;
     public static final float DEFAULT_MAX_VISIBLE_DEPTH = 100.0f;
     public static final int DEFAULT_CULL_FACE = GL20.GL_BACK;
-    public static final Color DEFAULT_COLOR = new Color(0,0.5f,0.686f, 0.2f);
+    public static final Color DEFAULT_COLOR = new Color(0, 0.5f, 0.686f, 0.2f);
     private static final String materialId = "waterMat";
 
 
     public Matrix4 transform;
     public int waterWidth;
     public int waterDepth;
-
+    public ModelInstance modelInstance;
     private WaterMaterial waterMaterial;
-
     // Mesh
     private Model model;
-    public ModelInstance modelInstance;
-
     // Hold reference to these instead of creating new every frame
     private WaterTextureAttribute reflection;
     private WaterTextureAttribute refraction;
@@ -63,7 +64,7 @@ public class Water implements RenderableProvider, Disposable {
     }
 
     public void init() {
-        Vector3 waterPos = new Vector3(0f,0f,0f);
+        Vector3 waterPos = new Vector3(0f, 0f, 0f);
         ModelBuilder modelBuilder = new ModelBuilder();
         modelBuilder.begin();
 
@@ -177,7 +178,7 @@ public class Water implements RenderableProvider, Disposable {
     }
 
     public float getFloatAttribute(long attributeType) {
-         return waterMaterial.get(WaterFloatAttribute.class, attributeType).value;
+        return waterMaterial.get(WaterFloatAttribute.class, attributeType).value;
     }
 
     public void setColorAttribute(long attributeType, Color newColor) {

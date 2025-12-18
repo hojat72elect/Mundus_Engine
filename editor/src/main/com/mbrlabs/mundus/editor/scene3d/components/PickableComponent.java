@@ -25,6 +25,6 @@ package com.mbrlabs.mundus.editor.scene3d.components;
 public interface PickableComponent {
 
     void encodeRaypickColorId();
-    void renderPick();
 
+    void renderPick();
 }

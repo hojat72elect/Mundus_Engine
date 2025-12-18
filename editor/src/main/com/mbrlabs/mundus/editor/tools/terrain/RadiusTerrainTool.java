@@ -28,5 +28,4 @@ public abstract class RadiusTerrainTool implements TerrainTool {
         float distance = vertexPos.dst(localBrushPos);
         return distance <= terrainBrush.getRadius();
     };
-
 }

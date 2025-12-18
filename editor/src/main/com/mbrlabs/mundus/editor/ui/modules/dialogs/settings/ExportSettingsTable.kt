@@ -51,13 +51,13 @@ class ExportSettingsTable : BaseSettingsTable(), ProjectChangedEvent.ProjectChan
         padRight(UI.PAD_SIDE).padLeft(UI.PAD_SIDE)
 
         jsonType.setItems(
-                JsonWriter.OutputType.javascript,
-                JsonWriter.OutputType.json,
-                JsonWriter.OutputType.minimal
+            JsonWriter.OutputType.javascript,
+            JsonWriter.OutputType.json,
+            JsonWriter.OutputType.minimal
         )
 
         add(VisLabel("Export Settings")).left().row()
-        addSeparator().padBottom(UI.PAD_SIDE*2)
+        addSeparator().padBottom(UI.PAD_SIDE * 2)
 
         add(VisLabel("Output folder")).growX().row()
         add(fileChooserField).growX().padBottom(UI.PAD_BOTTOM).row()
@@ -76,7 +76,7 @@ class ExportSettingsTable : BaseSettingsTable(), ProjectChangedEvent.ProjectChan
 
     private fun updateValues() {
         val exportSettings = projectManager.current().settings?.export
-        if(exportSettings?.outputFolder != null) {
+        if (exportSettings?.outputFolder != null) {
             fileChooserField.setText(exportSettings.outputFolder?.path())
         }
         allAssets.isChecked = exportSettings?.allAssets!!

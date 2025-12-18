@@ -29,7 +29,7 @@ import com.mbrlabs.mundus.editor.utils.StartOnFirstThreadHelper
 import org.kohsuke.args4j.CmdLineParser
 import org.kohsuke.args4j.Option
 
-const private val TAG = "Main"
+private const val TAG = "Main"
 
 const val VERSION = "v0.5.1"
 const val TITLE = "Mundus $VERSION"
@@ -38,19 +38,19 @@ const val TITLE = "Mundus $VERSION"
  * args4j options for command line parsing.
  */
 class LaunchOptions {
-    @Option(name="-noMSAA",usage="If present, disables MSAA")
+    @Option(name = "-noMSAA", usage = "If present, disables MSAA")
     var noMSAA = false
 
-    @Option(name="-useGL30",usage="If present, enables GL30")
+    @Option(name = "-useGL30", usage = "If present, enables GL30")
     var useGL30 = false
 
-    @Option(name="-fullscreen",usage="Enables fullscreen mode")
+    @Option(name = "-fullscreen", usage = "Enables fullscreen mode")
     var fullscreen = false
 
-    @Option(name="-noShaderCache", usage="Disable shader preprocessor caching, useful for hot reloads during shader development")
+    @Option(name = "-noShaderCache", usage = "Disable shader preprocessor caching, useful for hot reloads during shader development")
     var noShaderCache = false
 
-    @Option(name="-fpsLimit", usage="Set FPS limit")
+    @Option(name = "-fpsLimit", usage = "Set FPS limit")
     var fps = 60 // Default to 60 FPS limit (ex -fpsLimit=30)
 }
 
@@ -93,7 +93,7 @@ private fun launchEditor(options: LaunchOptions) {
     config.setForegroundFPS(options.fps)
 
     if (options.useGL30) {
-        if (SharedLibraryLoader.os == Os.MacOsX ) {
+        if (SharedLibraryLoader.os == Os.MacOsX) {
             config.setOpenGLEmulation(Lwjgl3ApplicationConfiguration.GLEmulation.GL30, 3, 2)
         } else {
             config.setOpenGLEmulation(Lwjgl3ApplicationConfiguration.GLEmulation.GL30, 4, 3)

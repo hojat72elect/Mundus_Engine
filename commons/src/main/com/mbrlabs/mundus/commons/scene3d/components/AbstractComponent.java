@@ -32,13 +32,13 @@ public abstract class AbstractComponent implements Component {
     }
 
     @Override
-    public void setType(Type type) {
-        this.type = type;
+    public Type getType() {
+        return this.type;
     }
 
     @Override
-    public Type getType() {
-        return this.type;
+    public void setType(Type type) {
+        this.type = type;
     }
 
     @Override

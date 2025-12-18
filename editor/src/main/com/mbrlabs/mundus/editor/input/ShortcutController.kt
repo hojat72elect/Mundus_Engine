@@ -48,7 +48,7 @@ class ShortcutController(
         val keycode = KeyboardLayoutUtils.convertKeycode(code)
 
         // export
-        if(keycode == Input.Keys.F1) {
+        if (keycode == Input.Keys.F1) {
             UI.exportDialog.export()
             return true
         }

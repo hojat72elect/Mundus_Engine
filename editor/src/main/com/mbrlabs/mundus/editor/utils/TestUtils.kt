@@ -21,7 +21,7 @@ import com.badlogic.gdx.graphics.g3d.ModelInstance
 import com.badlogic.gdx.math.Vector3
 import com.badlogic.gdx.utils.Array
 import com.mbrlabs.mundus.commons.scene3d.components.TerrainComponent
-import java.util.*
+import java.util.Random
 
 /**
  * @author Marcus Brummer

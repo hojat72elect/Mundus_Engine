@@ -19,7 +19,6 @@ package com.mbrlabs.mundus.commons.dto;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
-import com.mbrlabs.mundus.commons.shadows.ShadowResolution;
 import com.mbrlabs.mundus.commons.water.WaterResolution;
 
 /**
@@ -174,20 +173,20 @@ public class SceneDTO implements Json.Serializable {
         this.gameObjects = gameObjects;
     }
 
-    public void setWaterResolution(WaterResolution waterResolution) {
-        this.waterResolution = waterResolution;
-    }
-
     public WaterResolution getWaterResolution() {
         return waterResolution;
     }
 
-    public void setWaterHeight(float waterHeight) {
-        this.waterHeight = waterHeight;
+    public void setWaterResolution(WaterResolution waterResolution) {
+        this.waterResolution = waterResolution;
     }
 
     public float getWaterHeight() {
         return waterHeight;
+    }
+
+    public void setWaterHeight(float waterHeight) {
+        this.waterHeight = waterHeight;
     }
 
     public boolean isUseFrustumCulling() {
@@ -198,12 +197,12 @@ public class SceneDTO implements Json.Serializable {
         this.useFrustumCulling = useFrustumCulling;
     }
 
-    public void setSkyboxAssetId(String skyboxAssetId) {
-        this.skyboxAssetId = skyboxAssetId;
-    }
-
     public String getSkyboxAssetId() {
         return skyboxAssetId;
+    }
+
+    public void setSkyboxAssetId(String skyboxAssetId) {
+        this.skyboxAssetId = skyboxAssetId;
     }
 
     public boolean isEnableWaterReflections() {

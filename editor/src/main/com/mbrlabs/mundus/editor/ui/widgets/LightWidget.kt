@@ -66,15 +66,15 @@ class LightWidget(val lightComponent: LightComponent) : BaseWidget() {
                             (lightComponent.light as SpotLightEx).intensity = diffuseIntensityField.text.toFloat()
                         else if (lightComponent.light is PointLightEx)
                             (lightComponent.light as PointLightEx).intensity = diffuseIntensityField.text.toFloat()
-                    } catch (ex : NumberFormatException) {
-                        Mundus.postEvent(LogEvent(LogType.ERROR,"Error parsing field " + diffuseIntensityField.name))
+                    } catch (ex: NumberFormatException) {
+                        Mundus.postEvent(LogEvent(LogType.ERROR, "Error parsing field " + diffuseIntensityField.name))
                     }
                 }
             }
         })
 
         // color field listener
-        colorPickerField.colorAdapter = object: ColorPickerAdapter() {
+        colorPickerField.colorAdapter = object : ColorPickerAdapter() {
             override fun finished(newColor: Color) {
                 lightComponent.light.color.set(newColor)
             }

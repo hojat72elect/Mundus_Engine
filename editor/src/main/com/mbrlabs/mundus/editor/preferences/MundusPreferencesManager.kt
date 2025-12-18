@@ -43,7 +43,7 @@ class MundusPreferencesManager(preferencesKey: String) : PreferencesManager {
      * Supported types: Boolean, String, Int, Long, Float
      */
     override fun set(key: String, value: Any) {
-        when(value) {
+        when (value) {
             is Boolean -> preferences.putBoolean(key, value)
             is String -> preferences.putString(key, value)
             is Int -> preferences.putInteger(key, value)

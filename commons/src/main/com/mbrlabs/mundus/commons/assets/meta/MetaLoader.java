@@ -38,9 +38,9 @@ public class MetaLoader {
         JsonValue json = reader.parse(file);
         parseBasics(meta, json);
 
-        if(meta.getType() == AssetType.TERRAIN) {
+        if (meta.getType() == AssetType.TERRAIN) {
             parseTerrain(meta, json.get(Meta.JSON_TERRAIN));
-        } else if(meta.getType() == AssetType.MODEL) {
+        } else if (meta.getType() == AssetType.MODEL) {
             parseModel(meta, json.get(Meta.JSON_MODEL));
         } else if (meta.getType() == AssetType.CUSTOM) {
             parseCustom(meta, json.get(Meta.JSON_CUSTOM));
@@ -57,7 +57,7 @@ public class MetaLoader {
     }
 
     private void parseTerrain(Meta meta, JsonValue jsonTerrain) {
-        if(jsonTerrain == null) return;
+        if (jsonTerrain == null) return;
 
         final MetaTerrain terrain = new MetaTerrain();
         terrain.setSize(jsonTerrain.getInt(MetaTerrain.JSON_SIZE));
@@ -84,7 +84,7 @@ public class MetaLoader {
     }
 
     private void parseModel(Meta meta, JsonValue jsonModel) {
-        if(jsonModel == null) return;
+        if (jsonModel == null) return;
 
         final MetaModel model = new MetaModel();
 
@@ -93,7 +93,7 @@ public class MetaLoader {
 
         final JsonValue materials = jsonModel.get(MetaModel.JSON_DEFAULT_MATERIALS);
 
-        for(final JsonValue mat : materials) {
+        for (final JsonValue mat : materials) {
             final String g3dbID = mat.name;
             final String assetUUID = materials.getString(g3dbID);
             model.getDefaultMaterials().put(g3dbID, assetUUID);
@@ -121,13 +121,13 @@ public class MetaLoader {
     /**
      * When new values are added and cannot be found on jsonValue.getXXX(),
      * an IllegalArgumentException is thrown.
-     *
+     * <p>
      * To try and maintain backwards compatibility between meta changes,
      * if we have a default value, that can be used with this method to
      * default to it when it could not be found in the meta during parsing.
      *
-     * @param jsonValue the JsonValue instance
-     * @param jsonKey the jsonKey value to try and read
+     * @param jsonValue    the JsonValue instance
+     * @param jsonKey      the jsonKey value to try and read
      * @param defaultValue the value to default to if jsonKey not found
      * @return float from meta file, or default if not found
      */
@@ -146,5 +146,4 @@ public class MetaLoader {
             return defaultValue;
         }
     }
-
 }

@@ -30,7 +30,11 @@ import com.mbrlabs.mundus.editor.events.ToolDeactivatedEvent
 import com.mbrlabs.mundus.editor.history.CommandHistory
 import com.mbrlabs.mundus.editor.input.InputManager
 import com.mbrlabs.mundus.editor.preferences.MundusPreferencesManager
-import com.mbrlabs.mundus.editor.tools.brushes.*
+import com.mbrlabs.mundus.editor.tools.brushes.CircleBrush
+import com.mbrlabs.mundus.editor.tools.brushes.ConfettiBrush
+import com.mbrlabs.mundus.editor.tools.brushes.SmoothCircleBrush
+import com.mbrlabs.mundus.editor.tools.brushes.StarBrush
+import com.mbrlabs.mundus.editor.tools.brushes.TerrainBrush
 import com.mbrlabs.mundus.editor.tools.picker.GameObjectPicker
 import com.mbrlabs.mundus.editor.tools.picker.ToolHandlePicker
 import com.mbrlabs.mundus.editor.ui.UI
@@ -39,15 +43,16 @@ import com.mbrlabs.mundus.editor.ui.UI
  * @author Marcus Brummer
  * @version 25-12-2015
  */
-class ToolManager(private val inputManager: InputManager,
-                  projectManager: ProjectManager,
-                  goPicker: GameObjectPicker,
-                  toolHandlePicker: ToolHandlePicker,
-                  shapeRenderer: ShapeRenderer,
-                  history: CommandHistory,
-                  globalPreferencesManager: MundusPreferencesManager,
-                  shortcutManager: KeyboardShortcutManager)
-    : InputAdapter(), Disposable {
+class ToolManager(
+    private val inputManager: InputManager,
+    projectManager: ProjectManager,
+    goPicker: GameObjectPicker,
+    toolHandlePicker: ToolHandlePicker,
+    shapeRenderer: ShapeRenderer,
+    history: CommandHistory,
+    globalPreferencesManager: MundusPreferencesManager,
+    shortcutManager: KeyboardShortcutManager
+) : InputAdapter(), Disposable {
     var activeTool: Tool? = null
         private set
     var terrainBrushes: Array<TerrainBrush>
@@ -147,7 +152,7 @@ class ToolManager(private val inputManager: InputManager,
         scaleTool.dispose()
     }
 
-    private fun getSelectedObject() : GameObject? {
+    private fun getSelectedObject(): GameObject? {
         if (activeTool == null) {
             return null
         }

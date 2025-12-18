@@ -26,7 +26,6 @@ public class FlattenTool extends RadiusTerrainTool {
                 if (diff > Math.abs(newHeight) || terrain.heightData[index] > TerrainBrush.getHeightSample()) {
                     terrain.heightData[index] = newHeight;
                 }
-
             }
         }
     };

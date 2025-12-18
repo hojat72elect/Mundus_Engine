@@ -22,7 +22,7 @@ import com.kotcrab.vis.ui.widget.VisLabel
 import com.kotcrab.vis.ui.widget.VisTable
 import com.kotcrab.vis.ui.widget.toast.Toast
 import com.mbrlabs.mundus.editorcommons.types.ToastType
-import java.util.*
+import java.util.Locale
 
 /**
  * Displays Android-like toasts at top right corner of the screen.

@@ -32,7 +32,7 @@ public class RenderWidget extends Widget {
 
     private static Vector2 vec = new Vector2();
 
-    private ScreenViewport viewport;
+    private final ScreenViewport viewport;
     private Camera cam;
     private Renderer renderer;
 
@@ -98,5 +98,4 @@ public class RenderWidget extends Widget {
     public interface Renderer {
         void render(Camera cam);
     }
-
 }

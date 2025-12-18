@@ -63,6 +63,6 @@ fun is3DFormat(filename: String): Boolean {
 fun isImage(filename: String): Boolean {
     val fn = filename.lowercase()
     return fn.endsWith(FORMAT_IMG_TGA) || fn.endsWith(FORMAT_IMG_JPEG)
-        || fn.endsWith(FORMAT_IMG_JPG) || fn.endsWith(FORMAT_IMG_PNG)
+            || fn.endsWith(FORMAT_IMG_JPG) || fn.endsWith(FORMAT_IMG_PNG)
 }
 

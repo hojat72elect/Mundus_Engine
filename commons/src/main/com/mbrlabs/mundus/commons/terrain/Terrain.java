@@ -46,10 +46,14 @@ public class Terrain implements Disposable {
     public static final int DEFAULT_VERTEX_RESOLUTION = 180;
     public static final int DEFAULT_UV_SCALE = 60;
 
-    /** The simplification factors for each LoD level. */
-    public static final float[] LOD_SIMPLIFICATION_FACTORS = new float[] {.65f, .2f, .1f };
+    /**
+     * The simplification factors for each LoD level.
+     */
+    public static final float[] LOD_SIMPLIFICATION_FACTORS = new float[]{.65f, .2f, .1f};
 
-    /** The number of LoD levels. +1 for base mesh */
+    /**
+     * The number of LoD levels. +1 for base mesh
+     */
     public static final int DEFAULT_LODS = LOD_SIMPLIFICATION_FACTORS.length + 1;
 
     private static final Vector3 c00 = new Vector3();
@@ -59,20 +63,16 @@ public class Terrain implements Disposable {
     private static final Vector3 tmp = new Vector3();
     private static final Vector2 tmpV2 = new Vector2();
     private static final Matrix4 tmpMatrix = new Matrix4();
-
+    // used for building the mesh
+    private final VertexAttributes attribs;
+    private final Material material;
     public float[] heightData;
     public int terrainWidth = 1200;
     public int terrainDepth = 1200;
     public int vertexResolution;
-
-    // used for building the mesh
-    private final VertexAttributes attribs;
     private Vector2 uvScale = new Vector2(DEFAULT_UV_SCALE, DEFAULT_UV_SCALE);
-
     // Textures
     private TerrainMaterial terrainMaterial;
-    private final Material material;
-
     // Mesh
     private Model model;
     private PlaneMesh planeMesh;
@@ -139,8 +139,8 @@ public class Terrain implements Disposable {
     /**
      * Returns the terrain height at the given world coordinates, in world coordinates.
      *
-     * @param worldX X world position to get height
-     * @param worldZ Z world position to get height
+     * @param worldX           X world position to get height
+     * @param worldZ           Z world position to get height
      * @param terrainTransform The world transform (modelInstance transform) of the terrain
      * @return
      */
@@ -185,8 +185,8 @@ public class Terrain implements Disposable {
     /**
      * Casts the given ray to determine where it intersects on the terrain.
      *
-     * @param out Vector3 to populate with intersect point with
-     * @param ray the ray to cast
+     * @param out              Vector3 to populate with intersect point with
+     * @param ray              the ray to cast
      * @param terrainTransform The world transform (modelInstance transform) of the terrain
      * @return true if the ray intersects the terrain, false otherwise
      */
@@ -196,18 +196,18 @@ public class Terrain implements Disposable {
         float maxDistance = 80000;
 
         // Interval halving
-        for(int i = 0; i < 500; i++) {
+        for (int i = 0; i < 500; i++) {
             float middleDistance = (minDistance + maxDistance) / 2;
             ray.getEndPoint(out, middleDistance);
 
-            if(isUnderTerrain(out, terrainTransform)) {
+            if (isUnderTerrain(out, terrainTransform)) {
                 maxDistance = middleDistance;
             } else {
                 minDistance = middleDistance;
             }
 
             // If min and max are very close, we found the intersection
-            if(Math.abs(minDistance - maxDistance) < 0.1f) {
+            if (Math.abs(minDistance - maxDistance) < 0.1f) {
                 return true;
             }
         }
@@ -223,16 +223,17 @@ public class Terrain implements Disposable {
         planeMesh.modifyVertex(x, z);
     }
 
+    public LevelOfDetailDTO[] getLoDDTOs() {
+        return loDDTOS;
+    }
+
     /**
      * Lod DTO's are only used for initial loading of the terrain
+     *
      * @param loDDTOS the LoDDTO's to set
      */
     void setLoDDTOs(LevelOfDetailDTO[] loDDTOS) {
         this.loDDTOS = loDDTOS;
-    }
-
-    public LevelOfDetailDTO[] getLoDDTOs() {
-        return loDDTOS;
     }
 
     public void clearLoDDTOs() {
@@ -253,14 +254,11 @@ public class Terrain implements Disposable {
      * point doesn't belong to terrain -- it returns default
      * <code>Vector.Y<code> normal.
      *
-     * @param worldX
-     *            the x coord in world
-     * @param worldZ
-     *            the z coord in world
-     * @param terrainTransform
-     *             The world transform (modelInstance transform) of the terrain
+     * @param worldX           the x coord in world
+     * @param worldZ           the z coord in world
+     * @param terrainTransform The world transform (modelInstance transform) of the terrain
      * @return normal at that point. If point doesn't belong to terrain -- it
-     *         returns default <code>Vector.Y<code> normal.
+     * returns default <code>Vector.Y<code> normal.
      */
     public Vector3 getNormalAtWordCoordinate(Vector3 out, float worldX, float worldZ, Matrix4 terrainTransform) {
         // Translates world coordinates to local coordinates
@@ -282,7 +280,8 @@ public class Terrain implements Disposable {
 
     /**
      * Checks if given world coordinates are above or below the terrain
-     * @param worldCoords the world coordinates to check
+     *
+     * @param worldCoords      the world coordinates to check
      * @param terrainTransform the world transform (modelInstance transform) of the terrain
      * @return boolean true if under the terrain, else false
      */
@@ -294,8 +293,9 @@ public class Terrain implements Disposable {
 
     /**
      * Determines if the world coordinates are within the terrains X and Z boundaries, does not including height
-     * @param worldX worldX to check
-     * @param worldZ worldZ to check
+     *
+     * @param worldX           worldX to check
+     * @param worldZ           worldZ to check
      * @param terrainTransform the world transform (modelInstance transform) of the terrain
      * @return boolean true if within the terrains boundary, else false
      */
@@ -346,6 +346,7 @@ public class Terrain implements Disposable {
 
     /**
      * Returns the plane mesh used by the terrain
+     *
      * @return the plane mesh
      */
     public PlaneMesh getPlaneMesh() {
@@ -353,7 +354,7 @@ public class Terrain implements Disposable {
     }
 
     /**
-     * @param terrainPos The x or z terrain position
+     * @param terrainPos     The x or z terrain position
      * @param gridSquareSize The grid square size
      * @return The percent the position in its grid
      */
@@ -365,5 +366,4 @@ public class Terrain implements Disposable {
 
         return remaining / gridSquareSize;
     }
-
 }

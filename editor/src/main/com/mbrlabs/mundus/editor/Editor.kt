@@ -53,17 +53,17 @@ import com.mbrlabs.mundus.editor.utils.Colors
 import com.mbrlabs.mundus.editor.utils.Compass
 import com.mbrlabs.mundus.editor.utils.GlUtils
 import com.mbrlabs.mundus.editor.utils.UsefulMeshs
-import com.mbrlabs.mundus.pluginapi.EventExtension
-import com.mbrlabs.mundus.pluginapi.manager.PluginEventManager
-import com.mbrlabs.mundus.pluginapi.RenderExtension
-import com.mbrlabs.mundus.pluginapi.TerrainSceneExtension
 import com.mbrlabs.mundus.editorcommons.events.GameObjectModifiedEvent
 import com.mbrlabs.mundus.editorcommons.events.ProjectChangedEvent
 import com.mbrlabs.mundus.editorcommons.events.SceneChangedEvent
 import com.mbrlabs.mundus.pluginapi.AssetExtension
 import com.mbrlabs.mundus.pluginapi.CustomShaderRenderExtension
 import com.mbrlabs.mundus.pluginapi.DisposeExtension
+import com.mbrlabs.mundus.pluginapi.EventExtension
+import com.mbrlabs.mundus.pluginapi.RenderExtension
+import com.mbrlabs.mundus.pluginapi.TerrainSceneExtension
 import com.mbrlabs.mundus.pluginapi.ToasterExtension
+import com.mbrlabs.mundus.pluginapi.manager.PluginEventManager
 import net.mgsx.gltf.scene3d.scene.SceneRenderableSorter
 import net.mgsx.gltf.scene3d.shaders.PBRDepthShaderProvider
 import org.apache.commons.io.FileUtils
@@ -77,10 +77,10 @@ import java.io.File
  * @version 07-06-2016
  */
 class Editor : Lwjgl3WindowAdapter(), ApplicationListener,
-        ProjectChangedEvent.ProjectChangedListener,
-        SceneChangedEvent.SceneChangedListener,
-        FullScreenEvent.FullScreenEventListener,
-        GameObjectModifiedEvent.GameObjectModifiedListener {
+    ProjectChangedEvent.ProjectChangedListener,
+    SceneChangedEvent.SceneChangedListener,
+    FullScreenEvent.FullScreenEventListener,
+    GameObjectModifiedEvent.GameObjectModifiedListener {
 
     private lateinit var axesInstance: ModelInstance
     private lateinit var compass: Compass

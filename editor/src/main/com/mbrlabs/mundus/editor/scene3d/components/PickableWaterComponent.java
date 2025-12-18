@@ -43,5 +43,4 @@ public class PickableWaterComponent extends WaterComponent implements PickableCo
     public void renderPick() {
         gameObject.sceneGraph.scene.batch.render(waterAsset.water, Shaders.INSTANCE.getPickerShader());
     }
-
 }

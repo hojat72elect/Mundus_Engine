@@ -120,7 +120,7 @@ class FogDialog : BaseDialog("Fog"), ProjectChangedEvent.ProjectChangedListener,
         })
 
         // color
-        colorPickerField.colorAdapter = object: ColorPickerAdapter() {
+        colorPickerField.colorAdapter = object : ColorPickerAdapter() {
             override fun finished(newColor: Color) {
                 setFogAttributes()
             }

@@ -39,10 +39,10 @@ class AddWaterDialog : BaseDialog("Add Water") {
 
     private val generateBtn = VisTextButton("Generate Water")
 
-    private var projectManager : ProjectManager
-    private var ioManager : IOManager
+    private var projectManager: ProjectManager
+    private var ioManager: IOManager
 
-    private var selectedGO : GameObject? = null
+    private var selectedGO: GameObject? = null
 
     init {
         isResizable = true
@@ -129,8 +129,10 @@ class AddWaterDialog : BaseDialog("Add Water") {
                 asset.load()
                 asset.applyDependencies()
 
-                val waterGO = createWaterGO(sceneGraph,
-                        null, goID, waterName, asset)
+                val waterGO = createWaterGO(
+                    sceneGraph,
+                    null, goID, waterName, asset
+                )
                 // update sceneGraph
                 if (selectedGO == null) {
                     sceneGraph.addGameObject(waterGO)

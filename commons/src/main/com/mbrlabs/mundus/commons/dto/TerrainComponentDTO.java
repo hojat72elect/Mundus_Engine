@@ -83,7 +83,7 @@ public class TerrainComponentDTO implements AssetUsageDTO {
         }
 
         TerrainAsset terrainAsset = (TerrainAsset) assetMap.get(terrainID);
-        if (assetToCheck == terrainAsset.getMaterialAsset()){
+        if (assetToCheck == terrainAsset.getMaterialAsset()) {
             return true;
         }
 

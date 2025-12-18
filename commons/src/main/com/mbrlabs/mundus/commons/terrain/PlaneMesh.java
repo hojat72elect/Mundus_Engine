@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.Pool;
+
 import net.mgsx.gltf.loaders.shared.geometry.MeshTangentSpaceGenerator;
 
 import java.util.HashMap;
@@ -16,42 +17,27 @@ import java.util.Map;
 
 /**
  * Used for building a subdivideable plane mesh for things like terrain.
+ *
  * @author JamesTKhan
  * @version June 06, 2023
  */
 public class PlaneMesh implements Disposable {
-    static class MeshInfo {
-        public int vertexResolution;
-        public float[] heightData;
-        public int width;
-        public int depth;
-        public Vector2 uvScale;
-        public VertexAttributes attribs;
-    }
-
     private static final MeshPartBuilder.VertexInfo tempVertexInfo = new MeshPartBuilder.VertexInfo();
-
     private final int vertexResolution;
-
     private final MeshInfo terrainMeshInfo;
-    private VertexAttributes attribs;
-
-    private float[] vertices;
-    private short[] indices;
-
     private final int stride;
     private final int posPos;
     private final int norPos;
     private final int uvPos;
-
+    private final VertexAttributes attribs;
+    private float[] vertices;
+    private short[] indices;
     // Tracks the modified vertices bounds
     private int minX = Integer.MAX_VALUE;
     private int maxX = Integer.MIN_VALUE;
     private int minZ = Integer.MAX_VALUE;
     private int maxZ = Integer.MIN_VALUE;
-
     private Map<Integer, Array<Integer>> vertexToTriangleMap;
-
     private Mesh mesh;
 
     public PlaneMesh(MeshInfo terrainMeshInfo) {
@@ -114,10 +100,10 @@ public class PlaneMesh implements Disposable {
      * This method builds a map that associates each vertex index with a list of indices
      * of triangles that the vertex is part of. This map is used for efficient lookup
      * of adjacent triangles when calculating vertex normals.
-     *
+     * <p>
      * The map is stored in the instance variable vertexToTriangleMap, where the key is
      * the vertex index and the value is a list of triangle indices.
-     *
+     * <p>
      * Note: This method is to be called during the mesh building process, after the
      * indices array has been populated.
      */
@@ -194,9 +180,10 @@ public class PlaneMesh implements Disposable {
      * This method calculates and sets the average normal for each vertex in the terrain mesh.
      * It first calculates the normal of each face (triangle) in the mesh, then for each vertex,
      * it calculates the average normal from the normals of all faces that include this vertex.
-     *
+     * <p>
      * Note: This method should be called after the vertices and indices of the mesh have been defined and set.
      * It directly modifies the vertices array to set the normal for each vertex.
+     *
      * @param pool A pool of Vector3 objects to be used for temporary calculations. If on
      *             a background thread, this pool should be thread-safe.
      */
@@ -249,7 +236,6 @@ public class PlaneMesh implements Disposable {
         }
     }
 
-
     /**
      * Retrieve the vertex x,y,z position from the vertices array for the given vertex index.
      */
@@ -272,11 +258,10 @@ public class PlaneMesh implements Disposable {
      * This method calculates the normal of a face in 3D space given its three vertices.
      * The face is assumed to be a triangle.
      *
-     * @param out The Vector3 to store the result in.
+     * @param out     The Vector3 to store the result in.
      * @param vertex1 The first vertex of the triangle.
      * @param vertex2 The second vertex of the triangle.
      * @param vertex3 The third vertex of the triangle.
-     *
      * @return A normalized Vector3 representing the normal of the face.
      */
     private Vector3 calculateFaceNormal(Vector3 out, Vector3 vertex1, Vector3 vertex2, Vector3 vertex3) {
@@ -292,11 +277,10 @@ public class PlaneMesh implements Disposable {
      *
      * @param vertexIndex The index of the vertex for which the normal is to be calculated.
      * @param faceNormals An array containing the normals of all faces in the mesh.
-     *
      * @return A normalized Vector3 representing the average normal of the vertex.
      */
     private Vector3 calculateVertexNormal(Vector3 out, int vertexIndex, Vector3[] faceNormals) {
-        Vector3 vertexNormal = out.set(0,0,0);
+        Vector3 vertexNormal = out.set(0, 0, 0);
         Array<Integer> triangleIndices = vertexToTriangleMap.get(vertexIndex);
         if (triangleIndices != null) {
             for (int triangleIndex : triangleIndices) {
@@ -317,12 +301,9 @@ public class PlaneMesh implements Disposable {
     /**
      * Get Vertex Normal at x,z point of terrain
      *
-     * @param out
-     *            Output vector
-     * @param x
-     *            the x coord on terrain
-     * @param z
-     *            the z coord on terrain
+     * @param out Output vector
+     * @param x   the x coord on terrain
+     * @param z   the z coord on terrain
      * @return the normal at the point of terrain
      */
     public Vector3 getNormalAt(Vector3 out, int x, int z) {
@@ -331,15 +312,14 @@ public class PlaneMesh implements Disposable {
         return out.set(vertices[start + norPos], vertices[start + norPos + 1], vertices[start + norPos + 2]);
     }
 
-
     public float[] getVertices() {
         return vertices;
     }
 
     public void computeTangents() {
         VertexAttribute normalMapUVs = null;
-        for(VertexAttribute a : attribs){
-            if(a.usage == VertexAttributes.Usage.TextureCoordinates){
+        for (VertexAttribute a : attribs) {
+            if (a.usage == VertexAttributes.Usage.TextureCoordinates) {
                 normalMapUVs = a;
             }
         }
@@ -373,5 +353,14 @@ public class PlaneMesh implements Disposable {
         maxX = Math.max(maxX, x);
         minZ = Math.min(minZ, z);
         maxZ = Math.max(maxZ, z);
+    }
+
+    static class MeshInfo {
+        public int vertexResolution;
+        public float[] heightData;
+        public int width;
+        public int depth;
+        public Vector2 uvScale;
+        public VertexAttributes attribs;
     }
 }

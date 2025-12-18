@@ -40,5 +40,4 @@ public class TextureUtils {
     // Texture texture = new Texture(fileHandle, false);
     // return texture;
     // }
-
 }

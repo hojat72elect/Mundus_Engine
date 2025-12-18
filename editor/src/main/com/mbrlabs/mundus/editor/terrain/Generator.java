@@ -60,5 +60,4 @@ public abstract class Generator<T extends Generator<T>> {
     }
 
     public abstract void terraform();
-
 }

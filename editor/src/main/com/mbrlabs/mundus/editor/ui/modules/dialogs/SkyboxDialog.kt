@@ -51,7 +51,7 @@ import com.mbrlabs.mundus.editorcommons.exceptions.AssetAlreadyExistsException
  * @version 10-01-2016
  */
 class SkyboxDialog : BaseDialog("Skybox"), ProjectChangedEvent.ProjectChangedListener,
-        SceneChangedEvent.SceneChangedListener, ImageChooserField.ImageChosenListener {
+    SceneChangedEvent.SceneChangedListener, ImageChooserField.ImageChosenListener {
 
     private lateinit var root: VisTable
     private lateinit var selectBox: VisSelectBox<SkyboxAsset>
@@ -188,8 +188,8 @@ class SkyboxDialog : BaseDialog("Skybox"), ProjectChangedEvent.ProjectChangedLis
                     try {
                         projectManager.current().currScene.skybox.rotateSpeed = rotateSpeed.text.toFloat()
                         addModifiedAsset()
-                    } catch (ex : NumberFormatException) {
-                        Mundus.postEvent(LogEvent(LogType.ERROR,"Error parsing field " + rotateSpeed.name))
+                    } catch (ex: NumberFormatException) {
+                        Mundus.postEvent(LogEvent(LogType.ERROR, "Error parsing field " + rotateSpeed.name))
                     }
                 }
             }
@@ -224,8 +224,10 @@ class SkyboxDialog : BaseDialog("Skybox"), ProjectChangedEvent.ProjectChangedLis
                 oldSkybox?.dispose()
 
                 // Set actual skybox
-                projectManager.current().currScene.skybox = Skybox(positiveX.file, negativeX.file,
-                        positiveY.file, negativeY.file, positiveZ.file, negativeZ.file, Shaders.skyboxShader)
+                projectManager.current().currScene.skybox = Skybox(
+                    positiveX.file, negativeX.file,
+                    positiveY.file, negativeY.file, positiveZ.file, negativeZ.file, Shaders.skyboxShader
+                )
 
                 val files = ArrayList<FileHandle>()
                 files.add(positiveX.file)
@@ -252,8 +254,10 @@ class SkyboxDialog : BaseDialog("Skybox"), ProjectChangedEvent.ProjectChangedLis
                 }
 
                 // Create the skybox asset
-                val skyboxAsset = projectManager.current().assetManager.createSkyBoxAsset(skyboxName.text, textureAssets[0], textureAssets[1],
-                        textureAssets[2], textureAssets[3], textureAssets[4], textureAssets[5])
+                val skyboxAsset = projectManager.current().assetManager.createSkyBoxAsset(
+                    skyboxName.text, textureAssets[0], textureAssets[1],
+                    textureAssets[2], textureAssets[3], textureAssets[4], textureAssets[5]
+                )
 
                 projectManager.current().currScene.skyboxAssetId = skyboxAsset.id
                 resetImages()
@@ -330,13 +334,9 @@ class SkyboxDialog : BaseDialog("Skybox"), ProjectChangedEvent.ProjectChangedLis
      * then it returns false.
      */
     private fun imagesValid(): Boolean {
-        if (null === positiveX.file || null === negativeX.file ||
-            null === positiveY.file || null === negativeY.file ||
-            null === positiveZ.file || null === negativeZ.file) {
-
-            return false
-        }
-        return true
+        return !(null === positiveX.file || null === negativeX.file ||
+                null === positiveY.file || null === negativeY.file ||
+                null === positiveZ.file || null === negativeZ.file)
     }
 
     override fun show(stage: Stage?): VisDialog {

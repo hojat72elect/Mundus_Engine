@@ -52,7 +52,7 @@ public class MathUtils {
      * Get an angle between two Vector3s
      *
      * @param from the vector to compare
-     * @param to the vector to compare with
+     * @param to   the vector to compare with
      * @return angle in degrees
      */
     public static float getAngleBetween(Vector3 from, Vector3 to) {
@@ -69,7 +69,7 @@ public class MathUtils {
      * Rotate a directional vector up/down by given angle.
      *
      * @param vectorToRotate the vector to rotate
-     * @param angleDegrees the angle in degrees to rotate by
+     * @param angleDegrees   the angle in degrees to rotate by
      */
     public static void rotateUpDown(Vector3 vectorToRotate, float angleDegrees) {
         tmp.set(vectorToRotate);
@@ -89,10 +89,11 @@ public class MathUtils {
 
     /**
      * Find the nearest point on a line to a given point.
+     *
      * @param lineStart start of the line
-     * @param lineEnd end of the line
-     * @param point the point
-     * @param out populated with the nearest point on the line
+     * @param lineEnd   end of the line
+     * @param point     the point
+     * @param out       populated with the nearest point on the line
      */
     public static void findNearestPointOnLine(Vector2 lineStart, Vector2 lineEnd, Vector2 point, Vector2 out) {
         Vector2 lineDirection = Pools.vector2Pool.obtain().set(lineEnd).sub(lineStart);
@@ -113,11 +114,9 @@ public class MathUtils {
 
         if (projectedLength < 0) {
             out.set(lineStart);
-        }
-        else if (projectedLength > lineLength) {
+        } else if (projectedLength > lineLength) {
             out.set(lineEnd);
-        }
-        else {
+        } else {
             // If the projected point lies on the line segment, return the projected point.
             out.set(lineStart).add(projectedPoint);
         }
@@ -132,5 +131,4 @@ public class MathUtils {
                 com.badlogic.gdx.math.MathUtils.isEqual(Intersector.distanceSegmentPoint(bx, by, cx, cy, px, py), 0.0f) ||
                 Intersector.isPointInTriangle(px, py, ax, ay, bx, by, cx, cy);
     }
-
 }

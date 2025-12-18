@@ -124,7 +124,7 @@ public class ModelComponent extends CullableComponent implements AssetUsage, Mod
             return true;
 
         if (assetToCheck instanceof MaterialAsset) {
-            if (materials.containsValue(assetToCheck,true)) {
+            if (materials.containsValue(assetToCheck, true)) {
                 return true;
             }
         }

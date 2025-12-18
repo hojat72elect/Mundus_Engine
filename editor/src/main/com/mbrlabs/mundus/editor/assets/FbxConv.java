@@ -16,23 +16,23 @@
 
 package com.mbrlabs.mundus.editor.assets;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.SystemUtils;
-
 import com.badlogic.gdx.Gdx;
 import com.mbrlabs.mundus.editor.utils.Callback;
 import com.mbrlabs.mundus.editor.utils.Log;
 import com.mbrlabs.mundus.editor.utils.Os;
 import com.mbrlabs.mundus.editor.utils.OsNotSupported;
 
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.SystemUtils;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Wrapper around the command line program fbx-conv.
- *
+ * <p>
  * Converts FBX & Collada (dae) 3D files into the g3db/g3dj format. Supports
  * Linux, Windows & Mac.
  *
@@ -41,12 +41,10 @@ import com.mbrlabs.mundus.editor.utils.OsNotSupported;
  */
 public class FbxConv {
 
-    private final String TAG = FbxConv.class.getSimpleName();
-
     public static final int OUTPUT_FORMAT_G3DB = 0;
     public static final int OUTPUT_FORMAT_G3DJ = 1;
-
-    private Os os;
+    private final String TAG = FbxConv.class.getSimpleName();
+    private final Os os;
     private ProcessBuilder pb;
 
     private boolean verbose = false;
@@ -155,7 +153,6 @@ public class FbxConv {
                 result.setOutputFile(path);
             }
             result.setLog(log);
-
         } catch (IOException e) {
             e.printStackTrace();
             result.setSuccess(false);
@@ -230,5 +227,4 @@ public class FbxConv {
             this.resultCode = resultCode;
         }
     }
-
 }

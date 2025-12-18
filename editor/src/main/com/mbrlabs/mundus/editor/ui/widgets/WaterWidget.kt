@@ -70,7 +70,7 @@ class WaterWidget(val waterComponent: WaterComponent) : VisTable() {
         generalSettings.add(ToolTipLabel("Color:", "Color tint of the water. When using reflections/refractions, the alpha value\ncontrols the blending of the color")).growX()
         generalSettings.add(colorPickerField).left().row()
         // color
-        colorPickerField.colorAdapter = object: ColorPickerAdapter() {
+        colorPickerField.colorAdapter = object : ColorPickerAdapter() {
             override fun finished(newColor: Color) {
                 waterComponent.waterAsset.water.setColorAttribute(WaterColorAttribute.Diffuse, newColor)
                 projectManager.current().assetManager.addModifiedAsset(waterComponent.waterAsset)
@@ -198,15 +198,19 @@ class WaterWidget(val waterComponent: WaterComponent) : VisTable() {
         val selectorsTable = VisTable(true)
         selectBox = VisSelectBox<String>()
         selectBox.setItems(
-                WaterResolution._256.value,
-                WaterResolution._512.value,
-                WaterResolution._1024.value,
-                WaterResolution._2048.value
+            WaterResolution._256.value,
+            WaterResolution._512.value,
+            WaterResolution._1024.value,
+            WaterResolution._2048.value
         )
         selectorsTable.add(selectBox).left()
 
-        qualitySettings.add(ToolTipLabel("Texture resolution:", "This resolution (Global per scene) is used for " +
-                "multiple render passes\n to generate reflections and refractions in Frame Buffers.\nFor low end devices, mobile, and GWT use 256 or 512.")).growX().left()
+        qualitySettings.add(
+            ToolTipLabel(
+                "Texture resolution:", "This resolution (Global per scene) is used for " +
+                        "multiple render passes\n to generate reflections and refractions in Frame Buffers.\nFor low end devices, mobile, and GWT use 256 or 512."
+            )
+        ).growX().left()
         qualitySettings.add(selectorsTable).left().row()
 
         add(qualitySettings).grow().row()
@@ -280,8 +284,8 @@ class WaterWidget(val waterComponent: WaterComponent) : VisTable() {
 
                         waterComponent.waterAsset.water.setFloatAttribute(attributeType, value)
                         projectManager.current().assetManager.addModifiedAsset(waterComponent.waterAsset)
-                    } catch (ex : NumberFormatException) {
-                        Mundus.postEvent(LogEvent(LogType.ERROR,"Error parsing field " + floatField.name))
+                    } catch (ex: NumberFormatException) {
+                        Mundus.postEvent(LogEvent(LogType.ERROR, "Error parsing field " + floatField.name))
                     }
                 }
             }

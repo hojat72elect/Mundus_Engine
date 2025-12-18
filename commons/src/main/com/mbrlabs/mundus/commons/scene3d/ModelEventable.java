@@ -29,5 +29,4 @@ public interface ModelEventable {
      * Triggers all {@link com.mbrlabs.mundus.commons.event.BeforeRenderEvent}.
      */
     void triggerBeforeRenderEvent();
-
 }

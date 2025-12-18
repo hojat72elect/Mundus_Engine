@@ -39,8 +39,8 @@ public class Skybox implements Disposable {
     public Shader shader;
     public boolean active;
 
-    private Model boxModel;
-    private ModelInstance boxInstance;
+    private final Model boxModel;
+    private final ModelInstance boxInstance;
 
     private Cubemap cubemap;
     private FileHandle positiveX;
@@ -54,7 +54,7 @@ public class Skybox implements Disposable {
     private float rotateSpeed;
 
     public Skybox(FileHandle positiveX, FileHandle negativeX, FileHandle positiveY, FileHandle negativeY,
-            FileHandle positiveZ, FileHandle negativeZ, Shader shader) {
+                  FileHandle positiveZ, FileHandle negativeZ, Shader shader) {
         set(positiveX, negativeX, positiveY, negativeY, positiveZ, negativeZ);
 
         this.active = true;
@@ -76,7 +76,7 @@ public class Skybox implements Disposable {
     }
 
     public void set(FileHandle positiveX, FileHandle negativeX, FileHandle positiveY, FileHandle negativeY,
-            FileHandle positiveZ, FileHandle negativeZ) {
+                    FileHandle positiveZ, FileHandle negativeZ) {
         if (cubemap != null) {
             cubemap.dispose();
         }
@@ -139,5 +139,4 @@ public class Skybox implements Disposable {
         boxModel.dispose();
         cubemap.dispose();
     }
-
 }

@@ -6,7 +6,7 @@ import com.mbrlabs.mundus.commons.scene3d.GameObject;
 
 /**
  * Renderer interface for whatever usage, like DebugRenderer.
- *
+ * <p>
  * Ex.
  * renderer.begin(camera);
  * renderer.render(gameObject);
@@ -19,6 +19,7 @@ public interface Renderer {
 
     /**
      * Called before rendering
+     *
      * @param camera the camera to render to
      */
     void begin(Camera camera);

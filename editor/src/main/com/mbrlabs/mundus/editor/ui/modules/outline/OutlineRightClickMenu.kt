@@ -28,11 +28,11 @@ import com.mbrlabs.mundus.editor.events.AssetImportEvent
 import com.mbrlabs.mundus.editor.events.GameObjectSelectedEvent
 import com.mbrlabs.mundus.editor.events.SceneGraphChangedEvent
 import com.mbrlabs.mundus.editor.history.CommandHistory
+import com.mbrlabs.mundus.editor.history.commands.GameObjectActiveCommand
 import com.mbrlabs.mundus.editor.history.commands.MultiCommand
 import com.mbrlabs.mundus.editor.history.commands.RotateCommand
-import com.mbrlabs.mundus.editor.history.commands.TranslateCommand
-import com.mbrlabs.mundus.editor.history.commands.GameObjectActiveCommand
 import com.mbrlabs.mundus.editor.history.commands.SortChildrenCommand
+import com.mbrlabs.mundus.editor.history.commands.TranslateCommand
 import com.mbrlabs.mundus.editor.scene3d.components.PickableModelComponent
 import com.mbrlabs.mundus.editor.tools.ToolManager
 import com.mbrlabs.mundus.editor.ui.UI
@@ -558,7 +558,7 @@ class OutlineRightClickMenu(outline: Outline) : PopupMenu() {
                 }
             })
 
-            sortChildren.addListener(object: ClickListener() {
+            sortChildren.addListener(object : ClickListener() {
                 override fun clicked(event: InputEvent?, x: Float, y: Float) {
                     val childArray = getChildArray()
 

@@ -30,8 +30,6 @@ import java.util.Map;
  * Holds a reference to Textures for use by TerrainAssets
  */
 public class TerrainLayerAsset extends Asset {
-    private static final ObjectMap<String, String> MAP = new ObjectMap<>();
-
     public static final String PROP_SPLAT_BASE = "base";
     public static final String PROP_SPLAT_R = "r";
     public static final String PROP_SPLAT_G = "g";
@@ -42,7 +40,7 @@ public class TerrainLayerAsset extends Asset {
     public static final String PROP_SPLAT_G_NORMAL = "gNorm";
     public static final String PROP_SPLAT_B_NORMAL = "bNorm";
     public static final String PROP_SPLAT_A_NORMAL = "aNorm";
-
+    private static final ObjectMap<String, String> MAP = new ObjectMap<>();
     private String splatBaseId;
     private String splatRId;
     private String splatGId;
@@ -66,7 +64,7 @@ public class TerrainLayerAsset extends Asset {
     private TextureAsset splatANormal;
 
     /**
-     * @param meta the meta file
+     * @param meta      the meta file
      * @param assetFile the asset file
      */
     public TerrainLayerAsset(Meta meta, FileHandle assetFile) {
@@ -266,6 +264,7 @@ public class TerrainLayerAsset extends Asset {
 
     /**
      * Duplicates the given layer asset into this one
+     *
      * @param assetToDupe The asset to duplicate
      */
     public void duplicateLayerAsset(TerrainLayerAsset assetToDupe) {
@@ -284,5 +283,4 @@ public class TerrainLayerAsset extends Asset {
         if (assetToDupe.getSplatBNormal() != null) setSplatBNormal(assetToDupe.getSplatBNormal());
         if (assetToDupe.getSplatANormal() != null) setSplatANormal(assetToDupe.getSplatANormal());
     }
-
 }

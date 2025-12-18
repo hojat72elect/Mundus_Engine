@@ -14,6 +14,7 @@ import com.badlogic.gdx.utils.Array;
 import com.mbrlabs.mundus.commons.env.MundusEnvironment;
 import com.mbrlabs.mundus.commons.env.lights.LightType;
 import com.mbrlabs.mundus.commons.shadows.MundusDirectionalShadowLight;
+
 import net.mgsx.gltf.scene3d.lights.PointLightEx;
 import net.mgsx.gltf.scene3d.lights.SpotLightEx;
 
@@ -69,12 +70,12 @@ public class LightUtils {
     /**
      * Checks whether the environment can support adding a light of the given lightType.
      *
-     * @param env the environment to check
+     * @param env       the environment to check
      * @param lightType the lightType to be added
      * @return true if it can be added, else false
      */
     public static boolean canCreateLight(Environment env, LightType lightType) {
-        switch(lightType) {
+        switch (lightType) {
             case DIRECTIONAL_LIGHT:
                 return false;
             case POINT_LIGHT:
@@ -88,13 +89,13 @@ public class LightUtils {
     /**
      * Adds given PointLight to environment only if it's not already in the environment.
      *
-     * @param env the environment to add the light to
+     * @param env   the environment to add the light to
      * @param light the light to be added
      */
     public static void addLightIfMissing(MundusEnvironment env, BaseLight light) {
         if (light instanceof PointLightEx && !getPointLights(env).contains((PointLightEx) light, true)) {
             env.add(light);
-        } else if  (light instanceof SpotLightEx && !getSpotLights(env).contains((SpotLight) light, true)) {
+        } else if (light instanceof SpotLightEx && !getSpotLights(env).contains((SpotLight) light, true)) {
             env.add(light);
         }
     }
@@ -103,7 +104,7 @@ public class LightUtils {
      * Copy light settings from a light to another light
      *
      * @param from the light to copy from
-     * @param to the light to copy to
+     * @param to   the light to copy to
      */
     public static void copyLightSettings(BaseLight from, BaseLight to) {
         to.color.set(from.color);
@@ -125,5 +126,4 @@ public class LightUtils {
             toI.exponent = fromI.exponent;
         }
     }
-
 }

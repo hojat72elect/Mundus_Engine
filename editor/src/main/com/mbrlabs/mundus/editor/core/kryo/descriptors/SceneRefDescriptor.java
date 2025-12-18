@@ -26,5 +26,4 @@ public class SceneRefDescriptor {
     public void setName(String name) {
         this.name = name;
     }
-
 }

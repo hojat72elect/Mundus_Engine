@@ -21,6 +21,7 @@ import java.io.IOException;
 
 /**
  * Loads Mundus Terrain objects via meta and .terra file data.
+ *
  * @author JamesTKhan
  * @version July 24, 2022
  */
@@ -151,20 +152,6 @@ public class TerrainLoader extends AsynchronousAssetLoader<Terrain, TerrainLoade
         return terrain;
     }
 
-    static public class TerrainParameter extends AssetLoaderParameters<Terrain> {
-        public TerrainParameter(MetaTerrain metaTerrain) {
-            this.metaTerrain = metaTerrain;
-        }
-
-        /** Required to create the terrain properly **/
-        public MetaTerrain metaTerrain = null;
-    }
-
-    static private class TerrainLoadResult {
-        public float[] heightData;
-        public LevelOfDetailDTO[] loDDTOS;
-    }
-
     private String readHeader(DataInputStream is) {
         String header = "";
         try {
@@ -173,5 +160,21 @@ public class TerrainLoader extends AsynchronousAssetLoader<Terrain, TerrainLoade
             // If the file doesn't start with a string, it's an old format file.
         }
         return header;
+    }
+
+    static public class TerrainParameter extends AssetLoaderParameters<Terrain> {
+        /**
+         * Required to create the terrain properly
+         **/
+        public MetaTerrain metaTerrain = null;
+
+        public TerrainParameter(MetaTerrain metaTerrain) {
+            this.metaTerrain = metaTerrain;
+        }
+    }
+
+    static private class TerrainLoadResult {
+        public float[] heightData;
+        public LevelOfDetailDTO[] loDDTOS;
     }
 }

@@ -66,5 +66,4 @@ public class ToolHandlePicker extends BasePicker {
     public void dispose() {
         fbo.dispose();
     }
-
 }

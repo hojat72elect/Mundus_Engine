@@ -70,5 +70,4 @@ public class ToggleButton extends VisTextButton {
     public void setTextOff(String textOff) {
         this.textOff = textOff;
     }
-
 }

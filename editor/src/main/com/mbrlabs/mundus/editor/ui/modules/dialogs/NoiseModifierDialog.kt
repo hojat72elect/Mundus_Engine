@@ -102,11 +102,11 @@ class NoiseModifierDialog(var modifier: NoiseModifier) : BaseDialog(modifier.nam
 
         sliderTable.add(ToolTipLabel("Additive Noise?", "When checked, the noise modifier will be added to the current heightmap instead of multiplied by.").left())
         sliderTable.add(additiveCheckBox)
-        additiveCheckBox.isChecked = modifier.noiseAdditive;
-        additiveCheckBox.addListener( object : ClickListener(){
+        additiveCheckBox.isChecked = modifier.noiseAdditive
+        additiveCheckBox.addListener(object : ClickListener() {
             override fun touchUp(event: InputEvent?, x: Float, y: Float, pointer: Int, button: Int) {
                 super.touchUp(event, x, y, pointer, button)
-                modifier.noiseAdditive  = !modifier.noiseAdditive
+                modifier.noiseAdditive = !modifier.noiseAdditive
                 Mundus.postEvent(UpdateNoiseTextureEvent())
             }
         })

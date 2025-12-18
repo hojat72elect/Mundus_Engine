@@ -11,7 +11,7 @@ public abstract class ClippableShader extends BaseShader {
     protected final int UNIFORM_CLIP_PLANE = register(new Uniform("u_clipPlane"));
 
     // By default, clipping is disabled
-    protected Vector3 clippingPlane = new Vector3(0.0f,0.0f, 0.0f);
+    protected Vector3 clippingPlane = new Vector3(0.0f, 0.0f, 0.0f);
     protected float clippingHeight = 0f;
 
     @Override

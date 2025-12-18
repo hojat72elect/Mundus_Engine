@@ -20,7 +20,7 @@ import com.mbrlabs.mundus.editor.tools.picker.PickerIDAttribute;
 /**
  * Pickable Light Component which allows the light components to be picked(clicked) on in the 3D scene. This required a
  * work around as all the picking uses renderables and materials but we render lights with 2D gizmo images/icons.
- *
+ * <p>
  * The workaround is to create a 3D cube renderable about same size as the 2D decal, and we only render this cube
  * to the picker shader and encode its material with an id. After that, picking works as expected.
  *
@@ -28,7 +28,8 @@ import com.mbrlabs.mundus.editor.tools.picker.PickerIDAttribute;
  * @version June 01, 2022
  */
 public class PickableLightComponent extends LightComponent implements PickableComponent {
-    private ModelInstance modelInstance;
+    private final ModelInstance modelInstance;
+
     public PickableLightComponent(GameObject go, LightType lightType) {
         super(go, lightType);
 
@@ -38,13 +39,12 @@ public class PickableLightComponent extends LightComponent implements PickableCo
         // Build simple cube as a workaround for making lights pickable
         ModelBuilder modelBuilder = new ModelBuilder();
         modelBuilder.begin();
-        MeshPartBuilder builder = modelBuilder.part("ID"+go.id, GL20.GL_TRIANGLES, VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal, material);
-        BoxShapeBuilder.build(builder, 0,0,0, 12f, 16f, 10f);
+        MeshPartBuilder builder = modelBuilder.part("ID" + go.id, GL20.GL_TRIANGLES, VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal, material);
+        BoxShapeBuilder.build(builder, 0, 0, 0, 12f, 16f, 10f);
         Model model = modelBuilder.end();
         modelInstance = new ModelInstance(model);
 
         encodeRaypickColorId();
-
     }
 
     @Override

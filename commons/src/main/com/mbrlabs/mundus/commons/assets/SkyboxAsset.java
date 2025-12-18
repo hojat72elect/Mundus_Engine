@@ -13,8 +13,6 @@ import java.util.Map;
 
 public class SkyboxAsset extends Asset {
 
-    private static final ObjectMap<String, String> MAP = new ObjectMap<>();
-
     // property keys
     public static final String PROP_POSITIVE_X = "positiveX";
     public static final String PROP_NEGATIVE_X = "negativeX";
@@ -24,7 +22,7 @@ public class SkyboxAsset extends Asset {
     public static final String PROP_NEGATIVE_Z = "negativeZ";
     public static final String PROP_ROTATE_ENABLED = "rotateEnabled";
     public static final String PROP_ROTATE_SPEED = "rotateSpeed";
-
+    private static final ObjectMap<String, String> MAP = new ObjectMap<>();
     // ids of dependent assets
     public String positiveXID;
     public String negativeXID;
@@ -67,7 +65,6 @@ public class SkyboxAsset extends Asset {
 
             rotateEnabled = Boolean.parseBoolean(MAP.get(PROP_ROTATE_ENABLED, String.valueOf(Skybox.DEFAULT_ROTATE_ENABLED)));
             rotateSpeed = Float.parseFloat(MAP.get(PROP_ROTATE_SPEED, String.valueOf(Skybox.DEFAULT_ROTATE_SPEED)));
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -118,13 +115,9 @@ public class SkyboxAsset extends Asset {
 
     @Override
     public boolean usesAsset(Asset assetToCheck) {
-        if (assetToCheck == positiveX || assetToCheck == negativeX ||
+        return assetToCheck == positiveX || assetToCheck == negativeX ||
                 assetToCheck == positiveY || assetToCheck == negativeY ||
-                assetToCheck == positiveZ || assetToCheck == negativeZ) {
-            return true;
-        }
-
-        return false;
+                assetToCheck == positiveZ || assetToCheck == negativeZ;
     }
 
     /**

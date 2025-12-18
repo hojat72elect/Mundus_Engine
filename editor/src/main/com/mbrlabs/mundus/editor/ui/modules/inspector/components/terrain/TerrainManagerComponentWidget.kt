@@ -32,8 +32,8 @@ class TerrainManagerComponentWidget(terrainManagerComponent: TerrainManagerCompo
     private lateinit var assetPickerListener: AssetPickerDialog.AssetPickerListener
 
     var root = VisTable()
-    private var projectManager : ProjectManager = Mundus.inject()
-    private var lodScheduler : LevelOfDetailScheduler = Mundus.inject()
+    private var projectManager: ProjectManager = Mundus.inject()
+    private var lodScheduler: LevelOfDetailScheduler = Mundus.inject()
 
     private val updateBtn: VisTextButton = VisTextButton("Change Layers")
     private val triplanarOnBtn: VisTextButton = VisTextButton("Triplanar Toggle On")
@@ -47,7 +47,7 @@ class TerrainManagerComponentWidget(terrainManagerComponent: TerrainManagerCompo
     }
 
     override fun setValues(go: GameObject) {
-        val c : TerrainManagerComponent = go.findComponentByType(Component.Type.TERRAIN_MANAGER) ?: return
+        val c: TerrainManagerComponent = go.findComponentByType(Component.Type.TERRAIN_MANAGER) ?: return
         component = c
     }
 

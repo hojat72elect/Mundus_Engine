@@ -1,6 +1,7 @@
 package com.mbrlabs.mundus.commons.terrain;
 
 import com.badlogic.gdx.math.Matrix4;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -33,5 +34,4 @@ public class TerrainTest {
         // then the value will be from C00 - C10 line
         Assert.assertEquals(4.57589f, result, 0.01f);
     }
-
 }

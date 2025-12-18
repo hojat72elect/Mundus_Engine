@@ -41,9 +41,8 @@ public class TextureGrid<T extends TextureProvider> extends VisTable {
     private static final int HIGHLIGHT_LINE_WIDTH = 3;
 
     private final GridGroup grid;
-    private OnTextureClickedListener listener;
-
     private final Image selectedOverlay;
+    private OnTextureClickedListener listener;
 
     public TextureGrid(int imgSize, int spacing) {
         super();
@@ -82,13 +81,6 @@ public class TextureGrid<T extends TextureProvider> extends VisTable {
         first.highlight();
     }
 
-    /**
-     *
-     */
-    public interface OnTextureClickedListener {
-        void onTextureSelected(TextureProvider textureProvider, boolean leftClick);
-    }
-
     private Image createSelectedOverlayImage(final int imgSize) {
         final Pixmap pixmap = new Pixmap(imgSize, imgSize, Pixmap.Format.RGBA8888);
         pixmap.setColor(Colors.INSTANCE.getTEAL());
@@ -106,6 +98,13 @@ public class TextureGrid<T extends TextureProvider> extends VisTable {
         pixmap.fillRectangle(0, imgSize - HIGHLIGHT_LINE_WIDTH, imgSize, HIGHLIGHT_LINE_WIDTH);
 
         return new Image(new TextureRegionDrawable(new TextureRegion(new Texture(pixmap))));
+    }
+
+    /**
+     *
+     */
+    public interface OnTextureClickedListener {
+        void onTextureSelected(TextureProvider textureProvider, boolean leftClick);
     }
 
     /**
@@ -134,13 +133,10 @@ public class TextureGrid<T extends TextureProvider> extends VisTable {
                     listener.onTextureSelected(tex, button == Input.Buttons.LEFT);
                 }
             });
-
         }
 
         public void highlight() {
             stack.add(selectedOverlay);
         }
-
     }
-
 }

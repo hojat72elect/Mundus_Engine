@@ -5,6 +5,7 @@ import com.mbrlabs.mundus.commons.dto.LightComponentDTO;
 import com.mbrlabs.mundus.commons.scene3d.GameObject;
 import com.mbrlabs.mundus.commons.scene3d.components.LightComponent;
 import com.mbrlabs.mundus.editor.scene3d.components.PickableLightComponent;
+
 import net.mgsx.gltf.scene3d.lights.PointLightEx;
 import net.mgsx.gltf.scene3d.lights.SpotLightEx;
 
@@ -42,12 +43,10 @@ public class PickableLightComponentConverter {
         descriptor.setLightType(lightComponent.getLightType());
         descriptor.setColor(light.color);
 
-        if (light instanceof PointLightEx) {
-            PointLightEx pointLight = (PointLightEx) light;
+        if (light instanceof PointLightEx pointLight) {
             descriptor.setPosition(pointLight.position);
             descriptor.setIntensity(pointLight.intensity);
-        } else if (light instanceof SpotLightEx) {
-            SpotLightEx spotLight = (SpotLightEx) light;
+        } else if (light instanceof SpotLightEx spotLight) {
             descriptor.setPosition(spotLight.position);
             descriptor.setIntensity(spotLight.intensity);
             descriptor.setExponential(spotLight.exponent);

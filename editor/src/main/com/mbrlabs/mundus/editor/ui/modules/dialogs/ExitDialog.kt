@@ -29,7 +29,7 @@ import com.mbrlabs.mundus.editor.core.project.ProjectManager
  * @version 09-10-2016
  * @author attilabo
  */
-class ExitDialog : BaseDialog(ExitDialog.TITLE) {
+class ExitDialog : BaseDialog(TITLE) {
 
     companion object {
         private val TITLE = "Confirm exit"

@@ -16,6 +16,7 @@
 package com.mbrlabs.mundus.editor.utils;
 
 import com.badlogic.gdx.scenes.scene2d.utils.UIUtils;
+
 import org.lwjgl.system.macosx.LibC;
 
 import java.io.BufferedReader;
@@ -31,8 +32,8 @@ import java.util.ArrayList;
  *
  * @author damios
  * @see <a href=
- *      "http://www.java-gaming.org/topics/starting-jvm-on-mac-with-xstartonfirstthread-programmatically/37697/view.html">Based
- *      on http://www.java-gaming.org/topics/-/37697/view.html</a>
+ * "http://www.java-gaming.org/topics/starting-jvm-on-mac-with-xstartonfirstthread-programmatically/37697/view.html">Based
+ * on http://www.java-gaming.org/topics/-/37697/view.html</a>
  *
  */
 public class StartOnFirstThreadHelper {
@@ -54,7 +55,7 @@ public class StartOnFirstThreadHelper {
      * public static void main(String... args) {
      * 	if (StartOnFirstThreadHelper.startNewJvmIfRequired()) {
      * 		return; // don't execute any code
-     * 	}
+     *    }
      * 	// the actual main method code
      * }
      * </pre>
@@ -63,7 +64,7 @@ public class StartOnFirstThreadHelper {
      *                       the new JVM, so it can be accessed in the same place;
      *                       keeps the old JVM running if enabled
      * @return whether a new JVM was started and thus no code should be executed in
-     *         this one
+     * this one
      */
     public static boolean startNewJvmIfRequired(boolean redirectOutput) {
         if (!UIUtils.isMac) {
@@ -138,13 +139,13 @@ public class StartOnFirstThreadHelper {
      * public static void main(String... args) {
      * 	if (StartOnFirstThreadHelper.startNewJvmIfRequired()) {
      * 		return; // don't execute any code
-     * 	}
+     *    }
      * 	// the actual main method code
      * }
      * </pre>
      *
      * @return whether a new JVM was started and thus no code should be executed in
-     *         this one
+     * this one
      */
     public static boolean startNewJvmIfRequired() {
         return startNewJvmIfRequired(true);
@@ -159,7 +160,7 @@ public class StartOnFirstThreadHelper {
      * public static void main(String... args) {
      * 	StartOnFirstThreadHelper.executeIfJVMValid(() -> {
      * 		// the actual main method code
-     * 	});
+     *    });
      * }
      * </pre>
      *
@@ -171,5 +172,4 @@ public class StartOnFirstThreadHelper {
         }
         mainMethodCode.run();
     }
-
 }

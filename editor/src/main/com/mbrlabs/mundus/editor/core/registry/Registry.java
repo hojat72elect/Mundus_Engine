@@ -18,6 +18,7 @@ package com.mbrlabs.mundus.editor.core.registry;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 
@@ -27,7 +28,7 @@ import java.util.UUID;
 
 /**
  * Manages global settings.
- *
+ * <p>
  * Files are stored in ~/.mundus/
  *
  * @author Marcus Brummer
@@ -41,7 +42,7 @@ public class Registry {
     public static final String PLUGINS_DIR = FilenameUtils.concat(HOME_DIR, "plugins/");
     public static final String HOME_DATA_FILE = FilenameUtils.concat(HOME_DIR, "mundus.registry");
 
-    private List<ProjectRef> projects;
+    private final List<ProjectRef> projects;
     private ProjectRef lastProject;
     private Settings settings;
 
@@ -81,6 +82,10 @@ public class Registry {
         return settings;
     }
 
+    public void setSettings(Settings settings) {
+        this.settings = settings;
+    }
+
     public ProjectRef getLastOpenedProject() {
         return lastProject;
     }
@@ -91,9 +96,5 @@ public class Registry {
 
     public void setLastProject(ProjectRef lastProject) {
         this.lastProject = lastProject;
-    }
-
-    public void setSettings(Settings settings) {
-        this.settings = settings;
     }
 }

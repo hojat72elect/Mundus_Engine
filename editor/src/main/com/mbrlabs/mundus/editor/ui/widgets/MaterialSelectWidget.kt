@@ -45,12 +45,12 @@ class MaterialSelectWidget(var material: MaterialAsset?) : VisTable() {
     var matChangedListener: MaterialWidget.MaterialChangedListener? = null
         set(value) {
             field = value
-            matChangedBtn.touchable = if(value == null) Touchable.disabled else Touchable.enabled
+            matChangedBtn.touchable = if (value == null) Touchable.disabled else Touchable.enabled
         }
 
     init {
         setupUI()
-        matPickerListener = object: AssetPickerDialog.AssetPickerListener {
+        matPickerListener = object : AssetPickerDialog.AssetPickerListener {
             override fun onSelected(asset: Asset?) {
                 material = (asset as? MaterialAsset)!!
                 matChangedListener?.materialChanged(material!!)

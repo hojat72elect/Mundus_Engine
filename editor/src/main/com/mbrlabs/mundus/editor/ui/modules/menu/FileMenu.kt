@@ -93,7 +93,7 @@ class FileMenu : Menu("File") {
 
         importProject.addListener(object : ClickListener() {
             override fun clicked(event: InputEvent?, x: Float, y: Float) {
-                UI.fileChooser.setListener(object: SingleFileChooserListener() {
+                UI.fileChooser.setListener(object : SingleFileChooserListener() {
                     override fun selected(file: FileHandle) {
                         importNewProject(file)
                     }

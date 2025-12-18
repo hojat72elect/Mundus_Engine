@@ -33,7 +33,7 @@ import com.mbrlabs.mundus.editorcommons.events.SceneChangedEvent
  * @version 04-03-2016
  */
 class AmbientLightDialog : BaseDialog("Ambient Light"), ProjectChangedEvent.ProjectChangedListener,
-        SceneChangedEvent.SceneChangedListener {
+    SceneChangedEvent.SceneChangedListener {
 
     private val colorPickerField = ColorPickerField()
 
@@ -58,7 +58,7 @@ class AmbientLightDialog : BaseDialog("Ambient Light"), ProjectChangedEvent.Proj
     private fun setupListeners() {
 
         // color
-        colorPickerField.colorAdapter = object: ColorPickerAdapter() {
+        colorPickerField.colorAdapter = object : ColorPickerAdapter() {
             override fun finished(newColor: Color) {
                 val projectContext = projectManager.current()
                 val ambientLight: ColorAttribute = projectContext.currScene.environment.get(

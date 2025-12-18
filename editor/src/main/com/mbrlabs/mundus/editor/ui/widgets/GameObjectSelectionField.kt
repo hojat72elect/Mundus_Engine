@@ -32,7 +32,7 @@ class GameObjectSelectionField : VisTable() {
         add(textField).grow()
         add(btn).padLeft(5f).row()
 
-        internalListener = object: GameObjectPickerDialog.GameObjectPickerListener {
+        internalListener = object : GameObjectPickerDialog.GameObjectPickerListener {
             override fun onSelected(go: GameObject?) {
                 setGameObject(go)
                 pickerListener?.onSelected(go)

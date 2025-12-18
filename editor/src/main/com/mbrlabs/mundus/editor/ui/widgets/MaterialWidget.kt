@@ -67,8 +67,9 @@ class MaterialWidget : VisTable() {
 
     private val scaleUField = FloatFieldWithLabel("Scale U", -1, false)
     private val scaleVField = FloatFieldWithLabel("Scale V", -1, false)
+
     //slider moves in 11.25 degree steps
-    private val rotateUVField = Spinner("", SimpleFloatSpinnerModel(0f,0f, (Math.PI * 2f).toFloat(), (Math.PI / 16f).toFloat(), 8))
+    private val rotateUVField = Spinner("", SimpleFloatSpinnerModel(0f, 0f, (Math.PI * 2f).toFloat(), (Math.PI / 16f).toFloat(), 8))
     private val offsetUField = ImprovedSlider(0.0f, 1.0f, 0.01f)
     private val offsetVField = ImprovedSlider(0.0f, 1.0f, 0.01f)
 
@@ -145,12 +146,20 @@ class MaterialWidget : VisTable() {
         add(VisLabel("Normal map")).grow().row()
         add(normalMapField).growX().row()
 
-        add(ToolTipLabel("Emissive texture", "The emissive texture. It controls the color and intensity " +
-                "of the light being emitted by the material.\n This texture contains RGB components encoded with the sRGB transfer function.")).left().row()
+        add(
+            ToolTipLabel(
+                "Emissive texture", "The emissive texture. It controls the color and intensity " +
+                        "of the light being emitted by the material.\n This texture contains RGB components encoded with the sRGB transfer function."
+            )
+        ).left().row()
         add(emissiveAssetField).growX().row()
 
-        add(ToolTipLabel("Metallic/Roughness Texture", "The textures for metalness and roughness properties are packed together in a single texture called\n"+
-                "metallicRoughnessTexture. Its green channel contains roughness values and its blue channel contains metalness values")).left().row()
+        add(
+            ToolTipLabel(
+                "Metallic/Roughness Texture", "The textures for metalness and roughness properties are packed together in a single texture called\n" +
+                        "metallicRoughnessTexture. Its green channel contains roughness values and its blue channel contains metalness values"
+            )
+        ).left().row()
         add(metallicRoughnessAssetField).growX().row()
 
         add(ToolTipLabel("Occlusion Texture", "The occlusion texture. The occlusion values are linearly sampled from the R channel.")).left().row()
@@ -169,16 +178,24 @@ class MaterialWidget : VisTable() {
         sliderTable.add(VisLabel("Opacity")).growX()
         sliderTable.add(opacityField).growX().row()
 
-        sliderTable.add(ToolTipLabel("Alpha Test", "If the alpha value is greater than or equal to " +
-                "this value then it is rendered as fully opaque, otherwise, it is rendered as fully transparent.\n" +
-                "Useful for models like trees that have leaf textures with alpha values")).left()
+        sliderTable.add(
+            ToolTipLabel(
+                "Alpha Test", "If the alpha value is greater than or equal to " +
+                        "this value then it is rendered as fully opaque, otherwise, it is rendered as fully transparent.\n" +
+                        "Useful for models like trees that have leaf textures with alpha values"
+            )
+        ).left()
         sliderTable.add(alphaTestField).growX().row()
 
         sliderTable.add(VisLabel("Normal Scale")).growX()
         sliderTable.add(normalScaleField).growX().row()
 
-        sliderTable.add(ToolTipLabel("Shadow Bias", "Increase to reduce shadow acne. Increase wisely as " +
-                "higher bias results in peter-panning effect.")).left()
+        sliderTable.add(
+            ToolTipLabel(
+                "Shadow Bias", "Increase to reduce shadow acne. Increase wisely as " +
+                        "higher bias results in peter-panning effect."
+            )
+        ).left()
         sliderTable.add(shadowBiasField).growX().row()
 
         val cullTip = buildString {
@@ -213,7 +230,7 @@ class MaterialWidget : VisTable() {
 
         // diffuse texture
         diffuseAssetField.assetFilter = AssetTextureFilter()
-        diffuseAssetField.pickerListener = object: AssetPickerDialog.AssetPickerListener {
+        diffuseAssetField.pickerListener = object : AssetPickerDialog.AssetPickerListener {
             override fun onSelected(asset: Asset?) {
                 material?.diffuseTexture = asset as? TextureAsset
                 applyMaterialToModelAssets()
@@ -224,7 +241,7 @@ class MaterialWidget : VisTable() {
 
         // normal texture
         normalMapField.assetFilter = AssetTextureFilter()
-        normalMapField.pickerListener = object: AssetPickerDialog.AssetPickerListener {
+        normalMapField.pickerListener = object : AssetPickerDialog.AssetPickerListener {
             override fun onSelected(asset: Asset?) {
                 material?.normalMap = asset as? TextureAsset
                 applyMaterialToModelAssets()
@@ -235,7 +252,7 @@ class MaterialWidget : VisTable() {
 
         // emissive texture
         emissiveAssetField.assetFilter = AssetTextureFilter()
-        emissiveAssetField.pickerListener = object: AssetPickerDialog.AssetPickerListener {
+        emissiveAssetField.pickerListener = object : AssetPickerDialog.AssetPickerListener {
             override fun onSelected(asset: Asset?) {
                 material?.emissiveTexture = asset as? TextureAsset
                 applyMaterialToModelAssets()
@@ -246,7 +263,7 @@ class MaterialWidget : VisTable() {
 
         // metallic/roughness texture
         metallicRoughnessAssetField.assetFilter = AssetTextureFilter()
-        metallicRoughnessAssetField.pickerListener = object: AssetPickerDialog.AssetPickerListener {
+        metallicRoughnessAssetField.pickerListener = object : AssetPickerDialog.AssetPickerListener {
             override fun onSelected(asset: Asset?) {
                 material?.metallicRoughnessTexture = asset as? TextureAsset
                 applyMaterialToModelAssets()
@@ -257,7 +274,7 @@ class MaterialWidget : VisTable() {
 
         // occlusion texture
         occlusionAssetField.assetFilter = AssetTextureFilter()
-        occlusionAssetField.pickerListener = object: AssetPickerDialog.AssetPickerListener {
+        occlusionAssetField.pickerListener = object : AssetPickerDialog.AssetPickerListener {
             override fun onSelected(asset: Asset?) {
                 material?.occlusionTexture = asset as? TextureAsset
                 applyMaterialToModelAssets()
@@ -267,7 +284,7 @@ class MaterialWidget : VisTable() {
         }
 
         // diffuse color
-        diffuseColorField.colorAdapter = object: ColorPickerAdapter() {
+        diffuseColorField.colorAdapter = object : ColorPickerAdapter() {
             override fun finished(newColor: Color) {
                 material?.diffuseColor?.set(newColor)
                 applyMaterialToModelAssets()
@@ -277,7 +294,7 @@ class MaterialWidget : VisTable() {
         }
 
         // emissive color
-        emissiveColorField.colorAdapter = object: ColorPickerAdapter() {
+        emissiveColorField.colorAdapter = object : ColorPickerAdapter() {
             override fun finished(newColor: Color) {
                 material?.emissiveColor?.set(newColor)
                 applyMaterialToModelAssets()

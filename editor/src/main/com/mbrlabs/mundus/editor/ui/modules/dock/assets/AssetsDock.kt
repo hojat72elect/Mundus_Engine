@@ -35,20 +35,32 @@ import com.badlogic.gdx.utils.Align
 import com.badlogic.gdx.utils.Array
 import com.kotcrab.vis.ui.VisUI
 import com.kotcrab.vis.ui.layout.GridGroup
-import com.kotcrab.vis.ui.widget.*
+import com.kotcrab.vis.ui.widget.MenuItem
+import com.kotcrab.vis.ui.widget.PopupMenu
+import com.kotcrab.vis.ui.widget.Separator
+import com.kotcrab.vis.ui.widget.VisLabel
+import com.kotcrab.vis.ui.widget.VisScrollPane
+import com.kotcrab.vis.ui.widget.VisSelectBox
+import com.kotcrab.vis.ui.widget.VisSplitPane
+import com.kotcrab.vis.ui.widget.VisTable
 import com.kotcrab.vis.ui.widget.tabbedpane.Tab
-import com.mbrlabs.mundus.commons.assets.*
+import com.mbrlabs.mundus.commons.assets.Asset
+import com.mbrlabs.mundus.commons.assets.AssetType
+import com.mbrlabs.mundus.commons.assets.TerrainAsset
 import com.mbrlabs.mundus.commons.utils.TextureProvider
 import com.mbrlabs.mundus.editor.Mundus
-import com.mbrlabs.mundus.editor.assets.EditorModelAsset
 import com.mbrlabs.mundus.editor.core.project.ProjectManager
-import com.mbrlabs.mundus.editor.events.*
+import com.mbrlabs.mundus.editor.events.AssetDeletedEvent
+import com.mbrlabs.mundus.editor.events.AssetImportEvent
+import com.mbrlabs.mundus.editor.events.AssetSelectedEvent
+import com.mbrlabs.mundus.editor.events.FullScreenEvent
+import com.mbrlabs.mundus.editor.events.GameObjectSelectedEvent
+import com.mbrlabs.mundus.editor.events.MaterialDuplicatedEvent
 import com.mbrlabs.mundus.editor.ui.UI
 import com.mbrlabs.mundus.editor.ui.widgets.AutoFocusScrollPane
 import com.mbrlabs.mundus.editor.utils.ObjExporter
 import com.mbrlabs.mundus.editorcommons.events.ProjectChangedEvent
 import java.awt.Desktop
-import java.lang.RuntimeException
 
 
 /**
@@ -56,12 +68,12 @@ import java.lang.RuntimeException
  * @version 08-12-2015
  */
 class AssetsDock : Tab(false, false),
-        ProjectChangedEvent.ProjectChangedListener,
-        AssetImportEvent.AssetImportListener,
-        AssetDeletedEvent.AssetDeletedListener,
-        GameObjectSelectedEvent.GameObjectSelectedListener,
-        FullScreenEvent.FullScreenEventListener,
-        MaterialDuplicatedEvent.MaterialDuplicatedEventListener {
+    ProjectChangedEvent.ProjectChangedListener,
+    AssetImportEvent.AssetImportListener,
+    AssetDeletedEvent.AssetDeletedListener,
+    GameObjectSelectedEvent.GameObjectSelectedListener,
+    FullScreenEvent.FullScreenEventListener,
+    MaterialDuplicatedEvent.MaterialDuplicatedEventListener {
 
     private val root = VisTable()
     private val filesViewContextContainer = VisTable(false)
@@ -90,7 +102,7 @@ class AssetsDock : Tab(false, false),
 
         // Darkening overlay to darken texture thumbnails slightly so text is more visible
         val pixmap = Pixmap(1, 1, Pixmap.Format.RGBA8888)
-        pixmap.setColor(0.0f,0.0f,0.0f,0.5f)
+        pixmap.setColor(0.0f, 0.0f, 0.0f, 0.5f)
         pixmap.fill()
         thumbnailOverlay = TextureRegionDrawable(TextureRegion(Texture(pixmap)))
 
@@ -292,15 +304,17 @@ class AssetsDock : Tab(false, false),
                         setSelected()
 
                         if (asset is TerrainAsset) {
-                            if ( !exportTerrainAsset.hasParent())
+                            if (!exportTerrainAsset.hasParent())
                                 assetOpsMenu.addItem(exportTerrainAsset)
                         } else {
                             exportTerrainAsset.remove()
                             assetOpsMenu.pack()
                         }
 
-                        assetOpsMenu.showMenu(UI, Gdx.input.x.toFloat(),
-                                (Gdx.graphics.height - Gdx.input.y).toFloat())
+                        assetOpsMenu.showMenu(
+                            UI, Gdx.input.x.toFloat(),
+                            (Gdx.graphics.height - Gdx.input.y).toFloat()
+                        )
                     } else if (event.button == Input.Buttons.LEFT) {
                         setSelected()
                     }

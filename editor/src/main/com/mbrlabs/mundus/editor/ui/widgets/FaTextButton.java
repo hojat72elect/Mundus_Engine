@@ -30,6 +30,9 @@ import com.mbrlabs.mundus.editor.utils.Colors;
 public class FaTextButton extends VisTextButton {
 
     public final static TextButton.TextButtonStyle styleNoBg = new TextButton.TextButtonStyle();
+    public final static TextButton.TextButtonStyle styleBg = new TextButton.TextButtonStyle();
+    public final static TextButton.TextButtonStyle styleActive = new TextButton.TextButtonStyle();
+
     static {
         styleNoBg.font = Mundus.INSTANCE.getFa();
         styleNoBg.fontColor = Color.WHITE;
@@ -39,7 +42,6 @@ public class FaTextButton extends VisTextButton {
         styleNoBg.fontColor = Colors.INSTANCE.getTEAL();
     }
 
-    public final static TextButton.TextButtonStyle styleBg = new TextButton.TextButtonStyle();
     static {
         styleBg.font = Mundus.INSTANCE.getFa();
         styleBg.pressedOffsetX = 1;
@@ -50,7 +52,6 @@ public class FaTextButton extends VisTextButton {
         styleBg.down = VisUI.getSkin().getDrawable("menu-bg");
     }
 
-    public final static TextButton.TextButtonStyle styleActive = new TextButton.TextButtonStyle();
     static {
         styleActive.font = Mundus.INSTANCE.getFa();
         styleActive.pressedOffsetX = 1;
@@ -68,5 +69,4 @@ public class FaTextButton extends VisTextButton {
         setStyle(style);
         setFocusBorderEnabled(false);
     }
-
 }

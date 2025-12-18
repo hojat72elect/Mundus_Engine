@@ -18,7 +18,12 @@ package com.mbrlabs.mundus.editor.ui.modules.inspector
 
 import com.badlogic.gdx.utils.Align
 import com.kotcrab.vis.ui.widget.VisTable
-import com.mbrlabs.mundus.commons.assets.*
+import com.mbrlabs.mundus.commons.assets.Asset
+import com.mbrlabs.mundus.commons.assets.MaterialAsset
+import com.mbrlabs.mundus.commons.assets.ModelAsset
+import com.mbrlabs.mundus.commons.assets.TerrainAsset
+import com.mbrlabs.mundus.commons.assets.TerrainLayerAsset
+import com.mbrlabs.mundus.commons.assets.TextureAsset
 import com.mbrlabs.mundus.editor.Mundus
 import com.mbrlabs.mundus.editor.core.project.ProjectManager
 import com.mbrlabs.mundus.editor.ui.modules.inspector.assets.MaterialAssetInspectorWidget

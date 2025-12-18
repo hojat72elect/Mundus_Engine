@@ -60,9 +60,9 @@ class AddTerrainChunksDialog : BaseDialog("Add Terrain"), TabbedPaneListener {
     private val proceduralTerrainTab = ProceduralTerrainTab(this)
     private val heightmapTerrainTab = HeightMapTerrainTab(this)
 
-    private var projectManager : ProjectManager
+    private var projectManager: ProjectManager
     private val ioManager: IOManager
-    private var metaSaver : MetaSaver
+    private var metaSaver: MetaSaver
 
     init {
         isResizable = true
@@ -110,9 +110,11 @@ class AddTerrainChunksDialog : BaseDialog("Add Terrain"), TabbedPaneListener {
         if (generatingTerrain) {
             color.a = 0.4f
             val label = loadingDialog!!.contentTable.getChild(0) as Label
-            label.setText("Creation threads: ${creationThreads.get()}\n"
-                    + "Terraform threads: ${terraformingThreads.get()}\n"
-                    + "Terraform Queue: ${assetsToTerraform.size}\n")
+            label.setText(
+                "Creation threads: ${creationThreads.get()}\n"
+                        + "Terraform threads: ${terraformingThreads.get()}\n"
+                        + "Terraform Queue: ${assetsToTerraform.size}\n"
+            )
 
             loadingDialog!!.pack()
             if (!assetsToCreate && creationThreads.get() == 0 && assetsToTerraform.isEmpty()) {
@@ -368,7 +370,8 @@ class AddTerrainChunksDialog : BaseDialog("Add Terrain"), TabbedPaneListener {
 
         // create asset
         val asset: TerrainAsset = projectManager.current().assetManager.createTerraAssetAsync(
-                terrainAssetName, resolution, width, splatMapResolution)
+            terrainAssetName, resolution, width, splatMapResolution
+        )
 
         return asset
     }
@@ -382,17 +385,17 @@ class AddTerrainChunksDialog : BaseDialog("Add Terrain"), TabbedPaneListener {
         // Bottom right corner is 0,0. Top neighbor is +y, right neighbor is +x
         for (x in 0 until terrainComponents.size) {
             for (y in 0 until terrainComponents[x].size) {
-                if (y+1 < terrainComponents[x].size) {
-                    terrainComponents[x][y]!!.topNeighbor = terrainComponents[x][y+1]
+                if (y + 1 < terrainComponents[x].size) {
+                    terrainComponents[x][y]!!.topNeighbor = terrainComponents[x][y + 1]
                 }
-                if (x-1 >= 0) {
-                    terrainComponents[x][y]!!.rightNeighbor = terrainComponents[x-1][y]
+                if (x - 1 >= 0) {
+                    terrainComponents[x][y]!!.rightNeighbor = terrainComponents[x - 1][y]
                 }
-                if (y-1 >= 0) {
-                    terrainComponents[x][y]!!.bottomNeighbor = terrainComponents[x][y-1]
+                if (y - 1 >= 0) {
+                    terrainComponents[x][y]!!.bottomNeighbor = terrainComponents[x][y - 1]
                 }
-                if (x+1 < terrainComponents.size) {
-                    terrainComponents[x][y]!!.leftNeighbor = terrainComponents[x+1][y]
+                if (x + 1 < terrainComponents.size) {
+                    terrainComponents[x][y]!!.leftNeighbor = terrainComponents[x + 1][y]
                 }
             }
         }
@@ -402,10 +405,10 @@ class AddTerrainChunksDialog : BaseDialog("Add Terrain"), TabbedPaneListener {
 
     private fun isMultipleTerrain(): Boolean = parentGO != null
 
-    inner class TerrainChunkMatrix(x: Int, y: Int) {
+    class TerrainChunkMatrix(x: Int, y: Int) {
 
         private var remainingTerrainComponents = x * y
-        val terrainComponents = Array(x) { Array<TerrainComponent?>(y) {null} }
+        val terrainComponents = Array(x) { Array<TerrainComponent?>(y) { null } }
 
         fun addTerrain(x: Int, y: Int, terrainComponent: TerrainComponent) {
             --remainingTerrainComponents

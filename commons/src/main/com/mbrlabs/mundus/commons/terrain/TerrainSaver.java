@@ -3,9 +3,7 @@ package com.mbrlabs.mundus.commons.terrain;
 import com.badlogic.gdx.graphics.Mesh;
 import com.mbrlabs.mundus.commons.assets.TerrainAsset;
 
-import java.io.BufferedOutputStream;
 import java.io.DataOutputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
@@ -74,7 +72,6 @@ public class TerrainSaver {
                 for (short index : indices) {
                     outputStream.writeShort(index);
                 }
-
             }
         }
     }

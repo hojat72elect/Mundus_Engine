@@ -32,20 +32,13 @@ import com.mbrlabs.mundus.editor.ui.UI;
  */
 public class FileChooserField extends VisTable {
 
-    public interface FileSelected {
-        void selected(FileHandle fileHandle);
-    }
-
-    private int width = -1;
-
-    private FileChooser.SelectionMode mode = FileChooser.SelectionMode.FILES;
-    private FileSelected fileSelected;
     private final VisTextField textField;
     private final VisTextButton fcBtn;
-
+    private int width = -1;
+    private FileChooser.SelectionMode mode = FileChooser.SelectionMode.FILES;
+    private FileSelected fileSelected;
     private String path;
     private FileHandle fileHandle;
-
     public FileChooserField(int width) {
         super();
         this.width = width;
@@ -123,7 +116,9 @@ public class FileChooserField extends VisTable {
                 UI.INSTANCE.addActor(fileChooser.fadeIn());
             }
         });
-
     }
 
+    public interface FileSelected {
+        void selected(FileHandle fileHandle);
+    }
 }

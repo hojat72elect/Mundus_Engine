@@ -43,6 +43,4 @@ public class JsonScene {
 
     // TerrainComponent
     public static final String TERRAIN_COMPONENT_TERRAIN_ID = "i";
-
-
 }

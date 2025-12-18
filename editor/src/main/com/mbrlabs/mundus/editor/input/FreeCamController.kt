@@ -26,8 +26,8 @@ import com.mbrlabs.mundus.commons.scene3d.components.Component
 import com.mbrlabs.mundus.commons.scene3d.components.TerrainComponent
 import com.mbrlabs.mundus.commons.utils.Pools
 import com.mbrlabs.mundus.editor.Mundus
-import com.mbrlabs.mundus.editor.core.keymap.KeymapKey
 import com.mbrlabs.mundus.editor.core.keymap.KeyboardShortcutManager
+import com.mbrlabs.mundus.editor.core.keymap.KeymapKey
 import com.mbrlabs.mundus.editor.core.project.ProjectManager
 import com.mbrlabs.mundus.editor.events.LogEvent
 import com.mbrlabs.mundus.editor.events.LogType
@@ -40,10 +40,11 @@ import org.pf4j.PluginManager
  * @author Marcus Brummer
  * @version 24-11-2015
  */
-class FreeCamController(private val projectManager: ProjectManager,
-                        private val goPicker: GameObjectPicker,
-                        private val pluginManager: PluginManager,
-                        private val keyboardShortcutManager: KeyboardShortcutManager
+class FreeCamController(
+    private val projectManager: ProjectManager,
+    private val goPicker: GameObjectPicker,
+    private val pluginManager: PluginManager,
+    private val keyboardShortcutManager: KeyboardShortcutManager
 ) : InputAdapter() {
 
     val SPEED_01 = 10f
@@ -150,7 +151,8 @@ class FreeCamController(private val projectManager: ProjectManager,
         return true
     }
 
-    @JvmOverloads fun update(deltaTime: Float = Gdx.graphics.deltaTime) {
+    @JvmOverloads
+    fun update(deltaTime: Float = Gdx.graphics.deltaTime) {
         if (isKeyPressed(KeymapKey.MOVE_FORWARD)) {
             tmp.set(camera!!.direction).nor().scl(deltaTime * velocity)
             camera!!.position.add(tmp)

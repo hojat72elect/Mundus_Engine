@@ -32,8 +32,7 @@ import com.mbrlabs.mundus.commons.scene3d.components.CustomPropertiesComponent
 import com.mbrlabs.mundus.editor.ui.widgets.FaTextButton
 import com.mbrlabs.mundus.editor.utils.Fa
 
-class CustomPropertiesWidget(customPropertiesComponent: CustomPropertiesComponent)
-    : ComponentWidget<CustomPropertiesComponent>("Custom Properties Component", customPropertiesComponent) {
+class CustomPropertiesWidget(customPropertiesComponent: CustomPropertiesComponent) : ComponentWidget<CustomPropertiesComponent>("Custom Properties Component", customPropertiesComponent) {
 
     private val customProperties = VisTable()
 

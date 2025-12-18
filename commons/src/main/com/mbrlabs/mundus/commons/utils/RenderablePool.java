@@ -11,12 +11,12 @@ import com.badlogic.gdx.utils.FlushablePool;
  */
 public class RenderablePool extends FlushablePool<Renderable> {
     @Override
-    protected Renderable newObject () {
+    protected Renderable newObject() {
         return new Renderable();
     }
 
     @Override
-    public Renderable obtain () {
+    public Renderable obtain() {
         Renderable renderable = super.obtain();
         renderable.environment = null;
         renderable.material = null;

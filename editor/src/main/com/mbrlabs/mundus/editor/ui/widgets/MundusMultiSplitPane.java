@@ -42,11 +42,11 @@ import com.kotcrab.vis.ui.widget.VisSplitPane;
 /**
  * This is a slightly modified version of kotcrab's MultiSplitPane and fixes an
  * input issue and a split bug. Changes are marked with @Changed
- *
+ * <p>
  * Similar to {@link VisSplitPane} but supports multiple widgets with multiple
  * split bars at once. Use {@link #setWidgets(Actor...)} after creating to set
  * pane widgets.
- * 
+ *
  * @author Kotcrab, mbrlabs
  * @see VisSplitPane
  * @since 1.1.4
@@ -55,14 +55,14 @@ public class MundusMultiSplitPane extends WidgetGroup {
     private com.kotcrab.vis.ui.widget.MultiSplitPane.MultiSplitPaneStyle style;
     private boolean vertical;
 
-    private Array<Rectangle> widgetBounds = new Array<Rectangle>();
-    private Array<Rectangle> scissors = new Array<Rectangle>();
+    private final Array<Rectangle> widgetBounds = new Array<Rectangle>();
+    private final Array<Rectangle> scissors = new Array<Rectangle>();
 
-    private Array<Rectangle> handleBounds = new Array<Rectangle>();
-    private FloatArray splits = new FloatArray();
+    private final Array<Rectangle> handleBounds = new Array<Rectangle>();
+    private final FloatArray splits = new FloatArray();
 
-    private Vector2 handlePosition = new Vector2();
-    private Vector2 lastPoint = new Vector2();
+    private final Vector2 handlePosition = new Vector2();
+    private final Vector2 lastPoint = new Vector2();
 
     private Rectangle handleOver;
     private int handleOverIndex;
@@ -138,7 +138,7 @@ public class MundusMultiSplitPane extends WidgetGroup {
 
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                if (isTouchable() == false) return false;
+                if (!isTouchable()) return false;
 
                 if (draggingPointer != -1) return false;
                 if (pointer == 0 && button != 0) return false;
@@ -257,7 +257,6 @@ public class MundusMultiSplitPane extends WidgetGroup {
         float height = 0;
         for (Actor actor : getChildren()) {
             height = actor instanceof Layout ? ((Layout) actor).getPrefHeight() : actor.getHeight();
-
         }
         if (vertical) height += handleBounds.size * style.handle.getMinHeight();
         return height;
@@ -399,13 +398,11 @@ public class MundusMultiSplitPane extends WidgetGroup {
     }
 
     /**
-     * @param handleBarIndex
-     *            index of handle bar starting from zero, max index is number of
-     *            widgets - 1
-     * @param split
-     *            new value of split, must be greater than 0 and lesser than 1
-     *            and must be smaller and bigger than previous and next split
-     *            value. Invalid values will be clamped to closest valid one.
+     * @param handleBarIndex index of handle bar starting from zero, max index is number of
+     *                       widgets - 1
+     * @param split          new value of split, must be greater than 0 and lesser than 1
+     *                       and must be smaller and bigger than previous and next split
+     *                       value. Invalid values will be clamped to closest valid one.
      */
     public void setSplit(int handleBarIndex, float split) {
         if (handleBarIndex < 0) throw new IllegalStateException("handleBarIndex can't be < 0");

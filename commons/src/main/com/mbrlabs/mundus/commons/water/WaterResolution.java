@@ -23,6 +23,22 @@ public enum WaterResolution {
         this.value = value;
     }
 
+    public static WaterResolution valueFromString(String string) {
+        if (_256.value.equals(string)) {
+            return _256;
+        }
+        if (_512.value.equals(string)) {
+            return _512;
+        }
+        if (_1024.value.equals(string)) {
+            return _1024;
+        }
+        if (_2048.value.equals(string)) {
+            return _2048;
+        }
+        return DEFAULT_WATER_RESOLUTION;
+    }
+
     public String getValue() {
         return value;
     }
@@ -42,21 +58,5 @@ public enum WaterResolution {
         }
 
         return new Vector2(512, 512);
-    }
-
-    public static WaterResolution valueFromString(String string) {
-        if (_256.value.equals(string)) {
-            return _256;
-        }
-        if (_512.value.equals(string)) {
-            return _512;
-        }
-        if (_1024.value.equals(string)) {
-            return _1024;
-        }
-        if (_2048.value.equals(string)) {
-            return _2048;
-        }
-        return DEFAULT_WATER_RESOLUTION;
     }
 }

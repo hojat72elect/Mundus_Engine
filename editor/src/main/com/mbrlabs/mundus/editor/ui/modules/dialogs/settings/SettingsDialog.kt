@@ -53,9 +53,9 @@ class SettingsDialog : BaseDialog("Settings") {
         content.padRight(UI.PAD_SIDE)
         add(root).width(WIDTH).height(HEIGHT).row()
 
-        root.add(settingsTree).width(WIDTH*0.3f).padRight(UI.PAD_SIDE).grow()
+        root.add(settingsTree).width(WIDTH * 0.3f).padRight(UI.PAD_SIDE).grow()
         root.addSeparator(true).padLeft(5f).padRight(5f)
-        root.add(content).width(WIDTH*0.7f).grow().row()
+        root.add(content).width(WIDTH * 0.7f).grow().row()
 
         // general
         val generalSettingsNode = SettingsNode(VisLabel("General"))
@@ -99,15 +99,15 @@ class SettingsDialog : BaseDialog("Settings") {
     }
 
     private fun replaceContent(table: BaseSettingsTable?) {
-        if(table == null) return
+        if (table == null) return
         content.clear()
         content.add(table).grow().row()
         content.add(saveBtn).growX().bottom().pad(10f).row()
 
-        if(listener != null) {
+        if (listener != null) {
             saveBtn.removeListener(listener!!)
         }
-        listener = object: ClickListener() {
+        listener = object : ClickListener() {
             override fun clicked(event: InputEvent?, x: Float, y: Float) {
                 table.onSave()
             }
@@ -117,8 +117,6 @@ class SettingsDialog : BaseDialog("Settings") {
         table.onInit()
     }
 
-    inner class SettingsNode(label: VisLabel) : Tree.Node<SettingsNode, BaseSettingsTable, VisLabel>(label) {
-
-    }
+    inner class SettingsNode(label: VisLabel) : Tree.Node<SettingsNode, BaseSettingsTable, VisLabel>(label)
 
 }

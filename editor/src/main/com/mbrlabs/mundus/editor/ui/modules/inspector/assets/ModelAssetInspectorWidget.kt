@@ -77,8 +77,10 @@ class ModelAssetInspectorWidget : BaseInspectorWidget(TITLE) {
 
         // materials
         val label = VisLabel()
-        label.setText("Default model materials determine the initial materials a new model will get, if "
-                + "you use the model placement tool.")
+        label.setText(
+            "Default model materials determine the initial materials a new model will get, if "
+                    + "you use the model placement tool."
+        )
         label.setWrap(true)
         collapsibleContent.add(VisLabel("Default model materials")).growX().row()
         collapsibleContent.addSeparator().padBottom(5f).row()
@@ -109,7 +111,7 @@ class ModelAssetInspectorWidget : BaseInspectorWidget(TITLE) {
             val mat = modelAsset!!.defaultMaterials[g3dbMatID]
             val selectWidget = MaterialSelectWidget(mat!!)
             materialContainer.add(selectWidget).grow().padBottom(20f).row()
-            selectWidget.matChangedListener = object: MaterialWidget.MaterialChangedListener {
+            selectWidget.matChangedListener = object : MaterialWidget.MaterialChangedListener {
                 override fun materialChanged(materialAsset: MaterialAsset) {
                     val assetManager = projectManager.current().assetManager
                     modelAsset!!.defaultMaterials.put(g3dbMatID, materialAsset)

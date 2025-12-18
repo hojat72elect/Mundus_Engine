@@ -29,10 +29,8 @@ import com.mbrlabs.mundus.commons.utils.Pools;
  */
 public class SimpleNode<T extends SimpleNode> extends BaseNode<T> {
 
-    static boolean WORLD_SPACE_TRANSFORM = true;
-
     private static final Vector3 LOCAL_FORWARD = new Vector3(0, 0, 1);
-
+    static boolean WORLD_SPACE_TRANSFORM = true;
     private final Vector3 localPosition;
     private final Quaternion localRotation;
     private final Vector3 localScale;
@@ -40,10 +38,14 @@ public class SimpleNode<T extends SimpleNode> extends BaseNode<T> {
     // root * p0 * p1 * localMat = combined (absolute transfrom)
     private final Matrix4 combined;
 
-    /** Flag to indicate that the transform is dirty and needs to be recalculated */
+    /**
+     * Flag to indicate that the transform is dirty and needs to be recalculated
+     */
     protected boolean isTransformDirty;
 
-    /** Observable that notifies listeners when the transform is marked dirty */
+    /**
+     * Observable that notifies listeners when the transform is marked dirty
+     */
     protected DirtyObservable dirtyObservable;
 
     public SimpleNode(int id) {
@@ -58,7 +60,7 @@ public class SimpleNode<T extends SimpleNode> extends BaseNode<T> {
 
     /**
      * Copy construction
-     * 
+     *
      * @param simpleNode
      * @param id
      */

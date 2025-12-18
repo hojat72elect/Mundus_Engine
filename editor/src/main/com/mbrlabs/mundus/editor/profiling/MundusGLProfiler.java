@@ -35,14 +35,16 @@ public class MundusGLProfiler extends GLProfiler {
         }
     }
 
-    /** Enables profiling by replacing the {@code GL20} and {@code GL30} instances with profiling ones. */
+    /**
+     * Enables profiling by replacing the {@code GL20} and {@code GL30} instances with profiling ones.
+     */
     @Override
-    public void enable () {
+    public void enable() {
         if (enabled) return;
 
         GL30 gl30 = graphics.getGL30();
         if (gl30 != null) {
-            graphics.setGL30((GL30)glInterceptor);
+            graphics.setGL30((GL30) glInterceptor);
         } else {
             graphics.setGL20(glInterceptor);
         }
@@ -68,9 +70,11 @@ public class MundusGLProfiler extends GLProfiler {
         glInterceptor.setPaused(false);
     }
 
-    /** Disables profiling by resetting the {@code GL20} and {@code GL30} instances with the original ones. */
+    /**
+     * Disables profiling by resetting the {@code GL20} and {@code GL30} instances with the original ones.
+     */
     @Override
-    public void disable () {
+    public void disable() {
         if (!enabled) return;
 
         GL30 gl30 = graphics.getGL30();
@@ -81,7 +85,7 @@ public class MundusGLProfiler extends GLProfiler {
     }
 
     @Override
-    public boolean isEnabled () {
+    public boolean isEnabled() {
         return enabled;
     }
 
@@ -90,7 +94,7 @@ public class MundusGLProfiler extends GLProfiler {
      * @return the total gl calls made since the last reset
      */
     @Override
-    public int getCalls () {
+    public int getCalls() {
         return glInterceptor.getCalls();
     }
 
@@ -99,7 +103,7 @@ public class MundusGLProfiler extends GLProfiler {
      * @return the total amount of texture bindings made since the last reset
      */
     @Override
-    public int getTextureBindings () {
+    public int getTextureBindings() {
         return glInterceptor.getTextureBindings();
     }
 
@@ -108,7 +112,7 @@ public class MundusGLProfiler extends GLProfiler {
      * @return the total amount of draw calls made since the last reset
      */
     @Override
-    public int getDrawCalls () {
+    public int getDrawCalls() {
         return glInterceptor.getDrawCalls();
     }
 
@@ -117,7 +121,7 @@ public class MundusGLProfiler extends GLProfiler {
      * @return the total amount of shader switches made since the last reset
      */
     @Override
-    public int getShaderSwitches () {
+    public int getShaderSwitches() {
         return glInterceptor.getShaderSwitches();
     }
 
@@ -126,15 +130,17 @@ public class MundusGLProfiler extends GLProfiler {
      * @return {@link FloatCounter} containing information about rendered vertices since the last reset
      */
     @Override
-    public FloatCounter getVertexCount () {
+    public FloatCounter getVertexCount() {
         return glInterceptor.getVertexCount();
     }
 
 
-    /** Will reset the statistical information which has been collected so far. This should be called after every frame.
-     * Error listener is kept as it is. */
+    /**
+     * Will reset the statistical information which has been collected so far. This should be called after every frame.
+     * Error listener is kept as it is.
+     */
     @Override
-    public void reset () {
+    public void reset() {
         glInterceptor.reset();
     }
 }

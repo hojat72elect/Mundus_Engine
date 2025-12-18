@@ -42,9 +42,9 @@ import com.mbrlabs.mundus.editorcommons.events.ProjectChangedEvent
  * @author Marcus Brummer
  * @version 02-10-2016
  */
-class AssetPickerDialog : BaseDialog(AssetPickerDialog.TITLE),
-        AssetImportEvent.AssetImportListener,
-        ProjectChangedEvent.ProjectChangedListener {
+class AssetPickerDialog : BaseDialog(TITLE),
+    AssetImportEvent.AssetImportListener,
+    ProjectChangedEvent.ProjectChangedListener {
 
     private companion object {
         private val TITLE = "Select an asset"

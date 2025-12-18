@@ -2,14 +2,19 @@
 
 #include <compat.fs.glsl>
 #include <functions.glsl>
+
 #ifdef iridescenceFlag
 #include <iridescence.glsl>
 #endif
+
 #include <env.glsl>
 #include <material.glsl>
+
 #ifndef unlitFlag
+
 #include <lights.glsl>
 #include <shadows.glsl>
+
 #endif
 #ifdef USE_IBL
 #include <ibl.glsl>
@@ -26,8 +31,8 @@ void main() {
     if ( v_clipDistance < 0.0 )
         discard;
 
-	vec4 baseColor = getBaseColor();
-    
+    vec4 baseColor = getBaseColor();
+
     vec3 color = baseColor.rgb;
 
     // final frag color
@@ -37,25 +42,25 @@ void main() {
     out_FragColor = vec4(color, baseColor.a);
 #endif
 
-	// Blending and Alpha Test
+    // Blending and Alpha Test
 #ifdef blendedFlag
-	out_FragColor.a = baseColor.a * u_opacity;
+    out_FragColor.a = baseColor.a * u_opacity;
 #ifdef alphaTestFlag
-	if (out_FragColor.a <= u_alphaTest)
-		discard;
+    if (out_FragColor.a <= u_alphaTest)
+        discard;
 #endif
 #else
-	out_FragColor.a = 1.0;
+    out_FragColor.a = 1.0;
 #endif
-	applyClippingPlane();
+    applyClippingPlane();
 }
 
 #else
 
 void main() {
-    if ( v_clipDistance < 0.0 )
+    if (v_clipDistance < 0.0)
         discard;
-	
+
     // Metallic and Roughness material properties are packed together
     // In glTF, these factors can be specified by fixed scalar values
     // or from a metallic-roughness map
@@ -129,20 +134,20 @@ void main() {
     float NdotV = clamp(abs(dot(n, v)), 0.001, 1.0);
 
     PBRSurfaceInfo pbrSurface = PBRSurfaceInfo(
-    	n,
-		v,
-		NdotV,
-		perceptualRoughness,
-		metallic,
-		specularEnvironmentR0,
-		specularEnvironmentR90,
-		alphaRoughness,
-		diffuseColor,
-		specularColor,
-		getThickness(),
-		specularWeight
+            n,
+            v,
+            NdotV,
+            perceptualRoughness,
+            metallic,
+            specularEnvironmentR0,
+            specularEnvironmentR90,
+            alphaRoughness,
+            diffuseColor,
+            specularColor,
+            getThickness(),
+            specularWeight
 #ifdef iridescenceFlag
-		, 0.0, 0.0, 0.0, vec3(0.0), vec3(0.0)
+            , 0.0, 0.0, 0.0, vec3(0.0), vec3(0.0)
 #endif
     );
 
@@ -197,7 +202,7 @@ void main() {
 #endif
 
     for(int i=1 ; i<numDirectionalLights ; i++){
-    	PBRLightContribs contrib = getDirectionalLightContribution(pbrSurface, u_dirLights[i]);
+        PBRLightContribs contrib = getDirectionalLightContribution(pbrSurface, u_dirLights[i]);
         f_diffuse += contrib.diffuse;
         f_specular += contrib.specular;
         f_transmission += contrib.transmission;
@@ -208,10 +213,10 @@ void main() {
     // Point lights calculation
     for(int i=0 ; i<numPointLights ; i++){
         if (i >= u_activeNumPointLights){break;}
-    	PBRLightContribs contrib = getPointLightContribution(pbrSurface, u_pointLights[i]);
-    	f_diffuse += contrib.diffuse;
-    	f_specular += contrib.specular;
-    	f_transmission += contrib.transmission;
+        PBRLightContribs contrib = getPointLightContribution(pbrSurface, u_pointLights[i]);
+        f_diffuse += contrib.diffuse;
+        f_specular += contrib.specular;
+        f_transmission += contrib.transmission;
     }
 #endif // numPointLights
 
@@ -219,10 +224,10 @@ void main() {
     // Spot lights calculation
     for(int i=0 ; i<numSpotLights ; i++){
         if (i >= u_activeNumSpotLights){break;}
-    	PBRLightContribs contrib = getSpotLightContribution(pbrSurface, u_spotLights[i]);
-    	f_diffuse += contrib.diffuse;
-    	f_specular += contrib.specular;
-    	f_transmission += contrib.transmission;
+        PBRLightContribs contrib = getSpotLightContribution(pbrSurface, u_spotLights[i]);
+        f_diffuse += contrib.diffuse;
+        f_specular += contrib.specular;
+        f_transmission += contrib.transmission;
     }
 #endif // numSpotLights
 
@@ -246,48 +251,48 @@ void main() {
     color += emissive;
 #endif
 
-    
+
     // final frag color
 #ifdef GAMMA_CORRECTION
     out_FragColor = vec4(pow(color,vec3(1.0/GAMMA_CORRECTION)), baseColor.a);
 #else
     out_FragColor = vec4(color, baseColor.a);
 #endif
-    
+
 #ifdef fogFlag
 #ifdef fogEquationFlag
     float fog = (eyeDistance - u_fogEquation.x) / (u_fogEquation.y - u_fogEquation.x);
     fog = clamp(fog, 0.0, 1.0);
     fog = pow(fog, u_fogEquation.z);
 #else
-	float fog = min(1.0, eyeDistance * eyeDistance * u_cameraPosition.w);
+    float fog = min(1.0, eyeDistance * eyeDistance * u_cameraPosition.w);
 #endif
-	out_FragColor.rgb = mix(out_FragColor.rgb, u_fogColor.rgb, fog * u_fogColor.a);
+    out_FragColor.rgb = mix(out_FragColor.rgb, u_fogColor.rgb, fog * u_fogColor.a);
 #endif
 
     // Blending and Alpha Test
 #ifdef blendedFlag
-	out_FragColor.a = baseColor.a * u_opacity;
-	#ifdef alphaTestFlag
-		if (out_FragColor.a <= u_alphaTest)
-			discard;
-	#endif
+    out_FragColor.a = baseColor.a * u_opacity;
+#ifdef alphaTestFlag
+        if (out_FragColor.a <= u_alphaTest)
+            discard;
+#endif
 #else
-	out_FragColor.a = 1.0;
+    out_FragColor.a = 1.0;
 #endif
 
 #ifdef PICKER
-if(u_pickerActive == 1) {
-    float dist = distance(u_pickerPos, v_position);
-    if(dist <= u_pickerRadius) {
-        float gradient = (u_pickerRadius - dist + 0.01) / u_pickerRadius;
-        gradient = 1.0 - clamp(cos(gradient * M_PI), 0.0, 1.0);
-        out_FragColor += COLOR_BRUSH * gradient;
+    if(u_pickerActive == 1) {
+        float dist = distance(u_pickerPos, v_position);
+        if(dist <= u_pickerRadius) {
+            float gradient = (u_pickerRadius - dist + 0.01) / u_pickerRadius;
+            gradient = 1.0 - clamp(cos(gradient * M_PI), 0.0, 1.0);
+            out_FragColor += COLOR_BRUSH * gradient;
+        }
     }
-}
 #endif
 
-	applyClippingPlane();
+    applyClippingPlane();
 
 }
 

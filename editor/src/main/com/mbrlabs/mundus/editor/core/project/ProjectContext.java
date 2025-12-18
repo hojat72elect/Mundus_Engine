@@ -23,11 +23,12 @@ import com.mbrlabs.mundus.editor.assets.EditorAssetManager;
 import com.mbrlabs.mundus.editor.core.EditorScene;
 import com.mbrlabs.mundus.editor.preferences.MundusPreferencesManager;
 import com.mbrlabs.mundus.editor.utils.Log;
+
 import org.apache.commons.lang3.StringUtils;
 
 /**
  * A project context represents an loaded and opened project.
- *
+ * <p>
  * A project context can have many scenes, nut only one scene at a time can be
  * active.
  *
@@ -51,11 +52,11 @@ public class ProjectContext implements Disposable {
     public EditorAssetManager assetManager;
     public MundusPreferencesManager projectPref;
     public boolean renderWireframe = false;
-
-    private int idProvider;
-
-    /** set by kryo when project is loaded. do not use this */
+    /**
+     * set by kryo when project is loaded. do not use this
+     */
     public String activeSceneName;
+    private int idProvider;
 
     public ProjectContext(int idProvider) {
         scenes = new Array<>();

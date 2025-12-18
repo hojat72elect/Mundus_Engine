@@ -44,8 +44,8 @@ import com.mbrlabs.mundus.editor.ui.modules.inspector.components.IdentifierWidge
 import com.mbrlabs.mundus.editor.ui.modules.inspector.components.LightComponentWidget
 import com.mbrlabs.mundus.editor.ui.modules.inspector.components.ModelComponentWidget
 import com.mbrlabs.mundus.editor.ui.modules.inspector.components.TransformWidget
-import com.mbrlabs.mundus.editor.ui.modules.inspector.components.terrain.TerrainComponentWidget
 import com.mbrlabs.mundus.editor.ui.modules.inspector.components.WaterComponentWidget
+import com.mbrlabs.mundus.editor.ui.modules.inspector.components.terrain.TerrainComponentWidget
 import com.mbrlabs.mundus.editor.ui.modules.inspector.components.terrain.TerrainManagerComponentWidget
 import com.mbrlabs.mundus.pluginapi.ComponentExtension
 
@@ -75,14 +75,14 @@ class GameObjectInspector : VisTable() {
         add(componentTable).growX().pad(7f).row()
         add(addComponentBtn).expandX().fill().top().center().pad(10f).row()
 
-        addComponentBtn.addListener(object : ClickListener () {
+        addComponentBtn.addListener(object : ClickListener() {
             override fun clicked(event: InputEvent?, x: Float, y: Float) {
                 UI.showDialog(UI.addComponentDialog)
             }
         })
     }
 
-    fun getGameObject() : GameObject? = gameObject
+    fun getGameObject(): GameObject? = gameObject
 
     fun setGameObject(gameObject: GameObject) {
         this.gameObject = gameObject
@@ -174,7 +174,7 @@ class GameObjectInspector : VisTable() {
             }
         }
 
-        return null;
+        return null
     }
 
 }

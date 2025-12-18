@@ -16,6 +16,16 @@ public enum SplatMapResolution {
         this.value = value;
     }
 
+    public static SplatMapResolution valueFromString(String string) {
+        for (SplatMapResolution res : values()) {
+            if (res.value.equals(string)) {
+                return res;
+            }
+        }
+
+        return DEFAULT_RESOLUTION;
+    }
+
     public String getValue() {
         return value;
     }
@@ -33,15 +43,4 @@ public enum SplatMapResolution {
 
         return 512;
     }
-
-    public static SplatMapResolution valueFromString(String string) {
-        for (SplatMapResolution res : values()) {
-            if (res.value.equals(string)) {
-                return res;
-            }
-        }
-
-        return DEFAULT_RESOLUTION;
-    }
-
 }

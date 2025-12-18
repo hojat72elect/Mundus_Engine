@@ -37,7 +37,7 @@ public class MetaTerrain {
     public static final String JSON_SPLAT_G_NORMAL = "gNorm";
     public static final String JSON_SPLAT_B_NORMAL = "bNorm";
     public static final String JSON_SPLAT_A_NORMAL = "aNorm";
-    public static final String JSON_UV_SCALE= "uv";
+    public static final String JSON_UV_SCALE = "uv";
     public static final String JSON_TRIPLANAR = "triplanar";
     public static final String JSON_MATERIAL = "material";
     public static final String JSON_LAYER = "layer";
@@ -65,12 +65,16 @@ public class MetaTerrain {
         return splatmap;
     }
 
+    public void setSplatmap(String splatmap) {
+        this.splatmap = splatmap;
+    }
+
     public String getTerrainLayerAssetId() {
         return terrainLayerAssetId;
     }
 
-    public void setSplatmap(String splatmap) {
-        this.splatmap = splatmap;
+    public void setTerrainLayerAssetId(String terrainLayerAssetId) {
+        this.terrainLayerAssetId = terrainLayerAssetId;
     }
 
     /**
@@ -172,10 +176,6 @@ public class MetaTerrain {
 
     public float getUv() {
         return uv;
-    }
-
-    public void setTerrainLayerAssetId(String terrainLayerAssetId) {
-        this.terrainLayerAssetId = terrainLayerAssetId;
     }
 
     public void setUv(float uv) {

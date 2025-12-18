@@ -39,7 +39,8 @@ public class ModelUtils {
     private static final Pool<Renderable> pool = new RenderablePool();
     private final static Vector3 tmpVec0 = new Vector3();
 
-    private ModelUtils() {}
+    private ModelUtils() {
+    }
 
     /**
      * Gets the total bone count for the given model based on having
@@ -139,5 +140,4 @@ public class ModelUtils {
         }
         return indices;
     }
-
 }

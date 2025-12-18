@@ -37,12 +37,12 @@ public class ModelComponentDTO implements AssetUsageDTO {
         materials = new HashMap<>();
     }
 
-    public void setMaterials(HashMap<String, String> materials) {
-        this.materials = materials;
-    }
-
     public HashMap<String, String> getMaterials() {
         return materials;
+    }
+
+    public void setMaterials(HashMap<String, String> materials) {
+        this.materials = materials;
     }
 
     public String getModelID() {

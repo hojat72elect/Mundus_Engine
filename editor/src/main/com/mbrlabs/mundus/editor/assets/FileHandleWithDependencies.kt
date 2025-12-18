@@ -36,7 +36,7 @@ class FileHandleWithDependencies(val file: FileHandle, val dependencies: ArrayLi
     var images = Array<FileHandle>()
 
     // Links Materials to Textures(Images) <materialName, <PBRTextureAttribute, imagesArrayIndex>>
-    var materialImageMap : HashMap<String, HashMap<Long, Int>> = HashMap()
+    var materialImageMap: HashMap<String, HashMap<Long, Int>> = HashMap()
 
     init {
         if (FileFormatUtils.isGLTF(file)) {

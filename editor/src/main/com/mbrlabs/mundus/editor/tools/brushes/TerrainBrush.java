@@ -70,76 +70,6 @@ import java.util.Set;
  */
 public abstract class TerrainBrush extends Tool {
 
-    /**
-     * Defines the draw mode of a brush.
-     */
-    public enum BrushMode {
-        /** Raises or lowers the terrainAsset height. */
-        RAISE_LOWER,
-        /** Sets all vertices of the selection to a specified height. */
-        FLATTEN,
-        /** Smooths terrain based on average height within radius */
-        SMOOTH,
-        /** Paints on the splatmap of the terrainAsset. */
-        PAINT,
-        /** Create a ramp between two points. */
-        RAMP
-    }
-
-    /**
-     * Defines two actions (and it's key codes) every brush and every mode can
-     * have.
-     * <p>
-     * For instance the RAISE_LOWER mode has 'raise' has PRIMARY action and
-     * 'lower' as secondary. Pressing the keycode of the secondary & the primary
-     * key enables the secondary action.
-     **/
-    public enum BrushAction {
-        PRIMARY(Input.Buttons.LEFT), SECONDARY(Input.Keys.SHIFT_LEFT);
-
-        public final int code;
-
-        BrushAction(int levelCode) {
-            this.code = levelCode;
-        }
-
-    }
-
-    /**
-     * The range of the brush. This is the area in which the brush
-     * has altered the terrain.
-     */
-    public static class BrushRange {
-        public int minX;
-        public int maxX;
-        public int minZ;
-        public int maxZ;
-    }
-
-    /**
-     * An action that can modify the terrain in some way.
-     */
-    public interface TerrainModifyAction {
-        void modify(TerrainBrush terrainBrush, TerrainComponent terrain, int x, int z, Vector3 localBrushPos, Vector3 vertexPos);
-    }
-
-    /**
-     * A comparison that can be used to determine if a vertex should be modified
-     */
-    public interface TerrainModifyComparison {
-        boolean compare(TerrainBrush terrainBrush, Vector3 vertexPos, Vector3 localBrushPos);
-    }
-
-    /**
-     * Thrown if the brush is set to a mode, which it currently does not
-     * support.
-     */
-    public static class ModeNotSupportedException extends Exception {
-        public ModeNotSupportedException(String message) {
-            super(message);
-        }
-    }
-
     // used for calculations
     protected static final Vector3 rampEndPoint = new Vector3();
     protected static final Vector2 c = new Vector2();
@@ -149,7 +79,6 @@ public abstract class TerrainBrush extends Tool {
     protected static final Vector3 tVec0 = new Vector3();
     protected static final Vector3 tVec1 = new Vector3();
     private static final Matrix4 tmpMatrix = new Matrix4();
-
     // all brushes share the some common settings
     private static final GlobalBrushSettingsChangedEvent brushSettingsChangedEvent = new GlobalBrushSettingsChangedEvent();
     private static final GameObjectPicker.ComponentIgnoreFilter ignoreFilter = component -> !(component instanceof TerrainComponent);
@@ -160,44 +89,83 @@ public abstract class TerrainBrush extends Tool {
     private static float strength = 0.5f;
     private static float heightSample = 0f;
     private static SplatTexture.Channel paintChannel;
-
     // individual brush settings
     protected final Vector3 brushPos = new Vector3();
+    private final BrushRange brushRange;
+    // the pixmap brush
+    private final Pixmap brushPixmap;
+    private final int pixmapCenter;
+    // Holds all terrains connected to the current terrain
+    private final Set<TerrainComponent> connectedTerrains = new HashSet<>();
+    // Holds all terrains that have been modified by the brush, for when optimized terrain updates is enabled
+    private final Set<TerrainComponent> modifiedTerrains = new HashSet<>();
+    private final GameObjectPicker goPicker;
     protected float radius = 25f;
     protected TerrainComponent terrainComponent;
     protected BrushMode mode;
     private BrushAction action;
-    private final BrushRange brushRange;
-
     private boolean mouseMoved = false;
-
-    // the pixmap brush
-    private final Pixmap brushPixmap;
-    private final int pixmapCenter;
-
     // undo/redo system
     private TerrainsHeightCommand heightCommand = null;
     private TerrainsPaintCommand paintCommand = null;
     private boolean terrainHeightModified = false;
     private boolean splatmapModified = false;
     private boolean refreshConnectedTerrains = false;
-
-    // Holds all terrains connected to the current terrain
-    private final Set<TerrainComponent> connectedTerrains = new HashSet<>();
-
-    // Holds all terrains that have been modified by the brush, for when optimized terrain updates is enabled
-    private final Set<TerrainComponent> modifiedTerrains = new HashSet<>();
-
-    private final GameObjectPicker goPicker;
-
     public TerrainBrush(ProjectManager projectManager, CommandHistory history,
-            FileHandle pixmapBrush, GameObjectPicker goPicker) {
+                        FileHandle pixmapBrush, GameObjectPicker goPicker) {
         super(projectManager, history);
 
         this.goPicker = goPicker;
         brushRange = new BrushRange();
         brushPixmap = new Pixmap(pixmapBrush);
         pixmapCenter = brushPixmap.getWidth() / 2;
+    }
+
+    private static boolean rampIntersectsTerrain(TerrainComponent terrain, Vector3 rampStart, Vector3 rampEnd, float rampRadius) {
+        Vector3 terrainMin = Pools.vector3Pool.obtain();
+        Vector3 terrainMax = Pools.vector3Pool.obtain();
+        Vector3 rampMin = Pools.vector3Pool.obtain();
+        Vector3 rampMax = Pools.vector3Pool.obtain();
+        Vector3 scale = Pools.vector3Pool.obtain();
+
+        // Get the min and max coordinates of the TerrainComponent's AABB
+        terrain.gameObject.getPosition(terrainMin);
+        terrain.gameObject.getScale(scale);
+        terrainMax.set(terrainMin).add(terrain.getTerrainAsset().getTerrain().terrainWidth * scale.x, 0, terrain.getTerrainAsset().getTerrain().terrainDepth * scale.z);
+
+        // Get the min and max coordinates of the ramp and expand by the ramp's radius
+        rampMin.set(Math.min(rampStart.x, rampEnd.x) - rampRadius, 0, Math.min(rampStart.z, rampEnd.z) - rampRadius);
+        rampMax.set(Math.max(rampStart.x, rampEnd.x) + rampRadius, 0, Math.max(rampStart.z, rampEnd.z) + rampRadius);
+
+
+        // Check if the bounding boxes intersect in the x and z coordinates
+        boolean intersects = (terrainMin.x <= rampMax.x && terrainMax.x >= rampMin.x) &&
+                (terrainMin.z <= rampMax.z && terrainMax.z >= rampMin.z);
+
+        Pools.free(terrainMin, terrainMax, rampMin, rampMax, scale);
+        return intersects;
+    }
+
+    public static float getStrength() {
+        return strength;
+    }
+
+    public static void setStrength(float strength) {
+        TerrainBrush.strength = strength;
+        Mundus.INSTANCE.postEvent(brushSettingsChangedEvent);
+    }
+
+    public static float getHeightSample() {
+        return heightSample;
+    }
+
+    public static void setPaintChannel(SplatTexture.Channel paintChannel) {
+        TerrainBrush.paintChannel = paintChannel;
+        Mundus.INSTANCE.postEvent(brushSettingsChangedEvent);
+    }
+
+    public static void setOptimizeTerrainUpdates(boolean optimizeTerrainUpdates) {
+        TerrainBrush.optimizeTerrainUpdates = optimizeTerrainUpdates;
     }
 
     @Override
@@ -238,7 +206,6 @@ public abstract class TerrainBrush extends Tool {
         } else if (mode == BrushMode.RAMP) {
             createRamp();
         }
-
     }
 
     private void paint() {
@@ -381,33 +348,9 @@ public abstract class TerrainBrush extends Tool {
         getProjectManager().current().assetManager.addModifiedAsset(terrainComponent.getTerrainAsset());
     }
 
-    private static boolean rampIntersectsTerrain(TerrainComponent terrain, Vector3 rampStart, Vector3 rampEnd, float rampRadius) {
-        Vector3 terrainMin = Pools.vector3Pool.obtain();
-        Vector3 terrainMax = Pools.vector3Pool.obtain();
-        Vector3 rampMin = Pools.vector3Pool.obtain();
-        Vector3 rampMax = Pools.vector3Pool.obtain();
-        Vector3 scale = Pools.vector3Pool.obtain();
-
-        // Get the min and max coordinates of the TerrainComponent's AABB
-        terrain.gameObject.getPosition(terrainMin);
-        terrain.gameObject.getScale(scale);
-        terrainMax.set(terrainMin).add(terrain.getTerrainAsset().getTerrain().terrainWidth * scale.x, 0, terrain.getTerrainAsset().getTerrain().terrainDepth * scale.z);
-
-        // Get the min and max coordinates of the ramp and expand by the ramp's radius
-        rampMin.set(Math.min(rampStart.x, rampEnd.x) - rampRadius, 0, Math.min(rampStart.z, rampEnd.z) - rampRadius);
-        rampMax.set(Math.max(rampStart.x, rampEnd.x) + rampRadius, 0, Math.max(rampStart.z, rampEnd.z) + rampRadius);
-
-
-        // Check if the bounding boxes intersect in the x and z coordinates
-        boolean intersects = (terrainMin.x <= rampMax.x && terrainMax.x >= rampMin.x) &&
-                (terrainMin.z <= rampMax.z && terrainMax.z >= rampMin.z);
-
-        Pools.free(terrainMin, terrainMax, rampMin, rampMax, scale);
-        return intersects;
-    }
-
     /**
      * Returns all the connected terrains to the current terrain. This is done by performing a BFS
+     *
      * @return A set containing all the connected terrains
      */
     private Set<TerrainComponent> getAllConnectedTerrains() {
@@ -432,7 +375,7 @@ public abstract class TerrainBrush extends Tool {
             if (!connectedTerrains.contains(currentTerrain)) {
                 connectedTerrains.add(currentTerrain);
 
-               currentTerrain.getNeighbors(neighbors);
+                currentTerrain.getNeighbors(neighbors);
                 for (TerrainComponent neighbor : neighbors) {
                     if (neighbor != null && !connectedTerrains.contains(neighbor)) {
                         queue.add(neighbor);
@@ -451,10 +394,11 @@ public abstract class TerrainBrush extends Tool {
 
     /**
      * Modifies the terrain using the given modifier and comparison
+     *
      * @param terrainComponent The terrain to modify
-     * @param modifier The modifier to use
-     * @param comparison The comparison to use
-     * @param updateNeighbors Whether to update the neighbors of the terrain
+     * @param modifier         The modifier to use
+     * @param comparison       The comparison to use
+     * @param updateNeighbors  Whether to update the neighbors of the terrain
      */
     public void modifyTerrain(TerrainComponent terrainComponent, TerrainModifyAction modifier, TerrainModifyComparison comparison, boolean updateNeighbors) {
         Vector3 localBrushPos = Pools.vector3Pool.obtain();
@@ -548,8 +492,8 @@ public abstract class TerrainBrush extends Tool {
      * splatmap texture coordinates)
      *
      * @return the interpolated r-channel value of brush pixmap at pointX,
-     *         pointZ, which can be interpreted as terrainAsset height
-     *         (raise/lower) or opacity (paint)
+     * pointZ, which can be interpreted as terrainAsset height
+     * (raise/lower) or opacity (paint)
      */
     public float getValueOfBrushPixmap(float centerX, float centerZ, float pointX, float pointZ, float radius) {
         c.set(centerX, centerZ);
@@ -579,28 +523,6 @@ public abstract class TerrainBrush extends Tool {
         float scaledRadius = radius / terrainComponent.gameObject.getScale(scale).x;
         Pools.free(scale);
         return scaledRadius;
-    }
-
-    public static float getStrength() {
-        return strength;
-    }
-
-    public static void setStrength(float strength) {
-        TerrainBrush.strength = strength;
-        Mundus.INSTANCE.postEvent(brushSettingsChangedEvent);
-    }
-
-    public static float getHeightSample() {
-        return heightSample;
-    }
-
-    public static void setPaintChannel(SplatTexture.Channel paintChannel) {
-        TerrainBrush.paintChannel = paintChannel;
-        Mundus.INSTANCE.postEvent(brushSettingsChangedEvent);
-    }
-
-    public static void setOptimizeTerrainUpdates(boolean optimizeTerrainUpdates) {
-        TerrainBrush.optimizeTerrainUpdates = optimizeTerrainUpdates;
     }
 
     public BrushMode getMode() {
@@ -676,7 +598,6 @@ public abstract class TerrainBrush extends Tool {
                     terrain.getPlaneMesh().computeTangents();
                     terrain.getPlaneMesh().updateMeshVertices();
                 }
-
             }
 
             for (TerrainComponent terrainComponent : modifiedTerrains) {
@@ -737,8 +658,8 @@ public abstract class TerrainBrush extends Tool {
     /**
      * Does the brush affect the given terrain at the given position?
      *
-     * @param brushPos The position of the brush in world coordinates.
-     * @param radius The radius of the brush.
+     * @param brushPos         The position of the brush in world coordinates.
+     * @param radius           The radius of the brush.
      * @param terrainComponent The terrain to check.
      * @return True if the brush affects the terrain, false otherwise.
      */
@@ -807,6 +728,7 @@ public abstract class TerrainBrush extends Tool {
 
     /**
      * Updates the 'brushPos' variable if the mouse is on a terrain.
+     *
      * @param screenX The screen position X value.
      * @param screenY The screen position Y value.
      * @return True if 'brushPos' variable has updated otherwise false.
@@ -820,7 +742,7 @@ public abstract class TerrainBrush extends Tool {
         goPicker.clearIgnoreFilter();
         if (go == null) return false;
 
-        TerrainComponent comp = (TerrainComponent) go.findComponentByType(Component.Type.TERRAIN);
+        TerrainComponent comp = go.findComponentByType(Component.Type.TERRAIN);
         if (comp == null) return false;
 
         // If the hovered terrain is not the current terrain or connected to it, set it as the current terrain
@@ -866,4 +788,82 @@ public abstract class TerrainBrush extends Tool {
         EditorPBRTerrainShader.setPickerRadius(radius);
     }
 
+    /**
+     * Defines the draw mode of a brush.
+     */
+    public enum BrushMode {
+        /**
+         * Raises or lowers the terrainAsset height.
+         */
+        RAISE_LOWER,
+        /**
+         * Sets all vertices of the selection to a specified height.
+         */
+        FLATTEN,
+        /**
+         * Smooths terrain based on average height within radius
+         */
+        SMOOTH,
+        /**
+         * Paints on the splatmap of the terrainAsset.
+         */
+        PAINT,
+        /**
+         * Create a ramp between two points.
+         */
+        RAMP
+    }
+
+    /**
+     * Defines two actions (and it's key codes) every brush and every mode can
+     * have.
+     * <p>
+     * For instance the RAISE_LOWER mode has 'raise' has PRIMARY action and
+     * 'lower' as secondary. Pressing the keycode of the secondary & the primary
+     * key enables the secondary action.
+     **/
+    public enum BrushAction {
+        PRIMARY(Input.Buttons.LEFT), SECONDARY(Input.Keys.SHIFT_LEFT);
+
+        public final int code;
+
+        BrushAction(int levelCode) {
+            this.code = levelCode;
+        }
+    }
+
+    /**
+     * An action that can modify the terrain in some way.
+     */
+    public interface TerrainModifyAction {
+        void modify(TerrainBrush terrainBrush, TerrainComponent terrain, int x, int z, Vector3 localBrushPos, Vector3 vertexPos);
+    }
+
+    /**
+     * A comparison that can be used to determine if a vertex should be modified
+     */
+    public interface TerrainModifyComparison {
+        boolean compare(TerrainBrush terrainBrush, Vector3 vertexPos, Vector3 localBrushPos);
+    }
+
+    /**
+     * The range of the brush. This is the area in which the brush
+     * has altered the terrain.
+     */
+    public static class BrushRange {
+        public int minX;
+        public int maxX;
+        public int minZ;
+        public int maxZ;
+    }
+
+    /**
+     * Thrown if the brush is set to a mode, which it currently does not
+     * support.
+     */
+    public static class ModeNotSupportedException extends Exception {
+        public ModeNotSupportedException(String message) {
+            super(message);
+        }
+    }
 }

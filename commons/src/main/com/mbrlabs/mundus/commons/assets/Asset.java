@@ -26,12 +26,12 @@ import java.util.Map;
 
 /**
  * A generic asset type.
- *
+ * <p>
  * Assets hold a file handle to the asset file. They also have a meta file,
  * which contains meta information about the asset. Assets can have dependencies
  * to other assets by specifying the asset id in the meta file or in the asset
  * file.
- * 
+ *
  * @author Marcus Brummer
  * @version 01-10-2016
  */
@@ -73,7 +73,7 @@ public abstract class Asset implements Disposable, AssetUsage {
 
     /**
      * Loads the asset.
-     *
+     * <p>
      * Loads the asset from disk synchronously and creates it.
      */
     public abstract void load();
@@ -85,18 +85,17 @@ public abstract class Asset implements Disposable, AssetUsage {
 
     /**
      * Resolves all dependencies of this asset.
-     *
+     * <p>
      * Before calling this method all assets must have been loaded using the
      * load() method.
-     * 
-     * @param assets
-     *            map of loaded assets with asset id as key
+     *
+     * @param assets map of loaded assets with asset id as key
      */
     public abstract void resolveDependencies(Map<String, Asset> assets);
 
     /**
      * Applies dependent assets to this one.
-     *
+     * <p>
      * If dependencies have been set, this method applies them to the asset.
      * Note, that the asset and all it's set dependencies must have called
      * load() before calling this method.
@@ -115,5 +114,4 @@ public abstract class Asset implements Disposable, AssetUsage {
         }
         return 2;
     }
-
 }

@@ -15,28 +15,31 @@
  */
 package com.mbrlabs.mundus.editor.utils;
 
-import java.io.*;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import org.apache.commons.lang3.exception.ExceptionUtils;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.mbrlabs.mundus.editor.core.registry.Registry;
+
+import org.apache.commons.lang3.exception.ExceptionUtils;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Log messages with different log levels. To save performance during runtime,
  * string concatination is only run if log level is present. Use for example:
  * Log.log(Log.INFO, TAG, "Msg with param {} and param {}", "param1", "param2");
  * {} will be replaced with parameter in left to right order.
- * 
+ *
  * @author Marcus Brummer, codenigma
  * @version 23-09-2015
  */
 public class Log {
-
-    private static final String TAG = Log.class.getSimpleName();
 
     public static final int TRACE = 5;
     public static final int DEBUG = 4;
@@ -44,12 +47,12 @@ public class Log {
     public static final int WARN = 2;
     public static final int ERROR = 1;
     public static final int FATAL = 0;
-
+    private static final String TAG = Log.class.getSimpleName();
     public static int LOG_LEVEL = TRACE;
 
     private static File logFile;
     private static PrintWriter logFileWriter;
-    private static SimpleDateFormat msgDateFormat = new SimpleDateFormat("[HH:mm]");
+    private static final SimpleDateFormat msgDateFormat = new SimpleDateFormat("[HH:mm]");
 
     public static void init() {
         System.setErr(new ErrorStreamInterceptor(System.err));
@@ -163,21 +166,6 @@ public class Log {
         return msgDateFormat.format(new Date());
     }
 
-    private static class ErrorStreamInterceptor extends PrintStream {
-
-        public ErrorStreamInterceptor(OutputStream out) {
-            super(out, true);
-        }
-
-        @Override
-        public void print(String s) {
-            super.print(s);
-            if (logFileWriter != null) {
-                logFileWriter.println(s);
-            }
-        }
-    }
-
     private static String completeMsg(String msg, Object... params) {
         for (Object p : params)
             msg = msg.replaceFirst("\\{\\}", String.valueOf(p));
@@ -187,33 +175,33 @@ public class Log {
     /**
      * Log msg with tag To save memory values will be concat to strings only
      * when log level really is set Use {} in the msg as wild card
-     * 
+     *
      * @param logLevel
      * @param msg
      * @param params
      */
     public static void log(int logLevel, String tag, String msg, Object... params) {
         switch (logLevel) {
-        case TRACE:
-            trace(tag, msg, params);
-            break;
-        case DEBUG:
-            debug(tag, msg, params);
-            break;
-        case INFO:
-            info(tag, msg, params);
-            break;
-        case WARN:
-            warn(tag, msg, params);
-            break;
-        case ERROR:
-            error(tag, msg, params);
-            break;
-        case FATAL:
-            fatal(tag, msg, params);
-            break;
-        default:
-            error(tag, "Log level " + logLevel + " is not supported!");
+            case TRACE:
+                trace(tag, msg, params);
+                break;
+            case DEBUG:
+                debug(tag, msg, params);
+                break;
+            case INFO:
+                info(tag, msg, params);
+                break;
+            case WARN:
+                warn(tag, msg, params);
+                break;
+            case ERROR:
+                error(tag, msg, params);
+                break;
+            case FATAL:
+                fatal(tag, msg, params);
+                break;
+            default:
+                error(tag, "Log level " + logLevel + " is not supported!");
         }
     }
 
@@ -227,5 +215,20 @@ public class Log {
 
     public final static void printLowerSeperationLine() {
         print("↑_______________________END_______________________↑");
+    }
+
+    private static class ErrorStreamInterceptor extends PrintStream {
+
+        public ErrorStreamInterceptor(OutputStream out) {
+            super(out, true);
+        }
+
+        @Override
+        public void print(String s) {
+            super.print(s);
+            if (logFileWriter != null) {
+                logFileWriter.println(s);
+            }
+        }
     }
 }

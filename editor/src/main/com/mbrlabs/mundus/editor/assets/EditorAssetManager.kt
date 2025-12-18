@@ -68,7 +68,9 @@ import java.io.File
 import java.io.FileNotFoundException
 import java.io.FileOutputStream
 import java.io.IOException
-import java.util.*
+import java.util.Base64
+import java.util.Properties
+import java.util.UUID
 
 /**
  * @author Marcus Brummer
@@ -389,7 +391,7 @@ class EditorAssetManager(assetsRoot: FileHandle) : AssetManager(assetsRoot) {
      */
     @Throws(IOException::class, AssetAlreadyExistsException::class)
     fun createTerrainLayerAsset(name: String): TerrainLayerAsset {
-        val newName = name.replace(".terra","")
+        val newName = name.replace(".terra", "")
         val layerFilename = "$newName.layer"
         val metaFilename = "$layerFilename.meta"
 
@@ -439,7 +441,7 @@ class EditorAssetManager(assetsRoot: FileHandle) : AssetManager(assetsRoot) {
         return FileHandle(path).exists()
     }
 
-        /**
+    /**
      * Creates a new pixmap texture asset.
      *
      * This creates a new pixmap texture and adds it to this asset manager.
@@ -543,8 +545,10 @@ class EditorAssetManager(assetsRoot: FileHandle) : AssetManager(assetsRoot) {
 
         // load & apply asset
         val asset = SkyboxAsset(meta, FileHandle(file))
-        asset.setIds(positiveX, negativeX,
-                positiveY, negativeY, positiveZ, negativeZ)
+        asset.setIds(
+            positiveX, negativeX,
+            positiveY, negativeY, positiveZ, negativeZ
+        )
         asset.resolveDependencies(assetMap)
 
         saveAsset(asset)
@@ -715,7 +719,6 @@ class EditorAssetManager(assetsRoot: FileHandle) : AssetManager(assetsRoot) {
     }
 
 
-
     /**
      * Delete the asset from the project if no usages are found
      */
@@ -847,7 +850,7 @@ class EditorAssetManager(assetsRoot: FileHandle) : AssetManager(assetsRoot) {
         return objectsWithAssets
     }
 
-    private fun checkSceneDTOForAssetUsage(sceneDTO: SceneDTO, gameObjects: Array<GameObjectDTO>, asset: Asset, projectManager: ProjectManager, objectsWithAssets: HashMap<GameObjectDTO, String>){
+    private fun checkSceneDTOForAssetUsage(sceneDTO: SceneDTO, gameObjects: Array<GameObjectDTO>, asset: Asset, projectManager: ProjectManager, objectsWithAssets: HashMap<GameObjectDTO, String>) {
         for (go in gameObjects) {
             if (go.usesAsset(asset, projectManager.current().assetManager.assetMap)) {
                 objectsWithAssets[go] = sceneDTO.name
@@ -1126,7 +1129,7 @@ class EditorAssetManager(assetsRoot: FileHandle) : AssetManager(assetsRoot) {
     }
 
     override fun loadModelAsset(meta: Meta, assetFile: FileHandle): ModelAsset {
-        val asset = EditorModelAsset(meta, assetFile);
+        val asset = EditorModelAsset(meta, assetFile)
         asset.load(gdxAssetManager)
         asset.thumbnail = ThumbnailGenerator.generateThumbnail(asset.model)
         return asset

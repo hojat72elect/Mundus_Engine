@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 import com.mbrlabs.mundus.commons.env.MundusEnvironment;
+
 import net.mgsx.gltf.scene3d.shaders.PBRShader;
 
 /**
@@ -18,11 +19,9 @@ import net.mgsx.gltf.scene3d.shaders.PBRShader;
  */
 public class MundusPBRShader extends PBRShader {
 
-    private final int u_clipPlane = register("u_clipPlane");
-
     protected final int UNIFORM_POINT_LIGHT_NUM_ACTIVE = register(new Uniform("u_activeNumPointLights"));
-
     protected final int UNIFORM_SPOT_LIGHT_NUM_ACTIVE = register(new Uniform("u_activeNumSpotLights"));
+    private final int u_clipPlane = register("u_clipPlane");
 
     public MundusPBRShader(Renderable renderable, Config config, String prefix) {
         super(renderable, config, prefix);

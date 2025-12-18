@@ -87,15 +87,19 @@ class HeightmapTab(private val terrainComponent: TerrainComponent) : Tab(false, 
         val command = TerrainHeightCommand(terrainComponent)
         command.setHeightDataBefore(terrain.heightData)
 
-        val minMax = loadHeightMapMaxHeight.float
+        loadHeightMapMaxHeight.float
         val originalMap = Pixmap(heightMap)
 
         // scale pixmap if it doesn't fit the terrainAsset
         if (originalMap.width != terrain.vertexResolution || originalMap.height != terrain.vertexResolution) {
-            val scaledPixmap = Pixmap(terrain.vertexResolution, terrain.vertexResolution,
-                    originalMap.format)
-            scaledPixmap.drawPixmap(originalMap, 0, 0, originalMap.width, originalMap.height, 0, 0,
-                    scaledPixmap.width, scaledPixmap.height)
+            val scaledPixmap = Pixmap(
+                terrain.vertexResolution, terrain.vertexResolution,
+                originalMap.format
+            )
+            scaledPixmap.drawPixmap(
+                originalMap, 0, 0, originalMap.width, originalMap.height, 0, 0,
+                scaledPixmap.width, scaledPixmap.height
+            )
             originalMap.dispose()
             //Terraformer.heightMap(terrainComponent).maxHeight(minMax).map(scaledPixmap).terraform()
             scaledPixmap.dispose()

@@ -22,7 +22,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener
 import com.badlogic.gdx.utils.Array
 import com.kotcrab.vis.ui.widget.VisCheckBox
-import com.kotcrab.vis.ui.widget.VisLabel
 import com.kotcrab.vis.ui.widget.VisRadioButton
 import com.kotcrab.vis.ui.widget.VisSelectBox
 import com.kotcrab.vis.ui.widget.VisTable
@@ -36,16 +35,16 @@ import com.mbrlabs.mundus.editor.Mundus
 import com.mbrlabs.mundus.editor.events.LogEvent
 import com.mbrlabs.mundus.editor.events.LogType
 import com.mbrlabs.mundus.pluginapi.ui.ButtonListener
+import com.mbrlabs.mundus.pluginapi.ui.Cell
 import com.mbrlabs.mundus.pluginapi.ui.CheckboxListener
 import com.mbrlabs.mundus.pluginapi.ui.FloatSpinnerListener
+import com.mbrlabs.mundus.pluginapi.ui.IntSpinnerListener
+import com.mbrlabs.mundus.pluginapi.ui.LabelCell
 import com.mbrlabs.mundus.pluginapi.ui.RadioButtonListener
 import com.mbrlabs.mundus.pluginapi.ui.RootWidget
-import com.mbrlabs.mundus.pluginapi.ui.IntSpinnerListener
-import com.mbrlabs.mundus.pluginapi.ui.SpinnerListener
-import com.mbrlabs.mundus.pluginapi.ui.Cell
-import com.mbrlabs.mundus.pluginapi.ui.LabelCell
 import com.mbrlabs.mundus.pluginapi.ui.RootWidgetCell
 import com.mbrlabs.mundus.pluginapi.ui.SelectBoxListener
+import com.mbrlabs.mundus.pluginapi.ui.SpinnerListener
 import com.mbrlabs.mundus.pluginapi.ui.TextFieldChangeListener
 
 class RootWidgetImpl : VisTable(), RootWidget {
@@ -85,7 +84,7 @@ class RootWidgetImpl : VisTable(), RootWidget {
         return CellImpl(cell)
     }
 
-    override fun addRadioButtons(button1Text: String, button2Text: String, listener: RadioButtonListener) : Cell {
+    override fun addRadioButtons(button1Text: String, button2Text: String, listener: RadioButtonListener): Cell {
         return addRadioButtons(button1Text, button2Text, true, listener)
     }
 
@@ -131,7 +130,7 @@ class RootWidgetImpl : VisTable(), RootWidget {
         return addSpinner(text, min, max, initValue, 1, listener)
     }
 
-    override fun addSpinner(text: String, min: Int, max: Int, initValue: Int, step: Int, listener: IntSpinnerListener) : Cell {
+    override fun addSpinner(text: String, min: Int, max: Int, initValue: Int, step: Int, listener: IntSpinnerListener): Cell {
         val spinnerModel = IntSpinnerModel(initValue, min, max, step)
         return addSpinner(text, spinnerModel, listener) { spinnerModel.value }
     }
@@ -145,7 +144,7 @@ class RootWidgetImpl : VisTable(), RootWidget {
         return addSpinner(text, spinnerModel, listener) { spinnerModel.value }
     }
 
-    override fun addCheckbox(text: String, listener: CheckboxListener) : Cell {
+    override fun addCheckbox(text: String, listener: CheckboxListener): Cell {
         return addCheckbox(text, false, listener)
     }
 

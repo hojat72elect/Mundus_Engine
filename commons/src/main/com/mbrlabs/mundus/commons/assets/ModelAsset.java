@@ -15,6 +15,20 @@
  */
 package com.mbrlabs.mundus.commons.assets;
 
+import static net.mgsx.gltf.scene3d.attributes.PBRTextureAttribute.Ambient;
+import static net.mgsx.gltf.scene3d.attributes.PBRTextureAttribute.BRDFLUTTexture;
+import static net.mgsx.gltf.scene3d.attributes.PBRTextureAttribute.BaseColorTexture;
+import static net.mgsx.gltf.scene3d.attributes.PBRTextureAttribute.Bump;
+import static net.mgsx.gltf.scene3d.attributes.PBRTextureAttribute.Diffuse;
+import static net.mgsx.gltf.scene3d.attributes.PBRTextureAttribute.Emissive;
+import static net.mgsx.gltf.scene3d.attributes.PBRTextureAttribute.EmissiveTexture;
+import static net.mgsx.gltf.scene3d.attributes.PBRTextureAttribute.MetallicRoughnessTexture;
+import static net.mgsx.gltf.scene3d.attributes.PBRTextureAttribute.Normal;
+import static net.mgsx.gltf.scene3d.attributes.PBRTextureAttribute.NormalTexture;
+import static net.mgsx.gltf.scene3d.attributes.PBRTextureAttribute.OcclusionTexture;
+import static net.mgsx.gltf.scene3d.attributes.PBRTextureAttribute.Reflection;
+import static net.mgsx.gltf.scene3d.attributes.PBRTextureAttribute.Specular;
+
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g3d.Attribute;
@@ -29,15 +43,13 @@ import com.mbrlabs.mundus.commons.assets.meta.MetaModel;
 import com.mbrlabs.mundus.commons.g3d.MG3dModelLoader;
 import com.mbrlabs.mundus.commons.utils.FileFormatUtils;
 import com.mbrlabs.mundus.commons.utils.ModelUtils;
+
 import net.mgsx.gltf.loaders.glb.GLBLoader;
 import net.mgsx.gltf.loaders.gltf.GLTFLoader;
 import net.mgsx.gltf.scene3d.scene.SceneAsset;
-import org.w3c.dom.Attr;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static net.mgsx.gltf.scene3d.attributes.PBRTextureAttribute.*;
 
 /**
  * @author Marcus Brummer
@@ -46,11 +58,9 @@ import static net.mgsx.gltf.scene3d.attributes.PBRTextureAttribute.*;
 public class ModelAsset extends Asset {
     protected static long TextureAttributeMask = Diffuse | Specular | Bump | Normal | Ambient | Emissive | Reflection | MetallicRoughnessTexture
             | OcclusionTexture | BaseColorTexture | NormalTexture | EmissiveTexture | BRDFLUTTexture;
-
-    private Model model;
-
     private final Map<String, MaterialAsset> defaultMaterials;
     private final Array<Material> initialModelMaterials; // The initial materials for the model, before mundus modifies them
+    private Model model;
 
     public ModelAsset(Meta meta, FileHandle assetFile) {
         super(meta, assetFile);
@@ -84,7 +94,7 @@ public class ModelAsset extends Asset {
 
         copyMaterials();
         updateBoneCount();
-     }
+    }
 
     @Override
     public void load(AssetManager assetManager) {

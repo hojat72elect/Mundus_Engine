@@ -95,7 +95,7 @@ class KeyboardShortcutManager(customKeyboardShortcuts: ObjectMap<String, String>
     fun setKey(keymapKey: KeymapKey, keyboardShortcut: KeyboardShortcut) = keymap.put(keymapKey, keyboardShortcut)
 
     fun getDefaultKeycode(keymapKey: KeymapKey): KeyboardShortcut {
-        return when(keymapKey) {
+        return when (keymapKey) {
             KeymapKey.MOVE_FORWARD -> MOVE_FORWARD_DEFAULT_KEY
             KeymapKey.MOVE_BACK -> MOVE_BACK_DEFAULT_KEY
             KeymapKey.STRAFE_LEFT -> STRAFE_LEFT_DEFAULT_KEY

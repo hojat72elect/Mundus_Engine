@@ -27,6 +27,7 @@ import com.mbrlabs.mundus.editor.core.converter.SceneConverter;
 import com.mbrlabs.mundus.editor.core.project.ProjectContext;
 import com.mbrlabs.mundus.editor.core.project.ProjectManager;
 import com.mbrlabs.mundus.editor.utils.PluginUtils;
+
 import org.apache.commons.io.FilenameUtils;
 import org.pf4j.PluginManager;
 
@@ -42,7 +43,7 @@ public class SceneManager {
      * Saves a scene.
      *
      * @param context project context of the scene
-     * @param scene scene to save
+     * @param scene   scene to save
      */
     public static void saveScene(ProjectContext context, Scene scene, PluginManager pluginManager) {
         String sceneDir = getScenePath(context, scene.getName());
@@ -56,10 +57,10 @@ public class SceneManager {
 
     /**
      * Loads a scene.
-     *
+     * <p>
      * Does however not initialize ModelInstances, Terrains, ... -> ProjectManager
      *
-     * @param context project context of the scene
+     * @param context   project context of the scene
      * @param sceneName name of the scene to load
      * @return loaded scene
      * @throws FileNotFoundException
@@ -72,7 +73,7 @@ public class SceneManager {
     /**
      * Renames scene.
      *
-     * @param context The projet context of scene.
+     * @param context      The projet context of scene.
      * @param oldSceneName The old name of scene.
      * @param newSceneName The new name of scene.
      */
@@ -91,7 +92,7 @@ public class SceneManager {
     /**
      * Deletes scene.
      *
-     * @param context project context of the scene
+     * @param context   project context of the scene
      * @param sceneName name of the scene to remove
      */
     public static void deleteScene(final ProjectContext context, final String sceneName) {

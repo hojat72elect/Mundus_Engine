@@ -136,21 +136,6 @@ public abstract class CullableComponent extends AbstractComponent implements Mod
         triggerEvent(EventType.BEFORE_RENDER);
     }
 
-    protected void setDimensions(ModelInstance modelInstance) {
-        if (modelInstance == null) {
-            Gdx.app.error("CullableComponent", "setDimensions called with null modelInstance");
-            return;
-        }
-        this.modelInstance = modelInstance;
-        modelInstance.calculateBoundingBox(tmpBounds);
-        tmpBounds.getCenter(center);
-        tmpBounds.getDimensions(dimensions);
-        gameObject.getScale(tmpScale);
-        dimensions.scl(tmpScale);
-        radius = dimensions.len() / 2f;
-        orientedBoundingBox.set(tmpBounds, modelInstance.transform);
-    }
-
     /**
      * Updates the dimensions of the cullable component.
      * This should be called only when necessary, as it is a relatively expensive operation.
@@ -182,6 +167,21 @@ public abstract class CullableComponent extends AbstractComponent implements Mod
 
     public Vector3 getDimensions() {
         return dimensions;
+    }
+
+    protected void setDimensions(ModelInstance modelInstance) {
+        if (modelInstance == null) {
+            Gdx.app.error("CullableComponent", "setDimensions called with null modelInstance");
+            return;
+        }
+        this.modelInstance = modelInstance;
+        modelInstance.calculateBoundingBox(tmpBounds);
+        tmpBounds.getCenter(center);
+        tmpBounds.getDimensions(dimensions);
+        gameObject.getScale(tmpScale);
+        dimensions.scl(tmpScale);
+        radius = dimensions.len() / 2f;
+        orientedBoundingBox.set(tmpBounds, modelInstance.transform);
     }
 
     public float getRadius() {

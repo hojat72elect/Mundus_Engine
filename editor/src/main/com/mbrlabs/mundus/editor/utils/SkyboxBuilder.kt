@@ -22,16 +22,20 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.g3d.Shader
 import com.mbrlabs.mundus.commons.skybox.Skybox
 
-fun createDefaultSkybox(shader : Shader): Skybox {
+fun createDefaultSkybox(shader: Shader): Skybox {
     val texture = Gdx.files.internal("textures/skybox/default/skybox_default.png")
-    return Skybox(texture, texture, texture, texture, texture, texture,
-            shader)
+    return Skybox(
+        texture, texture, texture, texture, texture, texture,
+        shader
+    )
 }
 
-fun createNightSkybox(shader : Shader): Skybox {
+fun createNightSkybox(shader: Shader): Skybox {
     val texture = Gdx.files.internal("textures/skybox/star_night.png")
-    return Skybox(texture, texture, texture, texture, texture, texture,
-            shader)
+    return Skybox(
+        texture, texture, texture, texture, texture, texture,
+        shader
+    )
 }
 
 

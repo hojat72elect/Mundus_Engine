@@ -99,7 +99,7 @@ public class PixmapTextureAsset extends Asset {
 
     @Override
     public boolean usesAsset(Asset assetToCheck) {
-        if (assetToCheck instanceof TextureAsset){
+        if (assetToCheck instanceof TextureAsset) {
             return texture == ((TextureAsset) assetToCheck).getTexture();
         }
         return false;

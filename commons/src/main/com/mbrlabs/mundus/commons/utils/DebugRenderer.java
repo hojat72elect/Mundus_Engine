@@ -1,4 +1,5 @@
 package com.mbrlabs.mundus.commons.utils;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
@@ -47,15 +48,13 @@ public class DebugRenderer implements Renderer, Disposable {
     // Shape Renderer
     private final boolean ownsShapeRenderer;
     private final ShapeRenderer shapeRenderer;
-    private Camera camera;
-
-    // Bounding box and facing arrow Renderer
-    private ModelBatch modelBatch;
     private final ModelBuilder modelBuilder = new ModelBuilder();
     private final Map<Component, ModelInstance> modelInstancesCache = new HashMap<>();
-    private ModelInstance arrowInstance;
     private final Array<ModelInstance> instances = new Array<>();
-
+    private Camera camera;
+    // Bounding box and facing arrow Renderer
+    private final ModelBatch modelBatch;
+    private ModelInstance arrowInstance;
     // Debug settings
     private boolean appearOnTop = true;
     private boolean enabled = false;
@@ -73,7 +72,7 @@ public class DebugRenderer implements Renderer, Disposable {
         ownsShapeRenderer = false;
     }
 
-    public static void setSelectedGameObject(GameObject go){
+    public static void setSelectedGameObject(GameObject go) {
         selectedGameObject = go;
     }
 
@@ -173,7 +172,6 @@ public class DebugRenderer implements Renderer, Disposable {
         for (GameObject child : go.getChildren()) {
             render(child);
         }
-
     }
 
     @Override
@@ -233,11 +231,17 @@ public class DebugRenderer implements Renderer, Disposable {
         return mb.end();
     }
 
+    public boolean isAppearOnTop() {
+        return appearOnTop;
+    }
+
     public void setAppearOnTop(boolean appearOnTop) {
         this.appearOnTop = appearOnTop;
     }
 
-    public boolean isAppearOnTop() { return appearOnTop; }
+    public boolean isShowFacingArrow() {
+        return drawFacingArrow;
+    }
 
     public void setShowFacingArrow(boolean showFacingArrow) {
         this.drawFacingArrow = showFacingArrow;
@@ -245,8 +249,6 @@ public class DebugRenderer implements Renderer, Disposable {
             buildArrowModel();
         }
     }
-
-    public boolean isShowFacingArrow() { return drawFacingArrow; }
 
     public boolean isEnabled() {
         return enabled;
@@ -258,7 +260,7 @@ public class DebugRenderer implements Renderer, Disposable {
 
     private void buildArrowModel() {
         modelBuilder.begin();
-        MeshPartBuilder meshBuilder =  modelBuilder.part("arrow", GL20.GL_TRIANGLES,
+        MeshPartBuilder meshBuilder = modelBuilder.part("arrow", GL20.GL_TRIANGLES,
                 (VertexAttributes.Usage.Position | VertexAttributes.Usage.ColorUnpacked), new Material());
         meshBuilder.setColor(Color.MAROON);
         ArrowShapeBuilder.build(meshBuilder, 0, 0, 0, 0, 0, 5f, .03f, .5f, 50);

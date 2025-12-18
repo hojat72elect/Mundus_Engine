@@ -18,14 +18,11 @@ import java.util.concurrent.Callable;
  */
 public class LoDUtils {
 
-    public interface TerrainLodCallback {
-        void onComplete();
-    }
-
     /**
      * Returns a Callable that builds the LoD levels for the given terrain components on a background thread.
+     *
      * @param components The terrain components to build LoD levels for
-     * @param callback (optional) The callback to call when the LoD levels are built
+     * @param callback   (optional) The callback to call when the LoD levels are built
      */
     public static Callable<Void> createTerrainLodProcessingTask(Iterable<TerrainComponent> components, TerrainLodCallback callback) {
         Array<TerrainComponent> tcs = new Array<>();
@@ -63,7 +60,7 @@ public class LoDUtils {
 
                     // Convert the rest of the lod levels
                     for (int i = 0; i < results.length; i++) {
-                        levels[i+1] = convertToLodLevel(terrain.getTerrainAsset().getTerrain().getModel(), results[i]);
+                        levels[i + 1] = convertToLodLevel(terrain.getTerrainAsset().getTerrain().getModel(), results[i]);
                     }
 
                     terrain.getTerrainAsset().setLodLevels(levels);
@@ -83,9 +80,10 @@ public class LoDUtils {
 
     /**
      * Simplify the given terrain based on multipliers. 0.5 = target 50% of the original indices.
-     * @param terrain The terrain to simplify
+     *
+     * @param terrain               The terrain to simplify
      * @param simplificationFactors The simplification factors to use, these are applied to target indice count
-     * @param maxHeightDiff The maximum height difference between the highest and lowest points on all terrains
+     * @param maxHeightDiff         The maximum height difference between the highest and lowest points on all terrains
      */
     public static MeshUtils.SimplifyResult[] buildTerrainLod(TerrainComponent terrain, float[] simplificationFactors, float maxHeightDiff) {
         // prevent divide by 0
@@ -116,7 +114,8 @@ public class LoDUtils {
 
     /**
      * Converts the given SimplifyResult objects into to LoDLevels by instantiating new meshes.
-     * @param model The original model
+     *
+     * @param model   The original model
      * @param results The results of the simplification for the model
      * @return The LoDLevel array
      */
@@ -125,25 +124,30 @@ public class LoDUtils {
         lodLevels[0] = new LodLevel(model.meshes.toArray(Mesh.class));
 
         for (int i = 1; i < lodLevels.length; i++) {
-            lodLevels[i] = convertToLodLevel(model, results[i-1]);
+            lodLevels[i] = convertToLodLevel(model, results[i - 1]);
         }
         return lodLevels;
     }
 
     /**
      * Converts the given SimplifyResult object into a LoDLevel by instantiating new meshes.
-     * @param model The original model
+     *
+     * @param model  The original model
      * @param result The result of the simplification for the model
      * @return
      */
     public static LodLevel convertToLodLevel(Model model, MeshUtils.SimplifyResult result) {
         Mesh[] meshes = new Mesh[model.meshes.size];
         for (int i = 0; i < model.meshes.size; i++) {
-            Mesh mesh = new Mesh(true, result.getVertices()[i].length, result.getIndices()[i].length, model.meshes.get(i).getVertexAttributes());
-            mesh.setVertices(result.getVertices()[i]);
-            mesh.setIndices(result.getIndices()[i]);
+            Mesh mesh = new Mesh(true, result.vertices()[i].length, result.indices()[i].length, model.meshes.get(i).getVertexAttributes());
+            mesh.setVertices(result.vertices()[i]);
+            mesh.setIndices(result.indices()[i]);
             meshes[i] = mesh;
         }
         return new LodLevel(meshes);
+    }
+
+    public interface TerrainLodCallback {
+        void onComplete();
     }
 }

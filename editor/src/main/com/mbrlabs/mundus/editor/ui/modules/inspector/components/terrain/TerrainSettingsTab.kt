@@ -46,8 +46,12 @@ class TerrainSettingsTab(private val parentWidget: TerrainComponentWidget) : Tab
         table.add(VisLabel("Shader: ")).row()
 
         val triplanarTable = VisTable()
-        triplanarTable.add(ToolTipLabel("Triplanar", "Enables Triplanar texturing which calculates UV coordinates\n" +
-                "in the shader instead of using Vertex coordinates.\n Reduces texture stretching on steep terrain.")).left()
+        triplanarTable.add(
+            ToolTipLabel(
+                "Triplanar", "Enables Triplanar texturing which calculates UV coordinates\n" +
+                        "in the shader instead of using Vertex coordinates.\n Reduces texture stretching on steep terrain."
+            )
+        ).left()
         triplanarTable.add(triplanar).left().row()
         table.add(triplanarTable).expandX().left().row()
         triplanar.isChecked = parentWidget.component.terrainAsset.terrain.terrainTexture.isTriplanar

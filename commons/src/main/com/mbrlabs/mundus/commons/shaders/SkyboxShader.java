@@ -31,6 +31,7 @@ import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector3;
 import com.mbrlabs.mundus.commons.skybox.Skybox;
 import com.mbrlabs.mundus.commons.utils.ShaderUtils;
+
 import net.mgsx.gltf.scene3d.attributes.FogAttribute;
 
 /**
@@ -48,14 +49,11 @@ public class SkyboxShader extends BaseShader {
 
     protected final int UNIFORM_FOG = register(new Uniform("u_fog"));
     protected final int UNIFORM_FOG_COLOR = register(new Uniform("u_fogColor"));
-
+    private final ShaderProgram program;
+    private final Matrix4 transform = new Matrix4();
     private boolean rotateEnabled = Skybox.DEFAULT_ROTATE_ENABLED;
     private float rotateSpeed = Skybox.DEFAULT_ROTATE_SPEED;
     private float rotation = 0f;
-
-    private final ShaderProgram program;
-
-    private final Matrix4 transform = new Matrix4();
 
     public SkyboxShader() {
         super();

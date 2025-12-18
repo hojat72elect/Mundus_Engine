@@ -26,6 +26,7 @@ import com.badlogic.gdx.graphics.g3d.shaders.DepthShader;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.mbrlabs.mundus.commons.shaders.LightShader;
+
 import net.mgsx.gltf.scene3d.shaders.PBRShaderConfig;
 import net.mgsx.gltf.scene3d.shaders.PBRShaderProvider;
 
@@ -38,15 +39,10 @@ public class ShaderUtils {
     /**
      * Compiles and links shader.
      *
-     * @param vertexShader
-     *            path to vertex shader
-     * @param fragmentShader
-     *            path to fragment shader
-     * @param shader
-     *            the shader to compile a program for
-     * @param customPrefix
-     *             a custom prefix string to prepend to vertex and fragment shaders
-     *
+     * @param vertexShader   path to vertex shader
+     * @param fragmentShader path to fragment shader
+     * @param shader         the shader to compile a program for
+     * @param customPrefix   a custom prefix string to prepend to vertex and fragment shaders
      * @return compiled shader program
      */
     public static ShaderProgram compile(String vertexShader, String fragmentShader, Shader shader, String customPrefix) {
@@ -75,13 +71,9 @@ public class ShaderUtils {
     /**
      * Compiles and links shader.
      *
-     * @param vertexShader
-     *            path to vertex shader
-     * @param fragmentShader
-     *            path to fragment shader
-     * @param shader
-     *            the shader to compile a program for
-     *
+     * @param vertexShader   path to vertex shader
+     * @param fragmentShader path to fragment shader
+     * @param shader         the shader to compile a program for
      * @return compiled shader program
      */
     public static ShaderProgram compile(String vertexShader, String fragmentShader, Shader shader) {
@@ -136,6 +128,7 @@ public class ShaderUtils {
      * Originally from gdx-gltf library
      * Returns the GLSL version string for the current platform. Use this
      * in shader prefixes (first line) to define the GLSL version when using GL30 features
+     *
      * @return GLSL version string
      */
     public static String getGLVersionString() {
@@ -164,5 +157,4 @@ public class ShaderUtils {
         if (renderable.material != null) mask |= renderable.material.getMask();
         return mask;
     }
-
 }

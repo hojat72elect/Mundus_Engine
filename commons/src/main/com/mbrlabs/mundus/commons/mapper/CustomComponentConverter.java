@@ -40,7 +40,6 @@ public interface CustomComponentConverter {
 
     /**
      * @param component The component.
-     *
      * @return The ID of used assets.
      */
     default Array<String> getAssetIds(Component component) {
@@ -50,9 +49,9 @@ public interface CustomComponentConverter {
     /**
      * Converts map into custom component.
      *
-     * @param gameObject The game object.
+     * @param gameObject          The game object.
      * @param componentProperties The properties of custom component.
-     * @param assets The assets of component.
+     * @param assets              The assets of component.
      * @return The custom component.
      */
     Component convert(GameObject gameObject, OrderedMap<String, String> componentProperties, ObjectMap<String, Asset> assets);

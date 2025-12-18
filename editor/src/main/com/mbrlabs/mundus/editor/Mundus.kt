@@ -126,8 +126,10 @@ object Mundus {
         keyboardShortcutManager = KeyboardShortcutManager(registry.settings.customKeyboardShortcuts)
         freeCamController = FreeCamController(projectManager, goPicker, pluginManager, keyboardShortcutManager)
         globalPrefManager = MundusPreferencesManager("global")
-        toolManager = ToolManager(input, projectManager, goPicker, handlePicker, shapeRenderer,
-                commandHistory, globalPrefManager, keyboardShortcutManager)
+        toolManager = ToolManager(
+            input, projectManager, goPicker, handlePicker, shapeRenderer,
+            commandHistory, globalPrefManager, keyboardShortcutManager
+        )
         gizmoManager = GizmoManager()
         shortcutController = ShortcutController(projectManager, commandHistory, toolManager, debugRenderer, globalPrefManager, keyboardShortcutManager)
         json = Json()
@@ -170,7 +172,8 @@ object Mundus {
      */
     private fun initStyle() {
         val generator = FreeTypeFontGenerator(
-                Gdx.files.internal("fonts/OpenSans/OpenSans-Regular.ttf"))
+            Gdx.files.internal("fonts/OpenSans/OpenSans-Regular.ttf")
+        )
         val params = FreeTypeFontGenerator.FreeTypeFontParameter()
         params.kerning = true
         params.borderStraight = false
@@ -207,12 +210,9 @@ object Mundus {
         faBuilder.generatorParameter.size = (Gdx.graphics.height * 0.02f).toInt()
         faBuilder.generatorParameter.kerning = true
         faBuilder.generatorParameter.borderStraight = false
-        fa = faBuilder.addIcon(Fa.SAVE).addIcon(Fa.DOWNLOAD).addIcon(Fa.GIFT).
-                addIcon(Fa.PLAY).addIcon(Fa.MOUSE_POINTER).addIcon(Fa.ARROWS).
-                addIcon(Fa.CIRCLE_O).addIcon(Fa.CIRCLE).addIcon(Fa.MINUS).addIcon(Fa.CARET_DOWN).
-                addIcon(Fa.CARET_UP).addIcon(Fa.TIMES).addIcon(Fa.SORT).addIcon(Fa.HASHTAG).
-                addIcon(Fa.PAINT_BRUSH).addIcon(Fa.STAR).addIcon(Fa.REFRESH).addIcon(Fa.EXPAND).
-                addIcon(Fa.ARROWS_ALT).addIcon(Fa.EYE).addIcon(Fa.EYE_SLASH).build()
+        fa = faBuilder.addIcon(Fa.SAVE).addIcon(Fa.DOWNLOAD).addIcon(Fa.GIFT).addIcon(Fa.PLAY).addIcon(Fa.MOUSE_POINTER).addIcon(Fa.ARROWS).addIcon(Fa.CIRCLE_O).addIcon(Fa.CIRCLE).addIcon(Fa.MINUS)
+            .addIcon(Fa.CARET_DOWN).addIcon(Fa.CARET_UP).addIcon(Fa.TIMES).addIcon(Fa.SORT).addIcon(Fa.HASHTAG).addIcon(Fa.PAINT_BRUSH).addIcon(Fa.STAR).addIcon(Fa.REFRESH).addIcon(Fa.EXPAND)
+            .addIcon(Fa.ARROWS_ALT).addIcon(Fa.EYE).addIcon(Fa.EYE_SLASH).build()
 
         // Build smaller Font Awesome font
         faBuilder = Fa(Gdx.files.internal("fonts/fa45.ttf"))

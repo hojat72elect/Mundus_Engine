@@ -28,11 +28,11 @@ import com.mbrlabs.mundus.pluginapi.ComponentExtension
 
 class AddComponentDialog : BaseDialog("Add Component") {
 
-    private abstract inner class DropdownComponent(val name: String) {
+    private abstract class DropdownComponent(val name: String) {
 
         abstract fun createComponent(gameObject: GameObject): Component?
 
-        override fun toString(): String  = name
+        override fun toString(): String = name
     }
 
     private lateinit var root: VisTable
@@ -52,11 +52,11 @@ class AddComponentDialog : BaseDialog("Add Component") {
         selectBox.items.clear()
 
         val addableTypes = Array<DropdownComponent>()
-        addableTypes.add(object : DropdownComponent("Light"){
+        addableTypes.add(object : DropdownComponent("Light") {
             override fun createComponent(gameObject: GameObject): Component? = getNewLightComponent(gameObject)
         })
-        addableTypes.add(object : DropdownComponent("Custom properties"){
-            override fun createComponent(gameObject: GameObject): Component? = getNewCustomPropertiesComponent(gameObject)
+        addableTypes.add(object : DropdownComponent("Custom properties") {
+            override fun createComponent(gameObject: GameObject): Component = getNewCustomPropertiesComponent(gameObject)
         })
         pluginManager.getExtensions(ComponentExtension::class.java).forEach {
             try {
@@ -110,7 +110,7 @@ class AddComponentDialog : BaseDialog("Add Component") {
     }
 
     private fun setupListeners() {
-        addBtn.addListener(object : ClickListener () {
+        addBtn.addListener(object : ClickListener() {
             override fun clicked(event: InputEvent?, x: Float, y: Float) {
                 // Add component to current game object
                 val go = getSelectedGameObject()
@@ -137,7 +137,7 @@ class AddComponentDialog : BaseDialog("Add Component") {
         if (LightUtils.canCreateLight(env, LightType.POINT_LIGHT)) {
             return PickableLightComponent(go, LightType.POINT_LIGHT)
         } else if (LightUtils.canCreateLight(env, LightType.SPOT_LIGHT)) {
-            Dialogs.showOKDialog(UI, "Info", "Max point lights reached ("+LightUtils.MAX_POINT_LIGHTS+"), switching to spotlight.")
+            Dialogs.showOKDialog(UI, "Info", "Max point lights reached (" + LightUtils.MAX_POINT_LIGHTS + "), switching to spotlight.")
             return PickableLightComponent(go, LightType.SPOT_LIGHT)
         } else {
             val str = buildString {

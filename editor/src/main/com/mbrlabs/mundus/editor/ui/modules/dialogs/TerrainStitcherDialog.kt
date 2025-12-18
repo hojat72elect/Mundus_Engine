@@ -48,13 +48,21 @@ class TerrainStitcherDialog : BaseDialog(TITLE) {
 
         table.addSeparator()
 
-        table.add(ToolTipLabel("Include World Height", "If checked, the world height will be included in the stitching process, otherwise only vertex height is considered." +
-                "\nIdeally all terrains are at 0 world height. If they aren't, you should check this.")).left().padBottom(10f)
+        table.add(
+            ToolTipLabel(
+                "Include World Height", "If checked, the world height will be included in the stitching process, otherwise only vertex height is considered." +
+                        "\nIdeally all terrains are at 0 world height. If they aren't, you should check this."
+            )
+        ).left().padBottom(10f)
         table.add(includeWorldHeight).left().padBottom(10f).colspan(2).row()
 
-        table.add(ToolTipLabel("Number of Steps", "How many steps around the broken seams will be interpolated." +
-                "\nThe larger the value, the smoother the transitions (but more alteration to the terrain)." +
-                "\nCannot exceed terrains vertex resolution.")).left().padBottom(10f)
+        table.add(
+            ToolTipLabel(
+                "Number of Steps", "How many steps around the broken seams will be interpolated." +
+                        "\nThe larger the value, the smoother the transitions (but more alteration to the terrain)." +
+                        "\nCannot exceed terrains vertex resolution."
+            )
+        ).left().padBottom(10f)
         table.add(numStepsField).fillX().expandX().row()
         table.add(executeBtn).colspan(2).growX()
 
@@ -66,7 +74,6 @@ class TerrainStitcherDialog : BaseDialog(TITLE) {
         includeWorldHeight.isChecked = TerrainStitcher.includeWorldHeight
         return super.show(stage, action)
     }
-
 
 
     private fun setupListeners() {

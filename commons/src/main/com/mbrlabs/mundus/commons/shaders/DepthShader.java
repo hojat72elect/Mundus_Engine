@@ -44,7 +44,7 @@ public class DepthShader extends ClippableShader {
         context.begin();
         context.setCullFace(GL20.GL_BACK);
 
-        this.context.setDepthTest(GL20.GL_LEQUAL , 0f, 1f);
+        this.context.setDepthTest(GL20.GL_LEQUAL, 0f, 1f);
         this.context.setDepthMask(true);
 
         program.bind();

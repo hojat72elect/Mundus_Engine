@@ -22,7 +22,7 @@ class LightGizmo(private var lightComponent: LightComponent) : Gizmo() {
         decal.position = lightComponent.position
     }
 
-    override fun shouldRemove() : Boolean {
+    override fun shouldRemove(): Boolean {
         // If the GameObject no longer has this component, remove widget
         if (!lightComponent.gameObject.components.contains(lightComponent)) {
             return true

@@ -20,10 +20,10 @@ import com.mbrlabs.mundus.editorcommons.events.SceneChangedEvent
  * @version June 01, 2022
  */
 class GizmoManager : ComponentAddedEvent.ComponentAddedListener,
-        ComponentRemovedEvent.ComponentRemovedListener,
-        SceneGraphChangedEvent.SceneGraphChangedListener,
-        SceneChangedEvent.SceneChangedListener,
-        ProjectChangedEvent.ProjectChangedListener {
+    ComponentRemovedEvent.ComponentRemovedListener,
+    SceneGraphChangedEvent.SceneGraphChangedListener,
+    SceneChangedEvent.SceneChangedListener,
+    ProjectChangedEvent.ProjectChangedListener {
 
 
     private lateinit var camera: Camera

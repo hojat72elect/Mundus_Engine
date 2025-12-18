@@ -1,5 +1,8 @@
 package com.mbrlabs.mundus.editor.exporter;
 
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
+
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.JsonWriter;
 import com.mbrlabs.mundus.commons.dto.GameObjectDTO;
@@ -7,15 +10,13 @@ import com.mbrlabs.mundus.commons.dto.SceneDTO;
 import com.mbrlabs.mundus.commons.dto.TerrainComponentDTO;
 import com.mbrlabs.mundus.editor.core.kryo.KryoManager;
 import com.mbrlabs.mundus.editor.core.project.ProjectContext;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.pf4j.DefaultPluginManager;
 
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStreamWriter;
-
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
 
 public class ExporterTest {
 
@@ -72,5 +73,4 @@ public class ExporterTest {
 
         return terrain;
     }
-
 }

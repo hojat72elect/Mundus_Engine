@@ -17,7 +17,6 @@
 package com.mbrlabs.mundus.editor.exporter
 
 import com.badlogic.gdx.files.FileHandle
-import com.badlogic.gdx.utils.Array
 import com.badlogic.gdx.utils.Json
 import com.badlogic.gdx.utils.JsonWriter
 import com.kotcrab.vis.ui.util.async.AsyncTask
@@ -28,7 +27,6 @@ import com.mbrlabs.mundus.commons.dto.ModelComponentDTO
 import com.mbrlabs.mundus.commons.dto.SceneDTO
 import com.mbrlabs.mundus.commons.dto.TerrainComponentDTO
 import com.mbrlabs.mundus.commons.importer.JsonScene
-import com.mbrlabs.mundus.commons.mapper.CustomComponentConverter
 import com.mbrlabs.mundus.editor.core.converter.SceneConverter
 import com.mbrlabs.mundus.editor.core.io.IOManager
 import com.mbrlabs.mundus.editor.core.project.ProjectContext
@@ -58,7 +56,7 @@ class Exporter(val ioManager: IOManager, val project: ProjectContext, val plugin
         val currentSceneDTO = SceneConverter.convert(project.currScene, customComponentConverters)
         val jsonType = project.settings.export.jsonType
 
-        val task = object: AsyncTask("export_${project.name}") {
+        val task = object : AsyncTask("export_${project.name}") {
             override fun doInBackground() {
                 val assetManager = project.assetManager
                 val step = 100f / (assetManager.assets.size + project.scenes.size)
@@ -74,7 +72,7 @@ class Exporter(val ioManager: IOManager, val project: ProjectContext, val plugin
                 // sleep a bit to open the progress dialog
                 Thread.sleep(250)
 
-                for(asset in assetManager.assets) {
+                for (asset in assetManager.assets) {
                     exportAsset(asset, assetFolder)
                     progress += step
                     setProgressPercent(progress.toInt())
@@ -83,13 +81,17 @@ class Exporter(val ioManager: IOManager, val project: ProjectContext, val plugin
                 }
 
                 // load, convert & copy scenes
-                for(sceneName in project.scenes) {
-                    val file = FileHandle(FilenameUtils.concat(scenesFolder.path(),
-                            sceneName + "." + ProjectManager.PROJECT_SCENE_EXTENSION))
+                for (sceneName in project.scenes) {
+                    val file = FileHandle(
+                        FilenameUtils.concat(
+                            scenesFolder.path(),
+                            sceneName + "." + ProjectManager.PROJECT_SCENE_EXTENSION
+                        )
+                    )
 
                     // load from disk or convert current scene
                     var scene: SceneDTO
-                    if(project.currScene.name == sceneName) {
+                    if (project.currScene.name == sceneName) {
                         scene = currentSceneDTO
                     } else {
                         scene = SceneManager.loadScene(project, sceneName)
@@ -143,7 +145,7 @@ class Exporter(val ioManager: IOManager, val project: ProjectContext, val plugin
 
         // START game objects
         json.writeArrayStart(JsonScene.GAME_OBJECTS)
-        for(go in scene.gameObjects) {
+        for (go in scene.gameObjects) {
             convertGameObject(go, json)
         }
         json.writeArrayEnd()
@@ -173,11 +175,11 @@ class Exporter(val ioManager: IOManager, val project: ProjectContext, val plugin
         // END tags
 
         // components
-        if(go.modelComponent != null) convertModelComponent(go.modelComponent, json)
-        if(go.terrainComponent != null) convertTerrainComponent(go.terrainComponent, json)
+        if (go.modelComponent != null) convertModelComponent(go.modelComponent, json)
+        if (go.terrainComponent != null) convertTerrainComponent(go.terrainComponent, json)
 
         // children
-        for(child in go.childs) {
+        for (child in go.childs) {
             json.writeArrayStart(JsonScene.GO_CHILDREN)
             convertGameObject(child, json)
             json.writeArrayEnd()
@@ -192,7 +194,7 @@ class Exporter(val ioManager: IOManager, val project: ProjectContext, val plugin
 
         // materials
         json.writeObjectStart(JsonScene.MODEL_COMPONENT_MATERIALS)
-        for((key, value) in comp.materials) {
+        for ((key, value) in comp.materials) {
             json.writeValue(key, value)
         }
         json.writeObjectEnd()

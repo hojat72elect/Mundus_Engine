@@ -28,7 +28,7 @@ import com.mbrlabs.mundus.editor.scene3d.components.PickableComponent;
  * Renders a scene graph to an offscreen FBO, encodes the game object's id in
  * the game object's render color (see GameObjectPickerShader) and does mouse
  * picking by decoding the picked color.
- *
+ * <p>
  * See also:
  * http://www.opengl-tutorial.org/miscellaneous/clicking-on-objects/picking-with-an-opengl-hack/
  *
@@ -36,18 +36,6 @@ import com.mbrlabs.mundus.editor.scene3d.components.PickableComponent;
  * @version 20-02-2016
  */
 public class GameObjectPicker extends BasePicker {
-
-    /**
-     * Filter to ignore certain components when picking.
-     */
-    public interface ComponentIgnoreFilter {
-        /**
-         * Whether to ignore the given component or not.
-         * @param component component to check
-         * @return true if component should be ignored
-         */
-        boolean ignore(Component component);
-    }
 
     /**
      * Optional filter which can be used to ignore certain components when picking.
@@ -107,6 +95,7 @@ public class GameObjectPicker extends BasePicker {
 
     /**
      * Sets a filter which can be used to ignore certain components when rendering for picking.
+     *
      * @param filter the filter to set
      */
     public void setIgnoreFilter(ComponentIgnoreFilter filter) {
@@ -120,4 +109,16 @@ public class GameObjectPicker extends BasePicker {
         this.ignoreFilter = null;
     }
 
+    /**
+     * Filter to ignore certain components when picking.
+     */
+    public interface ComponentIgnoreFilter {
+        /**
+         * Whether to ignore the given component or not.
+         *
+         * @param component component to check
+         * @return true if component should be ignored
+         */
+        boolean ignore(Component component);
+    }
 }

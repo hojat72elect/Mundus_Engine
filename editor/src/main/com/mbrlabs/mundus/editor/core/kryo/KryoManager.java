@@ -16,12 +16,6 @@
 
 package com.mbrlabs.mundus.editor.core.kryo;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.util.ArrayList;
-import java.util.Date;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.esotericsoftware.kryo.Kryo;
@@ -30,16 +24,27 @@ import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 import com.esotericsoftware.kryo.serializers.TaggedFieldSerializer;
 import com.mbrlabs.mundus.editor.core.io.IOManager;
-import com.mbrlabs.mundus.editor.core.kryo.descriptors.*;
+import com.mbrlabs.mundus.editor.core.kryo.descriptors.ProjectDescriptor;
+import com.mbrlabs.mundus.editor.core.kryo.descriptors.ProjectRefDescriptor;
+import com.mbrlabs.mundus.editor.core.kryo.descriptors.ProjectSettingsDescriptor;
+import com.mbrlabs.mundus.editor.core.kryo.descriptors.RegistryDescriptor;
+import com.mbrlabs.mundus.editor.core.kryo.descriptors.SceneRefDescriptor;
+import com.mbrlabs.mundus.editor.core.kryo.descriptors.SettingsDescriptor;
 import com.mbrlabs.mundus.editor.core.project.ProjectContext;
 import com.mbrlabs.mundus.editor.core.project.ProjectManager;
 import com.mbrlabs.mundus.editor.core.registry.KeyboardLayout;
 import com.mbrlabs.mundus.editor.core.registry.ProjectRef;
 import com.mbrlabs.mundus.editor.core.registry.Registry;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.util.ArrayList;
+import java.util.Date;
+
 /**
  * Manages descriptor object <-> file io.
- *
+ * <p>
  * This provides only method for loading the serialized data into POJOs. It does
  * not load or initialize any data (like for example it does not load meshes or
  * textures). This has to be done separately (ProjectManager).
@@ -49,7 +54,7 @@ import com.mbrlabs.mundus.editor.core.registry.Registry;
  */
 public class KryoManager implements IOManager {
 
-    private Kryo kryo;
+    private final Kryo kryo;
 
     public KryoManager() {
         // setup kryo
@@ -74,7 +79,7 @@ public class KryoManager implements IOManager {
 
     /**
      * Loads the registry.
-     *
+     * <p>
      * Save to use afterwards, nothing else needs to be loaded.
      *
      * @return mundus registry
@@ -97,8 +102,7 @@ public class KryoManager implements IOManager {
     /**
      * Saves the registry
      *
-     * @param registry
-     *            mundus registry
+     * @param registry mundus registry
      */
     public void saveRegistry(Registry registry) {
         try {
@@ -114,11 +118,10 @@ public class KryoManager implements IOManager {
 
     /**
      * Saves the project context.
-     *
+     * <p>
      * Saves only the project's .pro file, not the individual scenes.
      *
-     * @param context
-     *            project context to save
+     * @param context project context to save
      */
     public void saveProjectContext(ProjectContext context) {
         try {
@@ -137,12 +140,11 @@ public class KryoManager implements IOManager {
 
     /**
      * Loads the project context .pro.
-     *
+     * <p>
      * Does however not load the scenes (only the scene names as reference) or
      * meshes/textures (see ProjectManager).
      *
-     * @param ref
-     *            project to load
+     * @param ref project to load
      * @return loaded project context without scenes
      * @throws FileNotFoundException
      */
@@ -179,7 +181,7 @@ public class KryoManager implements IOManager {
         }
 
         try {
-           kryo.readObjectOrNull(input, RegistryDescriptor.class);
+            kryo.readObjectOrNull(input, RegistryDescriptor.class);
         } catch (KryoException e) {
             // Assume it's not kryo if we get an exception
             return false;
@@ -256,5 +258,4 @@ public class KryoManager implements IOManager {
 //        SceneDescriptor sceneDescriptor = kryo.readObjectOrNull(input, SceneDescriptor.class);
 //        return sceneDescriptor;
 //    }
-
 }

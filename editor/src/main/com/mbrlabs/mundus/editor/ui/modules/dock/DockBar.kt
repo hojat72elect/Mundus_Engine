@@ -39,9 +39,11 @@ class DockBar(private val splitPane: MundusSplitPane) : VisTable(), TabbedPaneLi
 
     init {
         val style = TabbedPane.TabbedPaneStyle(
-                VisUI.getSkin().get(TabbedPane.TabbedPaneStyle::class.java))
+            VisUI.getSkin().get(TabbedPane.TabbedPaneStyle::class.java)
+        )
         style.buttonStyle = VisTextButton.VisTextButtonStyle(
-                VisUI.getSkin().get("toggle", VisTextButton.VisTextButtonStyle::class.java))
+            VisUI.getSkin().get("toggle", VisTextButton.VisTextButtonStyle::class.java)
+        )
 
         tabbedPane = TabbedPane(style)
         tabbedPane.isAllowTabDeselect = true

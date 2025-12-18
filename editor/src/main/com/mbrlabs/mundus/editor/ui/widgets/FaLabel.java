@@ -28,12 +28,13 @@ import com.mbrlabs.mundus.editor.utils.Colors;
 public class FaLabel extends VisLabel {
 
     public final static LabelStyle style = new LabelStyle();
+    public final static LabelStyle styleActive = new LabelStyle();
+
     static {
         style.font = Mundus.INSTANCE.getFaSmall();
         style.fontColor = Colors.INSTANCE.getTEAL();
     }
 
-    public final static LabelStyle styleActive = new LabelStyle();
     static {
         styleActive.font = Mundus.INSTANCE.getFaSmall();
         styleActive.fontColor = Color.WHITE;
@@ -43,5 +44,4 @@ public class FaLabel extends VisLabel {
         super(text);
         setStyle(style);
     }
-
 }

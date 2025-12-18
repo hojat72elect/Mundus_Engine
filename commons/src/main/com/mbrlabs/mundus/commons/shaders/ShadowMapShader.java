@@ -27,6 +27,7 @@ import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector3;
 import com.mbrlabs.mundus.commons.utils.ShaderUtils;
+
 import net.mgsx.gltf.scene3d.attributes.PBRTextureAttribute;
 
 /**
@@ -43,11 +44,9 @@ public class ShadowMapShader extends BaseShader {
     protected final int UNIFORM_ALPHA_TEST = register(new Uniform("u_alphaTest"));
     protected final int UNIFORM_USE_ALPHA_TEST = register(new Uniform("u_useAlphaTest"));
     protected final int UNIFORM_TEXTURE_DIFFUSE = register(new Uniform("u_diffuseTexture"));
-
-    protected ShaderProgram program;
-
-    private final Matrix4 tmpMatrix = new Matrix4();
     protected final Vector3 center = new Vector3();
+    private final Matrix4 tmpMatrix = new Matrix4();
+    protected ShaderProgram program;
 
     public ShadowMapShader() {
         program = ShaderUtils.compile(VERTEX_SHADER, FRAGMENT_SHADER, this);
@@ -65,7 +64,7 @@ public class ShadowMapShader extends BaseShader {
         context.begin();
         //context.setCullFace(GL20.GL_FRONT);
 
-        this.context.setDepthTest(GL20.GL_LEQUAL , 0f, 1f);
+        this.context.setDepthTest(GL20.GL_LEQUAL, 0f, 1f);
         this.context.setDepthMask(true);
 
         program.bind();
@@ -76,7 +75,7 @@ public class ShadowMapShader extends BaseShader {
 
         set(UNIFORM_PROJ_VIEW_MATRIX, tmpMatrix.set(camera.combined).mul(renderable.worldTransform));
 
-        if(renderable.material.has(FloatAttribute.AlphaTest)) {
+        if (renderable.material.has(FloatAttribute.AlphaTest)) {
             set(UNIFORM_USE_ALPHA_TEST, 1);
             FloatAttribute floatAttribute = (FloatAttribute) renderable.material.get(FloatAttribute.AlphaTest);
             set(UNIFORM_ALPHA_TEST, floatAttribute.value);
@@ -85,7 +84,6 @@ public class ShadowMapShader extends BaseShader {
                 PBRTextureAttribute textureAttribute = (PBRTextureAttribute) renderable.material.get(PBRTextureAttribute.Diffuse);
                 set(UNIFORM_TEXTURE_DIFFUSE, textureAttribute.textureDescription.texture);
             }
-
         } else {
             set(UNIFORM_USE_ALPHA_TEST, 0);
         }

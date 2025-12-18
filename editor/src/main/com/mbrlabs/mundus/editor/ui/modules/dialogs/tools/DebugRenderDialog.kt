@@ -25,7 +25,7 @@ class DebugRenderDialog : BaseDialog(TITLE) {
     private val wireFrameMode = VisCheckBox(null)
 
     private val projectManager: ProjectManager = Mundus.inject()
-    private val preferencesManager : MundusPreferencesManager = Mundus.inject()
+    private val preferencesManager: MundusPreferencesManager = Mundus.inject()
     private val debugRenderer: DebugRenderer = Mundus.inject()
 
     init {
@@ -54,8 +54,12 @@ class DebugRenderDialog : BaseDialog(TITLE) {
 
     private fun setupUI() {
         val table = VisTable()
-        table.add(ToolTipLabel("Show Bounding Boxes", "Renders boxes around model objects. Useful for debugging frustum culling as" +
-                "\nthe bounding boxes reflect what frustum culling will use when determining to cull an object. Hotkey: CTRL+F2")).left()
+        table.add(
+            ToolTipLabel(
+                "Show Bounding Boxes", "Renders boxes around model objects. Useful for debugging frustum culling as" +
+                        "\nthe bounding boxes reflect what frustum culling will use when determining to cull an object. Hotkey: CTRL+F2"
+            )
+        ).left()
         table.add(showBoundingBoxes).left().padBottom(10f).row()
 
         table.add(ToolTipLabel("Render Debug On Top", "Whether to render debug lines with depth or not.")).left()

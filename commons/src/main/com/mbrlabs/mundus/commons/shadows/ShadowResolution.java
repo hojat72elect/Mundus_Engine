@@ -22,6 +22,16 @@ public enum ShadowResolution {
         this.value = value;
     }
 
+    public static ShadowResolution valueFromString(String string) {
+        for (ShadowResolution res : values()) {
+            if (res.value.equals(string)) {
+                return res;
+            }
+        }
+
+        return DEFAULT_SHADOW_RESOLUTION;
+    }
+
     public String getValue() {
         return value;
     }
@@ -42,15 +52,4 @@ public enum ShadowResolution {
 
         return new Vector2(2048, 2048);
     }
-
-    public static ShadowResolution valueFromString(String string) {
-        for (ShadowResolution res : values()) {
-            if (res.value.equals(string)) {
-                return res;
-            }
-        }
-
-        return DEFAULT_SHADOW_RESOLUTION;
-    }
-
 }

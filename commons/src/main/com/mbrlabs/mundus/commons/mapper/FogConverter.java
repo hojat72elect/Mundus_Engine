@@ -20,6 +20,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g3d.Environment;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.mbrlabs.mundus.commons.dto.FogDTO;
+
 import net.mgsx.gltf.scene3d.attributes.FogAttribute;
 
 /**
@@ -35,8 +36,12 @@ public class FogConverter {
 
         // Backward compat, near and far plane are new, if not set, give them some
         // default values otherwise entire scene will be foggy on load
-        if (dto.getNearPlane() == 0f) { dto.setNearPlane(500f); }
-        if (dto.getFarPlane() == 0f) { dto.setFarPlane(1000f); }
+        if (dto.getNearPlane() == 0f) {
+            dto.setNearPlane(500f);
+        }
+        if (dto.getFarPlane() == 0f) {
+            dto.setFarPlane(1000f);
+        }
 
         environment.set(new FogAttribute(FogAttribute.FogEquation).set(dto.getNearPlane(), dto.getFarPlane(), dto.getGradient()));
 

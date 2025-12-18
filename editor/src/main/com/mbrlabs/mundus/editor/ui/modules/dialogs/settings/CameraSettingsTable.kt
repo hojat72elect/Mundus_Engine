@@ -62,8 +62,10 @@ class CameraSettingsTable : BaseSettingsTable(), ProjectChangedEvent.ProjectChan
         addSeparator().padBottom(10f)
 
         val label = VisLabel()
-        label.setText("Camera Settings are per scene, not global. You can change camera values at runtime " +
-                "by accessing the scene.cam instance and modifying it in your runtime application as well.")
+        label.setText(
+            "Camera Settings are per scene, not global. You can change camera values at runtime " +
+                    "by accessing the scene.cam instance and modifying it in your runtime application as well."
+        )
         label.wrap = true
         label.width = SettingsDialog.WIDTH * 0.7f
         add(label).expandX().prefWidth(SettingsDialog.WIDTH * 0.7f).row()
@@ -102,12 +104,11 @@ class CameraSettingsTable : BaseSettingsTable(), ProjectChangedEvent.ProjectChan
         nearPlane.textFieldFilter = FloatDigitsOnlyFilter(true)
         nearPlane.addListener(object : ChangeListener() {
             override fun changed(event: ChangeEvent, actor: Actor) {
-                if(nearPlane.isInputValid && !nearPlane.isEmpty) {
+                if (nearPlane.isInputValid && !nearPlane.isEmpty) {
                     try {
                         projectManager.current().currScene.cam.near = nearPlane.text.toFloat()
-                    }
-                    catch (ex : NumberFormatException) {
-                        Mundus.postEvent(LogEvent(LogType.ERROR,"Error parsing field " + nearPlane.name))
+                    } catch (ex: NumberFormatException) {
+                        Mundus.postEvent(LogEvent(LogType.ERROR, "Error parsing field " + nearPlane.name))
                     }
                 }
             }
@@ -116,12 +117,11 @@ class CameraSettingsTable : BaseSettingsTable(), ProjectChangedEvent.ProjectChan
         farPlane.textFieldFilter = FloatDigitsOnlyFilter(true)
         farPlane.addListener(object : ChangeListener() {
             override fun changed(event: ChangeEvent, actor: Actor) {
-                if(farPlane.isInputValid && !farPlane.isEmpty) {
+                if (farPlane.isInputValid && !farPlane.isEmpty) {
                     try {
                         projectManager.current().currScene.cam.far = farPlane.text.toFloat()
-                    }
-                    catch (ex : NumberFormatException) {
-                        Mundus.postEvent(LogEvent(LogType.ERROR,"Error parsing field " + farPlane.name))
+                    } catch (ex: NumberFormatException) {
+                        Mundus.postEvent(LogEvent(LogType.ERROR, "Error parsing field " + farPlane.name))
                     }
                 }
             }
@@ -130,14 +130,13 @@ class CameraSettingsTable : BaseSettingsTable(), ProjectChangedEvent.ProjectChan
         fov.textFieldFilter = FloatDigitsOnlyFilter(true)
         fov.addListener(object : ChangeListener() {
             override fun changed(event: ChangeEvent, actor: Actor) {
-                if(fov.isInputValid && !fov.isEmpty) {
+                if (fov.isInputValid && !fov.isEmpty) {
                     try {
                         if (projectManager.current().currScene.cam is PerspectiveCamera) {
                             (projectManager.current().currScene.cam as PerspectiveCamera).fieldOfView = fov.text.toFloat()
                         }
-                    }
-                    catch (ex : NumberFormatException) {
-                        Mundus.postEvent(LogEvent(LogType.ERROR,"Error parsing field " + fov.name))
+                    } catch (ex: NumberFormatException) {
+                        Mundus.postEvent(LogEvent(LogType.ERROR, "Error parsing field " + fov.name))
                     }
                 }
             }

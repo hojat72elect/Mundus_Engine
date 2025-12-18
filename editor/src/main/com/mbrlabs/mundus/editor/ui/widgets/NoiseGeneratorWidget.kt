@@ -14,7 +14,7 @@ import com.mbrlabs.mundus.editor.terrain.Terraformer
  * @author JamesTKhan
  * @version October 24, 2022
  */
-class NoiseGeneratorWidget() : BaseWidget(), UpdateNoiseTextureEvent.UpdateNoiseTextureListener  {
+class NoiseGeneratorWidget() : BaseWidget(), UpdateNoiseTextureEvent.UpdateNoiseTextureListener {
     var generator: FastNoiseGenerator
     var renderWidget: RenderWidget
 

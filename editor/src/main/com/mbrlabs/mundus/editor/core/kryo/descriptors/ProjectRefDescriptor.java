@@ -44,5 +44,4 @@ public class ProjectRefDescriptor {
     public void setPath(String path) {
         this.path = path;
     }
-
 }

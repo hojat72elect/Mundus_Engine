@@ -26,9 +26,10 @@ import com.badlogic.gdx.utils.Array;
 import com.mbrlabs.mundus.commons.assets.Asset;
 import com.mbrlabs.mundus.commons.assets.TerrainAsset;
 import com.mbrlabs.mundus.commons.assets.TerrainLayerAsset;
-import com.mbrlabs.mundus.commons.scene3d.GameObject;
 import com.mbrlabs.mundus.commons.lod.LevelOfDetailManager;
 import com.mbrlabs.mundus.commons.lod.TerrainLevelOfDetailManager;
+import com.mbrlabs.mundus.commons.scene3d.GameObject;
+
 import net.mgsx.gltf.scene3d.attributes.PBRTextureAttribute;
 
 import java.util.Objects;
@@ -40,17 +41,14 @@ import java.util.Objects;
 public class TerrainComponent extends CullableComponent implements AssetUsage, RenderableComponent {
 
     private static final String TAG = TerrainComponent.class.getSimpleName();
-
+    private final LevelOfDetailManager lodManager;
     protected ModelInstance modelInstance;
     protected TerrainAsset terrainAsset;
-
     // Neighbor terrain components
     private TerrainComponent topNeighbor;
     private TerrainComponent rightNeighbor;
     private TerrainComponent bottomNeighbor;
     private TerrainComponent leftNeighbor;
-
-    private final LevelOfDetailManager lodManager;
 
     public TerrainComponent(GameObject go) {
         super(go);
@@ -73,14 +71,6 @@ public class TerrainComponent extends CullableComponent implements AssetUsage, R
         terrainAsset.updateUvScale(uvScale);
     }
 
-    public void setTerrainAsset(TerrainAsset terrainAsset) {
-        this.terrainAsset = terrainAsset;
-        modelInstance = new ModelInstance(terrainAsset.getTerrain().getModel());
-        modelInstance.transform = gameObject.getTransform();
-        applyMaterial();
-        setDimensions(modelInstance);
-    }
-
     public void applyMaterial() {
         if (terrainAsset.getMaterialAsset() == null) return;
 
@@ -99,6 +89,14 @@ public class TerrainComponent extends CullableComponent implements AssetUsage, R
 
     public TerrainAsset getTerrainAsset() {
         return terrainAsset;
+    }
+
+    public void setTerrainAsset(TerrainAsset terrainAsset) {
+        this.terrainAsset = terrainAsset;
+        modelInstance = new ModelInstance(terrainAsset.getTerrain().getModel());
+        modelInstance.transform = gameObject.getTransform();
+        applyMaterial();
+        setDimensions(modelInstance);
     }
 
     public TerrainComponent getTopNeighbor() {
@@ -192,12 +190,10 @@ public class TerrainComponent extends CullableComponent implements AssetUsage, R
      * point doesn't belong to terrain -- it returns default
      * <code>Vector.Y<code> normal.
      *
-     * @param worldX
-     *            the x coord in world
-     * @param worldZ
-     *            the z coord in world
+     * @param worldX the x coord in world
+     * @param worldZ the z coord in world
      * @return normal at that point. If point doesn't belong to terrain -- it
-     *         returns default <code>Vector.Y<code> normal.
+     * returns default <code>Vector.Y<code> normal.
      */
     public Vector3 getNormalAtWordCoordinate(Vector3 out, float worldX, float worldZ) {
         return terrainAsset.getTerrain().getNormalAtWordCoordinate(out, worldX, worldZ, modelInstance.transform);
@@ -217,6 +213,7 @@ public class TerrainComponent extends CullableComponent implements AssetUsage, R
 
     /**
      * Determines if the world coordinates are within the terrains X and Z boundaries, does not including height
+     *
      * @param worldX worldX to check
      * @param worldZ worldZ to check
      * @return boolean true if within the terrains boundary, else false

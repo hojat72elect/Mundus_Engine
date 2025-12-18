@@ -20,8 +20,12 @@ package com.mbrlabs.mundus.editor.core.registry;
  * Necessary, because of stupid GLFW keyocde mapping.
  */
 public enum KeyboardLayout {
-    /** German layout. */
+    /**
+     * German layout.
+     */
     QWERTZ,
-    /** English layout */
+    /**
+     * English layout
+     */
     QWERTY
 }

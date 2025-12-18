@@ -48,7 +48,7 @@ class AssetSelectionField : VisTable() {
         add(textField).grow()
         add(btn).padLeft(5f).row()
 
-        internalListener = object: AssetPickerDialog.AssetPickerListener {
+        internalListener = object : AssetPickerDialog.AssetPickerListener {
             override fun onSelected(asset: Asset?) {
                 setAsset(asset)
                 pickerListener?.onSelected(asset)

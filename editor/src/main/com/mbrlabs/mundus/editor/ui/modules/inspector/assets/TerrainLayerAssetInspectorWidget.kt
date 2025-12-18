@@ -25,12 +25,12 @@ import com.mbrlabs.mundus.editor.ui.widgets.TerrainTextureLayerWidget
  * @author JamesTKhan
  * @version July 12, 2023
  */
-class TerrainLayerAssetInspectorWidget() : BaseInspectorWidget(TITLE)  {
+class TerrainLayerAssetInspectorWidget() : BaseInspectorWidget(TITLE) {
     companion object {
         private val TITLE = "Terrain Layer Asset"
     }
 
-    private var terrainTextureLayerWidget : TerrainTextureLayerWidget? = null
+    private var terrainTextureLayerWidget: TerrainTextureLayerWidget? = null
     private var layerAsset: TerrainLayerAsset? = null
 
     init {

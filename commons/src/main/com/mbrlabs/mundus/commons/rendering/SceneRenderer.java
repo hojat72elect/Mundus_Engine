@@ -8,6 +8,7 @@ import com.mbrlabs.mundus.commons.water.WaterResolution;
 
 /**
  * Responsible for rendering a scene.
+ *
  * @author JamesTKhan
  * @version October 03, 2023
  */
@@ -28,7 +29,7 @@ public interface SceneRenderer {
      * Renders all renderable components (except Water) of the given parent game objects children
      * recursively using default shaders.
      *
-     * @param batch the model batch to use
+     * @param batch  the model batch to use
      * @param parent the parent game object
      */
     void renderComponents(Scene scene, ModelBatch batch, GameObject parent);
@@ -37,16 +38,16 @@ public interface SceneRenderer {
      * Renders all renderable components (except Water) of the given parent game objects children
      * recursively.
      *
-     * @param batch the model batch to use
-     * @param parent the parent game object
-     * @param shader the shader to use
+     * @param batch       the model batch to use
+     * @param parent      the parent game object
+     * @param shader      the shader to use
      * @param isDepthPass whether this is a depth render pass
      */
     void renderComponents(Scene scene, ModelBatch batch, GameObject parent, Shader shader, boolean isDepthPass);
 
-    void setDepthShader(Shader depthShader);
-
     Shader getDepthShader();
+
+    void setDepthShader(Shader depthShader);
 
     void updateWaterResolution(WaterResolution waterResolution);
 }

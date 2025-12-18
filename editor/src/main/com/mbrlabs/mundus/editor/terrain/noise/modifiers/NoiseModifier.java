@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.terrain.noise.modifiers;
 
 import com.mbrlabs.mundus.editor.terrain.noise.TerrainNoiseData;
@@ -6,11 +5,12 @@ import com.mbrlabs.mundus.editor.utils.FastNoiseLite;
 
 /**
  * Base Noise Modifier for modifying terrain noise
+ *
  * @author JamesTKhan
  * @version November 02, 2022
  */
 public abstract class NoiseModifier implements TerrainModifier {
-    protected static final FastNoiseLite.Vector2 fVector2 = new FastNoiseLite.Vector2(0,0);
+    protected static final FastNoiseLite.Vector2 fVector2 = new FastNoiseLite.Vector2(0, 0);
     protected FastNoiseLite noise = new FastNoiseLite();
     protected float domainWarpFrequency = 0.0f;
     protected FastNoiseLite.NoiseType type;
@@ -89,23 +89,27 @@ public abstract class NoiseModifier implements TerrainModifier {
         this.domainWarpFrequency = domainWarpFrequency;
     }
 
-    public void setFractalGain(float gain) {
-        this.noise.SetFractalGain(gain);
-    }
-
     public float getFractalGain() {
         return noise.GetFractalGain();
     }
 
-    public void setFractalLacunarity(float lacunariy) {
-        this.noise.SetFractalLacunarity(lacunariy);
+    public void setFractalGain(float gain) {
+        this.noise.SetFractalGain(gain);
     }
 
     public float getFractalLacunarity() {
         return noise.GetFractalLacunarity();
     }
 
-    public boolean getNoiseAdditive() {return this.additive;}
+    public void setFractalLacunarity(float lacunariy) {
+        this.noise.SetFractalLacunarity(lacunariy);
+    }
 
-    public void setNoiseAdditive(boolean additive) {this.additive = additive;}
+    public boolean getNoiseAdditive() {
+        return this.additive;
+    }
+
+    public void setNoiseAdditive(boolean additive) {
+        this.additive = additive;
+    }
 }

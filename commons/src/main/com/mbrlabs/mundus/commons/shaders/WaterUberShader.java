@@ -19,6 +19,7 @@ import com.mbrlabs.mundus.commons.water.attributes.WaterFloatAttribute;
 import com.mbrlabs.mundus.commons.water.attributes.WaterIntAttribute;
 import com.mbrlabs.mundus.commons.water.attributes.WaterMaterialAttribute;
 import com.mbrlabs.mundus.commons.water.attributes.WaterTextureAttribute;
+
 import net.mgsx.gltf.scene3d.attributes.FogAttribute;
 import net.mgsx.gltf.scene3d.shaders.PBRShaderConfig;
 
@@ -29,135 +30,17 @@ import net.mgsx.gltf.scene3d.shaders.PBRShaderConfig;
 public class WaterUberShader extends LightShader {
     protected static final String VERTEX_SHADER = "com/mbrlabs/mundus/commons/shaders/water.uber.vert.glsl";
     protected static final String FRAGMENT_SHADER = "com/mbrlabs/mundus/commons/shaders/water.uber.frag.glsl";
-
-    public static class WaterInputs {
-        public final static Uniform diffuseUVTransform = new Uniform("u_diffuseUVTransform");
-
-        // Color Attributes
-        public final static Uniform color = new Uniform("u_color");
-
-        // Float attributes
-        public final static Uniform moveFactor = new Uniform("u_moveFactor");
-        public final static Uniform tiling = new Uniform("u_tiling");
-        public final static Uniform waveStrength = new Uniform("u_waveStrength");
-        public final static Uniform reflectivity = new Uniform("u_reflectivity");
-        public final static Uniform shineDamper = new Uniform("u_shineDamper");
-        public final static Uniform foamScale = new Uniform("u_foamScale");
-        public final static Uniform foamEdgeBias = new Uniform("u_foamEdgeBias");
-        public final static Uniform foamEdgeDistance = new Uniform("u_foamEdgeDistance");
-        public final static Uniform foamFallOffDistance = new Uniform("u_foamFallOffDistance");
-        public final static Uniform foamScrollSpeed = new Uniform("u_foamScrollSpeed");
-        public final static Uniform maxVisibleDepth = new Uniform("u_maxVisibleDepth");
-
-        // Texture attributes
-        public final static Uniform reflectionTexture = new Uniform("u_reflectionTexture");
-        public final static Uniform refractionTexture = new Uniform("u_refractionTexture");
-        public final static Uniform refractionDepthTexture = new Uniform("u_refractionDepthTexture");
-        public final static Uniform dudvTexture = new Uniform("u_dudvTexture");
-        public final static Uniform normalMapTexture = new Uniform("u_normalMapTexture");
-        public final static Uniform foamTexture = new Uniform("u_foamTexture");
-
-        public final static Uniform fogColor = new Uniform("u_fogColor");
-        public final static Uniform fogEquation = new Uniform("u_fogEquation");
-    }
-
-    public static class WaterSetters {
-        public final static Setter diffuseUVTransform = new LocalSetter() {
-            @Override
-            public void set (BaseShader shader, int inputID, Renderable renderable, Attributes combinedAttributes) {
-                WaterMaterial mat = getWaterMaterial(renderable);
-                WaterFloatAttribute attr = (WaterFloatAttribute) mat.get(WaterFloatAttribute.FoamUVOffset);
-                if (attr != null)
-                    shader.set(inputID,  attr.value, attr.value, 200f, 200f);
-            }
-        };
-
-        // Color attributes
-        public final static Setter color = new LocalSetter() {
-            @Override
-            public void set (BaseShader shader, int inputID, Renderable renderable, Attributes combinedAttributes) {
-                WaterMaterialAttribute waterMaterialAttribute = (WaterMaterialAttribute) combinedAttributes
-                        .get(WaterMaterialAttribute.WaterMaterial);
-                WaterMaterial waterMaterial = waterMaterialAttribute.waterMaterial;
-                WaterColorAttribute attr = (WaterColorAttribute)(waterMaterial.get(WaterColorAttribute.Diffuse));
-
-                if (attr != null)
-                    shader.set(inputID, attr.color);
-            }
-        };
-
-        // Float attributes
-        public final static Setter moveFactor = new FloatSetter(WaterFloatAttribute.MoveFactor, 0);
-        public final static Setter tiling = new FloatSetter(WaterFloatAttribute.Tiling, Water.DEFAULT_TILING);
-        public final static Setter waveStrength = new FloatSetter(WaterFloatAttribute.WaveStrength, Water.DEFAULT_WAVE_STRENGTH);
-        public final static Setter reflectivity = new FloatSetter(WaterFloatAttribute.Reflectivity, Water.DEFAULT_REFLECTIVITY);
-        public final static Setter shineDamper = new FloatSetter(WaterFloatAttribute.ShineDamper, Water.DEFAULT_SHINE_DAMPER);
-        public final static Setter foamScale = new FloatSetter(WaterFloatAttribute.FoamPatternScale, Water.DEFAULT_FOAM_SCALE);
-        public final static Setter foamEdgeBias = new FloatSetter(WaterFloatAttribute.FoamEdgeBias, Water.DEFAULT_FOAM_EDGE_BIAS);
-        public final static Setter foamEdgeDistance = new FloatSetter(WaterFloatAttribute.FoamEdgeDistance, Water.DEFAULT_FOAM_EDGE_DISTANCE);
-        public final static Setter foamFallOffDistance = new FloatSetter(WaterFloatAttribute.FoamFallOffDistance, Water.DEFAULT_FOAM_FALL_OFF_DISTANCE);
-        public final static Setter foamScrollSpeed = new FloatSetter(WaterFloatAttribute.FoamScrollSpeed, Water.DEFAULT_FOAM_SCROLL_SPEED);
-        public final static Setter maxVisibleDepth = new FloatSetter(WaterFloatAttribute.MaxVisibleDepth, Water.DEFAULT_MAX_VISIBLE_DEPTH);
-
-        // Texture attributes
-        public final static Setter reflectionTexture = getTextureSetter(WaterTextureAttribute.Reflection);
-        public final static Setter refractionTexture = getTextureSetter(WaterTextureAttribute.Refraction);
-        public final static Setter refractionDepthTexture = getTextureSetter(WaterTextureAttribute.RefractionDepth);
-        public final static Setter dudvTexture = getTextureSetter(WaterTextureAttribute.Dudv);
-        public final static Setter normalMapTexture = getTextureSetter(WaterTextureAttribute.NormalMap);
-        public final static Setter foamTexture = getTextureSetter(WaterTextureAttribute.Foam);
-
-        private static Setter getTextureSetter(final long attribute) {
-            return new LocalSetter() {
-                @Override
-                public void set(BaseShader shader, int inputID, Renderable renderable, Attributes combinedAttributes) {
-                    WaterMaterialAttribute waterMaterialAttribute = (WaterMaterialAttribute) combinedAttributes
-                            .get(WaterMaterialAttribute.WaterMaterial);
-                    WaterMaterial waterMaterial = waterMaterialAttribute.waterMaterial;
-
-                    WaterTextureAttribute waterTextureAttributeU = waterMaterial.get(WaterTextureAttribute.class, attribute);
-                    final int unit = shader.context.textureBinder
-                            .bind(waterTextureAttributeU.textureDescription);
-                    shader.set(inputID, unit);
-                }
-            };
-        }
-
-    }
-
-    /**
-     * Custom Setter that tracks the long attribute value and default value to set
-     */
-    public static class FloatSetter extends LocalSetter {
-        private final long attribute;
-        private final float defaultValue;
-
-        public FloatSetter(long attribute, float defaultValue) {
-            this.attribute = attribute;
-            this.defaultValue = defaultValue;
-        }
-
-        @Override
-        public void set(BaseShader shader, int inputID, Renderable renderable, Attributes combinedAttributes) {
-            shader.set(inputID, getFloatValue(renderable, attribute, defaultValue));
-        }
-    }
-
     // Global uniforms
     public final int u_projViewTrans;
-
     // env
     public final int u_fogColor;
     public final int u_fogEquation;
-
     // Object uniforms
     public final int u_worldTrans;
     public final int u_cameraPosition;
     public final int u_cameraNearFar;
-
     // Water color uniforms
     public final int u_color;
-
     // Water float uniforms
     public final int u_diffuseUVTransform;
     public final int u_tiling;
@@ -171,7 +54,6 @@ public class WaterUberShader extends LightShader {
     public final int u_foamFallOffDistance;
     public final int u_foamScrollSpeed;
     public final int u_maxVisibleDepth;
-
     // Water texture uniforms
     public final int u_reflectionTexture;
     public final int u_refractionTexture;
@@ -179,15 +61,16 @@ public class WaterUberShader extends LightShader {
     public final int u_dudvTexture;
     public final int u_normalMapTexture;
     public final int u_foamTexture;
-
-    /** The renderable used to create this shader, invalid after the call to init */
-    private Renderable renderable;
-    private DefaultShader.Config config;
-
-    /** The attributes that this shader supports */
+    /**
+     * The attributes that this shader supports
+     */
     protected final long attributesMask;
     protected final long waterMaterialMask;
-
+    /**
+     * The renderable used to create this shader, invalid after the call to init
+     */
+    private Renderable renderable;
+    private DefaultShader.Config config;
     public WaterUberShader(Renderable renderable, DefaultShader.Config config) {
         this.renderable = renderable;
         this.config = config;
@@ -235,6 +118,20 @@ public class WaterUberShader extends LightShader {
         u_fogEquation = register(WaterInputs.fogEquation);
     }
 
+    private static float getFloatValue(Renderable renderable, long attribute, float defaultValue) {
+        WaterMaterial waterMaterial = getWaterMaterial(renderable);
+        WaterFloatAttribute attr = (WaterFloatAttribute) waterMaterial.get(attribute);
+        if (attr != null) {
+            return attr.value;
+        } else {
+            return defaultValue;
+        }
+    }
+
+    private static WaterMaterial getWaterMaterial(Renderable renderable) {
+        return renderable.material.get(WaterMaterialAttribute.class, WaterMaterialAttribute.WaterMaterial).waterMaterial;
+    }
+
     @Override
     public void init() {
         final ShaderProgram program = this.program;
@@ -264,8 +161,8 @@ public class WaterUberShader extends LightShader {
     @Override
     public void render(Renderable renderable, Attributes combinedAttributes) {
         if (combinedAttributes.has(ColorAttribute.Fog) && combinedAttributes.has(FogAttribute.FogEquation)) {
-            set(u_fogColor, ((ColorAttribute)combinedAttributes.get(ColorAttribute.Fog)).color);
-            set(u_fogEquation, ((FogAttribute)combinedAttributes.get(FogAttribute.FogEquation)).value);
+            set(u_fogColor, ((ColorAttribute) combinedAttributes.get(ColorAttribute.Fog)).color);
+            set(u_fogEquation, ((FogAttribute) combinedAttributes.get(FogAttribute.FogEquation)).value);
         }
 
         int cullFace = GL20.GL_BACK;
@@ -300,20 +197,6 @@ public class WaterUberShader extends LightShader {
         return waterMaterialMask == waterMaterial.getMask();
     }
 
-    private static float getFloatValue(Renderable renderable, long attribute, float defaultValue) {
-        WaterMaterial waterMaterial = getWaterMaterial(renderable);
-        WaterFloatAttribute attr = (WaterFloatAttribute) waterMaterial.get(attribute);
-        if (attr != null) {
-            return attr.value;
-        } else {
-            return defaultValue;
-        }
-    }
-
-    private static WaterMaterial getWaterMaterial(Renderable renderable) {
-        return renderable.material.get(WaterMaterialAttribute.class, WaterMaterialAttribute.WaterMaterial).waterMaterial;
-    }
-
     private String createPrefixForRenderable(Renderable renderable) {
         String prefix = "";
 
@@ -333,13 +216,13 @@ public class WaterUberShader extends LightShader {
 
         if (config instanceof PBRShaderConfig) {
             PBRShaderConfig pbrShaderConfig = (PBRShaderConfig) config;
-            if(pbrShaderConfig.manualSRGB != PBRShaderConfig.SRGB.NONE){
+            if (pbrShaderConfig.manualSRGB != PBRShaderConfig.SRGB.NONE) {
                 prefix += "#define MANUAL_SRGB\n";
-                if(pbrShaderConfig.manualSRGB == PBRShaderConfig.SRGB.FAST){
+                if (pbrShaderConfig.manualSRGB == PBRShaderConfig.SRGB.FAST) {
                     prefix += "#define SRGB_FAST_APPROXIMATION\n";
                 }
             }
-            if(pbrShaderConfig.manualGammaCorrection){
+            if (pbrShaderConfig.manualGammaCorrection) {
                 prefix += "#define GAMMA_CORRECTION " + pbrShaderConfig.gamma + "\n";
             }
         }
@@ -347,5 +230,117 @@ public class WaterUberShader extends LightShader {
         config = null;
 
         return prefix;
+    }
+
+    public static class WaterInputs {
+        public final static Uniform diffuseUVTransform = new Uniform("u_diffuseUVTransform");
+
+        // Color Attributes
+        public final static Uniform color = new Uniform("u_color");
+
+        // Float attributes
+        public final static Uniform moveFactor = new Uniform("u_moveFactor");
+        public final static Uniform tiling = new Uniform("u_tiling");
+        public final static Uniform waveStrength = new Uniform("u_waveStrength");
+        public final static Uniform reflectivity = new Uniform("u_reflectivity");
+        public final static Uniform shineDamper = new Uniform("u_shineDamper");
+        public final static Uniform foamScale = new Uniform("u_foamScale");
+        public final static Uniform foamEdgeBias = new Uniform("u_foamEdgeBias");
+        public final static Uniform foamEdgeDistance = new Uniform("u_foamEdgeDistance");
+        public final static Uniform foamFallOffDistance = new Uniform("u_foamFallOffDistance");
+        public final static Uniform foamScrollSpeed = new Uniform("u_foamScrollSpeed");
+        public final static Uniform maxVisibleDepth = new Uniform("u_maxVisibleDepth");
+
+        // Texture attributes
+        public final static Uniform reflectionTexture = new Uniform("u_reflectionTexture");
+        public final static Uniform refractionTexture = new Uniform("u_refractionTexture");
+        public final static Uniform refractionDepthTexture = new Uniform("u_refractionDepthTexture");
+        public final static Uniform dudvTexture = new Uniform("u_dudvTexture");
+        public final static Uniform normalMapTexture = new Uniform("u_normalMapTexture");
+        public final static Uniform foamTexture = new Uniform("u_foamTexture");
+
+        public final static Uniform fogColor = new Uniform("u_fogColor");
+        public final static Uniform fogEquation = new Uniform("u_fogEquation");
+    }
+
+    public static class WaterSetters {
+        public final static Setter diffuseUVTransform = new LocalSetter() {
+            @Override
+            public void set(BaseShader shader, int inputID, Renderable renderable, Attributes combinedAttributes) {
+                WaterMaterial mat = getWaterMaterial(renderable);
+                WaterFloatAttribute attr = (WaterFloatAttribute) mat.get(WaterFloatAttribute.FoamUVOffset);
+                if (attr != null)
+                    shader.set(inputID, attr.value, attr.value, 200f, 200f);
+            }
+        };
+
+        // Color attributes
+        public final static Setter color = new LocalSetter() {
+            @Override
+            public void set(BaseShader shader, int inputID, Renderable renderable, Attributes combinedAttributes) {
+                WaterMaterialAttribute waterMaterialAttribute = (WaterMaterialAttribute) combinedAttributes
+                        .get(WaterMaterialAttribute.WaterMaterial);
+                WaterMaterial waterMaterial = waterMaterialAttribute.waterMaterial;
+                WaterColorAttribute attr = (WaterColorAttribute) (waterMaterial.get(WaterColorAttribute.Diffuse));
+
+                if (attr != null)
+                    shader.set(inputID, attr.color);
+            }
+        };
+
+        // Float attributes
+        public final static Setter moveFactor = new FloatSetter(WaterFloatAttribute.MoveFactor, 0);
+        public final static Setter tiling = new FloatSetter(WaterFloatAttribute.Tiling, Water.DEFAULT_TILING);
+        public final static Setter waveStrength = new FloatSetter(WaterFloatAttribute.WaveStrength, Water.DEFAULT_WAVE_STRENGTH);
+        public final static Setter reflectivity = new FloatSetter(WaterFloatAttribute.Reflectivity, Water.DEFAULT_REFLECTIVITY);
+        public final static Setter shineDamper = new FloatSetter(WaterFloatAttribute.ShineDamper, Water.DEFAULT_SHINE_DAMPER);
+        public final static Setter foamScale = new FloatSetter(WaterFloatAttribute.FoamPatternScale, Water.DEFAULT_FOAM_SCALE);
+        public final static Setter foamEdgeBias = new FloatSetter(WaterFloatAttribute.FoamEdgeBias, Water.DEFAULT_FOAM_EDGE_BIAS);
+        public final static Setter foamEdgeDistance = new FloatSetter(WaterFloatAttribute.FoamEdgeDistance, Water.DEFAULT_FOAM_EDGE_DISTANCE);
+        public final static Setter foamFallOffDistance = new FloatSetter(WaterFloatAttribute.FoamFallOffDistance, Water.DEFAULT_FOAM_FALL_OFF_DISTANCE);
+        public final static Setter foamScrollSpeed = new FloatSetter(WaterFloatAttribute.FoamScrollSpeed, Water.DEFAULT_FOAM_SCROLL_SPEED);
+        public final static Setter maxVisibleDepth = new FloatSetter(WaterFloatAttribute.MaxVisibleDepth, Water.DEFAULT_MAX_VISIBLE_DEPTH);
+
+        // Texture attributes
+        public final static Setter reflectionTexture = getTextureSetter(WaterTextureAttribute.Reflection);
+        public final static Setter refractionTexture = getTextureSetter(WaterTextureAttribute.Refraction);
+        public final static Setter refractionDepthTexture = getTextureSetter(WaterTextureAttribute.RefractionDepth);
+        public final static Setter dudvTexture = getTextureSetter(WaterTextureAttribute.Dudv);
+        public final static Setter normalMapTexture = getTextureSetter(WaterTextureAttribute.NormalMap);
+        public final static Setter foamTexture = getTextureSetter(WaterTextureAttribute.Foam);
+
+        private static Setter getTextureSetter(final long attribute) {
+            return new LocalSetter() {
+                @Override
+                public void set(BaseShader shader, int inputID, Renderable renderable, Attributes combinedAttributes) {
+                    WaterMaterialAttribute waterMaterialAttribute = (WaterMaterialAttribute) combinedAttributes
+                            .get(WaterMaterialAttribute.WaterMaterial);
+                    WaterMaterial waterMaterial = waterMaterialAttribute.waterMaterial;
+
+                    WaterTextureAttribute waterTextureAttributeU = waterMaterial.get(WaterTextureAttribute.class, attribute);
+                    final int unit = shader.context.textureBinder
+                            .bind(waterTextureAttributeU.textureDescription);
+                    shader.set(inputID, unit);
+                }
+            };
+        }
+    }
+
+    /**
+     * Custom Setter that tracks the long attribute value and default value to set
+     */
+    public static class FloatSetter extends LocalSetter {
+        private final long attribute;
+        private final float defaultValue;
+
+        public FloatSetter(long attribute, float defaultValue) {
+            this.attribute = attribute;
+            this.defaultValue = defaultValue;
+        }
+
+        @Override
+        public void set(BaseShader shader, int inputID, Renderable renderable, Attributes combinedAttributes) {
+            shader.set(inputID, getFloatValue(renderable, attribute, defaultValue));
+        }
     }
 }

@@ -26,18 +26,18 @@ import com.badlogic.gdx.utils.GdxRuntimeException;
 /**
  * Modified version of Kotcrab's CollapsibleWidget.
  * https://github.com/kotcrab/VisEditor/blob/b2ea63a045e805099ddd16778517d46d2419a637/UI/src/com/kotcrab/vis/ui/widget/CollapsibleWidget.java
- *
+ * <p>
  * Size of expandable content expands to parent WidgetGroup.
- *
+ * <p>
  * In layout():
- *
+ * <p>
  * table.setBounds(0, 0, table.getPrefWidth(), table.getPrefHeight()); ===>
  * table.setBounds(0, 0, getWidth(), getHeight());
  */
 public class CollapseWidget extends WidgetGroup {
     private Table table;
 
-    private CollapseAction collapseAction = new CollapseAction();
+    private final CollapseAction collapseAction = new CollapseAction();
 
     private boolean collapsed;
     private boolean actionRunning;
@@ -81,12 +81,12 @@ public class CollapseWidget extends WidgetGroup {
         }
     }
 
-    public void setCollapsed(boolean collapse) {
-        setCollapsed(collapse, true);
-    }
-
     public boolean isCollapsed() {
         return collapsed;
+    }
+
+    public void setCollapsed(boolean collapse) {
+        setCollapsed(collapse, true);
     }
 
     private void updateTouchable() {
@@ -115,7 +115,7 @@ public class CollapseWidget extends WidgetGroup {
 
         table.setBounds(0, 0, getWidth(), getHeight());
 
-        if (actionRunning == false) {
+        if (!actionRunning) {
             if (collapsed)
                 currentHeight = 0;
             else
@@ -132,7 +132,7 @@ public class CollapseWidget extends WidgetGroup {
     public float getPrefHeight() {
         if (table == null) return 0;
 
-        if (actionRunning == false) {
+        if (!actionRunning) {
             if (collapsed)
                 return 0;
             else
@@ -177,5 +177,4 @@ public class CollapseWidget extends WidgetGroup {
             return !actionRunning;
         }
     }
-
 }

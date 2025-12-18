@@ -9,9 +9,9 @@ import com.mbrlabs.mundus.commons.scene3d.components.TerrainComponent;
 import com.mbrlabs.mundus.commons.utils.Pools;
 import com.mbrlabs.mundus.editor.Mundus;
 import com.mbrlabs.mundus.editor.core.project.ProjectContext;
-import com.mbrlabs.mundus.editorcommons.events.TerrainVerticesChangedEvent;
 import com.mbrlabs.mundus.editor.history.commands.TerrainStitchCommand;
 import com.mbrlabs.mundus.editor.ui.UI;
+import com.mbrlabs.mundus.editorcommons.events.TerrainVerticesChangedEvent;
 
 /**
  * Utility class to stitch all terrains within a scene together based on their neighbors.
@@ -22,14 +22,18 @@ import com.mbrlabs.mundus.editor.ui.UI;
  */
 public class TerrainStitcher {
 
-    /** The number of steps to take when stitching, lower = sharper transitions */
-    public static int numSteps = 10;
-
-    /** Whether to include the GameObject world height when stitching */
-    public static boolean includeWorldHeight = false;
-
-    /** Float comparison threshold */
+    /**
+     * Float comparison threshold
+     */
     private static final float threshold = 0.001f;
+    /**
+     * The number of steps to take when stitching, lower = sharper transitions
+     */
+    public static int numSteps = 10;
+    /**
+     * Whether to include the GameObject world height when stitching
+     */
+    public static boolean includeWorldHeight = false;
 
     public static void stitch(ProjectContext projectContext) {
         // Get all the terrain components
@@ -37,7 +41,7 @@ public class TerrainStitcher {
         Array<TerrainComponent> terrainComponents = new Array<>();
 
         for (GameObject go : terrainGOs) {
-            TerrainComponent terrainComponent = (TerrainComponent) go.findComponentByType(Component.Type.TERRAIN);
+            TerrainComponent terrainComponent = go.findComponentByType(Component.Type.TERRAIN);
 
             int length = terrainComponent.getTerrainAsset().getTerrain().vertexResolution;
             if (numSteps > length) {
@@ -215,5 +219,4 @@ public class TerrainStitcher {
         Pools.vector3Pool.free(tmp);
         return worldHeight;
     }
-
 }

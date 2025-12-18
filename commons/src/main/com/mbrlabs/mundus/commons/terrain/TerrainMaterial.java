@@ -62,10 +62,10 @@ public class TerrainMaterial extends TerrainAttributes {
     }
 
     public void removeNormalTexture(SplatTexture.Channel channel) {
-            normalTextures.remove(channel);
-            if (has(getTerrainAttribute(channel, true))) {
-                remove(getTerrainAttribute(channel, true));
-            }
+        normalTextures.remove(channel);
+        if (has(getTerrainAttribute(channel, true))) {
+            remove(getTerrainAttribute(channel, true));
+        }
     }
 
     public void setSplatTexture(SplatTexture tex) {
@@ -189,5 +189,4 @@ public class TerrainMaterial extends TerrainAttributes {
     public boolean hasNormalTextures() {
         return normalTextures.size() > 0;
     }
-
 }

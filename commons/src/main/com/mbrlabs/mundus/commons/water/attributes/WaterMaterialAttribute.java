@@ -17,14 +17,6 @@ public class WaterMaterialAttribute extends Attribute {
 
     public WaterMaterial waterMaterial;
 
-    /**
-     * Method to check whether the specified type is a valid DoubleAttribute
-     * type
-     */
-    public static Boolean is(final long type) {
-        return (type & Mask) != 0;
-    }
-
     protected WaterMaterialAttribute(long type) {
         super(type);
     }
@@ -34,9 +26,18 @@ public class WaterMaterialAttribute extends Attribute {
         this.waterMaterial = waterMaterial;
     }
 
+    /**
+     * Method to check whether the specified type is a valid DoubleAttribute
+     * type
+     */
+    public static Boolean is(final long type) {
+        return (type & Mask) != 0;
+    }
+
     public static WaterMaterialAttribute createWaterMaterialAttribute(WaterMaterial waterMaterial) {
         return new WaterMaterialAttribute(WaterMaterial, waterMaterial);
     }
+
     @Override
     public Attribute copy() {
         return new WaterMaterialAttribute(this.type);

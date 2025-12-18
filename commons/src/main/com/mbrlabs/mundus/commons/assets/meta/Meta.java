@@ -37,17 +37,14 @@ public class Meta {
     public static final String JSON_TERRAIN = "ter";
     public static final String JSON_MODEL = "mdl";
     public static final String JSON_CUSTOM = "cus";
-
+    private final FileHandle file;
     private int version;
     private long lastModified;
     private String uuid;
     private AssetType type;
-
     private MetaModel model;
     private MetaTerrain terrain;
     private MetaCustom custom;
-
-    private final FileHandle file;
 
     public Meta(FileHandle file) {
         this.file = file;

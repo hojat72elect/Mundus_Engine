@@ -32,10 +32,8 @@ import com.mbrlabs.mundus.commons.scene3d.components.WaterComponent;
  */
 public class SceneGraph {
 
-    protected GameObject root;
-
     public Scene scene;
-
+    protected GameObject root;
     private boolean containsWater = false;
 
     public SceneGraph(Scene scene) {
@@ -91,7 +89,7 @@ public class SceneGraph {
     /**
      * Adds a model to the scene graph as a child of root game object.
      *
-     * @param model The model.
+     * @param model    The model.
      * @param position The position.
      * @return The game object of added model.
      */
@@ -103,7 +101,7 @@ public class SceneGraph {
      * Adds a model to the scene graph as a child of given parent game object.
      *
      * @param parentGO The parent game object.
-     * @param model The model.
+     * @param model    The model.
      * @param position The position.
      * @return The game object of added model.
      */
@@ -115,7 +113,7 @@ public class SceneGraph {
      * Adds a model instance to the scene graph as a child of root game object.
      *
      * @param modelInstance The model instance.
-     * @param position The position.
+     * @param position      The position.
      * @return The game object of added model instance.
      */
     public GameObject addGameObject(final ModelInstance modelInstance, final Vector3 position) {
@@ -125,9 +123,9 @@ public class SceneGraph {
     /**
      * Adds a model instance to the scene graph as a child of parent game object.
      *
-     * @param parentGO The parent game object.
+     * @param parentGO      The parent game object.
      * @param modelInstance The model instance.
-     * @param position The position.
+     * @param position      The position.
      * @return The game object of added model instance.
      */
     public GameObject addGameObject(final GameObject parentGO, final ModelInstance modelInstance, final Vector3 position) {

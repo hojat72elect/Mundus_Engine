@@ -25,8 +25,16 @@ import com.kotcrab.vis.ui.widget.PopupMenu
 import com.kotcrab.vis.ui.widget.Tooltip
 import com.mbrlabs.mundus.editor.Mundus
 import com.mbrlabs.mundus.editor.core.project.ProjectManager
-import com.mbrlabs.mundus.editor.events.*
-import com.mbrlabs.mundus.editor.tools.*
+import com.mbrlabs.mundus.editor.events.AssetImportEvent
+import com.mbrlabs.mundus.editor.events.AssetSelectedEvent
+import com.mbrlabs.mundus.editor.events.FullScreenEvent
+import com.mbrlabs.mundus.editor.events.GameObjectSelectedEvent
+import com.mbrlabs.mundus.editor.events.ToolActivatedEvent
+import com.mbrlabs.mundus.editor.tools.RotateTool
+import com.mbrlabs.mundus.editor.tools.ScaleTool
+import com.mbrlabs.mundus.editor.tools.SelectionTool
+import com.mbrlabs.mundus.editor.tools.ToolManager
+import com.mbrlabs.mundus.editor.tools.TranslateTool
 import com.mbrlabs.mundus.editor.ui.UI
 import com.mbrlabs.mundus.editor.ui.gizmos.GizmoManager
 import com.mbrlabs.mundus.editor.ui.modules.outline.Outline
@@ -42,11 +50,10 @@ import com.mbrlabs.mundus.editor.utils.Log
  * @version 24-11-2015
  */
 class MundusToolbar(private val outline: Outline) : Toolbar(),
-        FullScreenEvent.FullScreenEventListener,
-        ToolActivatedEvent.ToolActivatedEventListener,
-        GameObjectSelectedEvent.GameObjectSelectedListener,
-        AssetSelectedEvent.AssetSelectedListener
-{
+    FullScreenEvent.FullScreenEventListener,
+    ToolActivatedEvent.ToolActivatedEventListener,
+    GameObjectSelectedEvent.GameObjectSelectedListener,
+    AssetSelectedEvent.AssetSelectedListener {
 
     companion object {
         private val TAG = MundusToolbar::class.java.simpleName
@@ -168,60 +175,61 @@ class MundusToolbar(private val outline: Outline) : Toolbar(),
         // create material
         createMaterial.addListener(object : ClickListener() {
             override fun clicked(event: InputEvent?, x: Float, y: Float) {
-                Dialogs.showInputDialog(UI, "Create new material", "Material name",
-                        object : InputDialogAdapter() {
-                            override fun finished(input: String?) {
-                                val assetManager = projectManager.current().assetManager
-                                try {
-                                    val mat = assetManager.createMaterialAsset(input!!)
-                                    Mundus.postEvent(AssetImportEvent(mat))
-                                } catch (e: Exception) {
-                                    Log.exception(TAG, e)
-                                    UI.toaster.error(e.toString())
-                                }
-
+                Dialogs.showInputDialog(
+                    UI, "Create new material", "Material name",
+                    object : InputDialogAdapter() {
+                        override fun finished(input: String?) {
+                            val assetManager = projectManager.current().assetManager
+                            try {
+                                val mat = assetManager.createMaterialAsset(input!!)
+                                Mundus.postEvent(AssetImportEvent(mat))
+                            } catch (e: Exception) {
+                                Log.exception(TAG, e)
+                                UI.toaster.error(e.toString())
                             }
 
-                            override fun canceled() {
-                                super.canceled()
-                            }
-                        })
+                        }
+
+                        override fun canceled() {
+                            super.canceled()
+                        }
+                    })
             }
         })
 
         // select tool
         selectBtn.addListener(object : ClickListener() {
             override fun clicked(event: InputEvent?, x: Float, y: Float) {
-                    toolManager.activateTool(toolManager.selectionTool)
-                    val selectedGameObject = outline.getSelectedGameObject()
-                    projectManager.current().currScene.currentSelection = selectedGameObject
+                toolManager.activateTool(toolManager.selectionTool)
+                val selectedGameObject = outline.getSelectedGameObject()
+                projectManager.current().currScene.currentSelection = selectedGameObject
             }
         })
 
         // translate tool
         translateBtn.addListener(object : ClickListener() {
             override fun clicked(event: InputEvent?, x: Float, y: Float) {
-                    toolManager.activateTool(toolManager.translateTool)
-                    val selectedGameObject = outline.getSelectedGameObject()
-                    projectManager.current().currScene.currentSelection = selectedGameObject
+                toolManager.activateTool(toolManager.translateTool)
+                val selectedGameObject = outline.getSelectedGameObject()
+                projectManager.current().currScene.currentSelection = selectedGameObject
             }
         })
 
         // rotate tool
         rotateBtn.addListener(object : ClickListener() {
             override fun clicked(event: InputEvent?, x: Float, y: Float) {
-                    toolManager.activateTool(toolManager.rotateTool)
-                    val selectedGameObject = outline.getSelectedGameObject()
-                    projectManager.current().currScene.currentSelection = selectedGameObject
+                toolManager.activateTool(toolManager.rotateTool)
+                val selectedGameObject = outline.getSelectedGameObject()
+                projectManager.current().currScene.currentSelection = selectedGameObject
             }
         })
 
         // scale tool
         scaleBtn.addListener(object : ClickListener() {
             override fun clicked(event: InputEvent?, x: Float, y: Float) {
-                    toolManager.activateTool(toolManager.scaleTool)
-                    val selectedGameObject = outline.getSelectedGameObject()
-                    projectManager.current().currScene.currentSelection = selectedGameObject
+                toolManager.activateTool(toolManager.scaleTool)
+                val selectedGameObject = outline.getSelectedGameObject()
+                projectManager.current().currScene.currentSelection = selectedGameObject
             }
         })
 
@@ -304,8 +312,7 @@ class MundusToolbar(private val outline: Outline) : Toolbar(),
         if (gizmoManager.isRenderEnabled()) {
             gizmoBtn.style = FaTextButton.styleActive
             gizmoBtn.setText(Fa.EYE)
-        }
-        else {
+        } else {
             gizmoBtn.style = FaTextButton.styleNoBg
             gizmoBtn.setText(Fa.EYE_SLASH)
         }

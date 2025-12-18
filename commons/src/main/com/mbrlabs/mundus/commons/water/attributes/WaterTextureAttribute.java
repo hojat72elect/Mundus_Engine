@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.badlogic.gdx.utils.NumberUtils;
 import com.mbrlabs.mundus.commons.MundusAttribute;
+
 /**
  * @author JamesTKhan
  * @version October 16, 2022
@@ -32,21 +33,17 @@ public class WaterTextureAttribute extends MundusAttribute {
     public final static long RefractionDepth = register(RefractionDepthAlias);
 
     protected static long Mask = Dudv | NormalMap | Reflection | Foam | Refraction | RefractionDepth;
-
-    public final static boolean is (final long mask) {
-        return (mask & Mask) != 0;
-    }
-
     public final TextureDescriptor<Texture> textureDescription;
     public float offsetU = 0;
     public float offsetV = 0;
     public float scaleU = 1;
     public float scaleV = 1;
-    /** The index of the texture coordinate vertex attribute to use for this TextureAttribute. Whether this value is used, depends
+    /**
+     * The index of the texture coordinate vertex attribute to use for this TextureAttribute. Whether this value is used, depends
      * on the shader and {@link Attribute#type} value. For basic (model specific) types
-     * etc.), this value is usually ignored and the first texture coordinate vertex attribute is used. */
+     * etc.), this value is usually ignored and the first texture coordinate vertex attribute is used.
+     */
     public int uvIndex = 0;
-
     public WaterTextureAttribute(final long type) {
         super(type);
         if (!is(type)) throw new GdxRuntimeException("Invalid type specified");
@@ -88,7 +85,11 @@ public class WaterTextureAttribute extends MundusAttribute {
                 copyFrom.uvIndex);
     }
 
-    public void set (final TextureRegion region) {
+    public final static boolean is(final long mask) {
+        return (mask & Mask) != 0;
+    }
+
+    public void set(final TextureRegion region) {
         textureDescription.texture = region.getTexture();
         offsetU = region.getU();
         offsetV = region.getV();
@@ -97,12 +98,12 @@ public class WaterTextureAttribute extends MundusAttribute {
     }
 
     @Override
-    public MundusAttribute copy () {
+    public MundusAttribute copy() {
         return new WaterTextureAttribute(this);
     }
 
     @Override
-    public int hashCode () {
+    public int hashCode() {
         int result = super.hashCode();
         result = 991 * result + textureDescription.hashCode();
         result = 991 * result + NumberUtils.floatToRawIntBits(offsetU);
@@ -114,9 +115,9 @@ public class WaterTextureAttribute extends MundusAttribute {
     }
 
     @Override
-    public int compareTo (MundusAttribute o) {
+    public int compareTo(MundusAttribute o) {
         if (type != o.type) return type < o.type ? -1 : 1;
-        WaterTextureAttribute other = (WaterTextureAttribute)o;
+        WaterTextureAttribute other = (WaterTextureAttribute) o;
         final int c = textureDescription.compareTo(other.textureDescription);
         if (c != 0) return c;
         if (uvIndex != other.uvIndex) return uvIndex - other.uvIndex;

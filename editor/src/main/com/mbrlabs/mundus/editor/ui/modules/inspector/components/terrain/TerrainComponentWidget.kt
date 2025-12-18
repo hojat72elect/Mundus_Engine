@@ -39,7 +39,7 @@ import com.mbrlabs.mundus.editor.ui.widgets.MaterialWidget
  * @version 29-01-2016
  */
 class TerrainComponentWidget(terrainComponent: TerrainComponent) :
-        ComponentWidget<TerrainComponent>("Terrain Component", terrainComponent), TabbedPaneListener {
+    ComponentWidget<TerrainComponent>("Terrain Component", terrainComponent), TabbedPaneListener {
 
     private val tabbedPane = TabbedPane()
     private val tabContainer = VisTable()
@@ -80,7 +80,7 @@ class TerrainComponentWidget(terrainComponent: TerrainComponent) :
         materialContainer.clear()
         val selectWidget = MaterialSelectWidget(component.terrainAsset.materialAsset)
         materialContainer.add(selectWidget).grow().padBottom(20f).row()
-        selectWidget.matChangedListener = object: MaterialWidget.MaterialChangedListener {
+        selectWidget.matChangedListener = object : MaterialWidget.MaterialChangedListener {
             override fun materialChanged(materialAsset: MaterialAsset) {
                 component.terrainAsset.materialAsset = materialAsset
                 component.applyMaterial()

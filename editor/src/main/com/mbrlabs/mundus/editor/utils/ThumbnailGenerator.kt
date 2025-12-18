@@ -69,7 +69,7 @@ object ThumbnailGenerator {
 
         val maxDimension = Math.max(dimensions.x, Math.max(dimensions.y, dimensions.z))
         val distance =
-                (maxDimension / (2 * tan((cam.fieldOfView / 2 * MathUtils.degreesToRadians))))
+            (maxDimension / (2 * tan((cam.fieldOfView / 2 * MathUtils.degreesToRadians))))
 
         var camFar = center.dst(bounds.getCorner000(Vector3())) + distance
         camFar += 100f // Add additional buffer to distance

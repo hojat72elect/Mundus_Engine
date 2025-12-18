@@ -31,16 +31,16 @@ public class PickerIDAttribute extends Attribute {
     public int g = 255;
     public int b = 255;
 
-    public final static boolean is(final long mask) {
-        return (mask & Type) == mask;
-    }
-
     public PickerIDAttribute() {
         super(Type);
     }
 
     public PickerIDAttribute(PickerIDAttribute other) {
         super(Type);
+    }
+
+    public final static boolean is(final long mask) {
+        return (mask & Type) == mask;
     }
 
     @Override

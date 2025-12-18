@@ -4,8 +4,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage
 import com.kotcrab.vis.ui.widget.VisDialog
 import com.kotcrab.vis.ui.widget.VisTable
 import com.mbrlabs.mundus.editor.Mundus
-import com.mbrlabs.mundus.editor.core.keymap.KeymapKey
 import com.mbrlabs.mundus.editor.core.keymap.KeyboardShortcutManager
+import com.mbrlabs.mundus.editor.core.keymap.KeymapKey
 
 /**
  * @author JamesTKhan

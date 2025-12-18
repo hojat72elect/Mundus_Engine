@@ -31,7 +31,7 @@ import com.mbrlabs.mundus.editor.ui.UI
  */
 class AppearanceSettingsTable : BaseSettingsTable() {
 
-    private val globalPreferencesManager : MundusPreferencesManager = Mundus.inject()
+    private val globalPreferencesManager: MundusPreferencesManager = Mundus.inject()
 
     private val selectionLineWidth = VisTextField("0")
     private val wireframeLineWidth = VisTextField("0")
@@ -64,14 +64,14 @@ class AppearanceSettingsTable : BaseSettingsTable() {
     override fun onSave() {
         try {
             globalPreferencesManager.set(MundusPreferencesManager.GLOB_LINE_WIDTH_SELECTION, selectionLineWidth.text.toFloat())
-        } catch (ex : NumberFormatException) {
-            Mundus.postEvent(LogEvent(LogType.ERROR,"Error parsing field " + selectionLineWidth.name))
+        } catch (ex: NumberFormatException) {
+            Mundus.postEvent(LogEvent(LogType.ERROR, "Error parsing field " + selectionLineWidth.name))
         }
 
         try {
             globalPreferencesManager.set(MundusPreferencesManager.GLOB_LINE_WIDTH_WIREFRAME, wireframeLineWidth.text.toFloat())
-        } catch (ex : NumberFormatException) {
-            Mundus.postEvent(LogEvent(LogType.ERROR,"Error parsing field " + wireframeLineWidth.name))
+        } catch (ex: NumberFormatException) {
+            Mundus.postEvent(LogEvent(LogType.ERROR, "Error parsing field " + wireframeLineWidth.name))
         }
 
         UI.toaster.success("Settings saved")

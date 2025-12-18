@@ -28,16 +28,8 @@ public class TerrainMaterialAttribute extends Attribute {
     public final static long TerrainMaterial = register(TerrainMaterialAlias);
 
     protected static long Mask = TerrainMaterial;
-    
-    public TerrainMaterial terrainMaterial;
 
-    /**
-     * Method to check whether the specified type is a valid DoubleAttribute
-     * type
-     */
-    public static Boolean is(final long type) {
-        return (type & Mask) != 0;
-    }
+    public TerrainMaterial terrainMaterial;
 
     protected TerrainMaterialAttribute(long type) {
         super(type);
@@ -48,9 +40,18 @@ public class TerrainMaterialAttribute extends Attribute {
         this.terrainMaterial = terrainMaterial;
     }
 
+    /**
+     * Method to check whether the specified type is a valid DoubleAttribute
+     * type
+     */
+    public static Boolean is(final long type) {
+        return (type & Mask) != 0;
+    }
+
     public static TerrainMaterialAttribute createTerrainMaterialAttribute(TerrainMaterial terrainMaterial) {
         return new TerrainMaterialAttribute(TerrainMaterial, terrainMaterial);
     }
+
     @Override
     public Attribute copy() {
         return new TerrainMaterialAttribute(this.type, terrainMaterial);

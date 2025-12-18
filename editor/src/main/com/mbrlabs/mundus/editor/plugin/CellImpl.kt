@@ -5,19 +5,19 @@ import com.badlogic.gdx.utils.Align
 import com.mbrlabs.mundus.pluginapi.ui.Cell
 import com.mbrlabs.mundus.pluginapi.ui.WidgetAlign
 
-open class CellImpl(private vararg val cells: com.badlogic.gdx.scenes.scene2d.ui.Cell<out Actor>) : com.mbrlabs.mundus.pluginapi.ui.Cell {
+open class CellImpl(private vararg val cells: com.badlogic.gdx.scenes.scene2d.ui.Cell<out Actor>) : Cell {
 
-    override fun setAlign(align: WidgetAlign): com.mbrlabs.mundus.pluginapi.ui.Cell {
+    override fun setAlign(align: WidgetAlign): Cell {
         when (align) {
             WidgetAlign.LEFT -> cells.forEach { it.align(Align.left) }
             WidgetAlign.CENTER -> cells.forEach { it.align(Align.center) }
-            WidgetAlign.RIGHT -> cells.forEach {  it.align(Align.right) }
+            WidgetAlign.RIGHT -> cells.forEach { it.align(Align.right) }
         }
 
         return this
     }
 
-    override fun setPad(top: Float, right: Float, bottom: Float, left: Float): com.mbrlabs.mundus.pluginapi.ui.Cell {
+    override fun setPad(top: Float, right: Float, bottom: Float, left: Float): Cell {
         cells.forEach { it.pad(top, left, bottom, right) }
 
         return this

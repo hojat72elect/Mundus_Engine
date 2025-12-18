@@ -24,11 +24,11 @@ class SortChildrenCommand(private val childArray: Array<GameObject>) : Command {
         Mundus.postEvent(SceneGraphChangedEvent())
     }
 
-    inner class GameObjectExecuteComparator : Comparator<GameObject> {
+    class GameObjectExecuteComparator : Comparator<GameObject> {
         override fun compare(left: GameObject, right: GameObject): Int = left.name.compareTo(right.name)
     }
 
-    inner class GameObjectUndoComparator(private val originalSorting: Array<Int>) : Comparator<GameObject> {
+    class GameObjectUndoComparator(private val originalSorting: Array<Int>) : Comparator<GameObject> {
         override fun compare(left: GameObject, right: GameObject): Int = originalSorting.indexOf(left.id) - originalSorting.indexOf(right.id)
     }
 }

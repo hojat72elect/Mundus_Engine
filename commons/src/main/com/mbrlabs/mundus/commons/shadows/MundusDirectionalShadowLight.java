@@ -2,10 +2,9 @@ package com.mbrlabs.mundus.commons.shadows;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Pixmap;
-import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.badlogic.gdx.math.Vector2;
-import com.mbrlabs.mundus.commons.Scene;
 import com.mbrlabs.mundus.commons.utils.NestableFrameBuffer;
+
 import net.mgsx.gltf.scene3d.lights.DirectionalShadowLight;
 
 /**
@@ -26,6 +25,7 @@ public class MundusDirectionalShadowLight extends DirectionalShadowLight {
     public MundusDirectionalShadowLight() {
         super();
     }
+
     public MundusDirectionalShadowLight(ShadowResolution resolution, int viewportWidth, int viewportHeight, float near, float far) {
         set(resolution, viewportWidth, viewportHeight, near, far);
     }
@@ -47,13 +47,13 @@ public class MundusDirectionalShadowLight extends DirectionalShadowLight {
         initFBO();
     }
 
+    public ShadowResolution getShadowResolution() {
+        return shadowResolution;
+    }
+
     public void setShadowResolution(ShadowResolution shadowResolution) {
         this.shadowResolution = shadowResolution;
         initFBO();
-    }
-
-    public ShadowResolution getShadowResolution() {
-        return shadowResolution;
     }
 
     private void initFBO() {

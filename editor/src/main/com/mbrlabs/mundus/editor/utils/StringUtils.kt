@@ -18,7 +18,7 @@
 
 package com.mbrlabs.mundus.editor.utils
 
-import java.util.*
+import java.util.Locale
 
 
 fun formatFloat(f: Float, digits: Int): String {
