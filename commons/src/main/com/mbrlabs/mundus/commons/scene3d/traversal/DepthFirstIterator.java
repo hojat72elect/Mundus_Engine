@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.commons.scene3d.traversal;
 
 import com.mbrlabs.mundus.commons.scene3d.GameObject;

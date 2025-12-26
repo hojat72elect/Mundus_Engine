@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.assets
 
 import com.mbrlabs.mundus.commons.assets.Asset

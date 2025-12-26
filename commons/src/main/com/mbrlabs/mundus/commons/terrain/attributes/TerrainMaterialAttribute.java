@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.commons.terrain.attributes;
 
 import com.badlogic.gdx.graphics.g3d.Attribute;

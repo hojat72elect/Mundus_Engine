@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.commons.scene3d;
 
 import com.badlogic.gdx.math.Matrix4;

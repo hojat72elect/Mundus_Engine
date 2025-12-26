@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.pluginapi;
 
 import com.badlogic.gdx.math.Vector3;

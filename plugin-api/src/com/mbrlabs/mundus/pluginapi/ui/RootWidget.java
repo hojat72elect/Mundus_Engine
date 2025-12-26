@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.pluginapi.ui;
 
 import com.badlogic.gdx.utils.Array;

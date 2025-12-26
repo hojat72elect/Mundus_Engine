@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.plugin
 
 import com.mbrlabs.mundus.editor.ui.UI

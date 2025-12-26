@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.pluginapi;
 
 import com.badlogic.gdx.graphics.g3d.RenderableProvider;

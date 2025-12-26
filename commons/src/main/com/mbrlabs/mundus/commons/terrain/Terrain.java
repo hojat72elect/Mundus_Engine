@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.commons.terrain;
 
 import com.badlogic.gdx.graphics.GL20;

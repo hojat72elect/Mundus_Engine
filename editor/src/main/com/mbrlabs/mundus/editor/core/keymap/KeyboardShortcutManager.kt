@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.core.keymap
 
 import com.badlogic.gdx.Gdx

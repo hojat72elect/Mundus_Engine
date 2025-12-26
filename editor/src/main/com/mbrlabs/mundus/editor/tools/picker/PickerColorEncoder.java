@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.tools.picker;
 
 import com.mbrlabs.mundus.commons.scene3d.GameObject;

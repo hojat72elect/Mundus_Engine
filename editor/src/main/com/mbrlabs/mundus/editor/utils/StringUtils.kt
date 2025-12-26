@@ -1,4 +1,3 @@
-
 @file:JvmName("StringUtils")
 
 package com.mbrlabs.mundus.editor.utils

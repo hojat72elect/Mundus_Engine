@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.ui.modules.inspector.components
 
 import com.badlogic.gdx.scenes.scene2d.Actor

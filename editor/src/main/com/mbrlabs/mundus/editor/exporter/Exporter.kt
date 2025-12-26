@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.exporter
 
 import com.badlogic.gdx.files.FileHandle

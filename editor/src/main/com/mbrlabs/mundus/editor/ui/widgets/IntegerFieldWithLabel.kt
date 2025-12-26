@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.ui.widgets
 
 import com.kotcrab.vis.ui.util.IntDigitsOnlyFilter

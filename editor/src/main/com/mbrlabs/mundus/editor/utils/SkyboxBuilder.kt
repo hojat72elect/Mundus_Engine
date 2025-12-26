@@ -1,4 +1,3 @@
-
 @file:JvmName("SkyboxBuilder")
 
 package com.mbrlabs.mundus.editor.utils

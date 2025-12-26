@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.commons.water;
 
 import com.badlogic.gdx.utils.Array;

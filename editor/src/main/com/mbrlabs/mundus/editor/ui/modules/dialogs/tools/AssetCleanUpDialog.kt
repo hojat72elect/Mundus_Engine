@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.ui.modules.dialogs.tools
 
 import com.badlogic.gdx.graphics.Color

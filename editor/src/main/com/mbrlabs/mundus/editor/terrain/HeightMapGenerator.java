@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.terrain;
 
 import com.badlogic.gdx.graphics.Pixmap;

@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.tools.brushes;
 
 import com.badlogic.gdx.Gdx;

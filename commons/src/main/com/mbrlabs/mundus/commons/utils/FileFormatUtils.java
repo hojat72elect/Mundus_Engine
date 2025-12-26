@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.commons.utils;
 
 import com.badlogic.gdx.files.FileHandle;

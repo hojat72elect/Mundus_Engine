@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.history.commands
 
 import com.badlogic.gdx.math.Quaternion

@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.ui.modules.dialogs.importer
 
 import com.badlogic.gdx.Gdx

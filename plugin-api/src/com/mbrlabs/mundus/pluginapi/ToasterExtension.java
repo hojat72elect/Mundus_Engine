@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.pluginapi;
 
 import com.mbrlabs.mundus.pluginapi.manager.ToasterManager;

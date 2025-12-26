@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.ui.modules.dock
 
 import com.kotcrab.vis.ui.VisUI

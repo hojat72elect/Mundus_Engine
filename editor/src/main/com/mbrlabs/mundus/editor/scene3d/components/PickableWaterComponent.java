@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.scene3d.components;
 
 import com.badlogic.gdx.graphics.g3d.Shader;

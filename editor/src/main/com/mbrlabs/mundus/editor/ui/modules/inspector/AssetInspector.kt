@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.ui.modules.inspector
 
 import com.badlogic.gdx.utils.Align

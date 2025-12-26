@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.scene3d.components;
 
 import com.mbrlabs.mundus.commons.scene3d.GameObject;

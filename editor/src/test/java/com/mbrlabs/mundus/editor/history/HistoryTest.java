@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.history;
 
 import static org.junit.Assert.assertEquals;
@@ -62,7 +61,7 @@ public class HistoryTest {
         assertEquals(2, history.size());
     }
 
-    private class MockCommand implements Command {
+    private static class MockCommand implements Command {
         @Override
         public void execute() {
         }

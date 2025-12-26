@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.ui.modules.dialogs.settings
 
 import com.badlogic.gdx.graphics.PerspectiveCamera

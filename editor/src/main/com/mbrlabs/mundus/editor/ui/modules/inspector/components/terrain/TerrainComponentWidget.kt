@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.ui.modules.inspector.components.terrain
 
 import com.kotcrab.vis.ui.widget.VisLabel

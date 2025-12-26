@@ -1,5 +1,4 @@
 
-
 package com.mbrlabs.mundus.editor.tools.terrain;
 
 import com.badlogic.gdx.math.Interpolation;

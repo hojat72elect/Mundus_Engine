@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.core.kryo.descriptors;
 
 import com.esotericsoftware.kryo.serializers.TaggedFieldSerializer.Tag;

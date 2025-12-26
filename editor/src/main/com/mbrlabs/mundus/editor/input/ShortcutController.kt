@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.input
 
 import com.badlogic.gdx.Input

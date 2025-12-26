@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editorcommons.types;
 
 /**

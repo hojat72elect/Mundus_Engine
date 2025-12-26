@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.ui.modules.dialogs
 
 import com.kotcrab.vis.ui.util.async.AsyncTaskListener

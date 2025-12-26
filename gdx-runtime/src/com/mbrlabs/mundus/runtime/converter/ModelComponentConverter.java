@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.runtime.converter;
 
 import com.mbrlabs.mundus.commons.assets.AssetManager;

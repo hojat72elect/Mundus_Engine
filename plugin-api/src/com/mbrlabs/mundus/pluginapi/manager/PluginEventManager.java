@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.pluginapi.manager;
 
 import com.mbrlabs.mundus.editorcommons.EventListener;

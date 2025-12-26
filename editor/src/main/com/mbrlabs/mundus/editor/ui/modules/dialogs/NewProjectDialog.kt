@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.ui.modules.dialogs
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent

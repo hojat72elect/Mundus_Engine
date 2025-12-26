@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.commons.assets.meta;
 
 public class MetaTerrain {

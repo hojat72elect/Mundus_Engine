@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.commons.dto;
 
 import com.badlogic.gdx.utils.Array;

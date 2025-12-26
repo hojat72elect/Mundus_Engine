@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.commons.g3d;
 
 import com.badlogic.gdx.assets.loaders.FileHandleResolver;

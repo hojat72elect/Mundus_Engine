@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.core.converter;
 
 import com.badlogic.gdx.math.Quaternion;

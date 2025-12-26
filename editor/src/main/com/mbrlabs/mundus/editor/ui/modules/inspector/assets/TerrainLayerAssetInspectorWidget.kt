@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.ui.modules.inspector.assets
 
 import com.mbrlabs.mundus.commons.assets.TerrainLayerAsset

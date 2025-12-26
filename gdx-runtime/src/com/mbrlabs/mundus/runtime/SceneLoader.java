@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.runtime;
 
 import com.badlogic.gdx.Gdx;

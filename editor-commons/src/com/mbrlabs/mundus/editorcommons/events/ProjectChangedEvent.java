@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editorcommons.events;
 
 import com.mbrlabs.mundus.commons.scene3d.SceneGraph;

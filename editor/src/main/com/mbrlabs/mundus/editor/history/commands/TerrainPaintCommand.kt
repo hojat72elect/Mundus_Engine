@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.history.commands
 
 import com.badlogic.gdx.graphics.Pixmap

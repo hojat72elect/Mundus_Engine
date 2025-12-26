@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.ui.modules.inspector.components.terrain
 
 import com.badlogic.gdx.scenes.scene2d.ui.Table

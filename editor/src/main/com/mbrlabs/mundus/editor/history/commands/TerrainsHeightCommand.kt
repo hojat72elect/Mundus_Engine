@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.history.commands
 
 import com.mbrlabs.mundus.commons.scene3d.components.TerrainComponent

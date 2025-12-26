@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.commons.env;
 
 import com.badlogic.gdx.graphics.Color;

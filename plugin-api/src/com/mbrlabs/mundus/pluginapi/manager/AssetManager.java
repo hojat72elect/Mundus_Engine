@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.pluginapi.manager;
 
 import com.badlogic.gdx.files.FileHandle;

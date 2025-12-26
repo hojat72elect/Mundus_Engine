@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.terrain;
 
 import com.mbrlabs.mundus.commons.terrain.Terrain;

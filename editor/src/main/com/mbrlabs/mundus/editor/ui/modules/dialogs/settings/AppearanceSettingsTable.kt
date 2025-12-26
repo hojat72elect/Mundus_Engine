@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.ui.modules.dialogs.settings
 
 import com.kotcrab.vis.ui.util.FloatDigitsOnlyFilter

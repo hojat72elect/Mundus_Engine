@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.tools.picker;
 
 import com.badlogic.gdx.Gdx;

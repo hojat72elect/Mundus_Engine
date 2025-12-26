@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.core.registry;
 
 import com.badlogic.gdx.utils.ObjectMap;

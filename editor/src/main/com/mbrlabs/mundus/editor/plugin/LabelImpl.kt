@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.plugin
 
 import com.kotcrab.vis.ui.widget.VisLabel

@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.shader
 
 import com.badlogic.gdx.graphics.glutils.ShaderProgram

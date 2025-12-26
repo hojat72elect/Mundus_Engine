@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.commons.assets;
 
 import com.badlogic.gdx.assets.AssetManager;

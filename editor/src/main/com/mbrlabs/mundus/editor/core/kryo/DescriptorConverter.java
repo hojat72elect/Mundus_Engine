@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.core.kryo;
 
 import com.badlogic.gdx.files.FileHandle;

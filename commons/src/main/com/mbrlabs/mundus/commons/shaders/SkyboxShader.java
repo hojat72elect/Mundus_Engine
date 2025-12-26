@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.commons.shaders;
 
 import com.badlogic.gdx.Gdx;

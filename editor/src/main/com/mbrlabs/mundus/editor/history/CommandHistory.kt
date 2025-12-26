@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.history
 
 import com.badlogic.gdx.utils.Array

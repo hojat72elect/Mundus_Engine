@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.commons.assets.meta;
 
 import com.badlogic.gdx.files.FileHandle;

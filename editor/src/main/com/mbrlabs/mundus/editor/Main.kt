@@ -1,4 +1,3 @@
-
 @file:JvmName("Main")
 
 package com.mbrlabs.mundus.editor

@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.commons.water.attributes;
 
 import com.badlogic.gdx.graphics.Color;

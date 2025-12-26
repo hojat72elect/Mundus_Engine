@@ -1,4 +1,3 @@
-
 package com.mbrlabs.mundus.editor.core.keymap
 
 enum class KeymapKey(val type: KeymapKeyType) {
