@@ -1,3 +1,7 @@
+**I managed to successfully add this project to my own fork of LibGDX. that's why it's been archived.**
+
+**I'm going to delete this repo on 27th of December 2030; or maybe even sooner.**
+
 <img alt="" src="logo.svg" height="80px" />
 
 # Mundus ![Java CI workflow](https://github.com/JamesTKhan/Mundus/actions/workflows/gradle.yml/badge.svg)
